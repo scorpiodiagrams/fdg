@@ -9,7 +9,7 @@ tive depends on the coordinates, the product (Df(x))Δx is in-
 1In multiple dimensions the derivative Df(x) is a down tuple structure of the partial derivatives and the increment Δx is an up tuple structure, so the indicated product is to be interpreted as a contraction. (See equation B.8.)
  
 #page(22)
- variant under change of coordinates in the following sense. Let φ = χ ◦ χ′−1 be a coordinate transformation, and x = φ(y). Then Δx = Dφ(y)Δy is the linear approximation to the change in x when y changes by Δy. If f and g are the representations of a manifold function in the two coordinate systems, g(y) = f(φ(y)) = f(x), then the linear approximations to the increments in f and g are equal:
+variant under change of coordinates in the following sense. Let φ = χ ◦ χ′−1 be a coordinate transformation, and x = φ(y). Then Δx = Dφ(y)Δy is the linear approximation to the change in x when y changes by Δy. If f and g are the representations of a manifold function in the two coordinate systems, g(y) = f(φ(y)) = f(x), then the linear approximations to the increments in f and g are equal:
 Dg(y)Δy = Df (φ(y)) (Dφ(y)Δy) = Df (x)Δx.
 The invariant product (Df(x))Δx is the directional derivative of f at x with respect to the vector specified by the tuple of components Δx in the coordinate system. We can generalize this idea to allow the vector at each point to depend on the point, making a vector field. Let b be a function of coordinates. We then have a directional derivative of f at each point x, determined by b
 Db(f)(x) = (Df(x))b(x). (3.2)
@@ -17,7 +17,7 @@ Now we bring this back to the manifold and develop a useful generalization of th
 Let m be a point on a manifold, v be a vector field on the manifold, and f be a real-valued function on the manifold. Then v(f) is the directional derivative of the function f and v(f)(m) is the directional derivative of the function f at the point m. The vector field is an operator that takes a real-valued manifold function and a manifold point and produces a number. The order of arguments is chosen to make v(f) be a new manifold function that can be manipulated further. Directional derivative operators, unlike ordinary derivative operators, produce a result of the same type as their argument. Note that there is no mention here of any coordinate system. The vector field specifies a direction and magnitude at each manifold point that is independent of how it is described using any coordinate system.
 
 #page(23)
- A useful way to characterize a vector field in a particular coordinate system is by applying it to the coordinate functions. The resulting functions biχ,v are called the coordinate component functions or coefficient functions of the vector field; they measure how quickly the coordinate functions change in the direction of the vector field, scaled by the magnitude of the vector field:
+A useful way to characterize a vector field in a particular coordinate system is by applying it to the coordinate functions. The resulting functions biχ,v are called the coordinate component functions or coefficient functions of the vector field; they measure how quickly the coordinate functions change in the direction of the vector field, scaled by the magnitude of the vector field:
 b iχ , v = v χ i ◦ χ − 1 . ( 3 . 3 )
 Note that we have chosen the coordinate components to be functions of the coordinate tuple, not of a manifold point.
 A vector with coordinate components bχ,v applies to a manifold function f via
@@ -37,38 +37,50 @@ The coefficient tuple bχ,v(x) is an up structure compatible for addition to the
 #page(24)
  In the text that follows we will usually drop the subscripts on b, understanding that it is dependent on the coordinate system and the vector field.
 We implement the definition of a vector field (3.4) as:
+```Scheme
 (define (components->vector-field components coordsys) (define (v f)
 (compose (* (D (compose f (point coordsys))) components)
 (chart coordsys))) (procedure->vector-field v))
+```
 The vector field is an operator, like derivative.2
 Given a coordinate system and coefficient functions that map
 coordinates to real values, we can make a vector field. For example, a general vector field can be defined by giving components relative to the coordinate system R2-rect by
+```Scheme
 (define v (components->vector-field
 (up (literal-function ’b^0 R2->R) (literal-function ’b^1 R2->R))
 R2-rect))
+```
 To make it convenient to define literal vector fields we provide a shorthand: (define v (literal-vector-field ’b R2-rect)) This makes a vector field with component functions named b^0 and b^1 and names the result v. When this vector field is applied to an arbitrary manifold function it gives the directional derivative of that manifold function in the direction specified by the components bˆ0 and bˆ1:
+```Scheme
 ((v (literal-manifold-function ’f-rect R2-rect)) R2-rect-point)
 (+ (* (((partial 0) f-rect) (up x0 y0)) (bˆ0 (up x0 y0))) (* (((partial 1) f-rect) (up x0 y0)) (bˆ1 (up x0 y0))))
+```
 This result is what we expect from equation (3.6).
 We can recover the coordinate components of the vector field
 by applying the vector field to the coordinate chart:
 2An operator is just like a procedure except that multiplication is interpreted as composition. For example, the derivative procedure is made into an operator D so that we can say (expt D 2) and expect it to compute the second derivative. The procedure procedure->vector-field makes a vector-field operator.
  
 #page(25)
- ((v (chart R2-rect)) R2-rect-point)
+```Scheme
+((v (chart R2-rect)) R2-rect-point)
 (up (bˆ0 (up x y)) (bˆ1 (up x y)))
+```
 Coordinate Representation
 The vector field v has a coordinate representation v:
 v(f)(m) = D(f ◦ χ−1)(χ(m)) b(χ(m)) = Df(x) b(x)
 = v(f)(x), (3.8)
 with the definitions f = f ◦ χ−1 and x = χ(m). The function b is the coefficient function for the vector field v. It provides a scale factor for the component in each coordinate direction. However, v is the coordinate representation of the vector field v in that it takes directional derivatives of coordinate representations of manifold functions.
 Given a vector field v and a coordinate system coordsys we can construct the coordinate representation of the vector field.3
+```Scheme
 (define (coordinatize v coordsys) (define ((coordinatized-v f) x)
 (let ((b (compose (v (chart coordsys)) (point coordsys))))
 (* ((D f) x) (b x))))) (make-operator coordinatized-v))
+```
 We can apply a coordinatized vector field to a function of coordinates to get the same answer as before.
+```Scheme
 (((coordinatize v R2-rect) (literal-function ’f-rect R2->R)) (up ’x0 ’y0))
 (+ (* (((partial 0) f-rect) (up x0 y0)) (bˆ0 (up x0 y0))) (* (((partial 1) f-rect) (up x0 y0)) (bˆ1 (up x0 y0))))
+```
 Vector Field Properties
 The vector fields on a manifold form a vector space over the field of real numbers and a module over the ring of real-valued manifold functions. A module is like a vector space except that there is no multiplicative inverse operation on the scalars of a module. Manifold functions that are not the zero function do not necessarily
 3The make-operator procedure takes a procedure and returns an operator.
@@ -113,13 +125,16 @@ v(f)(m) =
 i
  to call to mind that it is an operator that computes the directional derivative in the ith coordinate direction.
 In addition to making the coordinate functions, the procedure define-coordinates also makes the traditional named basis vectors. Using these we can examine the application of a rectangular basis vector to a polar coordinate function:
+```Scheme
 (define-coordinates (up x y) R2-rect) (define-coordinates (up r theta) R2-polar)
 ((d/dx (square r)) R2-rect-point)
 (* 2 x0)
+```
 More general functions and vectors can be made as combinations of these simple pieces:
+```Scheme
 (((+ d/dx (* 2 d/dy)) (+ (square r) (* 3 x))) R2-rect-point)
 (+ 3 (* 2 x0) (* 4 y0))
-
+```
 #page(28)
  Coordinate Transformations
 Consider a coordinate change from the chart χ to the chart χ′.
@@ -187,8 +202,11 @@ Note that circular is an operator—a property inherited from d/dx and d/dy.
 2
  
 #page(31)
- (define circular (- (* x d/dy) (* y d/dx)))
+```Scheme
+(define circular (- (* x d/dy) (* y d/dx)))
+```
 We can exponentiate the circular vector field, to generate an evolution in a circle around the origin starting at (1, 0):
+```Scheme
 (series:for-each print-expression
 (((exp (* ’t circular)) (chart R2-rect))
 ((point R2-rect) (up 1 0))) 6)
@@ -198,13 +216,17 @@ We can exponentiate the circular vector field, to generate an evolution in a cir
 (up 0 (* -1/6 (expt t 3)))
 (up (* 1/24 (expt t 4)) 0)
 (up 0 (* 1/120 (expt t 5)))
+```
 These are the first six terms of the series expansion of the coordinates of the position for parameter t.
 We can define an evolution operator EΔt,v using equation (3.31)
 (EΔt,vf)(m) = (eΔtvf)(m) = (f ◦ φvΔt)(m). (3.33)
 We can approximate the evolution operator by summing the series up to a given order:
+```Scheme
 (define ((((evolution order) delta-t v) f) m) (series:sum
 (((exp (* delta-t v)) f) m) order))
+```
 We can evolve circular from the initial point up to the parameter t, and accumulate the first six terms as follows:
+```Scheme
 ((((evolution 6) ’delta-t circular) (chart R2-rect)) ((point R2-rect) (up 1 0)))
 (up (+ (* -1/720 (expt delta-t 6))
        (* 1/24 (expt delta-t 4))
@@ -213,6 +235,7 @@ We can evolve circular from the initial point up to the parameter t, and accumul
     (+ (* 1/120 (expt delta-t 5))
        (* -1/6 (expt delta-t 3))
        delta-t))
+```
 Note that these are just the series for cos Δt and sin Δt, so the coordinate tuple of the evolved point is (cos Δt, sin Δt).
 
 #page(32)
@@ -250,7 +273,8 @@ One-form fields are linear functions of vector fields that produce real-valued f
 9The differential of a manifold function will turn out to be a special case of the exterior derivative, which will be introduced later.
  
 #page(34)
- Sums and scalar products of one-form fields on a manifold have the following properties. If ω and θ are one-form fields, and if f is a real-valued manifold function, then:
+Sums and scalar products of one-form fields on a manifold have the following properties. If ω and θ are one-form fields, and if f is a real-valued manifold function, then:
+
 (ω + θ)(v) = ω(v) + θ(v), (3.37) (f ω)(v) = f ω(v). (3.38)
 3.5 Coordinate-Basis One-Form Fields
 Given a coordinate function χ, we define the coordinate-basis oneform fields Xi by
@@ -272,29 +296,36 @@ ai(χ(m)) Xi(v)(m), (3.42)
  The coefficient tuple can be recovered from the one-form field:11
 ai(x) = ω(Xi)(χ−1(x)). (3.44)
 This follows from the dual relationship (3.41). We can see this as a program:12
+```Scheme
 (define omega (components->1form-field
 (down (literal-function ’a 0 R2->R) (literal-function ’a 1 R2->R))
 R2-rect))
 ((omega (down d/dx d/dy)) R2-rect-point)
 (down (a 0 (up x0 y0)) (a 1 (up x0 y0)))
+```
 We provide a shortcut for this construction:
+```Scheme
 (define omega (literal-1form-field ’a R2-rect))
+```
 A differential can be expanded in a coordinate basis:
     df(v) =
 ciX ̃i(v).
 (3.45)
 i
 The coefficients ci = df(Xi) = Xi(f) = ∂i(f◦χ−1)◦χ are the partial derivatives of the coordinate representation of f in the coordinate system of the basis:
+```Scheme
 (((d (literal-manifold-function ’f-rect R2-rect)) (coordinate-system->vector-basis R2-rect))
  R2-rect-point)
 (down (((partial 0) f-rect) (up x0 y0))
       (((partial 1) f-rect) (up x0 y0)))
+```
 However, if the coordinate system of the basis differs from the coordinates of the representation of the function, the result is complicated by the chain rule:
 11The analogous recovery of coefficient tuples from vector fields is equation (3.3): biχ,v = v (χi) ◦ χ−1.
 12The procedure components->1form-field is analogous to the procedure components->vector-field introduced earlier.
  
 #page(36)
- (((d (literal-manifold-function ’f-polar R2-polar)) (coordinate-system->vector-basis R2-rect))
+```Scheme
+(((d (literal-manifold-function ’f-polar R2-polar)) (coordinate-system->vector-basis R2-rect))
 ((point R2-polar) (up ’r ’theta)))
 (down (- (* (((partial 0) f-polar) (up r theta)) (cos theta))
          (/ (* (((partial 1) f-polar) (up r theta))
@@ -304,6 +335,7 @@ However, if the coordinate system of the basis differs from the coordinates of t
          (/ (* (((partial 1) f-polar) (up r theta))
                (cos theta))
             r)))
+```
 The coordinate-basis one-form fields can be used to find the coefficients of vector fields in the corresponding coordinate vectorfield basis:
 Xi(v) = v(χi) = bi ◦ χ (3.46) or collectively,
 X(v) = v(χ) = b ◦ χ. (3.47)
@@ -311,25 +343,33 @@ A coordinate-basis one-form field is often written dxi. This traditional notatio
 dxi = Xi = d(χi). (3.48)
 The define-coordinates procedure also makes the basis oneform fields with these traditional names inherited from the coordinates.
 We can illlustrate the duality of the coordinate-basis vector fields and the coordinate-basis one-form fields:
+```Scheme
 (define-coordinates (up x y) R2-rect) ((dx d/dy) R2-rect-point)
 0
 ((dx d/dx) R2-rect-point)
 1
+```
 We can use the coordinate-basis one-form fields to extract the coefficients of circular on the rectangular vector basis:
 
 #page(37)
- ((dx circular) R2-rect-point)
+```Scheme
+((dx circular) R2-rect-point)
 (* -1 y0)
 ((dy circular) R2-rect-point)
 x0
+```
 But we can also find the coefficients on the polar vector basis:
+```Scheme
 ((dr circular) R2-rect-point)
 0
 ((dtheta circular) R2-rect-point)
 1
+```
 So circular is the same as d/dtheta, as we can see by applying them both to the general function f:
+```Scheme
 (define f (literal-manifold-function ’f-rect R2-rect)) (((- circular d/dtheta) f) R2-rect-point)
 0
+```
 Not All One-Form Fields Are Differentials
 Although all one-form fields can be constructed as linear combinations of basis one-form fields, not all one-form fields are differentials of functions.
 The coefficients of a differential are (see equation 3.45):
@@ -357,12 +397,14 @@ a(χ(m)) = a′(χ′(m)) (D(χ ◦ (χ′)−1)(χ′(m)))−1. (3.56)
 The coefficient tuple a(x) is a down structure compatible for contraction with b(x). Let v be the vector with coefficient tuple b(x), and ω be the one-form with coefficient tuple a(x). Then, by equation (3.43),
 ω(v) = (a◦χ) (b◦χ).
 As a program:
+```Scheme
 (define omega (literal-1form-field ’a R2-rect))
 (define v (literal-vector-field ’b R2-rect))
 ((omega v) R2-rect-point)
 (+ (* (bˆ0 (up x y)) (a0 (up x0 y0))) (* (bˆ1 (up x y)) (a 1 (up x0 y0))))
+```
 (3.57)
-  Comparing equation (3.56) with equation (3.23) we see that one-form components and vector components transform oppositely, so that
+Comparing equation (3.56) with equation (3.23) we see that one-form components and vector components transform oppositely, so that
 a(x) b(x) = a′(x′) b′(x′), (3.58) as expected because ω(v)(m) is independent of coordinates.
 
 #page(39)

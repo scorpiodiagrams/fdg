@@ -34,27 +34,37 @@ M
 Here there are two overlapping coordinate patches that are the domains of the two coordinate functions χ and χ′. It is possible to represent manifold points in the overlap using either coordinate system. The coordinate transformation from χ′ coordinates to χ coordinates is just the composition χ ◦ χ′−1.
 Given a coordinate system coordsys for a patch on a manifold the procedure that implements the function χ that gives coordinates for a point is (chart coordsys). The procedure that implements the inverse map that gives a point for coordinates is (point coordsys).
 We can have both rectangular and polar coordinates on a patch of the plane identified by the origin:5,6
+```Scheme
 ;; Some charts on the patch U
 (define R2-rect (coordinate-system ’rectangular U)) (define R2-polar (coordinate-system ’polar/cylindrical U))
+```
 For each of the coordinate systems above we obtain the coordinate functions and their inverses:
 5The rectangular coordinates are good for the entire plane, but the polar coordinates are singular at the origin because the angle is not defined. Also, the patch for polar coordinates must exclude one ray from the origin, because of the angle variable.
 6We can avoid explicitly naming the patch:
-(define R2-rect (coordinate-system-at ’rectangular ’origin R2))
  
 #page(14)
+```Scheme
+(define R2-rect (coordinate-system-at ’rectangular ’origin R2))
  (define R2-rect-chi (chart R2-rect))
 (define R2-rect-chi-inverse (point R2-rect)) (define R2-polar-chi (chart R2-polar))
 (define R2-polar-chi-inverse (point R2-polar))
+```
 The coordinate transformations are then just compositions. The polar coordinates of a rectangular point are:
+```Scheme
 ((compose R2-polar-chi R2-rect-chi-inverse) (up ’x0 ’y0))
 (up (sqrt (+ (expt x0 2) (expt y0 2))) (atan y0 x0))
+```
 And the rectangular coordinates of a polar point are:
+```Scheme
 ((compose R2-rect-chi R2-polar-chi-inverse) (up ’r0 ’theta0))
 (up (* r0 (cos theta0)) (* r0 (sin theta0)))
+```
 And we can obtain the Jacobian of the polar-to-rectangular transformation by taking its derivative:7
+```Scheme
 ((D (compose R2-rect-chi R2-polar-chi-inverse)) (up ’r0 ’theta0))
 (down (up (cos theta0) (sin theta0))
       (up (* -1 r0 (sin theta0)) (* r0 (cos theta0))))
+```      
 2.2 Manifold Functions
 Let f be a real-valued function on a manifold M: this function maps points m on the manifold to real numbers.
 This function has a coordinate representation fχ with respect to the coordinate function χ (see figure 2.2):
@@ -86,27 +96,42 @@ We can illustrate the coordinate independence with a program. We will show that 
 
 #page(16)
  We define a manifold function by specifying its behavior in rectangular coordinates:8
+```Scheme
 (define f
 (compose (literal-function ’f-rect R2->R) R2-rect-chi))
+```
 where R2->R is a signature for functions that map an up structure of two reals to a real:
+```Scheme
 (define R2->R (-> (UP Real Real) Real))
+```
 We can specify a typical manifold point using its rectangular coordinates:
+```Scheme
 (define R2-rect-point (R2-rect-chi-inverse (up ’x0 ’y0)))
+```
 We can describe the same point using its polar coordinates:
+```Scheme
 (define corresponding-polar-point (R2-polar-chi-inverse
 (up (sqrt (+ (square ’x0) (square ’y0))) (atan ’y0 ’x0))))
+```
 (f R2-rect-point) and (f corresponding-polar-point) agree, even though the point has been specified in two different coordinate systems:
+```Scheme
 (f R2-rect-point)
 (f-rect (up x0 y0))
 (f corresponding-polar-point)
 (f-rect (up x0 y0))
+```
 Naming Coordinate Functions
 To make things a bit easier, we can give names to the individual coordinate functions associated with a coordinate system. Here we name the coordinate functions for the R2-rect coordinate system x and y and for the R2-polar coordinate system r and theta.
+```Scheme
 (define-coordinates (up x y) R2-rect) (define-coordinates (up r theta) R2-polar)
-8Alternatively, we can define the same function in a shorthand (define f (literal-manifold-function ’f-rect R2-rect))
- 
+```
+8Alternatively, we can define the same function in a shorthand 
+```Scheme
+(define f (literal-manifold-function ’f-rect R2-rect))
+``` 
 #page(17)
  This allows us to extract the coordinates from a point, independent of the coordinate system used to specify the point.
+```Scheme
 (x (R2-rect-chi-inverse (up ’x0 ’y0)))
 x0
 (x (R2-polar-chi-inverse (up ’r0 ’theta0)))
@@ -117,15 +142,20 @@ r0
 (sqrt (+ (expt x0 2) (expt y0 2)))
 (theta (R2-rect-chi-inverse (up ’x0 ’y0)))
 (atan y0 x0)
+```
 We can work with the coordinate functions in a natural manner, defining new manifold functions in terms of them:9
+```Scheme
 (define h (+ (* x (square r)) (cube y)))
 (h R2-rect-point)
 (+ (expt x0 3) (* x0 (expt y0 2))
    (expt y0 3))
+```
 We can also apply h to a point defined in terms of its polar coordinates:
+```Scheme
 (h (R2-polar-chi-inverse (up ’r0 ’theta0)))
 (+ (* (expt r0 3) (expt (sin theta0) 3))
    (* (expt r0 3) (cos theta0)))
+```
 Exercise 2.1: Curves
 A curve may be specified in different coordinate systems. For example, a cardioid constructed by rolling a circle of radius a around another circle of the same radius is described in polar coordinates by the equation
 r = 2a(1 + cos(θ)).
@@ -133,15 +163,16 @@ r = 2a(1 + cos(θ)).
  
 #page(18)
  We can convert this to rectangular coordinates by evaluating the residual in rectangular coordinates.
+```Scheme
 (define-coordinates (up r theta) R2-polar)
 ((- r (* 2 ’a (+ 1 (cos theta)))) ((point R2-rect) (up ’x ’y)))
 (/ (+ (* -2 a x)
 (* -2 a (sqrt (+ (expt x 2) (expt y 2)))) (expt x 2) (expt y 2))
 (sqrt (+ (expt x 2) (expt y 2))))
+```
 The numerator of this expression is the equivalent residual in rectangular coordinates. If we rearrange terms and square it we get the traditional formula for the cardioid
 (x2 +y2 −2ax)2 = 4a2 (x2 +y2).
-a. The rectangular coordinate equation for the Lemniscate of Bernoulli
-is
+a. The rectangular coordinate equation for the Lemniscate of Bernoulli is
 (x2 + y2)2 = 2a2(x2 − y2).
 Find the expression in polar coordinates.
 b. Describe a helix space curve in both rectangular and cylindrical coordinates. Use the computer to show the correspondence. Note that we provide a cylindrical coordinate system on the manifold R3 for you to use. It is called R3-cyl; with coordinates (r, theta, z).
@@ -157,6 +188,7 @@ We can compute the colatitude and longitude of a point on the sphere correspondi
 φ,λ
 ρ,θ
 Figure 2.3 For each point on the sphere (except for its north pole) a line is drawn from the north pole through the point and extending to the equatorial plane. The corresponding point on the plane is where the line intersects the plane. The rectangular coordinates of this point on the plane are the Riemann coordinates of the point on the sphere. The points on the plane can also be specified with polar coordinates (ρ,θ) and the points on the sphere are specified both by Riemann coordinates and the traditional colatitude and longitude (φ, λ).
+```Scheme
 ((compose
   (chart S2-spherical)
   (point S2-Riemann)
@@ -165,4 +197,5 @@ Figure 2.3 For each point on the sphere (except for its north pole) a line is dr
  (up ’rho ’theta))
 (up (acos (/ (+ -1 (expt rho 2)) (+ +1 (expt rho 2))))
 theta)
+```
 Perform an analogous computation to get the polar coordinates of the point on the plane corresponding to a point on the sphere given by its colatitude and longitude.

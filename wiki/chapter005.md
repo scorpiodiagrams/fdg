@@ -121,30 +121,37 @@ A (u, v) (m) = u0 (m) v1 (m) − v0 (m) u1 (m) . (5.19)
  Note that this is the area of the parallelogram in the coordinate plane, which is the range of the coordinate function. It is not the area on the manifold. To define that, we need more structure—the metric. We will put a metric on the manifold in Chapter 9.
 3-Dimensional Euclidean Space
 Let’s specialize to 3-dimensional Euclidean space. Following equation (5.18) we can write the coordinate-area two-form in another way: A = dx∧dy. As code:
+```Scheme
 (define-coordinates (up x y z) R3-rect)
 (define u (+ (* ’u^0 d/dx) (* ’u^1 d/dy))) (define v (+ (* ’v^0 d/dx) (* ’v^1 d/dy)))
 (((wedge dx dy) u v) R3-rect-point)
 (+ (* uˆ0 vˆ1) (* -1 uˆ1 vˆ0))
+```
 If we use cylindrical coordinates and define cylindrical vector fields we get the analogous answer in cylindrical coordinates:
+```Scheme
 (define-coordinates (up r theta z) R3-cyl)
 (define a (+ (* ’a^0 d/dr) (* ’a^1 d/dtheta))) (define b (+ (* ’b^0 d/dr) (* ’b^1 d/dtheta)))
 (((wedge dr dtheta) a b) ((point R3-cyl) (up ’r0 ’theta0 ’z0)))
 (+ (* aˆ0 bˆ1) (* -1 aˆ1 bˆ0))
+```
 The moral of this story is that this is the area of the parallelogram in the coordinate plane. It is not the area on the manifold!
 There is a similar story with volumes. The wedge product of the elements of the coordinate basis is a three-form that measures our usual idea of coordinate volumes in R3 with a Euclidean metric:
-(define u (+ (* ’u^0 d/dx) (* ’u^1 d/dy) (* ’u^2 d/dz))) (define v (+ (* ’v^0 d/dx) (* ’v^1 d/dy) (* ’v^2 d/dz))) (define w (+ (* ’w^0 d/dx) (* ’w^1 d/dy) (* ’w^2 d/dz)))
-
 #page(61)
- (((wedge dx dy dz) u v w) R3-rect-point)
+```Scheme
+(define u (+ (* ’u^0 d/dx) (* ’u^1 d/dy) (* ’u^2 d/dz))) (define v (+ (* ’v^0 d/dx) (* ’v^1 d/dy) (* ’v^2 d/dz))) (define w (+ (* ’w^0 d/dx) (* ’w^1 d/dy) (* ’w^2 d/dz)))
+(((wedge dx dy dz) u v w) R3-rect-point)
 (+ (* uˆ0 vˆ1 wˆ2)
 (* -1 uˆ0 vˆ2 wˆ1) (* -1 uˆ1 vˆ0 wˆ2) (* uˆ1 vˆ2 wˆ0)
 (* uˆ2 vˆ0 wˆ1)
 (* -1 uˆ2 vˆ1 wˆ0))
+```
 This last expression is the determinant of a 3 × 3 matrix:
+```Scheme
 (- (((wedge dx dy dz) u v w) R3-rect-point) (determinant
 (matrix-by-rows (list ’u^0 ’u^1 ’u^2) (list ’v^0 ’v^1 ’v^2)
 (list ’w^0 ’w^1 ’w^2))))
 0
+```
 If we did the same operations in cylindrical coordinates we would get the analogous formula, showing that what we are computing is volume in the coordinate space, not volume on the manifold.
 Because of antisymmetry, if the rank of a form is greater than the dimension of the manifold then the form is identically zero. The k-forms on an n-dimensional manifold form a module of dimension nk . We can write a coordinate-basis expression for a k-form as
 (5.20)
@@ -194,6 +201,7 @@ dω=
 Though this formula is expressed in terms of a coordinate basis,
 Computing Exterior Derivatives
 We can test that the computation indicated by equation (5.24) is equivalent to the computation indicated by equation (5.26) in three dimensions with a general one-form field:
+```Scheme
 (define a (literal-manifold-function ’alpha R3-rect)) (define b (literal-manifold-function ’beta R3-rect)) (define c (literal-manifold-function ’gamma R3-rect))
 (define theta (+ (* a dx) (* b dy) (* c dz)))
 The test will require two arbitrary vector fields
@@ -204,16 +212,20 @@ The test will require two arbitrary vector fields
 (wedge (d c) dz))) X Y)
  R3-rect-point)
 0
+```
 We can also try a general two-form field in 3-dimensional space: Let
 ω = ady∧dz+bdz∧dx+cdx∧dy, (5.27)
 where a = α ◦ χ, b = β ◦ χ, c = γ ◦ χ, and α, β, and γ are real-valued functions of three real arguments. As a program,
 (5.26)
 
 #page(64)
- (define omega
+```Scheme
+(define omega
 (+ (* a (wedge dy dz))
 (* b (wedge dz dx)) (* c (wedge dx dy))))
+```
 Here we need another vector field because our result will be a three-form field.
+```Scheme
 (define Z (literal-vector-field ’Z-rect R3-rect))
 (((- (d omega)
      (+ (wedge
@@ -221,6 +233,7 @@ Here we need another vector field because our result will be a three-form field.
 (wedge (d c) dx dy))) X Y Z)
  R3-rect-point)
 0
+```
 Properties of Exterior Derivatives
 The exterior derivative of the wedge of two form fields obeys the graded Leibniz rule. It can be written in terms of the exterior derivatives of the component form fields:
 d(ω∧τ)=dω∧τ +(−1)kω∧dτ, (5.28)
@@ -239,8 +252,10 @@ d2f(u, v) = d(df)(u, v)
 
 #page(65)
  Consider the general one-form field θ defined on 3-dimensional rectangular space. Taking two exterior derivatives of θ yields a three-form field. It is zero:
+```Scheme
 (((d (d theta)) X Y Z) R3-rect-point)
 0
+```
 Not every closed form field is an exact form field. Whether a closed form field is exact depends on the topology of a manifold.
 5.3 Stokes’s Theorem
 The proof of the general Stokes’s Theorem for n-dimensional orientable manifolds is quite complicated, but it is easy to see how it works for a 2-dimensional region M that can be covered with a single coordinate patch.9
@@ -298,6 +313,7 @@ Green’s Theorem states that for an arbitrary compact set M ⊂ R2, a 2-dimensi
 
 ((α ◦ χ) dx + (β ◦ χ) dy) = ((∂0β − ∂1α) ◦ χ) dx ∧ dy.(5.35) ∂M M
 We can test this. By Stokes’s Theorem, the integrands are related by an exterior derivative. We need some vectors to test our forms:
+```Scheme
 (define v (literal-vector-field ’v-rect R2-rect)) (define w (literal-vector-field ’w-rect R2-rect))
 We can now test our integrands:10
 (define alpha (literal-function ’alpha R2->R)) (define beta (literal-function ’beta R2->R))
@@ -311,6 +327,7 @@ We can now test our integrands:10
           (wedge dx dy)))
     v w)
    R2-rect-point))
+```
 0
 We can also compute the integrands for the Divergence Theorem: For an arbitrary compact set M ⊂ R3 and a vector field w 
 div(w)dV = w·ndA (5.36) M ∂M
@@ -327,25 +344,31 @@ The rate of leakage of stuff through each element of the bound-
 ary is w · n dA. We interpret this as the two-form
 a dy ∧ dz + b dz ∧ dx + c dx ∧ dy, (5.38)
 because any part of the boundary will have y-z, z-x, and x-y components, and each such component will pick up contributions from the normal component of the flux w. Formalizing this as code we have
+```Scheme
 (define a (literal-manifold-function ’a-rect R3-rect)) (define b (literal-manifold-function ’b-rect R3-rect)) (define c (literal-manifold-function ’c-rect R3-rect))
 (define flux-through-boundary-element (+ (* a (wedge dy dz))
 (* b (wedge dz dx)) (* c (wedge dx dy))))
+```
 The rate of production of stuff in each element of volume is div(w) dV . We interpret this as the three-form
 ∂∂∂
 ∂xa+ ∂yb+ ∂zc dx∧dy∧dz. (5.39)
 or:
+```Scheme
 (define production-in-volume-element (* (+ (d/dx a) (d/dy b) (d/dz c))
 (wedge dx dy dz)))
+```
 Assuming Stokes’s Theorem, the exterior derivative of the leakage of stuff per unit area through the boundary must be the rate of production of stuff per unit volume in the interior. We check this
    
 #page(69)
  by applying the difference to arbitrary vector fields at an arbitrary point:
+```Scheme
 (define X (literal-vector-field ’X-rect R3-rect)) (define Y (literal-vector-field ’Y-rect R3-rect)) (define Z (literal-vector-field ’Z-rect R3-rect))
 (((- production-in-volume-element
 (d flux-through-boundary-element))
   X Y Z)
  R3-rect-point)
 0
+```
 as expected.
 Exercise 5.2: Graded Formula
 Derive equation (5.28).

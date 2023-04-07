@@ -160,7 +160,7 @@ where $\frac{d}{dt}$ is a vector field on the real line#Footnote(8) and Cartan i
 The two messy residual results that we did not show are related by the metric. If we change the representation of the geodesic equations by “lowering” them using the mass and the metric, we see that the residuals are equal:
 #page(10)
 ```Scheme
- (define metric-components (metric->components the-metric
+(define metric-components (metric->components the-metric
 (coordinate-system->basis R2-rect)))
 (- Lagrange-residuals
 (* (* ’m (metric-components (gamma ((point R1-rect) ’t))))

@@ -22,14 +22,18 @@ Chapter 6 Over a Map
 M
   The vector field v on M is indicated by arrows. The solid arrows are vμ, the restricted vector field over the map μ. The vector field over the map is restricted to the image of N in M.
 We can implement this definition as:
+```Scheme
 (define ((vector-field->vector-field-over-map mu:N->M) v-on-M) (procedure->vector-field
 (lambda (f-on-M)
 (compose (v-on-M f-on-M) mu:N->M))))
+```
 Differential of a Map
 Another way to construct a vector field over a map μ is to transport a vector field from the source manifold N to the target manifold M with the differential of the map
 dμ(v)(f)(n) = v(f ◦ μ)(n), (6.3)
 which takes its argument in the source manifold N. The differential of a map μ applied to a vector field v on N is a vector field over the map. A procedure to compute the differential is:
+```Scheme
 (define (((differential mu) v) f) (v (compose f mu)))
+```
 Figure 6.1
 
 #page(73)
@@ -45,7 +49,8 @@ The object u is not really a vector field on M even though we have given it that
 The procedure that constructs a k-form over the map from a k-form is:
 
 #page(74)
- (define ((form-field->form-field-over-map mu:N->M) w-on-M) (define (make-fake-vector-field V-over-mu n)
+```Scheme
+(define ((form-field->form-field-over-map mu:N->M) w-on-M) (define (make-fake-vector-field V-over-mu n)
 (define ((u f) m) ((V-over-mu f) n))
 (procedure->vector-field u)) (procedure->nform-field
    (lambda vectors-over-map
@@ -54,6 +59,7 @@ The procedure that constructs a k-form over the map from a k-form is:
 (map (lambda (V-over-mu)
 (make-fake-vector-field V-over-mu n)) vectors-over-map))
 (mu:N->M n)))) (get-rank w-on-M)))
+```
 The internal procedure make-fake-vector-field counterfeits a vector field u on M from the vector field over the map μ : N → M. This works here because the only value that is ever passed as m is (mu:N->M n).
 6.3 Basis Fields Over a Map
 Let e be a tuple of basis vector fields, and  ̃e be the tuple of basis one-forms that is dual to e:
@@ -66,15 +72,20 @@ And the elements of the dual basis over the map,  ̃eμ, are particular cases of
 #page(75)
  Walking on a Sphere
 For example, let μ map the time line to the unit sphere.2 We use colatitude θ and longitude φ as coordinates on the sphere:
+```Scheme
 (define S2 (make-manifold S^2 2 3)) (define S2-spherical
 (coordinate-system-at ’spherical ’north-pole S2)) (define-coordinates (up theta phi) S2-spherical)
 (define S2-basis (coordinate-system->basis S2-spherical))
+```
 A general path on the sphere is:3
+```Scheme
 (define mu
 (compose (point S2-spherical)
 (up (literal-function ’theta) (literal-function ’phi))
            (chart R1-rect)))
+```
 The basis over the map is constructed from the basis on the sphere:
+```Scheme
 (define S2-basis-over-mu (basis->basis-over-map mu S2-basis))
 (define h
 (literal-manifold-function ’h-spherical S2-spherical))
@@ -82,25 +93,32 @@ The basis over the map is constructed from the basis on the sphere:
 (down
  (((partial 0) h-spherical) (up (theta t0) (phi t0)))
  (((partial 1) h-spherical) (up (theta t0) (phi t0))))
+```
 The basis vectors over the map compute derivatives of the function h evaluated on the path at the given time.
 2We execute (define-coordinates t R1-rect) to make t the coordinate function of the real line.
 3We provide a shortcut to make literal manifold maps:
+```Scheme
 (define mu (literal-manifold-map ’mu R1-rect S2-spherical))
+```
 But if we used this shortcut, the component functions would be named mu^0 and mu^1. Here we wanted to use more mnemonic names for the component functions.
  
 #page(76)
  We can check that the dual basis over the map does the correct thing:
+```Scheme
 (((basis->1form-basis S2-basis-over-mu) (basis->vector-basis S2-basis-over-mu))
 ((point R1-rect) ’t0))
 (up (down 1 0) (down 0 1))
+```
 Components of the Velocity
 Let χ be a tuple of coordinates on M, with associated basis vectors Xi, and dual basis elements dxi. The vector basis and dual basis over the map μ are Xμi and dxiμ. The components of the velocity (rates of change of coordinates along the path μ) are obtained by applying the dual basis over the map to the velocity
 vi(t) = dxiμ(dμ(∂/∂t))(t),
 where t is the coordinate for the point t.
 For example, the coordinate velocities on a sphere are
+```Scheme
 (((basis->1form-basis S2-basis-over-mu) ((differential mu) d/dt))
 ((point R1-rect) ’t0))
 (up ((D theta) t0) ((D phi) t0)))
+```
 as expected.
 6.4 Pullbacks and Pushforwards
 (6.9)
@@ -112,7 +130,9 @@ The pullback of a function f on M over the map μ is defined as μ∗f = f ◦ �
  This allows us to take a function defined on M and use it to define a new function on N.
 For example, the integral curve of v evolved for time t as a function of the initial manifold point m generates a map φvt of the manifold onto itself. This is a simple currying4 of the integral curve of v from m as a function of time: φvt (m) = γmv (t). The evolution of the function f along an integral curve, equation (3.33), can be written in terms of the pullback over φvt :
 (Et,vf)(m) = f(φvt (m)) = ((φvt )∗f)(m). (6.11) This is implemented as:
+```Scheme
 (define ((pullback-function mu:N->M) f-on-M) (compose f-on-M mu:N->M))
+```
 A vector field over the map that was constructed by restriction (equation 6.1) can be seen as the pullback of the function constructed by application of the vector field to a function:
 vμ(f) = v(f) ◦ μ = μ∗(v(f)). (6.12)
 A vector field over the map that was constructed by a differential (equation 6.3) can be seen as the vector field applied to the pullback of the function:
@@ -132,9 +152,11 @@ If the map is from time to some configuration manifold and represents the time e
 Pushforward Along Integral Curves
 We can push a vector field forward over the map generated by an integral curve of a vector field w, because the inverse is always available.6
 ((φwt )∗v)(f)(m) = v((φwt )∗f)(φw−t(m)) = v(f ◦ φwt )(φw−t(m)). (6.17) This is implemented as:
+```Scheme
 (define ((pushforward-vector mu:N->M mu^-1:M->N) v-on-N) (procedure->vector-field
 (lambda (f)
 (compose (v-on-N (compose f mu:N->M)) mu^-1:M->N))))
+```
 6The map φwt is always invertible: (φwt )−1 = φw−t because of the uniqueness of the solutions of the initial-value problem for ordinary differential equations.
  
 #page(79)
@@ -144,7 +166,9 @@ Given a vector field v on manifold M we can pull the vector field back through t
 μ∗v(f) = μ∗(v(μ∗f)). (6.19)
 This may be useful when the map is invertible, as in the flow generated by a vector field.
 This is implemented as:
+```Scheme
 (define (pullback-vector-field mu:N->M mu^-1:M->N) (pushforward-vector mu^-1:M->N mu:N->M))
+```
 Pullback of a Form Field
 We can also pull back a one-form field ω defined on M, but an honest definition is rarely written. The pullback of a one-form field applied to a vector field is intended to be the same as the one-form field applied to the pushforward of the vector field.
 The pullback of a one-form field is often described by the relation
@@ -155,12 +179,13 @@ A more precise description would be
 μ∗ω(v) = μ∗(ω(μ∗v)). (6.22)
 
 #page(80)
- Although this is accurate, it may not be effective, because computing the pushforward requires the inverse of the map μ. But the inverse is available when the map is the flow generated by a vector field.
+Although this is accurate, it may not be effective, because computing the pushforward requires the inverse of the map μ. But the inverse is available when the map is the flow generated by a vector field.
 In fact it is possible to compute the pullback of a one-form field without having the inverse of the map. Instead we can use form-field->form-field-over-map to avoid needing the inverse:
 μ∗ω(v)(n) = ωμ(dμ(v))(n).
 The pullback of a k-form generalizes equation 6.21:
 μ∗ω(u, v, . . .)(n) = ω(μ∗u, μ∗v, . . .)(μ(n)).
 This is implemented as follows:7
+```Scheme
 (define ((pullback-form mu:N->M) omega-on-M) (let ((k (get-rank omega-on-M)))
 (if (= k 0)
 ((pullback-function mu:N->M) omega-on-M) (procedure->nform-field
@@ -171,6 +196,7 @@ This is implemented as follows:7
 omega-on-M)
 (map (differential mu:N->M) vectors-on-N)))
 k))))
+```
 Properties of Pullback
 The pullback through a map has many nice properties: it distributes through addition and through wedge product:
 μ∗(θ + φ) = μ∗θ + μ∗φ, (6.25) μ∗(θ ∧ φ) = μ∗θ ∧ μ∗φ. (6.26)
@@ -179,15 +205,21 @@ The pullback also commutes with the exterior derivative: d(μ∗θ) = μ∗(dθ)
  
 #page(81)
  We can verify this by computing an example. Let μ map the rectangular plane to rectangular 3-space:
+```Scheme
 (define mu (literal-manifold-map ’MU R2-rect R3-rect))
+```
 First, let’s compare the pullback of the exterior derivative of a function with the exterior derivative of the pullback of the function:
+```Scheme
 (define f (literal-manifold-function ’f-rect R3-rect)) (define X (literal-vector-field ’X-rect R2-rect))
 (((- ((pullback mu) (d f)) (d ((pullback mu) f))) X) ((point R2-rect) (up ’x0 ’y0)))
 0
+```
 More generally, we can consider what happens to a form field. For a one-form field the result is as expected:
+```Scheme
 (define theta (literal-1form-field ’THETA R3-rect)) (define Y (literal-vector-field ’Y-rect R2-rect))
 (((- ((pullback mu) (d theta)) (d ((pullback mu) theta))) X Y) ((point R2-rect) (up ’x0 ’y0)))
 0
+```
 Pushforward of a Form Field
 By symmetry, it is possible to define the pushforward of a oneform field as
 μ∗ω(v) = μ∗(ω(μ∗v)), (6.28)

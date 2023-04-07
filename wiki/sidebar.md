@@ -5,6 +5,8 @@ I haven't yet implemented a menu.
 )
 #LittleLogo()
 ----
+# FDG
+
 #Jump( toc \Diamond Table of Contents
 # \Diamond Table of Contents
 More detailed contents than in this sidebar)

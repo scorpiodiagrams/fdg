@@ -30,12 +30,14 @@ Tensors are a restricted set of mathematical objects that are geometric, so if w
 Let’s test whether the geometric function R, which we have called the Riemann tensor (see equation 8.2), is indeed a tensor field. A real-valued geometric function is a tensor if it is linear (over the functions) in each of its arguments. We can try it for 3-dimensional rectangular coordinates:
 
 #page(213)
- (let ((cs R3-rect))
+```Scheme
+(let ((cs R3-rect))
 (let ((u
       (v
       (w
       (x
 (literal-vector-field ’u-coord cs)) (literal-vector-field ’v-coord cs)) (literal-vector-field ’w-coord cs)) (literal-vector-field ’x-coord cs))
+```
 Ri = jkl
 or
 R′i =
@@ -44,6 +46,7 @@ mnpq
 Ki R′m JnJpJq, m npq j k l
 Ji Rm KnKpKq. m npq j k l
 jkl
+```Scheme
 (omega (literal-1form-field ’omega-coord cs))
 (nu (literal-1form-field ’nu-coord cs))
 (f (literal-manifold-function ’f-coord cs))
@@ -60,6 +63,7 @@ jkl
 (- (F omega v w (+ (* f u) (* g x)))
 (+ (* f (F omega v w u)) (* g (F omega v w x))))) m))))
 (up 0 0 0 0)
+```
 Now that we are convinced that the Riemann tensor is indeed a tensor, we know how its components change under a change of basis. Let
 R ij k l = R (  ̃e i , e j , e k , e l ) , then
 ( C . 8 )
@@ -71,18 +75,24 @@ arguments. We have formulated the general tensor test as a program tensor-test t
 
 #page(214)
  So, for example, Riemann proves to be a tensor
+```Scheme
 (tensor-test
 (Riemann (covariant-derivative (literal-Cartan ’G R3-rect))) ’(1form vector vector vector)
 R3-rect)
 (0 0 0 0)
+```
 and so does the torsion (see equation 8.21):
+```Scheme
 (tensor-test
 (torsion (covariant-derivative (literal-Cartan ’G R3-rect))) ’(1form vector vector)
 R3-rect)
 (up 0 0 0)
+```
 But not all geometric functions are tensors. The covariant derivative is an interesting and important case. The function F, defined by
 F(ω, u, v) = ω(∇uv), (C.11) is a geometric object, since the result is independent of the coor-
-dinate system used to represent the ∇. For example: (define ((F nabla) omega u v)
+dinate system used to represent the ∇. For example: 
+```Scheme
+(define ((F nabla) omega u v)
 (omega ((nabla u) v)))
 (((- (F (covariant-derivative (Christoffel->Cartan
 (metric->Christoffel-2 (coordinate-system->metric S2-spherical) (coordinate-system->basis S2-spherical)))))
@@ -93,12 +103,15 @@ dinate system used to represent the ∇. For example: (define ((F nabla) omega u
 (literal-1form-field ’omega S2-spherical) (literal-vector-field ’u S2-spherical) (literal-vector-field ’v S2-spherical))
 ((point S2-spherical) (up ’theta ’phi)))
 0
+```
 But it is not a tensor field:
 
 #page(215)
- (tensor-test
+```Scheme
+(tensor-test
 (F (covariant-derivative (literal-Cartan ’G R3-rect))) ’(1form vector vector)
 R3-rect)
 (0 0 MESS)
+```
 This result tells us that the function F is linear in its first two arguments but not in its third argument.
 That the covariant derivative is not linear over functions in the second vector argument is easy to understand. The first vector argument takes derivatives of the coefficients of the second vector argument, so multiplying these coefficients by a manifold function changes the derivative.

@@ -104,7 +104,7 @@ p2 − r2 = 1, pq − rs = 0,
 q2 − s2 = −1. (11.27)
 There are four parameters to determine, and only three equations, so the solutions have a free parameter. It turns out that a good choice is β = q/p. Solve to find
 p = 1 = γ(β), (11.28) 1−β2
-andalsop=sandq=r=βp. Thisdefinesγ. Writtenout,the transformation is
+and also p=s and q=r=βp. This defines γ. Written out, the transformation is
 ξ0 = γ(β)((ξ′)0 + β(ξ′)1)
 ξ1 = γ(β)(β(ξ′)0 + (ξ′)1). (11.29)
 Simple physical arguments5 show that this mathematical result relates the time and space coordinates for two systems in uniform relative motion. The parameter β is related to the relative velocity.
@@ -157,15 +157,22 @@ Implementation
 
 #page(176)
 Special Relativity
- (define (4tuple->ct v) (ref v 0)) (define (4tuple->space v)
+```Scheme
+(define (4tuple->ct v) (ref v 0)) (define (4tuple->space v)
 (up (ref v 1) (ref v 2) (ref v 3)))
+```
 The invariant interval is then
+```Scheme
 (define (proper-space-interval 4tuple) (sqrt (- (square (4tuple->space 4tuple)) (square (4tuple->ct 4tuple)))))
+```
 This is a real number for space-like intervals. A space-like interval is one where spatial distance is larger than can be traversed by light in the time interval.
 It is often convenient for the interval to be real for time-like intervals, where light can traverse the spatial distance in less than the time interval.
+```Scheme
 (define (proper-time-interval 4tuple) (sqrt (- (square (4tuple->ct 4tuple))
 (square (4tuple->space 4tuple)))))
+```
 The general boost B is
+```Scheme
 (define ((general-boost beta) xi-p)
 (let ((gamma (expt (- 1 (square beta)) -1/2)))
 (let ((factor (/ (- gamma 1) (square beta)))) (let ((xi-p-time (4tuple->ct xi-p))
@@ -175,15 +182,19 @@ The general boost B is
 (* gamma (+ xi-p-time beta-dot-xi-p)) (+ (* gamma beta xi-p-time)
 xi-p-space
 (* factor beta beta-dot-xi-p))))))))
+```
 We can check that the interval is invariant:
+```Scheme
 (- (proper-space-interval ((general-boost (up ’vx ’vy ’vz))
 (make-4tuple ’ct (up ’x ’y ’z)))) (proper-space-interval
 (make-4tuple ’ct (up ’x ’y ’z)))))
 0
+```
 It is inconvenient that the general boost as just defined does not work if β is zero. An alternate way to specify a boost is through the magnitude of v/c and a direction:
 
 #page(177)
- (define ((general-boost2 direction v/c) 4tuple-prime) (let ((delta-ct-prime (4tuple->ct 4tuple-prime))
+```Scheme
+(define ((general-boost2 direction v/c) 4tuple-prime) (let ((delta-ct-prime (4tuple->ct 4tuple-prime))
 (delta-x-prime (4tuple->space 4tuple-prime))) (let ((betasq (square v/c)))
 (let ((bx (dot-product direction delta-x-prime)) (gamma (/ 1 (sqrt (- 1 betasq)))))
 (let ((alpha (- gamma 1))) (let ((delta-ct
@@ -191,6 +202,7 @@ It is inconvenient that the general boost as just defined does not work if β is
 (+ (* gamma v/c direction delta-ct-prime) delta-x-prime
 (* alpha direction bx))))
 (make-4tuple delta-ct delta-x)))))))
+```
 This is well behaved as v/c goes to zero. Rotations
 A linear transformation that does not change the magnitude of the spatial and time components, individually, leaves the interval invariant. So a transformation that rotates the spatial coordinates and leaves the time component unchanged is also a Lorentz transformation. Let R be a 3-dimensional rotation. Then the extension to a Lorentz transformation R is defined by
 (ξ0, ξ) = R(R)((ξ′)0, ξ′) = ((ξ′)0, R(ξ′)). (11.40)
@@ -198,12 +210,14 @@ Examining the expression for the general boost, equation (11.38), we see that th
 B(β) = (R(R))−1 ◦ B(R(β)) ◦ R(R). (11.41)
 Note that (R(R))−1 = R(R−1). The functional inverse of the extended rotation is the extension of the inverse rotation. We could use this property of boosts to think of the general boost as a combination of a rotation and a simple boost along some special direction.
 The extended rotation can be implemented:
+```Scheme
 (define ((extended-rotation R) xi) (make-4tuple
 (4tuple->ct xi)
 (R (4tuple->space xi))))
-
+```
 #page(178)
  In terms of this we can check the relation between boosts and rotations:
+```Scheme
 (let ((beta (up ’bx ’by ’bz))
 (xi (make-4tuple ’ct (up ’x ’y ’z))) (R (compose
     (rotate-x ’theta)
@@ -221,6 +235,7 @@ The extended rotation can be implemented:
 (general-boost (R beta))
 (extended-rotation R)) xi)))
 (up 0 0 0 0)
+```
 General Lorentz Transformations
 A Lorentz transformation carries an incremental 4-tuple to another 4-tuple. A general linear transformation on 4-tuples has sixteen free parameters. The interval is a symmetric quadratic form, so the requirement that the interval be preserved places only ten constraints on these parameters. Evidently there are six free parameters to the general Lorentz transformation. We already have three parameters that specify boosts (the three components of the boost velocity). And we have three more parameters in the extended rotations. The general Lorentz transformation can be constructed by combining generalized rotations and boosts.
 Any Lorentz transformation has a unique decomposition as a generalized rotation followed by a general boost. Any Λ that preserves the interval can be written uniquely:
@@ -235,6 +250,7 @@ The counting of free parameters supports the conclusion that the general Lorentz
 A new frame is defined by a Poincar ́e transformation from a given frame (see equation 11.23). The transformation is specified by a boost magnitude and a unit-vector boost direction, relative to the given frame, and the position of the origin of the frame being defined in the given frame.
 Points in spacetime are called events. It must be possible to compare two events to determine if they are the same. This is accomplished in any particular experiment by building all frames involved in that experiment from a base frame, and representing the events as coordinates in that base frame.
 When one frame is built upon another, to determine the event from frame-specific coordinates or to determine the frame-specific coordinates for an event requires composition of the boosts that relate the frames to each other. The two procedures that are required to implement this strategy are6
+```Scheme
 (define ((coordinates->event ancestor-frame this-frame boost-direction v/c origin)
          coords)
   ((point ancestor-frame)
@@ -245,14 +261,18 @@ origin))))
 event) (make-SR-coordinates this-frame
 ((general-boost2 (- boost-direction) v/c)
 (- ((chart ancestor-frame) event) origin))))
+```
 6The procedure make-SR-coordinates labels the given coordinates with the given frame. The procedures that manipulate coordinates, such as (point ancestor-frame), check that the coordinates they are given are in the appropriate frame. This error checking makes it easier to debug relativity procedures.
  
 #page(180)
- With these two procedures, the procedure make-SR-frame constructs a new relativistic frame by a Poincar ́e transformation from a given frame.
+With these two procedures, the procedure make-SR-frame constructs a new relativistic frame by a Poincar ́e transformation from a given frame.
+```Scheme
 (define make-SR-frame
 (frame-maker coordinates->event event->coordinates))
+```
 Velocity Addition Formula
 For example, we can derive the traditional velocity addition formula. Assume that we have a base frame called home. We can make a frame A by a boost from home in the xˆ direction, with components (1,0,0), and with a dimensionless measure of the speed va/c. We also specify that the 4-tuple origin of this new frame coincides with the origin of home.
+```Scheme
 (define A
 (make-SR-frame ’A home
 (up 1 0 0)
@@ -269,18 +289,24 @@ So any point at rest in frame B will have a speed relative to home. For the spat
 (make-SR-coordinates B (up ’ct 0 0 0))))))
 (/ (ref B-origin-home-coords 1) (ref B-origin-home-coords 0)))
 (/ (+ va/c vb/c) (+ 1 (* va/c vb/c)))
+```
 obtaining the traditional velocity-addition formula. (Note that the resulting velocity is represented as a fraction of the speed of light.) This is a useful result, so:
 
 #page(181)
- (define (add-v/cs va/c vb/c) (/ (+ va/c vb/c)
+```Scheme
+(define (add-v/cs va/c vb/c) (/ (+ va/c vb/c)
       (+ 1 (* va/c vb/c))))
+```
 11.3 Twin Paradox
 Special relativity engenders a traditional conundrum: consider two twins, one of whom travels and the other stays at home. When the traveller returns it is discovered that the traveller has aged less than the twin who stayed at home. How is this possible?
 The experiment begins at the start event, which we arbitrarily place at the origin of the home frame.
+```Scheme
 (define start-event
   ((point home)
 (make-SR-coordinates home (up 0 0 0 0))))
+```
 There is a homebody and a traveller. The traveller leaves home at the start event and proceeds at 24/25 of the speed of light in the xˆ direction. We define a frame for the traveller, by boosting from the home frame.
+```Scheme
 (define outgoing
   (make-SR-frame
 ’outgoing
@@ -293,20 +319,27 @@ home
 ; base frame
 ; x direction
 ; velocity as fraction of c
+```
 After 25 years of home time the traveller is 24 light-years out. We define that event using the coordinates in the home frame. Here we scale the time coordinate by the speed of light so that the units of ct slot in the 4-vector are the same as the units in the spatial slots. Since v/c = 24/25 we must multiply that by the speed of light to get the velocity. This is multiplied by 25 years to get the xˆ coordinate of the traveller in the home frame at the turning point.
+```Scheme
 (define traveller-at-turning-point-event ((point home)
 (make-SR-coordinates home
 (up (* :c 25) (* 25 24/25 :c) 0 0))))
-
+```
 #page(182)
- Note that the first component of the coordinates of an event is the speed of light multiplied by time. The other components are distances. For example, the second component (the xˆ component) is the distance travelled in 25 years at 24/25 the speed of light. This is 24 light-years.
+Note that the first component of the coordinates of an event is the speed of light multiplied by time. The other components are distances. For example, the second component (the xˆ component) is the distance travelled in 25 years at 24/25 the speed of light. This is 24 light-years.
 If we examine the displacement of the traveller in his own frame we see that the traveller has aged 7 years and he has not moved from his spatial origin.
+```Scheme
 (- ((chart outgoing) traveller-at-turning-point-event) ((chart outgoing) start-event))
 (up (* 7 :c) 0 0 0)
+```
 But in the frame of the homebody we see that the time has advanced by 25 years.
+```Scheme
 (- ((chart home) traveller-at-turning-point-event) ((chart home) start-event))
 (up (* 25 :c) (* 24 :c) 0 0)
+```
 The proper time interval is 7 years, as seen in any frame, because it measures the aging of the traveller:
+```Scheme
 (proper-time-interval
 (- ((chart outgoing) traveller-at-turning-point-event)
 ((chart outgoing) start-event)))
@@ -315,7 +348,9 @@ The proper time interval is 7 years, as seen in any frame, because it measures t
 (- ((chart home) traveller-at-turning-point-event)
 ((chart home) start-event)))
 (* 7 :c)
+```
 When the traveller is at the turning point, the event of the homebody is:
+```Scheme
 (define halfway-at-home-event ((point home)
 (make-SR-coordinates home (up (* :c 25) 0 0 0))))
 and the homebody has aged
@@ -323,62 +358,80 @@ and the homebody has aged
 (- ((chart home) halfway-at-home-event)
 ((chart home) start-event)))
 (* 25 :c)
-
-#page(183)
- (proper-time-interval
+(proper-time-interval
 (- ((chart outgoing) halfway-at-home-event)
 ((chart outgoing) start-event)))
 (* 25 :c)
+```
+#page(183)
 as seen from either frame.
 As seen by the traveller, home is moving in the −xˆ direction at
 24/25 of the velocity of light. At the turning point (7 years by his time) home is at:
+```Scheme
 (define home-at-outgoing-turning-point-event ((point outgoing)
 (make-SR-coordinates outgoing
 (up (* 7 :c) (* 7 -24/25 :c) 0 0))))
+```
 Since home is speeding away from the traveller, the twin at home has aged less than the traveller. This may seem weird, but it is OK because this event is different from the halfway event in the home frame.
+```Scheme
 (proper-time-interval
 (- ((chart home) home-at-outgoing-turning-point-event)
 ((chart home) start-event)))
 (* 49/25 :c)
+```
 The traveller turns around abruptly at this point (painful!) and begins the return trip. The incoming trip is the reverse of the outgoing trip, with origin at the turning-point event:
+```Scheme
 (define incoming
 (make-SR-frame ’incoming home
                  (up -1 0 0) 24/25
                  ((chart home)
 traveller-at-turning-point-event)))
+```
 After 50 years of home time the traveller reunites with the homebody:
+```Scheme
 (define end-event
   ((point home)
 (make-SR-coordinates home (up (* :c 50) 0 0 0))))
+```
 Indeed, the traveller comes home after 7 more years in the incoming frame:
 
 #page(184)
 Special Relativity
- (- ((chart incoming) end-event) (make-SR-coordinates incoming
+```Scheme
+(- ((chart incoming) end-event) (make-SR-coordinates incoming
 (up (* :c 7) 0 0 0)))
 (up 0 0 0 0)
 (- ((chart home) end-event) ((chart home)
 ((point incoming) (make-SR-coordinates incoming
 (up (* :c 7) 0 0 0)))))
 (up 0 0 0 0)
+```
 The traveller ages only 7 years on the return segment, so his total aging is 14 years:
+```Scheme
 (+ (proper-time-interval
 (- ((chart outgoing) traveller-at-turning-point-event)
 ((chart outgoing) start-event))) (proper-time-interval
 (- ((chart incoming) end-event)
 ((chart incoming) traveller-at-turning-point-event))))
 (* 14 :c)
+```
 But the homebody ages 50 years:
+```Scheme
 (proper-time-interval
 (- ((chart home) end-event)
 ((chart home) start-event)))
 (* 50 :c)
+```
 At the turning point of the traveller the homebody is at
+```Scheme
 (define home-at-incoming-turning-point-event ((point incoming)
 (make-SR-coordinates incoming (up 0 (* 7 -24/25 :c) 0 0))))
+```
 The time elapsed for the homebody between the reunion and the turning point of the homebody, as viewed by the incoming traveller, is about 2 years.
+```Scheme
 (proper-time-interval
 (- ((chart home) end-event)
 ((chart home) home-at-incoming-turning-point-event)))
 (* 49/25 :c)
+```
 Thus the aging of the homebody occurs at the turnaround, from the point of view of the traveller.

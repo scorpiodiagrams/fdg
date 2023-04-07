@@ -14,7 +14,7 @@ i
 #page(42)
             e1
       e0
-    Figure 4.1 Let arrows e0 and e1 depict the vectors of a basis vector field at a particular point. Then the foliations shown by the parallel lines depict the dual basis one-form fields at that point. The dotted lines represent the field  ̃e0 and the dashed lines represent the field  ̃e1. The spacings of the lines are 1/3 unit. That the vectors pierce three of the lines representing their duals and do not pierce any of the lines representing the other basis elements is one way to see the relationship  ̃e i ( e j ) ( m ) = δ ji .
+Figure 4.1 Let arrows e0 and e1 depict the vectors of a basis vector field at a particular point. Then the foliations shown by the parallel lines depict the dual basis one-form fields at that point. The dotted lines represent the field  ̃e0 and the dashed lines represent the field  ̃e1. The spacings of the lines are 1/3 unit. That the vectors pierce three of the lines representing their duals and do not pierce any of the lines representing the other basis elements is one way to see the relationship  ̃e i ( e j ) ( m ) = δ ji .
 To solve for the dual basis  ̃e given the basis e, we express the basis vectors e in terms of a coordinate basis2
 k
 X k ( f ) c kj , ( 4 . 3 ) dil Xl(v), (4.4)
@@ -26,7 +26,7 @@ l
  
 Chapter 4
 Basis Fields
-43
+#page(43)
  then
  ̃e i ( e j ) =
 = = = =
@@ -53,28 +53,36 @@ ei(f) bi. (4.7)
 v(f) = Then
 i
  
-44
+#page(44)
 Chapter 4 Basis Fields
  Define two general vector fields:
+```Scheme
 (define e0
 (+ (* (literal-manifold-function ’e0x R2-rect) d/dx)
 (* (literal-manifold-function ’e0y R2-rect) d/dy)))
 (define e1
 (+ (* (literal-manifold-function ’e1x R2-rect) d/dx)
 (* (literal-manifold-function ’e1y R2-rect) d/dy)))
+```
 We use these as a vector basis and compute the dual:
+```Scheme
 (define e-vector-basis (down e0 e1)) (define e-dual-basis
 (vector-basis->dual e-vector-basis R2-polar))
+```
 The procedure vector-basis->dual requires an auxiliary coordinate system (here R2-polar) to get the ckj coefficient functions from which we compute the dik coefficient functions. However, the final result is independent of this coordinate system. Then we can verify that the bases e and  ̃e satisfy the dual relationship (equation 3.41) by applying the dual basis to the vector basis:
+```Scheme
 ((e-dual-basis e-vector-basis) R2-rect-point)
 (up (down 1 0) (down 0 1))
+```
 Note that the dual basis was computed relative to the polar coordinate system: the resulting objects are independent of the coordinates in which they were expressed!
 Or we can make a general vector field with this basis and then pick out the coefficients by applying the dual basis:
+```Scheme
 (define v
 (* (up (literal-manifold-function ’b^0 R2-rect)
 (literal-manifold-function ’b^1 R2-rect)) e-vector-basis))
 ((e-dual-basis v) R2-rect-point)
 (up (bˆ0 (up x0 y0)) (bˆ1 (up x0 y0)))
+```
 4.1 Change of Basis
 Suppose that we have a vector field v expressed in terms of one basis e and we want to reexpress it in terms of another basis e′. We have
 
@@ -103,15 +111,18 @@ We can write
 (define (Jacobian to-basis from-basis) (s:map/r (basis->1form-basis to-basis)
 (basis->vector-basis from-basis)))
 These are the rectangular components of a vector field:
+```Scheme
 (define b-rect ((coordinate-system->1form-basis R2-rect)
 (literal-vector-field ’b R2-rect)))
 The polar components are:
+```Scheme
 (4.14)
 (4.15)
 
 #page(46)
 Basis Fields
- (define b-polar
+```Scheme
+(define b-polar
 (* (Jacobian (coordinate-system->basis R2-polar)
 (coordinate-system->basis R2-rect))
 b-rect))
@@ -121,7 +132,9 @@ b-rect))
     (sqrt (+ (expt x0 2) (expt y0 2))))
 (/ (+ (* x0 (bˆ1 (up x0 y0))) (* -1 y0 (bˆ0 (up x0 y0))))
     (+ (expt x0 2) (expt y0 2))))
+```    
 We can also get the polar components directly:
+```Scheme
 (((coordinate-system->1form-basis R2-polar) (literal-vector-field ’b R2-rect))
 ((point R2-rect) (up ’x0 ’y0)))
 (up
@@ -129,6 +142,7 @@ We can also get the polar components directly:
     (sqrt (+ (expt x0 2) (expt y0 2))))
 (/ (+ (* x0 (bˆ1 (up x0 y0))) (* -1 y0 (bˆ0 (up x0 y0))))
     (+ (expt x0 2) (expt y0 2))))
+```    
 We see that they are the same.
 If K is the Jacobian that relates the basis vectors in the other
 direction
@@ -210,6 +224,7 @@ Xj(ci)bj − Xj(bi)cj
 
 #page(50)
  We can check this formula for the commutator for the general vector fields e0 and e1 in polar coordinates:
+```Scheme
 (let* ((polar-basis (coordinate-system->basis R2-polar)) (polar-vector-basis (basis->vector-basis polar-basis)) (polar-dual-basis (basis->1form-basis polar-basis))
 (f (literal-manifold-function ’f-rect R2-rect)))
 ((- ((commutator e0 e1) f)
@@ -217,6 +232,7 @@ Xj(ci)bj − Xj(bi)cj
 (e1 (polar-dual-basis e0))) (polar-vector-basis f)))
    R2-rect-point))
 0
+```
 Let e be a tuple of basis vector fields. The commutator of two basis fields can be expressed in terms of the basis vector fields:
 basis vector fields. The coefficients are
 dkij =  ̃ek([ei,ej]). (4.37)
@@ -224,35 +240,43 @@ The commutator [u, v] with respect to a non-coordinate basis ei is
 
 [u,v](f) = ek(f) u(ck) − v(bk) + cibjdkji . (4.38) k ij
 Define the vector fields Jx, Jy, and Jz that generate rotations about the three rectangular axes in three dimensions:5
+```Scheme
 (define Jz (- (* x d/dy) (* y d/dx))) (define Jx (- (* y d/dz) (* z d/dy))) (define Jy (- (* z d/dx) (* x d/dz)))
+```
 5 Using
+```Scheme
 (define R3-rect (coordinate-system-at ’rectangular ’origin R3)) (define-coordinates (up x y z) R3-rect)
 (define R3-rect-point ((point R3-rect) (up ’x0 ’y0 ’z0))) (define g (literal-manifold-function ’g-rect R3-rect))
 k
+```
 dkijek(f), (4.36)
 [ei,ej](f) =
 where dkij are functions of m, called the structure constants for the
  
 #page(51)
- (((+ (commutator Jx Jy) Jz) g) R3-rect-point)
+```Scheme
+(((+ (commutator Jx Jy) Jz) g) R3-rect-point)
 0
 (((+ (commutator Jy Jz) Jx) g) R3-rect-point)
 0
 (((+ (commutator Jz Jx) Jy) g) R3-rect-point)
 0
+```
 We see that
 [Jx,Jy] = −Jz
 [Jy,Jz] = −Jx
 [Jz,Jx] = −Jy. (4.39)
 We can also compute the commutators for the basis vector fields ex, ey, and ez in the SO(3) manifold (see equations 4.29–4.31) that correspond to rotations about the x, y, and z axes, respectively:6
+```Scheme
 (((+ (commutator e x e y) e z) f) SO3-point)
 0
 (((+ (commutator e y e z) e x) f) SO3-point)
 0
 (((+ (commutator e z e x) e y) f) SO3-point)
 0
+```
 You can tell if a set of basis vector fields is a coordinate basis by calculating the commutators. If they are nonzero, then the basis is not a coordinate basis. If they are zero then the basis vector fields can be integrated to give the coordinate system.
-         Recall equation (3.31) (etvf)(m) = (f ◦ φvt )(m). Iterating this equation, we find (eswetvf)(m) = (f ◦ φvt ◦ φws )(m).
+Recall equation (3.31) (etvf)(m) = (f ◦ φvt )(m). Iterating this equation, we find (eswetvf)(m) = (f ◦ φvt ◦ φws )(m).
 6 Using
 (4.40)
 (4.41)
