@@ -264,7 +264,7 @@ The coordinate image of M can be divided into small rectangular areas in the (x,
 So, consider Stokes’s Theorem on a small patch P of the manifold for which the coordinates form a rectangular region (xmin < x < xmax and ymin < y < ymax). Stokes’s Theorem on P states 
 ω= dω. (5.31) ∂P P
 The area integral on the right can be written as an ordinary multidimensional integral using the coordinate basis vectors (recall
-9We do not develop the machinery for integration on chains that is usually needed for a full proof of Stokes’s Theorem. This is adequately done in other books. A beautiful treatment can be found in Spivak, Calculus on Manifolds [17].
+9We do not develop the machinery for integration on chains that is usually needed for a full proof of Stokes’s Theorem. This is adequately done in other books. A beautiful treatment can be found in Spivak, Calculus on Manifolds [17](references!bib_17).
  
 #page(66)
  that the integral is independent of the choice of coordinates):

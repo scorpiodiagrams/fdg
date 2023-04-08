@@ -748,7 +748,7 @@ Then the Lagrange equations are:
 ’t))
 ```
 The Lagrange equations are true of the same paths as the geodesic equations. The second Lagrange equation is the second geodesic equation multiplied by (sin(α(t)))2, and the Lagrange equations are arranged in a down tuple, whereas the geodesic equations are arranged in an up tuple.19 The two systems are equivalent unless α(t) = 0, where the coordinate system is singular.
-18The method of formulating a system with constraints by composing a free system with the state-space coordinate transformation that represents the constraints can be found in [19], Section 1.6.3. The procedure F->C takes a coordinate transformation and produces a corresponding transformation of Lagrangian state.
+18The method of formulating a system with constraints by composing a free system with the state-space coordinate transformation that represents the constraints can be found in [19](references!bib_19), Section 1.6.3. The procedure F->C takes a coordinate transformation and produces a corresponding transformation of Lagrangian state.
 19The geodesic equations and the Lagrange equations are related by a contraction with the metric.
  −(Dβ(t))2 sin(α(t))cos(α(t))+D2α(t)  2Dα (t) Dβ (t) sin (α (t)) cos (α (t)) + D2β (t) (sin (α (t)))2
      

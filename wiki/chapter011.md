@@ -8,23 +8,23 @@ Maxwell’s great insight was noticing and resolving the contradiction between t
 By analogy, Einsten noticed that Maxwell’s equations were inconsistent with Galilean relativity. In free space, where electromagnetic waves propagate, Maxwell’s equations say that the vector source of electric fields is the time rate of change of the magnetic field and the vector source of magnetic field is the time rate of change of the electric field. The combination of these ideas yields the wave equation. The wave equation itself is not invariant under the Galilean transformation: As Einstein noted, if you run with the propagation speed of the wave there is no time variation in the field you observe, so there is no space variation either, contradicting the wave equation. But the Maxwell theory is beautiful, and it can be verified to a high degree of accuracy, so there must be something wrong with Galilean relativity. Einstein resolved the contradiction by generalizing the meaning of the Lorentz transformation, which was invented to explain the failure of the Michelson-Morley experiment. Lorentz and his colleagues
 
 #page(168)
- decided that the problem with the Michelson-Morley experiment was that matter interacting with the luminiferous ether contracts in the direction of motion. To make this consistent he had to invent a “local time” which had no clear interpretation. Einstein took the Lorentz transformation to be a fundamental replacement for the Galilean transformation in all of mechanics.
+decided that the problem with the Michelson-Morley experiment was that matter interacting with the luminiferous ether contracts in the direction of motion. To make this consistent he had to invent a “local time” which had no clear interpretation. Einstein took the Lorentz transformation to be a fundamental replacement for the Galilean transformation in all of mechanics.
 Now to the details. Before Maxwell the empirical laws of electromagnetism were as follows. Electric fields arise from charges, with the inverse square law of Coulomb. This is Carl Friedrich Gauss’s law for electrostatics:
-div E⃗ = 4πρ. (11.1) Magnetic fields do not have a scalar source. This is Gauss’s law
+\div E⃗ = 4πρ. (11.1) Magnetic fields do not have a scalar source. This is Gauss’s law
 for magnetostatics:
-div B⃗ = 0. (11.2)
+\div B⃗ = 0. (11.2)
 Magnetic fields are produced by electric currents, as discovered by Hans Christian Oersted and quantified by Andr ́e-Marie Amp`ere:
-c u r l B⃗ = 4 π I⃗ . ( 1 1 . 3 ) c
+\curl B⃗ = 4 π I⃗ . ( 1 1 . 3 ) c
 Michael Faraday (and Joseph Henry) discovered that electric fields are produced by moving magnetic fields:
 ⃗ −1∂B⃗
-curlE= c ∂t. (11.4)
+\curl E= c ∂t. (11.4)
 Benjamin Franklin was the first to understand that electrical charges are conserved:
-d i v I⃗ + ∂ ρ = 0 . ( 1 1 . 5 ) ∂t
+\div I⃗ + ∂ ρ = 0 . ( 1 1 . 5 ) ∂t
 Although these equations are written in terms of the speed of light c, these laws were originally written in terms of electrical permittivity and magnetic permeability of free space, which could be determined by measurement of the forces for given currents and charges.
     
 #page(169)
- It is easy to see that these equations are mutually contradictory. Indeed, if we take the divergence of equation (11.3) we get
-div curl B⃗ = 0 = 4πdiv I⃗, (11.6) c
+It is easy to see that these equations are mutually contradictory. Indeed, if we take the divergence of equation (11.3) we get
+\div \curl B⃗ = 0 = 4π \div I⃗, (11.6) c
 which directly contradicts conservation of charge (11.5).
 Maxwell patched this bug by adding in the displacement cur-
  rent, changing equation (11.3) to read ⃗ 1 ∂ E⃗ 4 π ⃗
@@ -49,7 +49,7 @@ Invariance of the Wave Equation
 Let u = (t, x, y, z) be a tuple of time and space coordinates that specify a point in spacetime.2 If φ(t, x, y, z) is a scalar field over time and space, the homogeneous linear wave equation is
 ∂2φ(u) + ∂2φ(u) + ∂2φ(u) − 1 ∂2φ(u) = 0. (11.12) ∂x2 ∂y2 ∂z2 c2 ∂t2
 The characteristics for this equation are the “light cones.” If we define a function of spacetime points and increments, length,
-1The quote is from Pais [12], p. 131. 2Points in spacetime are often called events.
+1The quote is from Pais [12](references!bib_12), p. 131. 2Points in spacetime are often called events.
       
 #page(171)
  such that for an incremental tuple in position and time ξ = (Δt, Δx, Δy, Δz) we have3

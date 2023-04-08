@@ -12,7 +12,7 @@ One way to make a vector field over a map is to restrict a vector field on M to 
 Let v be a vector field on M, and f a function on M. Then
 vμ(f) = v(f) ◦ μ, (6.1)
 is a vector over the map μ. Note that vμ(f) is a function on N, not M:
-vμ(f)(n) = v(f)(μ(n)). (6.2) 1See Bishop and Goldberg, Tensor Analysis on Manifolds [3].
+vμ(f)(n) = v(f)(μ(n)). (6.2) 1See Bishop and Goldberg, Tensor Analysis on Manifolds [3](references!bib_3).
  
 72
 Chapter 6 Over a Map

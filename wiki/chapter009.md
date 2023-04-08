@@ -168,7 +168,7 @@ L1(t,q(t),Dq(t))dt.
 grange equations for L1 with a correction term. Since
 (9.18)
 L2 is the kinetic energy. It is conserved along solution paths, since there is no explicit time dependence. Because of the relation between L1 and L2, L1 is also a conserved quantity. Let L1 take the constant value a on the geodesic coordinate path q we are
-3E is the Euler-Lagrange operator, which gives the residuals of the Lagrange equations for a Lagrangian. Γ extends a configuration-space path q to make a state-space path, with as many terms as needed: Γ[q](t) = (t, q(t), Dq(t), · · ·) The total time derivative Dt is defined by DtF ◦ Γ[q] = D(F ◦ Γ[q]) for any state function F and path q. The Lagrange equations are E[L] ◦ Γ[q] = 0. See [19] for more details.
+3E is the Euler-Lagrange operator, which gives the residuals of the Lagrange equations for a Lagrangian. Γ extends a configuration-space path q to make a state-space path, with as many terms as needed: Γ[q](t) = (t, q(t), Dq(t), · · ·) The total time derivative Dt is defined by DtF ◦ Γ[q] = D(F ◦ Γ[q]) for any state function F and path q. The Lagrange equations are E[L] ◦ Γ[q] = 0. See [19](references!bib_19) for more details.
 (9.17)
 (9.19)
 (9.20)

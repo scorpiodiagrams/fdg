@@ -11,7 +11,7 @@ The Riemann curvature is computed by
 (nabla (commutator w v))))
 ```
 The Riemann-curvature procedure is parameterized by the relevant covariant-derivative operator nabla, which implements ∇. The nabla is itself dependent on the connection, which provides the details of the local geometry. The same Riemann-curvature procedure works for ordinary covariant derivatives and for covariant derivatives over a map. Given two vector fields, the result of ((Riemann-curvature nabla) w v) is a procedure that takes a vector field and produces a vector field so we can implement the Riemann tensor as
-1 [11], [4], and [14] use our definition. [20] uses a different convention for the order of arguments and a different sign. See Appendix C for a definition of tensors.
+1 [11](references!bib_11), [4](references!bib_4), and [14](references!bib_14) use our definition. [20](references!bib_20) uses a different convention for the order of arguments and a different sign. See Appendix C for a definition of tensors.
  
 #page(116)
 Curvature

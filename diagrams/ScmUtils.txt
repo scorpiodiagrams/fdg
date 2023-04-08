@@ -1,0 +1,150 @@
+##MindMap
+caption: SCM Utils
+*:A: SCM\nUtils
+**:B: Generic\nArithmetic
+***:C: With Units
+***:D: Numerical
+***:E: Symbolic
+****:F: To LaTeX
+***:G: On Structures
+***:H: On Algorithms
+**:I: Algorithms
+***:J: Rule Engine
+***:K: Symbolic\nDifferentiation
+***:L: Simplifiers
+***:M: Numerical\nMethods
+****:N: Roots
+****:O: Minimizers
+****:P: Quadrature
+****:Q: Interpolation
+**:R: Realisable\nPaths
+***:S: Lagrangians
+***:T: Hamiltonians
+**:U: Transforms
+:A: at: 309,48
+:B: at: 245,168
+:C: at: 85,261
+:D: at: 61,202
+:E: at: 281,254
+:F: at: 330,344
+:G: at: 89,146
+:H: at: 176,326
+:I: at: 383,123
+:J: at: 527,95
+:K: at: 547,176
+:L: at: 342,206
+:M: at: 473,238
+:N: at: 422,302
+:O: at: 494,349
+:P: at: 633,291
+:Q: at: 601,377
+:R: at: 200,91
+:S: at: 103,54
+:T: at: 208,18
+:U: at: 409,25
+:A:
+card:
+## SCM Utils
+A ~65,000 lines treasure trove of algorithms for physics.
+
+:B:
+card:
+## Generic Arithmetic
+SCM Utils handles arithmetic in a general way. The same operator '+' can have a meaning that depends on the context. An expression to evaluate a polynomial can be evaluating a polynomial of matrices or of complex numbers or of ordinary floating point numbers, depending on the context.
+
+Colin Smith's Clojure port separates the different classes of underlying functionality and provides test code for them.
+:C:
+card:
+## With Units
+Calculation can be with or without units, providing enhanced reporting of results when used, and also providing an additional type-checking on the formulae, that they make real world sense.
+
+This module also contains many useful physics constants, such as electron-mass and sidereal-yr.
+:D:
+card:
+## Numerical
+Standard calculation with floating point numbers.
+:E:
+card:
+## Symbolic
+SCM Utils can act on equations, multiplying out products and collecting terms. It can compose functions and operate on those composed functions in the same way.
+
+See the [exercise 1.15](chapter001!exercise_1.15) for an example of how helpful this can be in getting correct equations, when converting between coordinate systems.
+:F:
+card:
+## To LaTeX
+The #Code(show-expression) command from the SCM Utils converts a scheme representation of an expression into LaTeX for display.
+
+This is a particularly involved subroutine as it involves simplification of the formula, makes smart substitutions from program variable names to LaTeX symbols and has customisations for such things as $$\sin^{2}\theta$$
+:G:
+card:
+## On Structures
+SCM Utils arithmetic carries over directly to vectors, matrices and structures that hold state, such as state space coordinates.
+:H:
+card:
+## On Algorithms
+Some SCM operations act on algorithms too. You can compose algorithms in the same way you compose formal definitions of functions.
+:I:
+card:
+## Algorithms
+SCM Utils contains a collection of symbolic and numerical algorithms.
+:J:
+card:
+## Rule Engine
+The Rule Engine is used in simplifications. It is a pattern matching approach that finds important common patterns and reduces them.
+
+Considerable experimentation went into making the rule engine productive - and there is likely room for further improvement.
+:K:
+card:
+## Symbolic Differentiation
+Given a function as a Clojure expression, produce a new expression for its derivative.
+:L:
+card:
+## Simplifiers
+Code for taking equations and where possible presenting shorter versions, by combining related terms.
+
+One technique used by the simplifiers is in simplifying rational polynomials - collect terms for numerator and denominator polynomials, find the greatest common divider polynomial by Euclid's algorithm, and take it out. The calculation can require large integers in the intermediate steps, and accordingly SICM utils has within it big integer support.
+:M:
+card:
+## Numerical Methods
+A collection of methods for solving numerical problems.
+:N:
+card:
+## Roots
+Find values where a function is zero.
+:O:
+card:
+## Minimizers
+Find values where a function is least.
+
+SCM Utils includes univariate (functions of one variable) minimizers, Brent's method being a modified secant method which converges rapidly in practice, and golden-section a reliable method which needs many more evaluations.
+
+SCM also has multivariate minimizers, the Nelder-Mead family of minimizers. It has code for 'managing errors' that expresses acceptable error - with proportional or absolute being two simple possibilities that it can handle.
+:P:
+card:
+## Quadrature
+Integration of functions.
+:Q:
+card:
+## Interpolation
+Estimating values of a function given values nearby.
+:R:
+card:
+## Realisable Paths
+The state of a system can be defined by a number of 'state variables'. The laws of physics mean that these state variables change in specific ways, that is they follow a 'realisable path'.
+
+The formalisms explored concern how to find the realisable path.
+:S:
+card:
+## Lagrangians
+Equations representing (typically) the difference between potential and kinetic energy in a system.
+:T:
+card:
+## Hamiltonians
+Equations representing (typically) the total energy in a system.
+:U:
+card:
+## Transforms
+1. Conversions such as the Legendre transformation, used in going from Lagrangian to Hamiltonian formulation.
+
+2. Other transforms, such as those that change coordinate systems from polar to rectangular.
+

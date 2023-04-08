@@ -5,26 +5,22 @@ I haven't yet implemented a menu.
 )
 #LittleLogo()
 ----
-# FDG
-
-#Jump( toc \Diamond Table of Contents
-# \Diamond Table of Contents
-More detailed contents than in this sidebar)
-#Jump( dedication \Diamond Dedication
-# \Diamond Dedication
-Brief dedication, with an Einstein quote)
-#Jump( prologue\Diamond Prologue
-# \Diamond Prologue
-Notation;Reasons for Scheme and SICM Utils)
+## FDG
+#Jump( front_matter \Diamond Title and copyright
+# \Diamond Title and copyright
+Front matter)
+#Jump( toc \Diamond Table of contents
+# \Diamond Table of contents
+Brief contents)
 #Jump( preface\Diamond Preface
 # \Diamond Preface
 Notation;Reasons for Scheme and SICM Utils)
 #Jump( acknowledgments \Diamond Acknowledgments
 # \Diamond Acknowledgments
 Many people helped make this book possible)
-#Jump( front_matter \Diamond Front Matter
-# \Diamond Acknowledgments
-Many people helped make this book possible)
+#Jump( prologue\Diamond Prologue
+# \Diamond Prologue
+Notation;Reasons for Scheme and SICM Utils)
 ----
 ### Chapter 1
 #Jump( chapter001 \Diamond Introduction
@@ -55,7 +51,7 @@ Many people helped make this book possible)
 5.1 Higher Dimensions
 5.2 Exterior Derivative
 5.3 Stokes’s Theorem
- 5.4 Vector Integral Theorems)
+5.4 Vector Integral Theorems)
 ### Chapter 6
 #Jump( chapter006 \Diamond Over a Map
 \Diamond  Over a Map
@@ -93,7 +89,8 @@ Many people helped make this book possible)
 \Diamond Special Relativity
 11.1 Lorentz Transformations
 11.2 Special Relativity Frames
- 11.3 Twin Paradox)
+11.3 Twin Paradox)
+----
 ### Appendices
 #Jump( scheme \Diamond Scheme
 \Diamond Scheme
@@ -110,21 +107,11 @@ Many people helped make this book possible)
 #Jump( index \Diamond Index
 \Diamond Index
 )
-
-#Jump( chapter009 \Diamond Appendix: Our Notation
-# \Diamond Appendix: Our Notation
-Notation (inspired by Spivak and by programming#) that avoids ambiguity - and most importantly what dangers of ambiguity have been banished.
-
-)
-#Jump( bibliography \Diamond References
-# \Diamond References
-Books mentioned)
+----
+### Extras
 #Jump( list_of_exercises \Diamond List of Exercises
 # \Diamond List of Exercises
 Exercises)
-#Jump( keyword_index \Diamond Index
-# \Diamond Index
-Index of where terms are used/explained)
 ----
 ### Other Content
 #Jump( scm_utils \Diamond SCM Utils

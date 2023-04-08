@@ -9,7 +9,7 @@ d ∂L − ∂L = 0. d t ∂ q ̇ ∂ q
 What could this expression possibly mean?
 Let’s try to write a program that implements Lagrange equa-
 tions. What are Lagrange equations for? Our program must take a proposed path and give a result that allows us to decide if the path is allowed. This is already a problem; the equation shown above does not have a slot for a path to be tested.
-1The idea of using computer programming to develop skills of clear thinking was originally advocated by Seymour Papert. An extensive discussion of this idea, applied to the education of young children, can be found in Papert [13].
+1The idea of using computer programming to develop skills of clear thinking was originally advocated by Seymour Papert. An extensive discussion of this idea, applied to the education of young children, can be found in Papert [13](references!bib_13).
 #page(xvi)
 So we have to figure out how to insert the path to be tested. The partial derivatives do not depend on the path; they are derivatives of the Lagrangian function and thus they are functions with the same arguments as the Lagrangian. But the time derivative d/dt makes sense only for a function of time. Thus we must be intending to substitute the path (a function of time) and its derivative (also a function of time) into the coordinate and velocity arguments of the partial derivative functions.
 So probably we meant something like the following (assume that w is a path through the coordinate configuration space, and so w(t) specifies the configuration coordinates at time t):
@@ -75,7 +75,7 @@ for mass m and spring constant k. This Lagrangian is implemented by
 ```
 We know that the motion of a harmonic oscillator is a sinusoid with a given amplitude a, frequency ω, and phase φ:
 x(t) = a cos(ωt + φ).
-that they can be expressed as computer programs. Scheme is chosen because it is easy to write programs that manipulate representations of mathematical functions. An informal description of Scheme can be found in Appendix A. The use of Scheme to represent mathematical objects can be found in Appendix B. A formal description of Scheme can be obtained in [10]. You can get the software from [21].
+that they can be expressed as computer programs. Scheme is chosen because it is easy to write programs that manipulate representations of mathematical functions. An informal description of Scheme can be found in Appendix A. The use of Scheme to represent mathematical objects can be found in Appendix B. A formal description of Scheme can be obtained in [10](references!bib_10). You can get the software from [21](references!bib_21).
 #page(xx)
  Suppose we have forgotten how the constants in the solution relate to the physical parameters of the oscillator. Let’s plug in the proposed solution and look at the residual:
 ```Scheme

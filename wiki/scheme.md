@@ -1,8 +1,8 @@
 !!Polyglot
 ## Scheme
 Programming languages should be designed not by piling feature on top of feature, but by removing the weaknesses and restrictions that make additional features appear necessary. Scheme demonstrates that a very small number of rules for forming expressions, with no restrictions on how they are composed, suffice to form a practical and efficient programming language that is flexible enough to support most of the major programming paradigms in use today.
-IEEE Standard for the Scheme Programming Language [10], p. 3
-Here we give an elementary introduction to Scheme.1 For a more precise explanation of the language see the IEEE standard [10]; for a longer introduction see the textbook [1].
+IEEE Standard for the Scheme Programming Language [10](references!bib_10), p. 3
+Here we give an elementary introduction to Scheme.1 For a more precise explanation of the language see the IEEE standard [10](references!bib_10); for a longer introduction see the textbook [1](references!bib_1).
 Scheme is a simple programming language based on expressions. An expression names a value. For example, the numeral 3.14 names an approximation to a familiar number. There are primitive expressions, such as a numeral, that we directly recognize, and there are compound expressions of several kinds.
 Procedure Calls
 A procedure call is a kind of compound expression. A procedure call is a sequence of expressions delimited by parentheses. The first subexpression in a procedure call is taken to name a procedure, and the rest of the subexpressions are taken to name the arguments to that procedure. The value produced by the procedure when applied to the given arguments is the value named by the procedure call. For example,
@@ -37,7 +37,7 @@ The general form of a λ-expression is
 2In examples we show the value that would be printed by the Scheme system
 using slanted characters following the input expression.
 3In Scheme every parenthesis is essential: you cannot add extra parentheses or remove any.
-4The logician Alonzo Church [5] invented λ-notation to allow the specification of an anonymous function of a named parameter: λx[expression in x]. This is read, “That function of one argument that is obtained by substituting the argument for x in the indicated expression.”
+4The logician Alonzo Church [5](references!bib_5) invented λ-notation to allow the specification of an anonymous function of a named parameter: λx[expression in x]. This is read, “That function of one argument that is obtained by substituting the argument for x in the indicated expression.”
  
 #page(187)
 ```Scheme
