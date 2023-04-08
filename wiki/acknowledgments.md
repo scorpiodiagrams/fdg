@@ -13,7 +13,7 @@ A special contribution that cannot be sufficiently acknowledged is from Seymour 
 
 #page(xiii)
 
-the practice of programming is a powerful way to develop a deeper understanding of any subject. Indeed, by the act of debugging we learn about our misconceptions, and by reflecting on our bugs and their resolutions we learn ways to learn more effectively. Indeed, Turtle Geometry [2], a beautiful book about discrete differential geometry at a more elementary level, was inspired by Papert’s work on education. [13]
+the practice of programming is a powerful way to develop a deeper understanding of any subject. Indeed, by the act of debugging we learn about our misconceptions, and by reflecting on our bugs and their resolutions we learn ways to learn more effectively. Indeed, Turtle Geometry [2](references!bib_2), a beautiful book about discrete differential geometry at a more elementary level, was inspired by Papert’s work on education. [13](references!bib_13)
 
 We acknowledge the generous support of the Computer Science and Artificial Intelligence Laboratory of the Massachusetts Institute of Technology. The laboratory provides a stimulating environment for efforts to formalize knowledge with computational methods. We also acknowledge the Panasonic Corporation (formerly the Matsushita Electric Industrial Corporation) for support of Gerald Jay Sussman through an endowed chair.
 
