@@ -48,8 +48,7 @@ first, 130
 second, 130 Boost, 172
 general, 174 perpendicular, 174
 #page(220)
- Boost (continued) transformation under rotation,
-177
+Boost (continued) transformation under rotation, 177
 Brackets for down tuples, 198
 car, 191
 Cardioid, 18 (ex. 2.1) Cartan one-forms, 96
@@ -96,8 +95,7 @@ Coordinate basis
 one-form field, 34 one-form field traditional
 notation, 36
 vector field, 26–29
-vector field traditional notation,
-27
+vector field traditional notation, 27
 Coordinate component functions
 one-form field, 34
 vector field, 23
@@ -108,8 +106,7 @@ integration, 55 manifold functions, 15 one-form field, 38 vector field, 22, 28
 Coordinate representation manifold functions, 14 one-form fields, 35 vector fields, 25
 Coordinate transformations one-form field, 38
 vector field, 28
-coordinate-system, 13 coordinate-system-at, 13n coordinate-system->basis, 9,
-46
+coordinate-system, 13 coordinate-system-at, 13n coordinate-system->basis, 9, 46
 coordinatize, 25 Cosmology, 149 (ex. 9.9), 150
 (ex. 9.10)
 Coulomb, 167
@@ -123,8 +120,7 @@ of one-form field, 99
 of vector field, 93
 over a map, 106
 parallel transport and, 93 product rule, 97
-covariant-derivative, 9 covariant-derivative-form,
-100
+covariant-derivative, 9 covariant-derivative-form, 100
 covariant-derivative-vector, 97
 curl, 154
 curl, 155
@@ -190,10 +186,8 @@ integral curve, 30 Evolution operator, 31 Exact form field, 64
 Exact forms are closed, 64
 Exponentiating Lie derivatives, 91
 Expressions in Scheme, 185 Extended rotation, 177 Exterior derivative, 33 n, 62–65
-Cartan’s formula and, 92 commutes with Lie derivative,
-90
-commutes with pullback, 80 coordinate-system independent,
-62
+Cartan’s formula and, 92 commutes with Lie derivative, 90
+commutes with pullback, 80 coordinate-system independent, 62
 general definition, 62
 graded formula, 69 (ex. 5.2) iterated, 69 (ex. 5.3)
 obeys graded Leibniz rule, 64 of one-form, 62
@@ -266,7 +260,7 @@ Lemniscate of Bernoulli, 18 (ex.
 Lie derivative, 85–93 alternate formulation, 88 as commutator, 86 commutes with exterior
 derivative, 90
 #page(224)
- Lie derivative (continued) covariant derivative and, 113
+Lie derivative (continued) covariant derivative and, 113
 (ex. 7.2)
 directional derivative and, 85 exponentiation, 91 interpretation, 87
 of form field, 89
