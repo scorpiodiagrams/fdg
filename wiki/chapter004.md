@@ -32,7 +32,7 @@ $$\begin{equation}
 \end{equation}$$
 and the dual one-forms $\tilde{\mathsf{e}}$ in terms of the dual coordinate one-forms
 $$\begin{equation}
-\tilde{\mathsf{e}}^i(\mathsf{v}) = \sum_l {\mathsf{d}_l^i \tilde{\mathsf{X}}^l(\mathsf{v}),
+\tilde{\mathsf{e}}^i(\mathsf{v}) = \sum_l {\mathsf{d}_l^i \tilde{\mathsf{X}}^l(\mathsf{v})},
 \end{equation}$$
 then
 $$\begin{equation}
@@ -47,14 +47,13 @@ $$\begin{equation}
 Applying this at $\mathsf{m}$ we get
 $$\begin{equation}
 \tilde{\mathsf{e}}^i(\mathsf{e}_j)(\mathsf{m}) = \delta_j^i = \sum_k {\mathsf{d}_k^i(\mathsf{m}) \
-\mathsf{c}_j^k(\mathsf{m}).
+\mathsf{c}_j^k(\mathsf{m}).}
 \end{equation}$$
 So the $\mathsf{d}$ coefficients can be determined from the $\mathsf{c}$ coefficents (essentially by matrix inversion).
 
 A set of vector fields $\{\mathsf{e}_i\}$ may be linearly independent in the sense that a weighted sum of them may not be identically zero over a region, yet it may not be a basis in that region. The problem is that there may be some places in the region where the vectors are not independent. For example, two of the vectors may be parallel at a point but not parallel elsewhere in the region.
 
-At such a point $\mathsf{m}$ the determinant of the matrix
-$\mathsf{c}(\mathsf{m})$ is zero. So at these points we cannot define the dual basis forms.#Footnote(3)
+At such a point $\mathsf{m}$ the determinant of the matrix $\mathsf{c}(\mathsf{m})$ is zero. So at these points we cannot define the dual basis forms.#Footnote(3)
 
 The dual form fields can be used to determine the coefficients $\mathsf{b}$ of a vector field $\mathsf{v}$ relative to a basis $\mathsf{e}$, by applying the dual basis form fields $\tilde{\mathsf{e}}$ to the vector field. Let
 
@@ -209,7 +208,7 @@ One interesting basis for rotations in 3-dimensional space is not a coordinate b
 
 Rotations are the actions of the special orthogonal group SO(3), which is a 3-dimensional manifold. The elements of this group may be represented by the set of $3 \times 3$ orthogonal matrices with determinant $+1$.
 
-We can use a coordinate patch on this manifold with Euler angle coordinates: each element has three coordinates, $\theta$, $\phi$, $\psi$. A manifold point may be represented by a rotation matrix. The rotation matrix for Euler angles is a product of three simple rotations: $M(\theta, \phi, \psi) = R_z(\phi)R_x(\theta)R_z(\psi)$, where $R_x$ and $R_z$ are functions that take an angle and produce the matrices representing rotations about the $x$ and $z$ axes, respectively. We can visualize $\theta$ as the colatitude of the pole from the $\hat{z}$-axis, $\phi$ as the longitude, and $\psia$ as the rotation around the pole.
+We can use a coordinate patch on this manifold with Euler angle coordinates: each element has three coordinates, $\theta$, $\phi$, $\psi$. A manifold point may be represented by a rotation matrix. The rotation matrix for Euler angles is a product of three simple rotations: $M(\theta, \phi, \psi) = R_z(\phi)R_x(\theta)R_z(\psi)$, where $R_x$ and $R_z$ are functions that take an angle and produce the matrices representing rotations about the $x$ and $z$ axes, respectively. We can visualize $\theta$ as the colatitude of the pole from the $\hat{z}$-axis, $\phi$ as the longitude, and $\psi$ as the rotation around the pole.
 
 Given a rotation specified by Euler angles, how do we change the Euler angle to correspond to an incremental rotation of size $\epsilon$ about the $\hat{x}$-axis? The direction $(a, b, c)$ is constrained by the equation
 
@@ -459,18 +458,18 @@ $\mathsf{e}_x$, $\mathsf{e}_y$, and $\mathsf{e}_z$ in equations (4.29–4.31)?
 #FootnoteRef(8) Here $x$ is an up-tuple structure of components, and $\mathsf{e}$ is down-tuple structure of basis vectors. The product of the two contracts to make a scaled vector, along which we translate by one unit.
 
 #FootnoteRef(7) For non-commuting operators $A$ and $B$,
-
+$$\begin{equation}
 \begin{align*}
 e^{A} e^{B} e^{-A} e^{-B} & \\
 =&\left(1+A+\frac{A^{2}}{2}+\cdots\right)\left(1+B+\frac{B^{2}}{2}+\cdots\right) \\
 & \times\left(1-A+\frac{A^{2}}{2}+\cdots\right)\left(1-B+\frac{B^{2}}{2}+\cdots\right) \\
 =& 1+[A, B]+\cdots,
 \end{align*}
-
+\notag
+\end{equation}$$
 to second order in $A$ and $B$. All higher-order terms can be written in terms of higher-order commutators of $A$ and $B$. An example of a higher-order commutator is $[A, [A, B]]$.
 
 #FootnoteRef(6) Using
-
 ```Scheme
 (define Euler-angles (coordinate-system-at 'Euler 'Euler-patch SO3))
 (define Euler-angles-chi-inverse (point Euler-angles))

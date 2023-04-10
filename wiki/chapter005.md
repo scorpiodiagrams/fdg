@@ -30,9 +30,7 @@ $$\begin{equation}
 I = \int_{a}^{b} \omega ({\partial}/{\partial \mathsf{x}}) \circ \chi^{-1}
 \end{equation}$$
 
-It turns out that the value of this integral is independent of the coordinate chart used in its definition. Consider a different coordinate chart $x\prime =
-\chi\prime (\mathsf{m}), with associated basis vector field
-${\partial}/{\partial x\prime}$. Let $g = \chi\prime \circ \chi^{-1}$. We have
+It turns out that the value of this integral is independent of the coordinate chart used in its definition. Consider a different coordinate chart $x\prime = \chi\prime (\mathsf{m})$, with associated basis vector field ${\partial}/{\partial x\prime}$. Let $g = \chi\prime \circ \chi^{-1}$. We have
 
 $$\begin{equation}
 \begin{aligned}
@@ -165,7 +163,7 @@ $$\begin{equation}
 \int_{\mathsf{U}} \mathsf{d}\mathsf{x} \wedge \mathsf{d}\mathsf{y} \wedge \ldots = \text{Volume}(\mathsf{U})
 \end{equation}$$
 
-where $\text{Volume}(\mathsf{U})$ is the ordinary volume of the region corresponding to $\mathsf{U}$ in the Euclidean space of $\mathsf{R}^{n}}$ with the orthonormal coordinate system $(x, y, \ldots)$.#Footnote(3)
+where $\text{Volume}(\mathsf{U})$ is the ordinary volume of the region corresponding to $\mathsf{U}$ in the Euclidean space of $\mathsf{R}^{n}$ with the orthonormal coordinate system $(x, y, \ldots)$.#Footnote(3)
 
 An example two-form (see figure 5.1) is the oriented area of a parallelogram in the $(x,y)$ coordinate plane at the point $\mathsf{m}$ spanned by two vectors
 $\mathsf{u} = \mathsf{u}^{0}{\partial}/{\partial\mathsf{x}} +
@@ -244,11 +242,16 @@ This last expression is the determinant of a $3 \times 3$ matrix:
 If we did the same operations in cylindrical coordinates we would get the analogous formula, showing that what we are computing is volume in the coordinate space, not volume on the manifold.
 
 Because of antisymmetry, if the rank of a form is greater than the dimension of the manifold then the form is identically zero. The $k$-forms on an
-$\n$-dimensional manifold form a module of dimension $\binom{n}{k}$. We can write a coordinate-basis expression for a $k$-form as
+$n$-dimensional manifold form a module of dimension $\binom{n}{k}$. We can write a coordinate-basis expression for a $k$-form as
 
 $$\begin{equation}
 \omega = \sum_{{i}_{0}, \ldots, {i}_{k-1}}^{n} \omega_{{i}_{0}, \ldots, {i}_{k-1}} \mathsf{d}\mathsf{x}^{{i}_{0}} \wedge \ldots \wedge \mathsf{d}\mathsf{x}^{i_{k-1}}.
 \end{equation}$$
+
+$$\begin{equation}
+\omega = \sum_{{i}_{0}, \ldots, {i}_{k-1}}^{n}.
+\end{equation}$$
+
 
 The antisymmetry of the wedge product implies that
 
@@ -589,7 +592,7 @@ We have shown that the equation (5.29) is true for manifold functions. Show that
 
 #FootnoteRef(10) Using =(define R2-rect-basis (coordinate-system->basis R2-rect))=.
 
-Here we extract $\mathsf{d}$\mathsf{x}$ and $\mathsf{d}\mathsf{y}$ from R2-rect-basis to avoid globally installing coordinates.
+Here we extract $\mathsf{d}\mathsf{x}$ and $\mathsf{d}\mathsf{y}$ from R2-rect-basis to avoid globally installing coordinates.
 
 #FootnoteRef(9) We do not develop the machinery for integration on chains that is usually needed for a full proof of Stokes's Theorem. This is adequately done in other books. A beautiful treatment can be found in Spivak, Calculus on Manifolds [17].
 

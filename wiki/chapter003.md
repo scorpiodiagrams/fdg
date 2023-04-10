@@ -15,36 +15,23 @@ $$\begin{equation}
 f(x + \Delta x) \approx f(x) + (Df(x)) \Delta x
 \end{equation}$$
 
-The derivative $Df(x)$ is independent of $\Delta x$. Although the derivative depends on the coordinates, the product $(Df(x)) \Delta x$ is invariant under change of coordinates in the following sense. Let $\phi = \chi \circ
-\chi^{\prime -1}$ be a coordinate transformation, and $x = \phi(y)$. Then
-$\Delta x = D\phi(y)\Delta y$ is the linear approximation to the change in $x$
-when $y$ changes by $\Delta y$. If $f$ and $g$ are the representations of a manifold function in the two coordinate systems, $g(y) = f(\phi(y)) = f(x)$,
-then the linear approximations to the increments in $f$ and $g$ are equal:
+The derivative $Df(x)$ is independent of $\Delta x$. Although the derivative depends on the coordinates, the product $(Df(x)) \Delta x$ is invariant under change of coordinates in the following sense. Let $\phi = \chi \circ \chi^{\prime -1}$ be a coordinate transformation, and $x = \phi(y)$. Then $\Delta x = D\phi(y)\Delta y$ is the linear approximation to the change in $x$ when $y$ changes by $\Delta y$. If $f$ and $g$ are the representations of a manifold function in the two coordinate systems, $g(y) = f(\phi(y)) = f(x)$, then the linear approximations to the increments in $f$ and $g$ are equal:
 
 $$\begin{equation}
 Dg(y)\Delta y = Df(\phi(y))(D\phi(y)\Delta y) = Df(x)\Delta x.
 \end{equation}$$
 
-The invariant product $(Df(x)) \Delta x$ is the /directional derivative/ of $f$
-at $x$ with respect to the vector specified by the tuple of components $\Delta x$ in the coordinate system. We can generalize this idea to allow the vector at each point to depend on the point, making a /vector field/. Let b be a function of coordinates. We then have a directional derivative of $f$ at each point $x$,
-determined by $b$
+The invariant product $(Df(x)) \Delta x$ is the /directional derivative/ of $f$ at $x$ with respect to the vector specified by the tuple of components $\Delta x$ in the coordinate system. We can generalize this idea to allow the vector at each point to depend on the point, making a /vector field/. Let b be a function of coordinates. We then have a directional derivative of $f$ at each point $x$, determined by $b$
 
 $$\begin{equation}
 D_b(f)(x) = (Df(x)) b(x).
 \end{equation}$$
 
-Now we bring this back to the manifold and develop a useful generalization of the idea of directional derivative for functions on a manifold, rather than functions on $\mathbb{R}^n$. A /vector field/ on a manifold is an assignment of a vector to each point on the manifold. In elementary geometry, a vector is an arrow anchored at a point on the manifold with a magnitude and a direction. In differential geometry, a vector is an operator that takes directional deriva-
-tives of manifold functions at its anchor point. The direction and magnitude of the vector are the direction and scale factor of the directional derivative.
+Now we bring this back to the manifold and develop a useful generalization of the idea of directional derivative for functions on a manifold, rather than functions on $\mathbb{R}^n$. A /vector field/ on a manifold is an assignment of a vector to each point on the manifold. In elementary geometry, a vector is an arrow anchored at a point on the manifold with a magnitude and a direction. In differential geometry, a vector is an operator that takes directional derivatives of manifold functions at its anchor point. The direction and magnitude of the vector are the direction and scale factor of the directional derivative.
 
-Let $\mathsf{m}$ be a point on a manifold, $\mathsf{v}$ be a vector field on the manifold, and $\mathsf{f}$ be a real-valued function on the manifold. Then
-$\mathsf{v}(\mathsf{f})$ is the directional derivative of the function
-$\mathsf{f}$ and $\mathsf{v}(\mathsf{f})(\mathsf{m})$ is the directional derivative of the function$\mathsf{f}$at the point $\mathsf{m}$. The vector field is an operator that takes a real-valued manifold function and a manifold point and produces a number. The order of arguments is chosen to make
-$\mathsf{v}(\mathsf{f})$ be a new manifold function that can be manipulated further. Directional derivative operators, unlike ordinary derivative operators,
-produce a result of the same type as their argument. Note that there is no mention here of any coordinate system. The vector field specifies a direction and magnitude at each manifold point that is independent of how it is described using any coordinate system.
+Let $\mathsf{m}$ be a point on a manifold, $\mathsf{v}$ be a vector field on the manifold, and $\mathsf{f}$ be a real-valued function on the manifold. Then $\mathsf{v}(\mathsf{f})$ is the directional derivative of the function $\mathsf{f}$ and $\mathsf{v}(\mathsf{f})(\mathsf{m})$ is the directional derivative of the function$\mathsf{f}$at the point $\mathsf{m}$. The vector field is an operator that takes a real-valued manifold function and a manifold point and produces a number. The order of arguments is chosen to make $\mathsf{v}(\mathsf{f})$ be a new manifold function that can be manipulated further. Directional derivative operators, unlike ordinary derivative operators, produce a result of the same type as their argument. Note that there is no mention here of any coordinate system. The vector field specifies a direction and magnitude at each manifold point that is independent of how it is described using any coordinate system.
 
-A useful way to characterize a vector field in a particular coordinate system is by applying it to the coordinate functions. The resulting functions
-$b^i_{\chi,\mathsf{v}}$ are called the /coordinate component functions/ or
-/coefficient functions/ of the vector field; they measure how quickly the coordinate functions change in the direction of the vector field, scaled by the magnitude of the vector field:
+A useful way to characterize a vector field in a particular coordinate system is by applying it to the coordinate functions. The resulting functions $b^i_{\chi,\mathsf{v}}$ are called the /coordinate component functions/ or /coefficient functions/ of the vector field; they measure how quickly the coordinate functions change in the direction of the vector field, scaled by the magnitude of the vector field:
 
 $$\begin{equation}
 b^i_{\chi,\mathsf{v}} = \mathsf{v}(\chi^i) \circ \chi^{-1}.
@@ -61,10 +48,8 @@ $$\begin{equation}
 &= \sum_i \partial_i (\mathsf{f} \circ \chi^{-1}) (\chi(\mathsf{m})) b^i_{\chi, \mathsf{v}}(\chi (\mathsf{m})).
 \end{align}
 \end{equation}$$
-In equation (3.4), the quantity $\mathsf{f} \circ$ is the coordinate representation of the manifold function $\mathsf{f}$. We take its derivative, and weight the components of the derivative with the coordinate components
-$b_{\chi, \mathsf{v}}$ of the vector field that specify its direction and magnitude.
-Since this product is a function of coordinates we use $\chi$ to extract the coordinates from the manifold point m. In equation (3.5), the composition of the product with the coordinate chart $\chi$ is replaced by function evaluation. In equation (3.6) the tuple multiplication is expressed explicitly as a sum of products of corresponding com-
-ponents. So the application of the vector is a linear combination of the partial derivatives of $\mathsf{f}$ in the coordinate directions weighted by the vector components. This computes the rate of change of $\mathsf{f}$
+In equation (3.4), the quantity $\mathsf{f} \circ$ is the coordinate representation of the manifold function $\mathsf{f}$. We take its derivative, and weight the components of the derivative with the coordinate components $b_{\chi, \mathsf{v}}$ of the vector field that specify its direction and magnitude.
+Since this product is a function of coordinates we use $\chi$ to extract the coordinates from the manifold point m. In equation (3.5), the composition of the product with the coordinate chart $\chi$ is replaced by function evaluation. In equation (3.6) the tuple multiplication is expressed explicitly as a sum of products of corresponding components. So the application of the vector is a linear combination of the partial derivatives of $\mathsf{f}$ in the coordinate directions weighted by the vector components. This computes the rate of change of $\mathsf{f}$
 in the direction specified by the vector.
 
 Equations (3.3) and (3.5) are consistent:
@@ -77,10 +62,7 @@ $$\begin{equation}
 \end{align}
 \end{equation}$$
 
-The coefficient tuple $b_{\chi,\mathsf{v}}(x)$ is an up structure compatible for addition to the coordinates. Note that for any vector field v the coefficients
-$b_{\chi, \mathsf{v}}(x)$ are different for different coordinate functions $\chi$.
-In the text that follows we will usually drop the subscripts on $b$,
-understanding that it is dependent on the coordinate system and the vector field.
+The coefficient tuple $b_{\chi,\mathsf{v}}(x)$ is an up structure compatible for addition to the coordinates. Note that for any vector field v the coefficients $b_{\chi, \mathsf{v}}(x)$ are different for different coordinate functions $\chi$. In the text that follows we will usually drop the subscripts on $b$, understanding that it is dependent on the coordinate system and the vector field.
 
 We implement the definition of a vector field (3.4) as:
 ```Scheme (define (components->vector-field components coordsys)
@@ -93,8 +75,7 @@ We implement the definition of a vector field (3.4) as:
 
 The vector field is an operator, like derivative.#Footnote(2)
 
-Given a coordinate system and coefficient functions that map coordinates to real values, we can make a vector field. For example,
-a general vector field can be defined by giving components relative to the coordinate system ~R2-rect~ by
+Given a coordinate system and coefficient functions that map coordinates to real values, we can make a vector field. For example, a general vector field can be defined by giving components relative to the coordinate system ~R2-rect~ by
 ```Scheme (define v
 (components->vector-field
 (up (literal-function ’b^0 R2->R)
@@ -264,6 +245,7 @@ It is traditional to express this rule by saying that the basis elements transfo
 ### Integral Curves
 
 A vector field gives a direction and rate for every point on a manifold.
+
 We can start at any point and go in the direction specified by the vector field, tracing out a parametric curve on the manifold.
 This curve is an /integral curve/ of the vector field.
 
@@ -276,25 +258,27 @@ D(\mathsf{f} \circ \gamma^{\mathsf{v}}_{\mathsf{m}}) (t)
 \gamma^{\mathsf{v}}_{\mathsf{m}}(0)
 &= \mathsf{m},
 \end{align}
+\notag
 \end{equation}$$
-for arbitrary functions $\mathsf{f}$ on the manifold, with real values or structured real values. The rate of change of a function along an integral curve is the vector field applied to the function evaluated at the appropriate place along the curve. Often we will simply write
-$\gamma$, rather than $\gamma^{\mathsf{v}}_{\mathsf{m}}$. Another useful variation is $\phi^{\mathsf{v}}_t(\mathsf{m}) = \gamma^{\mathsf{v}}_{\mathsf{m}}(t)$.
+for arbitrary functions $\mathsf{f}$ on the manifold, with real values or structured real values. The rate of change of a function along an integral curve is the vector field applied to the function evaluated at the appropriate place along the curve. Often we will simply write $\gamma$, rather than $\gamma^{\mathsf{v}}_{\mathsf{m}}$. Another useful variation is $\phi^{\mathsf{v}}_t(\mathsf{m}) = \gamma^{\mathsf{v}}_{\mathsf{m}}(t)$.
 
 We can recover the differential equations satisfied by a coordinate representation of the integral curve by letting $\mathsf{f} = \chi$, the coordinate function, and letting $\sigma = \chi \circ \gamma$ be the coordinate path corresponding to the curve $\gamma$. Then the derivative of the coordinate path $\sigma$ is
 $$\begin{equation}
 \begin{align}
 D \sigma(t)
-&=  D(\chi \circ \gamma$)(t) \nonumber \\
+&=  D(\chi \circ \gamma)(t) \nonumber \\
 &= (\mathsf{v}(\chi) \circ \gamma)(t) \nonumber \\
 &= (\mathsf{v}(\chi) \circ \chi^{-1} \circ \chi \circ \gamma)(t) \\
 &= (b \circ \sigma)(t)
 \end{align}
+\notag
 \end{equation}$$
 where $b = \mathsf{v}(\chi) \circ \chi^{-1}$ is the coefficient function for the vector field
 $\mathsf{v}$ for coordinates $\chi$ (see equation 3.7). So the coordinate path $\sigma$
 satisfies the differential equations
 $$\begin{equation}
 D \sigma = b \circ \sigma.
+\notag
 \end{equation}$$
 
 Differential equations for the integral curve can be expressed only in a coordinate representation, because we cannot go from one point on the manifold to another by addition of an increment.
@@ -312,6 +296,7 @@ D^2(\mathsf{f} \circ \gamma)
 D^n(\mathsf{f} \circ \gamma)
 &= \mathsf{v}^n(\mathsf{f}) \circ \gamma
 \end{align}
+\notag
 \end{equation}$$
 
 Thus, the evolution of $\mathsf{f} \circ \gamma$ can be written formally as a Taylor series in the parameter:
@@ -443,21 +428,24 @@ Note that $c$ is not a manifold function.
 
 A one-form field is a generalization of this idea; it is something that measures a vector field at each point.
 
-/One-form fields/ are linear functions of vector fields that produce real-valued functions on the manifold. A one-form field is linear in vector fields: if $\omega$ is a one-form field, $\mathsf{v}$ and $\mathsf{w}$ are vector fields,
-and $c$ is a manifold function, then
+/One-form fields/ are linear functions of vector fields that produce real-valued functions on the manifold. A one-form field is linear in vector fields: if $\omega$ is a one-form field, $\mathsf{v}$ and $\mathsf{w}$ are vector fields, and $c$ is a manifold function, then
 $$\begin{equation}
 \omega(\mathsf{v} + \mathsf{w}) = \omega(\mathsf{v}) + \omega(\mathsf{w})
+\notag
 \end{equation}$$
 and
 $$\begin{equation}
 \omega(\mathsf{cv}) = \mathsf{c} \omega(\mathsf{v}).
+\notag
 \end{equation}$$
 
-Sums and scalar products of one-form fields on a manifold have the following properties. If $\omega$ and $\theta$ are one-form fields, and if $\mathsf{f}$
-is a real-valued manifold function, then:
+Sums and scalar products of one-form fields on a manifold have the following properties. If $\omega$ and $\theta$ are one-form fields, and if $\mathsf{f}$ is a real-valued manifold function, then:
 $$\begin{equation}
+\begin{align}
 (\omega + \theta)(\mathsf{v}) &= \omega(\mathsf{v}) + \theta(\mathsf{v}), \\
 (\mathsf{f} \omega) (\mathsf{v}) &= \mathsf{f} \omega(\mathsf{v}).
+\end{align}
+\notag
 \end{equation}$$
 
 #####  Coordinate-Basis One-Form Fields
@@ -474,10 +462,12 @@ $$\begin{equation}
 \end{equation}$$
 With this definition the coordinate-basis one-form fields are dual to the coordinate-basis vector fields in the following sense (see equation 3.15):#Footnote(10)
 $$\begin{equation}
+\begin{align}
 \tilde{\mathsf{X}}^i (\mathsf{X}_j)(\mathsf{m})
 = \mathsf{X}_j (\chi^i)(\mathsf{m})
 = \partial_j (\chi^i \circ \chi^{-1}) (\chi(\mathsf{m}))
 &= \delta^i_j.
+\end{align}
 \end{equation}$$
 The tuple of basis one-form fields $\tilde{X}(\mathsf{v})(\mathsf{m})$ is an up structure like that of $\chi$.
 
