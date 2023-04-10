@@ -88,16 +88,12 @@ Einstein believed that the Maxwell-Lorentz electromagnetic theory was fundamenta
 
 ### Invariance of the Wave Equation
 
-Let $u = (t, x, y, z)$ be a tuple of time and space coordinates that specify
-a point in spacetime.#Footnote(2) If $\phi(t, x, y, z)$ is a scalar field over time
-and space, the homogeneous linear wave equation is
+Let $u = (t, x, y, z)$ be a tuple of time and space coordinates that specify a point in spacetime.#Footnote(2) If $\phi(t, x, y, z)$ is a scalar field over time and space, the homogeneous linear wave equation is
 
 $$\begin{equation}
 \end{equation}$$
 
-The characteristics for this equation are the "light cones." If we define a
-function of spacetime points and increments, length, such that for an
-incremental tuple in position and time $\xi = (\Delta t, \Delta x, \Delta y,
+The characteristics for this equation are the "light cones." If we define a function of spacetime points and increments, length, such that for an incremental tuple in position and time $\xi = (\Delta t, \Delta x, \Delta y,
 \Delta z)$ we have#Footnote(3)
 
 $$\begin{equation}
@@ -110,10 +106,7 @@ $$\begin{equation}
 
 This "length" is called the /interval/.
 
-What is the class of transformations of time and space coordinates that leave
-the Maxwell-Lorentz theory invariant? The transformations that preserve the
-wave equation are exactly those that leave its characteristics invariant. We
-consider a transformation $u = A(u^p\rime)$ of time and space coordinates:
+What is the class of transformations of time and space coordinates that leave the Maxwell-Lorentz theory invariant? The transformations that preserve the wave equation are exactly those that leave its characteristics invariant. We consider a transformation $u = A(u^p\rime)$ of time and space coordinates:
 
 $$\begin{equation}
 t = A^0(t^\prime, x^\prime, y^\prime, z^\prime),
@@ -148,41 +141,28 @@ if and only if
 $$\begin{equation}
 \end{equation}$$
 
-But this is just a statement that the velocity of light is invariant under
-change of the coordinate system. The class of transformations that satisfy
-equation (11.21) are the Poincaré transformations.
+But this is just a statement that the velocity of light is invariant under change of the coordinate system. The class of transformations that satisfy equation (11.21) are the Poincaré transformations.
 
 ### Lorentz Transformations
 
 Special relativity is usually presented in terms of global Lorentz frames,
-with rectangular spatial coordinates. In this context the Lorentz
-transformations (and, more generally, the Poincaré transformations) can be
-characterized as the set of affine transformations (linear transformations
-plus shift) of the coordinate tuple (time and spatial rectangular
-coordinates) that preserve the length of incremental spacetime intervals as
-measured by
+with rectangular spatial coordinates. In this context the Lorentz transformations (and, more generally, the Poincaré transformations) can be characterized as the set of affine transformations (linear transformations plus shift) of the coordinate tuple (time and spatial rectangular coordinates) that preserve the length of incremental spacetime intervals as measured by
 
 $$\begin{equation}
 f(\xi) = -(\xi^0)^2 + (\xi^2)^2 + (\xi^2)^2 + (\xi^3)^2,
 \end{equation}$$
 
 where $\xi$ is an incremental 4-tuple that could be added to the coordinate
-4-tuple $(ct, x, y, z)$.#Footnote(4) The Poincaré-Lorentz transformations are of
-the form
+4-tuple $(ct, x, y, z)$.#Footnote(4) The Poincaré-Lorentz transformations are of the form
 
 $$\begin{equation}
 x = \Lambda x^\prime + a,
 \end{equation}$$
 
 Where $\Lambda$ is the tuple representation of a linear transformation and
-$a$ is a 4-tuple shift. Because the 4-tuple includes the time, these
-transformations include transformations to a uniformly moving frame. A
-transformation that does not rotate or shift, but just introduces relative
-velocity, is sometimes called a /boost/.
+$a$ is a 4-tuple shift. Because the 4-tuple includes the time, these transformations include transformations to a uniformly moving frame. A transformation that does not rotate or shift, but just introduces relative velocity, is sometimes called a /boost/.
 
-In general relativity, global Lorentz frames do not exist, and so global
-affine transformations are irrelevant. In general relativity Lorentz
-invariance is a local property of incremental 4-tuples at a point.
+In general relativity, global Lorentz frames do not exist, and so global affine transformations are irrelevant. In general relativity Lorentz invariance is a local property of incremental 4-tuples at a point.
 
 Incremental 4-tuples transform as
 
@@ -198,8 +178,7 @@ f(\xi^\prime) = f(\Lambda \xi^\prime),
 
 for arbitrary $\xi^\prime$.
 
-The possible $\Lambda$ that are consistent with the preservation of the
-interval can be completely specified and conveniently parameterized.
+The possible $\Lambda$ that are consistent with the preservation of the interval can be completely specified and conveniently parameterized.
 
 ### Simple Lorentz Transformations
 
@@ -222,8 +201,7 @@ q^2 - s^2 &= -1.
 \end{aligned}
 \end{equation}$$
 
-There are four parameters to determine, and only three equations, so the
-solutions have a free parameter. It turns out that a good choice is $\beta =
+There are four parameters to determine, and only three equations, so the solutions have a free parameter. It turns out that a good choice is $\beta =
 q/p$. Solve to find
 
 $$\begin{equation}
@@ -240,14 +218,10 @@ $$\begin{equation}
 \end{aligned}
 \end{equation}$$
 
-Simple physical arguments#Footnote(5) show that this mathematical result relates the
-time and space coordinates for two systems in uniform relative motion. The
-parameter $\beta$ is related to the relative velocity.
+Simple physical arguments#Footnote(5) show that this mathematical result relates the time and space coordinates for two systems in uniform relative motion. The parameter $\beta$ is related to the relative velocity.
 
-Consider incremental vectors as spacetime vectors relative to an origin in a
-global inertial frame. So, for example, $\xi = (ct, x)$, ignoring $y$ and $z$
-for a moment. The unprimed coordinate origin $x = 0$ corresponds, in primed
-coordinates, to (using equations 11.29)
+Consider incremental vectors as spacetime vectors relative to an origin in a global inertial frame. So, for example, $\xi = (ct, x)$, ignoring $y$ and $z$
+for a moment. The unprimed coordinate origin $x = 0$ corresponds, in primed coordinates, to (using equations 11.29)
 
 $$\begin{equation}
 x = 0 = \gamma(\beta)(x^\prime + \beta c t'),
@@ -259,9 +233,7 @@ $$\begin{equation}
 \beta = -\frac{x^\prime}{ct^\prime} = -\frac{v^\prime}{c},
 \end{equation}$$
 
-with the definition $v^\prime = x^\prime / t^\prime$. We see that $\beta$ is
-minus $1/c$ times the velocity ($v^\prime$) of the unprimed system (which
-moves with its origin) as "seen" in the primed coordinates
+with the definition $v^\prime = x^\prime / t^\prime$. We see that $\beta$ is minus $1/c$ times the velocity ($v^\prime$) of the unprimed system (which moves with its origin) as "seen" in the primed coordinates
 
 $$\begin{equation}
 \beta = \frac{x}{ct} = \frac{v}{c}.
@@ -269,19 +241,8 @@ $$\begin{equation}
 
 So $v^\prime = -v$.
 
-A consistent interpretation is that the origin of the primed system moves
-with velocity v = βc along the ˆx-axis of the unprimed system. And the
-unprimed system moves with the same velocity in the other direction, when
-viewed in terms of the primed system. What happened to the other coordinates:
-y and z? We did not need them to find this one-parameter family of Lorentz
-transformations. They are left alone. This mathematical result has a physical
-interpretation: Lengths are not affected by perpendicular boosts. Think about
-two observers on a collision course, each carrying a meter stick
-perpendicular to their relative velocity. At the moment of impact, the meter
-sticks must coincide. The symmetry of the situation does not permit one
-observer to conclude that one meter stick is shorter than the other, because
-the other observer must come to the same conclusion. Both observers can put
-their conclusions to the test upon impact.
+A consistent interpretation is that the origin of the primed system moves with velocity v = βc along the ˆx-axis of the unprimed system. And the unprimed system moves with the same velocity in the other direction, when viewed in terms of the primed system. What happened to the other coordinates:
+y and z? We did not need them to find this one-parameter family of Lorentz transformations. They are left alone. This mathematical result has a physical interpretation: Lengths are not affected by perpendicular boosts. Think about two observers on a collision course, each carrying a meter stick perpendicular to their relative velocity. At the moment of impact, the meter sticks must coincide. The symmetry of the situation does not permit one observer to conclude that one meter stick is shorter than the other, because the other observer must come to the same conclusion. Both observers can put their conclusions to the test upon impact.
 
 We can fill in the components of this simple boost:
 
@@ -296,24 +257,17 @@ $$\begin{equation}
 
 ### More General Lorentz Transformations
 
-One direction was special in our consideration of simple boosts. We can make
-use of this fact to find boosts in any direction.
+One direction was special in our consideration of simple boosts. We can make use of this fact to find boosts in any direction.
 
-Let $c \boldsymbol{\beta} = (v^0, v^1, v^2)$ be the tuple of components of
-the relative velocity of the origin of the primed system in the unprimed
-system. The components are with respect to the same rectangular basis used to
-define the spatial components of any incremental vector.
+Let $c \boldsymbol{\beta} = (v^0, v^1, v^2)$ be the tuple of components of the relative velocity of the origin of the primed system in the unprimed system. The components are with respect to the same rectangular basis used to define the spatial components of any incremental vector.
 
-An incremental vector can be decomposed into vectors parallel and
-perpendicular to the velocity. Let $\boldsymbol{\xi}$ be the tuple of spatial
-components of $\xi$, and $\xi^0$ be the time component. Then,
+An incremental vector can be decomposed into vectors parallel and perpendicular to the velocity. Let $\boldsymbol{\xi}$ be the tuple of spatial components of $\xi$, and $\xi^0$ be the time component. Then,
 
 $$\begin{equation}
 \boldsymbol{\xi} = \boldsymbol{\xi}^\perp + \boldsymbol{\xi}^\parallel,
 \end{equation}$$
 
-where $\boldsymbol{\beta} \cdot \boldsymbol{\xi} = 0$. (This is the ordinary
-dot product in three dimensions.) Explicitly,
+where $\boldsymbol{\beta} \cdot \boldsymbol{\xi} = 0$. (This is the ordinary dot product in three dimensions.) Explicitly,
 
 $$\begin{equation}
 \boldsymbol{\xi}^\parallel \
@@ -327,9 +281,7 @@ $$\begin{equation}
 \boldsymbol{\xi}^\perp = \boldsymbol{\xi} - \boldsymbol{\xi}^\parallel.
 \end{equation}$$
 
-In the simple boost of equation (11.33) we can identify $\xi^1$ with the
-magnitude $|\xi^{\Vert}|$ of the parallel component. The perpendicular
-component is unchanged:
+In the simple boost of equation (11.33) we can identify $\xi^1$ with the magnitude $|\xi^{\Vert}|$ of the parallel component. The perpendicular component is unchanged:
 
 $$\begin{equation}
 \begin{aligned}
@@ -375,9 +327,7 @@ The invariant interval is then
 (square (4tuple->ct 4tuple)))))
 ```
 
-This is a real number for space-like intervals. A space-like interval is one
-where spatial distance is larger than can be traversed by light in the time
-interval.
+This is a real number for space-like intervals. A space-like interval is one where spatial distance is larger than can be traversed by light in the time interval.
 
 It is often convenient for the interval to be real for time-like intervals,
 where light can traverse the spatial distance in less than the time interval.
@@ -413,8 +363,7 @@ We can check that the interval is invariant:
 ```
 
 It is inconvenient that the general boost as just defined does not work if
-$\boldsymbol{\beta}$ is zero. An alternate way to specify a boost is through
-the magnitude of $v/c$ and a direction:
+$\boldsymbol{\beta}$ is zero. An alternate way to specify a boost is through the magnitude of $v/c$ and a direction:
 
 ```Scheme (define ((general-boost2 direction v/c) 4tuple-prime)
 (let ((delta-ct-prime (4tuple->ct 4tuple-prime))
@@ -436,10 +385,7 @@ This is well behaved as $v/c$ goes to zero.
 
 ### Rotations
 
-A linear transformation that does not change the magnitude of the spatial and
-time components, individually, leaves the interval invariant. So a
-transformation that rotates the spatial coordinates and leaves the time
-component unchanged is also a Lorentz transformation. Let $R$ be a
+A linear transformation that does not change the magnitude of the spatial and time components, individually, leaves the interval invariant. So a transformation that rotates the spatial coordinates and leaves the time component unchanged is also a Lorentz transformation. Let $R$ be a
 3-dimensional rotation. Then the extension to a Lorentz transformation
 $\mathcal{R}$ is defined by
 
@@ -449,18 +395,13 @@ $$\begin{equation}
 = \left((\xi^\prime)^0, R(\boldsymbol{\xi}^\prime) \right).
 \end{equation}$$
 
-Examining the expression for the general boost, equation (11.38), we see that
-the boost transforms simply as the arguments are rotated. Indeed,
+Examining the expression for the general boost, equation (11.38), we see that the boost transforms simply as the arguments are rotated. Indeed,
 
 $$\begin{equation}
 B(\boldsymbol{\beta})=\left(\mathcal{R}(R) \right)^{-1} \circ B\left( R(\boldsymbol{\beta}) \right) \circ \mathcal{R}(R).
 \end{equation}$$
 
-Note that $\left(\mathcal{R}(R) \right)^{-1} = \mathcal{R}(R^{=1})$. The
-functional inverse of the extended rotation is the extension of the inverse
-rotation. We could use this property of boosts to think of the general boost
-as a combination of a rotation and a simple boost along some special
-direction.
+Note that $\left(\mathcal{R}(R) \right)^{-1} = \mathcal{R}(R^{=1})$. The functional inverse of the extended rotation is the extension of the inverse rotation. We could use this property of boosts to think of the general boost as a combination of a rotation and a simple boost along some special direction.
 
 The extended rotation can be implemented:
 
@@ -492,27 +433,15 @@ xi)))
 
 ### General Lorentz Transformations
 
-A Lorentz transformation carries an incremental 4-tuple to another 4-tuple. A
-general linear transformation on 4-tuples has sixteen free parameters. The
-interval is a symmetric quadratic form, so the requirement that the interval
-be preserved places only ten constraints on these parameters. Evidently there
-are six free parameters to the general Lorentz transformation. We already
-have three parameters that specify boosts (the three components of the boost
-velocity). And we have three more parameters in the extended rotations. The
-general Lorentz transformation can be constructed by combining generalized
-rotations and boosts.
+A Lorentz transformation carries an incremental 4-tuple to another 4-tuple. A general linear transformation on 4-tuples has sixteen free parameters. The interval is a symmetric quadratic form, so the requirement that the interval be preserved places only ten constraints on these parameters. Evidently there are six free parameters to the general Lorentz transformation. We already have three parameters that specify boosts (the three components of the boost velocity). And we have three more parameters in the extended rotations. The general Lorentz transformation can be constructed by combining generalized rotations and boosts.
 
-Any Lorentz transformation has a unique decomposition as a generalized
-rotation followed by a general boost. Any $\Lambda$ that preserves the
-interval can be written uniquely:
+Any Lorentz transformation has a unique decomposition as a generalized rotation followed by a general boost. Any $\Lambda$ that preserves the interval can be written uniquely:
 
 $$\begin{equation}
 \Lambda = B(\boldsymbol{\beta})\mathcal{R}.
 \end{equation}$$
 
-We can use property (11.41) to see this. Suppose we follow a general boost by
-a rotation. A new boost can be defined to absorb this rotation, but only if
-the boost is preceded by a suitable rotation:
+We can use property (11.41) to see this. Suppose we follow a general boost by a rotation. A new boost can be defined to absorb this rotation, but only if the boost is preceded by a suitable rotation:
 
 $$\begin{equation}
 \mathcal{R}(R) \circ B(\boldsymbol{\beta}) = B\left(R(\boldsymbol{\beta})\right) \circ \mathcal{R}(R).
@@ -520,28 +449,16 @@ $$\begin{equation}
 
 *** Exercise 11.1: Lorentz Decomposition
 
-The counting of free parameters supports the conclusion that the general
-Lorentz transformation can be constructed by combining generalized rotations
-and boosts. Then the decomposition (11.42) follows from property (11.41).
+The counting of free parameters supports the conclusion that the general Lorentz transformation can be constructed by combining generalized rotations and boosts. Then the decomposition (11.42) follows from property (11.41).
 Find a more convincing proof.
 
 ### Special Relativity Frames
 
-A new frame is defined by a Poincaré transformation from a given frame (see
-equation 11.23). The transformation is specified by a boost magnitude and a
-unit-vector boost direction, relative to the given frame, and the position of
-the origin of the frame being defined in the given frame.
+A new frame is defined by a Poincaré transformation from a given frame (see equation 11.23). The transformation is specified by a boost magnitude and a unit-vector boost direction, relative to the given frame, and the position of the origin of the frame being defined in the given frame.
 
-Points in spacetime are called events. It must be possible to compare two
-events to determine if they are the same. This is accomplished in any
-particular experiment by building all frames involved in that experiment from
-a base frame, and representing the events as coordinates in that base frame.
+Points in spacetime are called events. It must be possible to compare two events to determine if they are the same. This is accomplished in any particular experiment by building all frames involved in that experiment from a base frame, and representing the events as coordinates in that base frame.
 
-When one frame is built upon another, to determine the event from
-frame-specific coordinates or to determine the frame-specific coordinates for
-an event requires composition of the boosts that relate the frames to each
-other. The two procedures that are required to implement this strategy
-are#Footnote(6)
+When one frame is built upon another, to determine the event from frame-specific coordinates or to determine the frame-specific coordinates for an event requires composition of the boosts that relate the frames to each other. The two procedures that are required to implement this strategy are#Footnote(6)
 
 ```Scheme (define ((coordinates->event ancestor-frame this-frame
                  boost-direction v/c origin)
@@ -559,8 +476,7 @@ event)
             (- ((chart ancestor-frame) event) origin))))
 ```
 
-With these two procedures, the procedure =make-SR-frame= constructs a new
-relativistic frame by a Poincaré transformation from a given frame.
+With these two procedures, the procedure =make-SR-frame= constructs a new relativistic frame by a Poincaré transformation from a given frame.
 
 ```Scheme (define make-SR-frame
 (frame-maker coordinates->event event->coordinates))
@@ -569,10 +485,7 @@ relativistic frame by a Poincaré transformation from a given frame.
 *** Velocity Addition Formula
 
 
-For example, we can derive the traditional velocity addition formula. Assume
-that we have a base frame called =home=. We can make a frame =A= by a boost
-from home in the $\hat{x}$ direction, with components $(1, 0, 0)$, and with
-a dimensionless measure of the speed $v_a / c$. We also specify that the
+For example, we can derive the traditional velocity addition formula. Assume that we have a base frame called =home=. We can make a frame =A= by a boost from home in the $\hat{x}$ direction, with components $(1, 0, 0)$, and with a dimensionless measure of the speed $v_a / c$. We also specify that the
 4-tuple origin of this new frame coincides with the origin of =home=.
 
 ```Scheme (define A
@@ -591,9 +504,7 @@ Frame =B= is built on frame =A= similarly, boosted by $v_b/c$.
      (make-SR-coordinates A (up 0 0 0 0))))
 ```
 
-So any point at rest in frame =B= will have a speed relative to home. For
-the spatial origin of frame =B=, with =B= coordinates =(up 'ct 0 0 0)=, we
-have
+So any point at rest in frame =B= will have a speed relative to home. For the spatial origin of frame =B=, with =B= coordinates =(up 'ct 0 0 0)=, we have
 
 ```Scheme (let ((B-origin-home-coords
 ((chart home)
@@ -604,9 +515,7 @@ have
 ;; (/ (+ va/c vb/c) (+ 1 (* va/c vb/c)))
 ```
 
-obtaining the traditional velocity-addition formula. (Note that the
-resulting velocity is represented as a fraction of the speed of light.) This
-is a useful result, so:
+obtaining the traditional velocity-addition formula. (Note that the resulting velocity is represented as a fraction of the speed of light.) This is a useful result, so:
 
 ```Scheme (define (add-v/cs va/c vb/c)
 (/ (+ va/c vb/c)
@@ -615,21 +524,17 @@ is a useful result, so:
 
 ### Twin Paradox
 
-Special relativity engenders a traditional conundrum: consider two twins, one
-of whom travels and the other stays at home. When the traveller returns it is
-discovered that the traveller has aged less than the twin who stayed at home.
+Special relativity engenders a traditional conundrum: consider two twins, one of whom travels and the other stays at home. When the traveller returns it is discovered that the traveller has aged less than the twin who stayed at home.
 How is this possible?
 
-The experiment begins at the start event, which we arbitrarily place at the
-origin of the home frame.
+The experiment begins at the start event, which we arbitrarily place at the origin of the home frame.
 
 ```Scheme (define start-event
 ((point home)
 (make-SR-coordinates home (up 0 0 0 0))))
 ```
 
-There is a homebody and a traveller. The traveller leaves home at the start
-event and proceeds at 24/25 of the speed of light in the $\hat{x}$ direction.
+There is a homebody and a traveller. The traveller leaves home at the start event and proceeds at 24/25 of the speed of light in the $\hat{x}$ direction.
 We define a frame for the traveller, by boosting from the home frame.
 
 ```Scheme (define outgoing
@@ -641,13 +546,9 @@ We define a frame for the traveller, by boosting from the home frame.
       start-event)))
 ```
 
-After 25 years of home time the traveller is 24 light-years out. We define
-that event using the coordinates in the home frame. Here we scale the time
-coordinate by the speed of light so that the units of $ct$ slot in the
+After 25 years of home time the traveller is 24 light-years out. We define that event using the coordinates in the home frame. Here we scale the time coordinate by the speed of light so that the units of $ct$ slot in the
 4-vector are the same as the units in the spatial slots. Since $v/c$ = 24/25
-we must multiply that by the speed of light to get the velocity. This is
-multiplied by 25 years to get the $\hat{x}$ coordinate of the traveller in
-the home frame at the turning point.
+we must multiply that by the speed of light to get the velocity. This is multiplied by 25 years to get the $\hat{x}$ coordinate of the traveller in the home frame at the turning point.
 
 ```Scheme (define traveller-at-turning-point-event
 ((point home)
@@ -655,13 +556,11 @@ the home frame at the turning point.
             (up (* :c 25) (* 25 24/25 :c) 0 0))))
 ```
 
-Note that the first component of the coordinates of an event is the speed of
-light multiplied by time. The other components are distances. For example,
+Note that the first component of the coordinates of an event is the speed of light multiplied by time. The other components are distances. For example,
 the second component (the $\hat{x}$ component) is the distance travelled in
 25 years at 24/25 the speed of light. This is 24 light-years.
 
-If we examine the displacement of the traveller in his own frame we see that
-the traveller has aged 7 years and he has not moved from his spatial origin.
+If we examine the displacement of the traveller in his own frame we see that the traveller has aged 7 years and he has not moved from his spatial origin.
 
 ```Scheme (- ((chart outgoing) traveller-at-turning-point-event)
 ((chart outgoing) start-event))
@@ -676,8 +575,7 @@ years.
 ;; (up (* 25 :c) (* 24 :c) 0 0)
 ```
 
-The proper time interval is 7 years, as seen in any frame, because it
-measures the aging of the traveller:
+The proper time interval is 7 years, as seen in any frame, because it measures the aging of the traveller:
 
 ```Scheme
 (proper-time-interval
@@ -718,8 +616,7 @@ and the homebody has aged
 as seen from either frame.
 
 As seen by the traveller, home is moving in the $−\hat{x}$ direction at 24/25
-of the velocity of light. At the turning point (7 years by his time) home is
-at:
+of the velocity of light. At the turning point (7 years by his time) home is at:
 
 ```Scheme (define home-at-outgoing-turning-point-event
 ((point outgoing)
@@ -727,9 +624,7 @@ at:
             (up (* 7 :c) (* 7 -24/25 :c) 0 0))))
 ```
 
-Since home is speeding away from the traveller, the twin at home has aged
-less than the traveller. This may seem weird, but it is OK because this event
-is different from the halfway event in the home frame.
+Since home is speeding away from the traveller, the twin at home has aged less than the traveller. This may seem weird, but it is OK because this event is different from the halfway event in the home frame.
 
 ```Scheme (proper-time-interval
 (- ((chart home) home-at-outgoing-turning-point-event)
@@ -737,9 +632,7 @@ is different from the halfway event in the home frame.
 ;; (* 49/25 :c)
 ```
 
-The traveller turns around abruptly at this point (painful!) and begins the
-return trip. The incoming trip is the reverse of the outgoing trip, with
-origin at the turning-point event:
+The traveller turns around abruptly at this point (painful!) and begins the return trip. The incoming trip is the reverse of the outgoing trip, with origin at the turning-point event:
 
 ```Scheme (define incoming
 (make-SR-frame 'incoming home
@@ -799,8 +692,7 @@ At the turning point of the traveller the homebody is at
             (up 0 (* 7 -24/25 :c) 0 0))))
 ```
 
-The time elapsed for the homebody between the reunion and the turning point
-of the homebody, as viewed by the incoming traveller, is about 2 years.
+The time elapsed for the homebody between the reunion and the turning point of the homebody, as viewed by the incoming traveller, is about 2 years.
 
 ```Scheme (proper-time-interval
 (- ((chart home) end-event)
@@ -808,8 +700,7 @@ of the homebody, as viewed by the incoming traveller, is about 2 years.
 ;; (* 49/25 :c)
 ```
 
-Thus the aging of the homebody occurs at the turnaround, from the point of
-view of the traveller.
+Thus the aging of the homebody occurs at the turnaround, from the point of view of the traveller.
 
 ----
 ### Footnotes

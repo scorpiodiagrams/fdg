@@ -209,8 +209,7 @@ One interesting basis for rotations in 3-dimensional space is not a coordinate b
 
 Rotations are the actions of the special orthogonal group SO(3), which is a 3-dimensional manifold. The elements of this group may be represented by the set of $3 \times 3$ orthogonal matrices with determinant $+1$.
 
-We can use a coordinate patch on this manifold with Euler angle coordinates: each element has three coordinates, $\theta$, $\phi$, $\psi$. A manifold point may be represented by a rotation matrix. The rotation matrix for Euler angles is a product of three simple rotations: $M(\theta, \phi, \psi) = R_z(\phi)R_x(\theta)R_z(\psi)$, where $R_x$ and $R_z$ are functions that take
-an angle and produce the matrices representing rotations about the $x$ and $z$ axes, respectively. We can visualize $\theta$ as the colatitude of the pole from the $\hat{z}$-axis, $\phi$ as the longitude, and $\psia$ as the rotation around the pole.
+We can use a coordinate patch on this manifold with Euler angle coordinates: each element has three coordinates, $\theta$, $\phi$, $\psi$. A manifold point may be represented by a rotation matrix. The rotation matrix for Euler angles is a product of three simple rotations: $M(\theta, \phi, \psi) = R_z(\phi)R_x(\theta)R_z(\psi)$, where $R_x$ and $R_z$ are functions that take an angle and produce the matrices representing rotations about the $x$ and $z$ axes, respectively. We can visualize $\theta$ as the colatitude of the pole from the $\hat{z}$-axis, $\phi$ as the longitude, and $\psia$ as the rotation around the pole.
 
 Given a rotation specified by Euler angles, how do we change the Euler angle to correspond to an incremental rotation of size $\epsilon$ about the $\hat{x}$-axis? The direction $(a, b, c)$ is constrained by the equation
 
@@ -310,8 +309,7 @@ $$\begin{equation}
 
 We used the fact, shown above, that the commutator of two coordinate basis fields is zero.
 
-We can check this formula for the commutator for the general
-vector fields =e0= and =e1= in polar coordinates:
+We can check this formula for the commutator for the general vector fields =e0= and =e1= in polar coordinates:
 
 ```Scheme (let* ((polar-basis (coordinate-system->basis R2-polar))
  (polar-vector-basis (basis->vector-basis polar-basis))
@@ -375,8 +373,7 @@ $$\begin{equation}
 \end{equation}$$
 
 We can also compute the commutators for the basis vector fields
-$\mathsf{e}_x$, $\mathsf{e}_y$, and $\mathsf{e}_z$ in the SO(3) manifold (see
-equations 4.29–4.31) that correspond to rotations about the $x$, $y$, and $z$
+$\mathsf{e}_x$, $\mathsf{e}_y$, and $\mathsf{e}_z$ in the SO(3) manifold (see equations 4.29–4.31) that correspond to rotations about the $x$, $y$, and $z$
 axes, respectively:#Footnote(6)
 
 ```Scheme (((+ (commutator e x e y) e z) f) SO3-point)
@@ -427,35 +424,25 @@ This result is illustrated in figure 4.2.
 
 Take a point $\mathsf{0}$ in $\mathsf{M}$ as the origin. Then, presuming
 $[\mathsf{e}_i, \mathsf{e}_j] = 0$, the coordinates $x$ of the point
-$\mathsf{m}$ in the coordinate system corresponding to the $\mathsf{e}$ basis
-satisfy#Footnote(8)
+$\mathsf{m}$ in the coordinate system corresponding to the $\mathsf{e}$ basis satisfy#Footnote(8)
 
 $$\begin{equation}
 \mathsf{m} = \phi_1^{x \mathsf{e}}(\mathsf{0}) = \chi^{-1}(x),
 \end{equation}$$
 
-where $\chi$ is the coordinate function being defined. Because the elements
-of $\mathsf{e}$ commute, we can translate separately along the integral
-curves in any order and reach the same point; the terms in the exponential
-can be factored into separate exponentials if needed.
+where $\chi$ is the coordinate function being defined. Because the elements of $\mathsf{e}$ commute, we can translate separately along the integral curves in any order and reach the same point; the terms in the exponential can be factored into separate exponentials if needed.
 
 ### Exercise 4.1: Alternate Angles
 
 Note that the Euler angles are singular at $\theta = 0$ (where $\phi$ and
 $\psi$ become degenerate), so the representations of $\mathsf{e}_x$,
-$\mathsf{e}_y$, and $\mathsf{e}_z$ (defined in equations 4.29–4.31) have
-problems there. An alternate coordinate system avoids this problem, while
-introducing a similar problem elsewhere in the manifold. Consider the
-"alternate angles" $(\theta_a, \phi_a, \psi_a)$ which define a rotation
-matrix via $M(\theta_a, \phi_a, \psi_a) = R_z(\phi_a) R_x(\theta_a)
+$\mathsf{e}_y$, and $\mathsf{e}_z$ (defined in equations 4.29–4.31) have problems there. An alternate coordinate system avoids this problem, while introducing a similar problem elsewhere in the manifold. Consider the
+"alternate angles" $(\theta_a, \phi_a, \psi_a)$ which define a rotation matrix via $M(\theta_a, \phi_a, \psi_a) = R_z(\phi_a) R_x(\theta_a)
 R_y(\psi_a)$.
 
-*a.* Where does the singularity appear in these alternate coordinates? Do you
-think you could define a coordinate system for rotations that has no
-singularities?
+*a.* Where does the singularity appear in these alternate coordinates? Do you think you could define a coordinate system for rotations that has no singularities?
 
-*b.* What do the $\mathsf{e}_x$, $\mathsf{e}_y$, and $\mathsf{e}_z$ basis
-vector fields look like in this coordinate system?
+*b.* What do the $\mathsf{e}_x$, $\mathsf{e}_y$, and $\mathsf{e}_z$ basis vector fields look like in this coordinate system?
 
 ### Exercise 4.2: General Commutators
 

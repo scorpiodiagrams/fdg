@@ -44,15 +44,7 @@ $\hat{\mathrm{z}}$ are the usual orthonormal rectangular vector basis, $f$ a fun
 \operatorname{div}(\overrightarrow{\mathrm{v}}) &=\frac{\partial v_{x}}{\partial x}+\frac{\partial v_{y}}{\partial y}+\frac{\partial v_{z}}{\partial z}.
 \end{align*}
 
-Recall the meaning of the traditional vector operations. Traditionally we
-assume that there is a metric that allows us to determine distances between
-locations and angles between vectors. Such a metric establishes local scale
-factors relating coordinate increments to actual distances. The vector
-gradient, $\operatorname{grad}(f)$, points in the direction of steepest
-increase in the function with respect to actual distances. By contrast, the
-gradient one-form, df, does not depend on a metric, so there is no concept of
-distance built in to it. Nevertheless, the concepts are related. The gradient
-one-form is given by
+Recall the meaning of the traditional vector operations. Traditionally we assume that there is a metric that allows us to determine distances between locations and angles between vectors. Such a metric establishes local scale factors relating coordinate increments to actual distances. The vector gradient, $\operatorname{grad}(f)$, points in the direction of steepest increase in the function with respect to actual distances. By contrast, the gradient one-form, df, does not depend on a metric, so there is no concept of distance built in to it. Nevertheless, the concepts are related. The gradient one-form is given by
 
 $$\begin{equation}
 \mathsf{df} = \left(\frac{\partial}{\partial \mathsf{x}} \mathsf{f}\right) \mathsf{dx} \
@@ -60,8 +52,7 @@ $$\begin{equation}
 + \left(\frac{\partial}{\partial \mathsf{z}} \mathsf{f}\right) \mathsf{dz}.
 \end{equation}$$
 
-The traditional gradient vector field is then just the raised gradient
-one-form (see equation 9.8). So
+The traditional gradient vector field is then just the raised gradient one-form (see equation 9.8). So
 
 $$\begin{equation}
 \operatorname{grad}(\mathsf{f}) = g^\sharp(\mathsf{df})
@@ -93,8 +84,7 @@ $$\begin{equation}
 \end{aligned}
 \end{equation}$$
 
-So the exterior-derivative expression corresponding to the vector-calculus
-curl is:
+So the exterior-derivative expression corresponding to the vector-calculus curl is:
 
 $$\begin{equation}
 \begin{aligned}
@@ -158,8 +148,7 @@ It is easily computed:
 (compose star d star flat)))
 ```
 
-The divergence is defined even if we don't have a metric, but have only a
-connection. In that case the divergence can be computed with
+The divergence is defined even if we don't have a metric, but have only a connection. In that case the divergence can be computed with
 
 ```Scheme (define (((divergence Cartan) v) point)
 (let ((basis (Cartan->basis Cartan))
@@ -171,11 +160,9 @@ basis)))
 
 ```
 
-If the Cartan form is derived from a metric these programs yield the same
-answer.
+If the Cartan form is derived from a metric these programs yield the same answer.
 
-The Laplacian is, as expected, the composition of the divergence and the
-gradient:
+The Laplacian is, as expected, the composition of the divergence and the gradient:
 
 ```Scheme (define (Laplacian metric orthonormal-basis)
 (compose (divergence metric orthonormal-basis)
@@ -184,8 +171,7 @@ gradient:
 
 ### Spherical Coordinates
 
-We can illustrate these by computing the formulas for the vector-calculus
-operators in spherical coordinates. We start with a 3-dimensional manifold,
+We can illustrate these by computing the formulas for the vector-calculus operators in spherical coordinates. We start with a 3-dimensional manifold,
 and we set up the conditions for spherical coordinates.
 
 ```Scheme (define spherical R3-rect)
@@ -206,8 +192,7 @@ The geometry is specified by the metric:
      (dphi v1) (dphi v2))))))
 ```
 
-We also need an orthonormal basis for the spherical coordinates. The
-coordinate basis is orthogonal but not normalized.
+We also need an orthonormal basis for the spherical coordinates. The coordinate basis is orthogonal but not normalized.
 
 ```Scheme (define e_0 d/dr)
 
@@ -227,8 +212,7 @@ coordinate basis is orthogonal but not normalized.
      orthonormal-spherical-1form-basis))
 ```
 
-The components of the gradient of a scalar field are obtained using the dual
-basis:
+The components of the gradient of a scalar field are obtained using the dual basis:
 
 ```Scheme ((orthonormal-spherical-1form-basis
 ((gradient spherical-metric orthonormal-spherical-basis)
@@ -241,8 +225,7 @@ R3-spherical-point)
 ;;        (* r0 (sin theta0))))
 ```
 
-To get the formulas for curl and divergence we need a vector field with
-components with respect to the normalized basis.
+To get the formulas for curl and divergence we need a vector field with components with respect to the normalized basis.
 
 ```Scheme (define v
 (+ (* (literal-manifold-function 'v^0 spherical) e_0)
@@ -344,8 +327,7 @@ $$\begin{equation}
 
 If $\sigma$ is positive the vector is /spacelike/ and its square root is the
 /proper length/ of the vector. If $\sigma$ is negative the vector is
-/timelike/ and the square root of its negation is the /proper time/ of the
-vector. If $\sigma$ is zero the vector is /lightlike/ or /null/.
+/timelike/ and the square root of its negation is the /proper time/ of the vector. If $\sigma$ is zero the vector is /lightlike/ or /null/.
 
 ```Scheme ((g-Minkowski a-vector a-vector) an-event)
 ;; (+ (* -1 (expt (vˆt (up ct0 x0 y0 z0)) 2))
@@ -354,8 +336,7 @@ vector. If $\sigma$ is zero the vector is /lightlike/ or /null/.
 ;;    (expt (vˆz (up ct0 x0 y0 z0)) 2))
 ```
 
-As an example of vector calculus in four dimensions, we can compute the wave
-equation for a scalar field in 4-dimensional spacetime.
+As an example of vector calculus in four dimensions, we can compute the wave equation for a scalar field in 4-dimensional spacetime.
 
 We need an orthonormal basis for the spacetime:
 
@@ -387,13 +368,9 @@ So, the Laplacian of a scalar field is the wave equation!
 
 Using Hodge duals we can represent electrodynamics in an elegant way.
 Maxwell's electrodynamics is invariant under Lorentz transformations. We use
-4-dimensional rectangular coordinates for the flat spacetime of special
-relativity.
+4-dimensional rectangular coordinates for the flat spacetime of special relativity.
 
-In this formulation of electrodynamics the electric and magnetic fields are
-represented together as a two-form field, the /Faraday tensor/. Under Lorentz
-transformations the individual components are mixed. The Faraday tensor
-is:#Footnote(4)
+In this formulation of electrodynamics the electric and magnetic fields are represented together as a two-form field, the /Faraday tensor/. Under Lorentz transformations the individual components are mixed. The Faraday tensor is:#Footnote(4)
 
 ```Scheme (define (Faraday Ex Ey Ez Bx By Bz)
 (+ (* Ex (wedge dx dct))
@@ -404,9 +381,7 @@ is:#Footnote(4)
 (* Bz (wedge dx dy))))
 ```
 
-The Hodge dual of the Faraday tensor exchanges the electric and magnetic
-fields, negating the components that will involve time. The result is called
-the /Maxwell tensor/:
+The Hodge dual of the Faraday tensor exchanges the electric and magnetic fields, negating the components that will involve time. The result is called the /Maxwell tensor/:
 
 ```Scheme (define (Maxwell Ex Ey Ez Bx By Bz)
 (+ (* -1 Bx (wedge dx dct))
@@ -432,20 +407,16 @@ an-event)
 ;; 0
 ```
 
-One way to get electric fields is to have charges; magnetic fields can arise
-from motion of charges. In this formulation we combine the charge density and
-the current to make a one-form field:
+One way to get electric fields is to have charges; magnetic fields can arise from motion of charges. In this formulation we combine the charge density and the current to make a one-form field:
 
 ```Scheme (define (J charge-density Ix Iy Iz)
 (- (* (/ 1 :c) (+ (* Ix dx) (* Iy dy) (* Iz dz)))
 (* charge-density dct)))
 ```
 
-The coefficient =(/ 1 :c)= makes the components of the one-form uniform with
-respect to units.
+The coefficient =(/ 1 :c)= makes the components of the one-form uniform with respect to units.
 
-To develop Maxwell's equations we need a general Faraday field and a general
-current-density field:
+To develop Maxwell's equations we need a general Faraday field and a general current-density field:
 
 ```Scheme (define F
 (Faraday (literal-manifold-function 'Ex SR)
@@ -495,13 +466,7 @@ $$\begin{equation}
 \end{equation}$$
 
 To see how these work out, we evaluate each component of $\mathsf{dF}$ and
-$\mathsf{d}(g^{*}\mathsf{F})- 4{\pi}g^{*} \mathsf{J}$. Since these are both
-two-form fields, their exterior derivatives are three-form fields, so we have
-to provide three basis vectors to get each component. Each component equation
-will yield one of Maxwell's equations, written in coordinates, without vector
-notation. So, the purely spatial component $\mathsf{dF}(\partial / \partial
-x, \partial / \partial y, \partial / \partial z)$ of equation 10.13 is
-equation 10.15:
+$\mathsf{d}(g^{*}\mathsf{F})- 4{\pi}g^{*} \mathsf{J}$. Since these are both two-form fields, their exterior derivatives are three-form fields, so we have to provide three basis vectors to get each component. Each component equation will yield one of Maxwell's equations, written in coordinates, without vector notation. So, the purely spatial component $\mathsf{dF}(\partial / \partial x, \partial / \partial y, \partial / \partial z)$ of equation 10.13 is equation 10.15:
 
 ```Scheme (((d F) d/dx d/dy d/dz) an-event)
 ;; (+ (((partial 1) Bx) (up ct0 x0 y0 z0))
@@ -571,8 +536,7 @@ $$\begin{equation}
 + \frac{\partial E_z}{\partial z} = 4\pi\rho.
 \end{equation}$$
 
-And finally, the three mixed time and space components of equation 10.14 are
-equation 10.18:
+And finally, the three mixed time and space components of equation 10.14 are equation 10.18:
 
 ```Scheme (((- (d (SR-star F)) (* 4 :pi (SR-star 4-current)))
 d/dct d/dy d/dz)
@@ -621,8 +585,7 @@ $$\begin{equation}
 
 ### Lorentz Force
 
-The classical force on a charged particle moving in a electromagnetic field
-is
+The classical force on a charged particle moving in a electromagnetic field is
 
 $$\begin{equation}
 \vec{f} = q \left(\vec{E} + \frac{1}{c}\vec{v} \times \vec{B} \right).
@@ -664,11 +627,7 @@ $$\begin{equation}
 f^\nu = -\sum_{\alpha, \mu}{q U^\mu F_{\mu \alpha} \eta^{\alpha \nu}},
 \end{equation}$$
 
-where $U$ is the 4-velocity of the charged particle, $F$ is the Faraday
-tensor, and $\eta^{\alpha \nu}$ are the components of the inverse of the
-Minkowski metric. Here is a program that computes a component of the force in
-terms of the Faraday tensor. The desired component is specified by a
-one-form.
+where $U$ is the 4-velocity of the charged particle, $F$ is the Faraday tensor, and $\eta^{\alpha \nu}$ are the components of the inverse of the Minkowski metric. Here is a program that computes a component of the force in terms of the Faraday tensor. The desired component is specified by a one-form.
 
 ```Scheme (define (Force charge F 4velocity component)
 (* -1 charge
@@ -681,19 +640,16 @@ one-form.
       SR-basis)))
 ```
 
-So, for example, the force in the $\hat{x}$ direction for a stationary
-particle is
+So, for example, the force in the $\hat{x}$ direction for a stationary particle is
 
 ```Scheme ((Force 'q F d/dct dx) an-event)
 ;; (* q (Ex (up ct0 x0 y0 z0)))
 ```
 
-Notice that the 4-velocity $\partial / \partial ct$ is the 4-velocity of a
-stationary particle!
+Notice that the 4-velocity $\partial / \partial ct$ is the 4-velocity of a stationary particle!
 
 If we give a particle a more general timelike 4-velocity in the $\hat{x}$
-direction we can see how the $\hat{y}$ component of the force involves both
-the electric and magnetic field:
+direction we can see how the $\hat{y}$ component of the force involves both the electric and magnetic field:
 
 ```Scheme (define (Ux beta)
 (+ (* (/ 1 (sqrt (- 1 (square beta)))) d/dct)
@@ -710,8 +666,7 @@ the electric and magnetic field:
 
 Compute all components of the 4-force for a general timelike 4-velocity.
 
-a. Compare these components to the components of the nonrelativistic force
-given above. Interpret the differences.
+a. Compare these components to the components of the nonrelativistic force given above. Interpret the differences.
 
 b. What is the meaning of the time component? For example, consider:
 
@@ -720,9 +675,7 @@ b. What is the meaning of the time component? For example, consider:
 ;;    (sqrt (+ 1 (* -1 (expt v/c 2)))))
 ```
 
-c. Subtract the structure of components of the relativistic 3-space force
-from the structure of the spatial components of the 4-space force to show
-that they are equal.
+c. Subtract the structure of components of the relativistic 3-space force from the structure of the spatial components of the 4-space force to show that they are equal.
 
 ----
 ### Footnotes
