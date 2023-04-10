@@ -423,27 +423,34 @@ As a program this is
 0 (- k 1)))))
 ```
 Change of Basis
-The basis-independence of the covariant derivative implies a relationship between the Cartan forms in one basis and the equivalent Cartan forms in another basis. Recall (equation 4.13) that the basis vector fields of two bases are always related by a linear transformation. Let J be the matrix of coefficient functions and let e and e′ be down tuples of basis vector fields. Then
-e(f) = e′(f)J. (7.61)
+
+The basis-independence of the covariant derivative implies a relationship between the Cartan forms in one basis and the equivalent Cartan forms in another basis. Recall (equation 4.13) that the basis vector fields of two bases are always related by a linear transformation. Let $J$ be the matrix of coefficient functions and let $e$ and $e^{\prime}$ be down tuples of basis vector fields. Then
+$$\begin{array}{l}
+e(f) = e^{\prime}(f)J. 
+\quad (7.61)
+\end{array}$$
 We want the covariant derivative to be independent of basis. This will determine how the connection transforms with a change of basis:
-
-∇vu(f) = ei(f) v(ui) + πij(v)uj ij
-= e′i(f)Jij v (J−1)jk(u′)k + πjk(v)(J−1)kl(u′)l ijk l
-= e′i(f) v((u′)i) + Jijv (J−1)jk (u′)k
-  i jk
-+ J i j π jk ( v ) ( J − 1 ) kl ( u ′ ) l
- jkl 
-= e′i(f) v((u′)i) + (π′)ij(v)(u′)j . (7.62) ij
+
+$$\begin{equation}
+\begin{aligned}
+\nabla_{\mathsf{v}}\mathsf{u}(\mathsf{f}) &= \sum_{i}\mathsf{e}_{i}(\mathsf{f})\left(\mathsf{v}(\mathsf{u}^{i})+\sum_{j}\varpi^{i}_{j}(\mathsf{v})\mathrm{u}^{j}\right) \\
+&= \sum_{ijk}\mathsf{e}^{\prime}_{i}(\mathsf{f})\mathsf{J}^{i}_{j}\left(\mathsf{v}\left((\mathsf{J}^{-1})^{j}_{k}(\mathsf{u}^{\prime})^{k}\right)+\sum_{l}\varpi^{j}_{k}(\mathsf{v})(\mathsf{J}^{-1})^{k}_{l}(\mathsf{u}^{\prime})^{l}\right) \\
+&= \sum_{i}\mathsf{e}^{\prime}_{i}(\mathsf{f})\left(\mathsf{v}((\mathsf{u}^{\prime})^{i})+\sum_{jk}\mathsf{J}^{i}_{j}\mathsf{v}\left((\mathsf{J}^{-1})^{j}_{k}\right)(\mathsf{u}^{\prime})^{k} \right. \\
+&\hspace{2cm}\left. + \sum_{jkl}\mathsf{J}^{i}_{j}\varpi^{j}_{k}(\mathsf{v})(\mathsf{J}^{-1})^{k}_{l}(\mathsf{u}^{\prime})^{l}\right) \\
+&= \sum_{i}\mathsf{e}^{\prime}_{i}(\mathsf{f})\left(\mathsf{v}((\mathsf{u}^{\prime})^{i})+\sum_{j}(\varpi^{\prime})^{i}_{j}(\mathsf{v})(\mathsf{u}^{\prime})^{j}\right).
+\end{aligned}
+\notag\quad (7.62)
+\end{equation}$$
 
 #page(101)
 The last line of equation (7.62) gives the formula for the covariant derivative we would have written down naturally in the primed coordinates; comparing with the next-to-last line, we see that
 π′(v) = Jv J−1 + Jπ(v)J−1. (7.63)
-This transformation rule is weird. It is not a linear transformation of π because the first term is an offset that depends on v. So it isnotrequiredthatπ′ =0whenπ=0. Thusπisnotatensor field. See Appendix C.
+This transformation rule is weird. It is not a linear transformation of π because the first term is an offset that depends on v. So it is not required that π′ =0 when π=0. Thus π is not a tensor field. See Appendix C.
 We can write equation (7.61) in terms of components
 j
 e′j(f)Jj . i
 ei(f) =
-LetK=J−1,soKi(m)Jj (m)=δi.Then
+LetK=J−1,so Ki(m)Jj (m)=δi.Then
 (7.64)
 (7.65)
 jjkk
@@ -567,6 +574,22 @@ j
 The argument uγ is more difficult. We must modify equation (7.37): F wγ uγ (f)(t) =  Ai (δ)uj (t − δ)eγ (f)(t).
 δji i,j
 13You may have noticed that t and t appear here. The real-line manifold point t has coordinate t.
+
+We can abstract these equations of parallel transport by inventing a covariant derivative over a map. We also generalize the time line to a source manifold $N$.
+
+$$\begin{array}{l}\nabla_{\gamma}v^{\gamma}(f)(n) = v^{i}(n)\frac{\partial}{\partial x^{i}}f(n) + \gamma^{ij}(d\gamma(v))(n)u_{j}(n) e_{\gamma_{i}}(f)(n), \quad (7.69) \\\end{array}$$
+
+where the map $\gamma:N\rightarrow M$, $v$ is a vector on $N$, $u_{\gamma}$ is a vector over the map $\gamma$, $f$ is a function on $M$, and $n$ is a point in $N$. Indeed, if $w$ is a vector field on $M$, $f$ is a manifold function on $M$, and if $d\gamma(v) = w\circ\gamma$ then
+
+$$\begin{array}{l}\nabla_{\gamma}u_{\gamma}(f)(n) = \nabla_{w}u(f)(\gamma(n)). \quad (7.70) \\\end{array}$$
+
+This is why we are justified in calling $\nabla_{\gamma}v$ a covariant derivative. Respecializing the source manifold to the real line, we can write the equations governing the parallel transport of $u_{\gamma}$ as
+
+$$\begin{array}{l}\nabla_{\gamma}\frac{\partial}{\partial t}u_{\gamma} = 0. \quad (7.71) \\\end{array}$$
+
+We obtain the set of differential equations (7.68) for the coordinates of $u_{\gamma}$, the vector over the map $\gamma$, that is parallel-transported along the curve $\gamma$:
+
+
 
 #page(106)
  We can abstract these equations of parallel transport by inventing a covariant derivative over a map. We also generalize the time line to a source manifold N.
