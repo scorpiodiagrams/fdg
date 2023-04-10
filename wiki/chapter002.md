@@ -1,5 +1,5 @@
-#+STARTUP: indent
-#+PROPERTY: header-args :eval no-export
+!!Polyglot
+#page(0)
 
 ## Manifolds
 
@@ -9,19 +9,19 @@ A /manifold/ is a generalization of our idea of a smooth surface embedded in Euc
 
 An example of a 2-dimensional manifold is the surface of a sphere or of a coffee cup. The space of all configurations of a planar double pendulum is a more abstract example of a 2-dimensional manifold. A manifold that looks locally Euclidean may not look like Euclidean space globally: for example, it may not be simply connected. The surface of the coffee cup is not simply connected, because there is a hole in the handle for your fingers.
 
-An example of a coordinate function is the function that maps points in a simply-connected open neighborhood of the surface of a sphere to the tuple of latitude and longitude[fn:1]. If we want to talk about motion on the Earth, we can identify the space of configurations to a 2-sphere (the surface of a
+An example of a coordinate function is the function that maps points in a simply-connected open neighborhood of the surface of a sphere to the tuple of latitude and longitude#Footnote(1). If we want to talk about motion on the Earth, we can identify the space of configurations to a 2-sphere (the surface of a
 3-dimensional ball). The map from the 2-sphere to the 3-dimensional coordinates of a point on the surface of the Earth captures the shape of the Earth.
 
 Two angles specify the configuration of the planar double pendulum. The manifold of configurations is a torus, where each point on the torus corresponds to a configuration of the double pendulum. The constraints, such as the lengths of the pendulum rods, are built into the map between the generalized coordinates of points on the torus and the arrangements of masses in 3-dimensional space.
 
 There are computational objects that we can use to model manifolds. For example,
-we can make an object that represents the plane[fn:2]
+we can make an object that represents the plane#Footnote(2)
 
 ```Scheme
 (define R2 (make-manifold R^n 2))
 ```
 
-and give it the name ~R2~. One useful patch of the plane is the one that contains the origin and covers the entire plane[fn:3].
+and give it the name ~R2~. One useful patch of the plane is the one that contains the origin and covers the entire plane#Footnote(3).
 
 ```Scheme
 (define U (patch 'origin R2))
@@ -29,7 +29,7 @@ and give it the name ~R2~. One useful patch of the plane is the one that contain
 
 ### Coordinate Functions
 
-A coordinate function $\chi$ maps points in a coordinate patch of a manifold to a coordinate tuple[fn:4]:
+A coordinate function $\chi$ maps points in a coordinate patch of a manifold to a coordinate tuple#Footnote(4):
 
 $$\begin{equation}
 x = \chi(m),
@@ -47,7 +47,7 @@ Assume we have two coordinate functions $\chi$ and $\chi'$. The coordinate trans
 Given a coordinate system ~coordsys~ for a patch on a manifold the procedure that implements the function $\chi$ that gives coordinates for a point is
 (~chart coordsys~). The procedure that implements the inverse map that gives a point for coordinates is (~point coordsys~).
 
-We can have both rectangular and polar coordinates on a patch of the plane identified by the origin:[fn:5][fn:6]
+We can have both rectangular and polar coordinates on a patch of the plane identified by the origin:#Footnote(5)#Footnote(6)
 
 ```Scheme
 ;; Some charts on the patch U
@@ -79,7 +79,7 @@ And the rectangular coordinates of a polar point are:
 ;;(up (* r0 (cos theta0)) (* r0 (sin theta0)))
 ```
 
-And we can obtain the Jacobian of the polar-to-rectangular transformation by taking its derivative[fn:7]:
+And we can obtain the Jacobian of the polar-to-rectangular transformation by taking its derivative#Footnote(7):
 
 ```Scheme
 ((D (compose R2-rect-chi R2-polar-chi-inverse))
@@ -121,7 +121,7 @@ We define our manifold function
 
 We can illustrate the coordinate independence with a program. We will show that an arbitrary manifold function $\mathsf{f}$, when defined by its coordinate representation in rectangular coordinates, has the same behavior when applied to a manifold point independent of whether the point is specified in rectangular or polar coordinates.
 
-We define a manifold function by specifying its behavior in rectangular coordinates[fn:8]:
+We define a manifold function by specifying its behavior in rectangular coordinates#Footnote(8):
 ```Scheme
 (define f
   (compose (literal-function 'f-rect R2->R) R2-rect-chi)
@@ -186,7 +186,7 @@ This allows us to extract the coordinates from a point, independent of the coord
 ;;(atan y0 x0)
 ```
 
-. We can work with the coordinate functions in a natural manner, defining new manifold functions in terms of them[fn:9]:
+. We can work with the coordinate functions in a natural manner, defining new manifold functions in terms of them#Footnote(9):
 ```Scheme
 (define h (+ (* x (square r)) (cube y)))
 
@@ -236,7 +236,7 @@ Use the computer to show the correspondence. Note that we provide a cylindrical 
 
 A stereographic projection is a correspondence between points on the unit sphere and points on the plane cutting the sphere at its equator. (See figure 2.3.)
 
-The coordinate system for points on the sphere in terms of rectangular coordinates of corresponding points on the plane is ~S2-Riemann~[fn:10]. The procedure ~(chart S2-Riemann)~ gives the rectangular coordinates on the plane for every point on the sphere, except for the North Pole. The procedure ~(point S2-Riemann)~ gives the point on the sphere given rectangular coordinates on the plane. The usual spherical coordinate system on the sphere is ~S2-spherical~.
+The coordinate system for points on the sphere in terms of rectangular coordinates of corresponding points on the plane is ~S2-Riemann~#Footnote(10). The procedure ~(chart S2-Riemann)~ gives the rectangular coordinates on the plane for every point on the sphere, except for the North Pole. The procedure ~(point S2-Riemann)~ gives the point on the sphere given rectangular coordinates on the plane. The usual spherical coordinate system on the sphere is ~S2-spherical~.
 
 We can compute the colatitude and longitude of a point on the sphere corresponding to a point on the plane with the following incantation:
 

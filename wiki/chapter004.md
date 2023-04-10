@@ -1,8 +1,10 @@
-#+title: Chapter 4: Basis Fields
-#+STARTUP: noindent
+!!Polyglot
+#page(0)
+
+# Chapter 4: Basis Fields
 
 A vector field may be written as a linear combination of basis vector fields. If
-=n= is the dimension, then any set of =n= linearly independent vector fields may be used as a basis. The coordinate basis $\mathsf{X}$ is an example of a basis.[fn:1]
+=n= is the dimension, then any set of =n= linearly independent vector fields may be used as a basis. The coordinate basis $\mathsf{X}$ is an example of a basis.#Footnote(1)
 We will see later that not every basis is a coordinate basis: in order to be a coordinate basis, there must be a coordinate system such that each basis element is the directional derivative operator in a corresponding coordinate direction.
 
 Let $\mathsf{e}$ be a tuple of basis vector fields, such as the coordinate basis
@@ -36,7 +38,7 @@ $\tilde{\mathsf{e}}^1$. The spacings of the lines are 1/3 unit. That the vectors
 $\tilde{\mathsf{e}}^i(\mathsf{e}_j) = \delta^i_j.$
 
 To solve for the dual basis $\tilde{\mathsf{e}}$ given the basis $\mathsf{e}$,
-we express the basis vectors $\mathsf{e}$ in terms of a coordinate basis[fn:2]
+we express the basis vectors $\mathsf{e}$ in terms of a coordinate basis#Footnote(2)
 
 $$\begin{equation}
 \mathsf{e}_j(\mathsf{f}) = \sum_k {\mathsf{X}(\mathsf{f}) \mathsf{c}_j^k},
@@ -72,7 +74,7 @@ coefficents (essentially by matrix inversion).
 
 A set of vector fields $\{\mathsf{e}_i\}$ may be linearly independent in the sense that a weighted sum of them may not be identically zero over a region, yet it may not be a basis in that region. The problem is that there may be some places in the region where the vectors are not independent. For example, two of the vectors may be parallel at a point but not parallel elsewhere in the region.
 At such a point $\mathsf{m}$ the determinant of the matrix
-$\mathsf{c}(\mathsf{m})$ is zero. So at these points we cannot define the dual basis forms.[fn:3]
+$\mathsf{c}(\mathsf{m})$ is zero. So at these points we cannot define the dual basis forms.#Footnote(3)
 
 The dual form fields can be used to determine the coefficients $\mathsf{b}$ of a vector field $\mathsf{v}$ relative to a basis $\mathsf{e}$, by applying the dual basis form fields $\tilde{\mathsf{e}}$ to the vector field. Let
 
@@ -239,7 +241,7 @@ $$\begin{equation}
 \boldsymbol{\omega} = \sum_i{\mathsf{a}_i \tilde{\mathsf{e}}^{\prime i}}.
 \end{equation}$$
 
-   The coefficients are[fn:4]
+   The coefficients are#Footnote(4)
 
 $$\begin{equation}
 \mathsf{a}_i = \boldsymbol{\omega}(\mathsf{e}_i) = \sum_j{\mathsf{a}^\prime_j \tilde{\mathsf{e}}^{\prime j}}(\mathsf{e}_i) \
@@ -429,7 +431,7 @@ $$\begin{equation}
 \end{equation}$$
 
    Define the vector fields =Jx=, =Jy=, and =Jz= that generate rotations about
-   the three rectangular axes in three dimensions:[fn:5]
+   the three rectangular axes in three dimensions:#Footnote(5)
 
    ```Scheme (define Jz (- (* x d/dy) (* y d/dx)))
 (define Jx (- (* y d/dz) (* z d/dy)))
@@ -461,7 +463,7 @@ $$\begin{equation}
    We can also compute the commutators for the basis vector fields
    $\mathsf{e}_x$, $\mathsf{e}_y$, and $\mathsf{e}_z$ in the SO(3) manifold (see
    equations 4.29–4.31) that correspond to rotations about the $x$, $y$, and $z$
-   axes, respectively:[fn:6]
+   axes, respectively:#Footnote(6)
 
    ```Scheme (((+ (commutator e x e y) e z) f) SO3-point)
 ;; 0
@@ -507,7 +509,7 @@ $$\begin{equation}
 e^{-\epsilon \mathsf{v}} e^{-\epsilon \mathsf{w}} \mathsf{f} \right)\left(\mathsf{m}\right).
 \end{equation}$$
 
-   To second order in $\epsilon$ the result is[fn:7]
+   To second order in $\epsilon$ the result is#Footnote(7)
 
 $$\begin{equation}
 \left(e^{\epsilon^2 [\mathsf{v}, \mathsf{w}]} \mathsf{f} \right)\left(\mathsf{m}\right)
@@ -519,7 +521,7 @@ $$\begin{equation}
    Take a point $\mathsf{0}$ in $\mathsf{M}$ as the origin. Then, presuming
    $[\mathsf{e}_i, \mathsf{e}_j] = 0$, the coordinates $x$ of the point
    $\mathsf{m}$ in the coordinate system corresponding to the $\mathsf{e}$ basis
-   satisfy[fn:8]
+   satisfy#Footnote(8)
 
 $$\begin{equation}
 \mathsf{m} = \phi_1^{x \mathsf{e}}(\mathsf{0}) = \chi^{-1}(x),

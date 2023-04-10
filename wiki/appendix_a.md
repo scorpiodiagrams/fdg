@@ -1,10 +1,12 @@
-#+title: Appendix A: Scheme
-#+STARTUP: noindent
+!!Polyglot
+#page(0)
+
+# Appendix A: Scheme
 
 #Quote( Programming languages should be designed not by piling feature on top of feature, but by removing the weaknesses and restrictions that make additional features appear necessary. Scheme demonstrates that a very small number of rules for forming expressions, with no restrictions on how they are composed, suffice to form a practical and efficient programming language that is flexible enough to support most of the major programming paradigms in use today.)
-#Caption( IEEE Standard for the Scheme Programming Language [10], p. 3)
+#Caption IEEE Standard for the Scheme Programming Language [10], p. 3)
 
-Here we give an elementary introduction to Scheme.#FootnoteRef(1) For a more precise explanation of the language see the IEEE standard [10]; for a longer introduction see the textbook [1].
+Here we give an elementary introduction to Scheme.#Footnote(1) For a more precise explanation of the language see the IEEE standard [10]; for a longer introduction see the textbook [1].
 
 Scheme is a simple programming language based on expressions. An expression names a value. For example, the numeral =3.14= names an approximation to a familiar number. There are primitive expressions, such as a numeral, that we directly recognize, and there are compound expressions of several kinds.
 
@@ -26,22 +28,20 @@ Scheme is a simple programming language based on expressions. An expression name
   ```
 
    are both compound expressions that name the same number as the numeral
-   =3.14=.#FootnoteRef(2) In these cases the symbols =+= and =*= name procedures that add
+   =3.14=.#Footnote(2) In these cases the symbols =+= and =*= name procedures that add
    and multiply, respectively. If we replace any subexpression of any expression
    with an expression that names the same thing as the original subexpression,
    the thing named by the overall expression remains unchanged. In general, a
    procedure call is written
-
-$$
+$$\begin{equation}
 (\quad \textit{operator} \quad \textit{operand-1} \quad \ldots \quad \textit{operand-n} \quad )
-$$
-
-where /operator/ names a procedure and /operand-i/ names the /i/th argument.[fn:3]
+\end{equation}$$
+where /operator/ names a procedure and /operand-i/ names the /i/th argument.#Footnote(3)
 
 ### Lambda Expressions
 
    Just as we use numerals to name numbers, we use $\lambda$-expressions to name
-   procedures.#FootnoteRef(4) For example, the procedure that squares its input can be
+   procedures.#Footnote(4) For example, the procedure that squares its input can be
    written:
 
    ```Scheme (lambda (x) (* x x))
@@ -56,11 +56,9 @@ where /operator/ names a procedure and /operand-i/ names the /i/th argument.[fn:
    ```
 
    The general form of a $\lambda$-expression is
-
-$$
+$$\begin{equation}
 \texttt{(lambda} \quad \textit{formal-parameters} \quad \textit{body} \texttt{)}
-$$
-
+\end{equation}$$
    where /formal-parameters/ is a list of symbols that will be the names of the
    arguments to the procedure and /body/ is an expression that may refer to the
    formal parameters. The value of a procedure call is the value of the body of
@@ -69,7 +67,7 @@ $$
 ### Definitions
 
    We can use the define construct to give a name to any object. For example, if
-   we make the definitions[fn:5]
+   we make the definitions#Footnote(5)
 
    ```Scheme (define pi 3.141592653589793)
 
@@ -94,7 +92,7 @@ $$
 
    In Scheme, procedures may be passed as arguments and returned as values. For
    example, it is possible to make a procedure that implements the mathematical
-   notion of the composition of two functions:[fn:6]
+   notion of the composition of two functions:#Footnote(6)
 
    ```Scheme (define compose
   (lambda (f g)
@@ -157,11 +155,9 @@ $$
    ```
 
    The general form of an =if= expression is
-
-$$
+$$\begin{equation}
 \texttt{(if} \quad \textit{predicate} \quad \textit{consequent} \quad \textit{alternative} \texttt{)}
-$$
-
+\end{equation}$$
    If the /predicate/ is true the value of the =if= expression is the value of
    the /consequent/, otherwise it is the value of the /alternative/.
 
@@ -263,7 +259,7 @@ a-list
 
    Lists are built from pairs. A pair is made using the constructor =cons=. The
    selectors for the two components of the pair are =car= and =cdr= (pronounced
-   "could-er").#FootnoteRef(7) A list is a chain of pairs, such that the =car= of each
+   "could-er").#Footnote(7) A list is a chain of pairs, such that the =car= of each
    pair is the list element and the =cdr= of each pair is the next pair, except
    for the last =cdr=, which is a distinguishable value called the empty list
    and is written =()=. Thus,
@@ -332,7 +328,7 @@ a-vector
    programs and algebraic expressions. You probably have noticed that Scheme
    programs look just like lists. In fact, they are lists. Some of the elements
    of the lists that make up programs are symbols, such as =+= and
-   =vector=.#FootnoteRef(8) If we are to make programs that can manipulate programs, we
+   =vector=.#Footnote(8) If we are to make programs that can manipulate programs, we
    need to be able to write an expression that names such a symbol. This is
    accomplished by the mechanism of /quotation/. The name of the symbol =+= is
    the expression ='+=, and in general the name of an expression is the

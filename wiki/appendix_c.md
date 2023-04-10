@@ -1,5 +1,6 @@
-#+title: Appendix C: Tensors
-#+STARTUP: noindent
+!!Polyglot
+#page(0)
+# Appendix C: Tensors
 
 There are a variety of objects that have meaning independent of any particular basis. Examples are form fields, vector fields, covariant derivative, and so on.
 We call objects that are independent of basis /geometric objects/. Some of these are functions that take other geometric objects, such as vector fields and form fields, as arguments and produce further geometric objects. We refer to such functions as /geometric functions/. We want the laws of physics to be independent of the coordinate systems. How we describe an experiment should not affect the result. If we use only geometric objects in our descriptions then this is automatic.

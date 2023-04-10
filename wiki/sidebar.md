@@ -92,13 +92,13 @@ Notation;Reasons for Scheme and SICM Utils)
 11.3 Twin Paradox)
 ----
 ### Appendices
-#Jump( scheme \Diamond A: Scheme
+#Jump( appendix_a \Diamond A: Scheme
 \Diamond Scheme
 )
-#Jump( notation \Diamond B: Our Notation
+#Jump( appendix_b \Diamond B: Our Notation
 \Diamond  Our Notation
 )
-#Jump( tensors \Diamond C: Tensors
+#Jump( appendix_c \Diamond C: Tensors
 \Diamond Tensors
 )
 #Jump( references \Diamond References

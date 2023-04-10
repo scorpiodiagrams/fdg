@@ -1,5 +1,7 @@
-#+title: Chapter 5: Integration
-#+STARTUP: noindent
+!!Polyglot
+#page(0)
+
+# Chapter 5: Integration
 
 We know how to integrate real-valued functions of a real variable. We want to extend this idea to manifolds, in such a way that the integral is independent of the coordinate system used to compute it.
 
@@ -44,7 +46,7 @@ $$\begin{equation}
 \end{equation}$$
 
 where we have used the rule for coordinate transformations of basis vectors
-(equation 3.19), linearity of forms in the first two lines, and the rule for change-of-variables under an integral in the last line.[fn:1]
+(equation 3.19), linearity of forms in the first two lines, and the rule for change-of-variables under an integral in the last line.#Footnote(1)
 
 Because the integral is independent of the coordinate chart, we can write simply
 
@@ -61,7 +63,7 @@ We are exploiting the fact that coordinate basis vectors in different coordinate
 We have seen that we can integrate one-forms on 1-dimensional manifolds. We need higher-rank forms that we can integrate on higher-dimensional manifolds in a coordinate-independent manner.
 
 Consider the integral of a real-valued function, $\mathsf{f} : \mathsf{R}^{n}
-\to \mathsf{R}$, over a region $\mathsf{U}$ in $\mathsf{R}^{n}$. Under a coordinate transformation $g : \mathsf{R}^{n} \to \mathsf{R}^{n}$, we have[fn:2]
+\to \mathsf{R}$, over a region $\mathsf{U}$ in $\mathsf{R}^{n}$. Under a coordinate transformation $g : \mathsf{R}^{n} \to \mathsf{R}^{n}$, we have#Footnote(2)
 
 $$\begin{equation}
 \int_{\mathsf{U}} \mathsf{f} = \int_{g^{-1}(\mathsf{U})} (\mathsf{f} \circ g) \det (Dg).
@@ -163,7 +165,7 @@ $$\begin{equation}
 \int_{\mathsf{U}} \mathsf{d}\mathsf{x} \wedge \mathsf{d}\mathsf{y} \wedge \ldots = \text{Volume}(\mathsf{U})
 \end{equation}$$
 
-where $\text{Volume}(\mathsf{U})$ is the ordinary volume of the region corresponding to $\mathsf{U}$ in the Euclidean space of $\mathsf{R}^{n}}$ with the orthonormal coordinate system $(x, y, \ldots)$.[fn:3]
+where $\text{Volume}(\mathsf{U})$ is the ordinary volume of the region corresponding to $\mathsf{U}$ in the Euclidean space of $\mathsf{R}^{n}}$ with the orthonormal coordinate system $(x, y, \ldots)$.#Footnote(3)
 
 An example two-form (see figure 5.1) is the oriented area of a parallelogram in the $(x,y)$ coordinate plane at the point $\mathsf{m}$ spanned by two vectors
 $\mathsf{u} = \mathsf{u}^{0}{\partial}/{\partial\mathsf{x}} +
@@ -266,21 +268,21 @@ b. formula (5.17) is true in your coordinate system.
 
 ### Exterior Derivative
 
-The intention of introducing the exterior derivative is to capture all of the classical theorems of "vector analysis" into one unified Stokes's Theorem, which asserts that the integral of a form on the boundary of a manifold is the integral of the exterior derivative of the form on the interior of the manifold:[fn:4]
+The intention of introducing the exterior derivative is to capture all of the classical theorems of "vector analysis" into one unified Stokes's Theorem, which asserts that the integral of a form on the boundary of a manifold is the integral of the exterior derivative of the form on the interior of the manifold:#Footnote(4)
 
 $$\begin{equation}
 \int_{\partial\mathsf{M}} \omega = \int_{\mathsf{M}} \mathsf{d} \omega .
 \end{equation}$$
 
-As we have seen in equation (3.34), the differential of a function on a manifold is a one-form field. If a function on a manifold is considered to be a form field of rank zero,#FootnoteRef(5) then the differential operator increases the rank of the form by one. We can generalize this to $k$-form fields with the exterior derivative operation.
+As we have seen in equation (3.34), the differential of a function on a manifold is a one-form field. If a function on a manifold is considered to be a form field of rank zero,#Footnote(5) then the differential operator increases the rank of the form by one. We can generalize this to $k$-form fields with the exterior derivative operation.
 
-Consider a one-form ω. We define[fn:6]
+Consider a one-form ω. We define#Footnote(6)
 
 $$\begin{equation}
 \mathsf{d}\omega (\mathsf{v}_{1}, \mathsf{v}_{2}) = \mathsf{v}_{1} (\omega (\mathsf{v}_{2})) - \mathsf{v}_{2} (\omega(\mathsf{v}_{1})) - \omega([\mathsf{v}_{1}, \mathsf{v}_{2}]).
 \end{equation}$$
 
-More generally, the exterior derivative of a $k$-form field is a $k+1$-form field, given by:[fn:7]
+More generally, the exterior derivative of a $k$-form field is a $k+1$-form field, given by:#Footnote(7)
 
 $$\begin{equation}
 \begin{aligned}
@@ -388,7 +390,7 @@ $$\begin{equation}
 \mathsf{d}^{2} \omega = 0
 \end{equation}$$
 
-This is equivalent to the statement that partial derivatives with respect to different variables commute.[fn:8]
+This is equivalent to the statement that partial derivatives with respect to different variables commute.#Footnote(8)
 
 It is easy to show equation (5.29) for manifold functions:
 
@@ -410,7 +412,7 @@ Not every closed form field is an exact form field. Whether a closed form field 
 
 ###  Stokes's Theorem
 
-The proof of the general Stokes's Theorem for n-dimensional orientable manifolds is quite complicated, but it is easy to see how it works for a 2-dimensional region $\mathsf{M}$ that can be covered with a single coordinate patch.[fn:9]
+The proof of the general Stokes's Theorem for n-dimensional orientable manifolds is quite complicated, but it is easy to see how it works for a 2-dimensional region $\mathsf{M}$ that can be covered with a single coordinate patch.#Footnote(9)
 
 Given a coordinate chart
 $\chi(\mathsf{m})=(\mathsf{x}(\mathsf{m}),\mathsf{y}(\mathsf{m}))$ we can obtain a pair of coordinate-basis vectors ${\partial}/{\partial\mathsf{x}} = {X}_{0}$
@@ -479,7 +481,7 @@ We can test this. By Stokes's Theorem, the integrands are related by an exterior
 (define w (literal-vector-field 'w-rect R2-rect))
 ```
 
-We can now test our integrands:[fn:10]
+We can now test our integrands:#Footnote(10)
 
 ```Scheme
 (define alpha (literal-function 'alpha R2->R))

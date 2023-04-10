@@ -1,4 +1,7 @@
-#+title: Chapter 3: Vector Fields and One-Form Fields
+!!Polyglot
+#page(0)
+
+# Chapter 3: Vector Fields and One-Form Fields
 
 We want a way to think about how a function varies on a manifold. Suppose we have some complex linkage, such as a multiple pendulum. The potential energy is an important function on the multi-dimensional configuration manifold of the linkage. To understand the dynamics of the linkage we need to know how the potential energy changes as the configuration changes. The change in potential energy for a step of a certain size in a particular di- rection in the configuration space is a real physical quantity; it does not depend on how we measure the direction or the step size. What exactly this means is to be determined: What is a step size? What is a direction? We cannot subtract two configurations to determine the distance between them. It is our job here to make sense of this idea.
 
@@ -6,7 +9,7 @@ So we would like something like a derivative, but there are problems. Since we c
 
 ### Vector Fields
 
-In multiple dimensions the derivative of a function is the multiplier for the best linear approximation of the function at each argument point:[fn:1]
+In multiple dimensions the derivative of a function is the multiplier for the best linear approximation of the function at each argument point:#Footnote(1)
 
 $$\begin{equation}
 f(x + \Delta x) \approx f(x) + (Df(x)) \Delta x
@@ -95,7 +98,7 @@ We implement the definition of a vector field (3.4) as:
 (procedure->vector-field v))
 ```
 
-The vector field is an operator, like derivative.[fn:2]
+The vector field is an operator, like derivative.#Footnote(2)
 
 Given a coordinate system and coefficient functions that map
 coordinates to real values, we can make a vector field. For example,
@@ -143,7 +146,7 @@ directional derivatives of coordinate representations of manifold
 functions.
 
 Given a vector field ~v~ and a coordinate system coordsys we can
-construct the coordinate representation of the vector field.[fn:3]
+construct the coordinate representation of the vector field.#Footnote(3)
 ```Scheme (define (coordinatize v coordsys)
  (define ((coordinatized-v f) x)
    (let ((b (compose (v (chart coordsys))
@@ -177,7 +180,7 @@ Vector fields have the following properties. Let $\mathsf{u}$ and $\mathsf{v}$ b
 \end{align}
 
 Vector fields are linear operators. Assume $\mathsf{f}$ and $\mathsf{g}$ are functions
-on the manifold, $a$ and $b$ are real constants.#FootnoteRef(4) The constants $a$ and
+on the manifold, $a$ and $b$ are real constants.#Footnote(4) The constants $a$ and
 $b$ are not manifold functions, because vector fields take derivatives. See equation (3.13).
 \begin{align}
 &\mathsf{v}(a \mathsf{f} + b \mathsf{g}) (\mathsf{m})
@@ -201,7 +204,7 @@ $$\begin{equation}
 ### Coordinate-Basis Vector Fields
 
 For an $n$-dimensional manifold any set of $n$ linearly independent
-vector fields#FootnoteRef(5) form a /basis/ in that any vector field can be expressed
+vector fields#Footnote(5) form a /basis/ in that any vector field can be expressed
 as a linear combination of the basis fields with manifold-function
 coefficients. Given a coordinate system we can construct a basis
 as follows: we choose the component tuple $b_i(x)$ (see equation 3.5)
@@ -262,7 +265,7 @@ Consider a coordinate change from the chart $\chi$ to the chart $\chi'$.
 &= \mathsf{X}'(\mathsf{f})(\mathsf{m})(D(\chi' \circ \chi^{-1}))(\chi(\mathsf{m})).
 \end{align}
 This is the rule for the transformation of basis vector fields. The
-second factor can be recognized as ``∂x'/∂x,'' the Jacobian.[fn:6]
+second factor can be recognized as ``∂x'/∂x,'' the Jacobian.#Footnote(6)
 
 The vector field does not depend on coordinates. So, from
 equation (3.17), we have
@@ -284,7 +287,7 @@ and so
 $$\begin{equation}
 b(x) = D(\chi \circ (\chi')^{1})(x') b'(x'),
 \end{equation}$$
-as expected.[fn:7]
+as expected.#Footnote(7)
 
 It is traditional to express this rule by saying that the basis
 elements transform /covariantly/ and the coefficients of a vector in
@@ -382,7 +385,7 @@ a Taylor series representation of the solution to the differential
 equation (3.27).
 
 For example, a vector field \textsf{circular} that generates a rotation
-about the origin is:[fn:8]
+about the origin is:#Footnote(8)
 ```Scheme (define circular (- (* x d/dy) (* y d/dx)))
 ```
 We can exponentiate the circular vector field, to generate an
@@ -481,7 +484,7 @@ each velocity vector in the vector field.
 
 #####  Differential of a Function
 
-For example, consider the /differential/#FootnoteRef(9) df of a manifold function
+For example, consider the /differential/#Footnote(9) df of a manifold function
 $\mathsf{f}$, defined as follows. If $\mathsf{df}$ is applied to a vector field $\mathsf{v}$ we obtain
 $$\begin{equation}
 \mathsf{df}(\mathsf{v}) = \mathsf{v}(\mathsf{f}),
@@ -543,7 +546,7 @@ or collectively
 \end{align}
 With this definition the coordinate-basis one-form fields are dual
 to the coordinate-basis vector fields in the following sense (see
-equation 3.15):[fn:10]
+equation 3.15):#Footnote(10)
 $$\begin{equation}
 \tilde{\mathsf{X}}^i (\mathsf{X}_j)(\mathsf{m})
 = \mathsf{X}_j (\chi^i)(\mathsf{m})
@@ -565,12 +568,12 @@ $$\begin{equation}
 \end{equation}$$
 because everything is evaluated at $\mathsf{m}$.
 
-The coefficient tuple can be recovered from the one-form field:[fn:11]
+The coefficient tuple can be recovered from the one-form field:#Footnote(11)
 $$\begin{equation}
 a_i(x) = \omega(\tilde{X}_i)(\chi^{-1}(x)).
 \end{equation}$$
 This follows from the dual relationship (3.41). We can see this as
-a program:[fn:12]
+a program:#Footnote(12)
 ```Scheme (define omega
  (components->1form-field
   (down (literal-function ’a

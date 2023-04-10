@@ -1,5 +1,7 @@
-#+title: References
-#+STARTUP: noindent
+!!Polyglot
+#page(0)
+
+# References
 
 [1] Harold Abelson and Gerald Jay Sussman with Julie Sussman, /Structure and Interpretation of Computer Programs/, MIT Press, Cambridge, MA, 1996.
 

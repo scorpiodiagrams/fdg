@@ -1,5 +1,7 @@
-#+title: Chapter 11: Special Relativity
-#+STARTUP: noindent
+!!Polyglot
+#page(0)
+
+# Chapter 11: Special Relativity
 
 Although the usual treatments of special relativity begin with the Michelson-Morley experiment, this is not how Einstein began. In fact, Einstein was impressed with Maxwell's work and he was emulating Maxwell's breakthrough.
 
@@ -75,7 +77,7 @@ $$\begin{equation}
 \end{equation}$$
 
 A crucial point in Einstein's inspiration for relativity is, quoting Einstein
-(in English translation), "During that year [1895–1896] in Aarau the question came to me: If one runs after a light wave with light velocity, then one would encounter a time-independent wavefield. However, something like that does not seem to exist!"#FootnoteRef(1) This was the observation of the inconsistency.
+(in English translation), "During that year [1895–1896] in Aarau the question came to me: If one runs after a light wave with light velocity, then one would encounter a time-independent wavefield. However, something like that does not seem to exist!"#Footnote(1) This was the observation of the inconsistency.
 
 Let's be more precise about this. Consider a plane sinusoidal wave moving in the
 $\hat{x}$ direction with velocity $c$ in free space ($\rho = 0$ and $\vec{I} =
@@ -87,7 +89,7 @@ Einstein believed that the Maxwell-Lorentz electromagnetic theory was fundamenta
 ### Invariance of the Wave Equation
 
    Let $u = (t, x, y, z)$ be a tuple of time and space coordinates that specify
-   a point in spacetime.#FootnoteRef(2) If $\phi(t, x, y, z)$ is a scalar field over time
+   a point in spacetime.#Footnote(2) If $\phi(t, x, y, z)$ is a scalar field over time
    and space, the homogeneous linear wave equation is
 
 $$\begin{equation}
@@ -96,7 +98,7 @@ $$\begin{equation}
    The characteristics for this equation are the "light cones." If we define a
    function of spacetime points and increments, length, such that for an
    incremental tuple in position and time $\xi = (\Delta t, \Delta x, \Delta y,
-   \Delta z)$ we have[fn:3]
+   \Delta z)$ we have#Footnote(3)
 
 $$\begin{equation}
 \end{equation}$$
@@ -165,7 +167,7 @@ f(\xi) = -(\xi^0)^2 + (\xi^2)^2 + (\xi^2)^2 + (\xi^3)^2,
 \end{equation}$$
 
    where $\xi$ is an incremental 4-tuple that could be added to the coordinate
-   4-tuple $(ct, x, y, z)$.#FootnoteRef(4) The Poincaré-Lorentz transformations are of
+   4-tuple $(ct, x, y, z)$.#Footnote(4) The Poincaré-Lorentz transformations are of
    the form
 
 $$\begin{equation}
@@ -238,7 +240,7 @@ $$\begin{equation}
 \end{aligned}
 \end{equation}$$
 
-   Simple physical arguments#FootnoteRef(5) show that this mathematical result relates the
+   Simple physical arguments#Footnote(5) show that this mathematical result relates the
    time and space coordinates for two systems in uniform relative motion. The
    parameter $\beta$ is related to the relative velocity.
 
@@ -539,7 +541,7 @@ $$\begin{equation}
    frame-specific coordinates or to determine the frame-specific coordinates for
    an event requires composition of the boosts that relate the frames to each
    other. The two procedures that are required to implement this strategy
-   are[fn:6]
+   are#Footnote(6)
 
    ```Scheme (define ((coordinates->event ancestor-frame this-frame
                              boost-direction v/c origin)

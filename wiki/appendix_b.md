@@ -1,9 +1,10 @@
-#+title: Appendix B: Our Notation
-#+STARTUP: noindent
+!!Polyglot
+#page(0)
 
+# Appendix B: Our Notation
 
 #Quote( An adequate notation should be understood by at least two people, one of whom may be the author.)
-#Caption( Abdus Salam (1950#).)
+#Caption Abdus Salam (1950#).)
 
 We adopt a /functional mathematical notation/ that is close to that used by Spivak in his /Calculus on Manifolds/ [17]. The use of functional notation avoids many of the ambiguities of traditional mathematical notation that can impede clear reasoning. Functional notation carefully distinguishes the function from the value of the function when applied to particular arguments. In functional notation mathematical expressions are unambiguous and self-contained.
 
@@ -95,7 +96,7 @@ $$\begin{equation}
 ;; (expt (sin a) 3)
    ```
 
-   The default printer simplifies the expression,#FootnoteRef(1) and displays it in a
+   The default printer simplifies the expression,#Footnote(1) and displays it in a
    readable form. We can use the simplifier to verify a trigonometric identity:
 
    ```Scheme ((- (+ (square sin) (square cos)) 1) 'a)
@@ -307,7 +308,7 @@ $$\begin{equation}
 \end{array}\right]
 \end{equation}$$
 
-   can be represented as a tuple structure:[fn:2]
+   can be represented as a tuple structure:#Footnote(2)
 
 $$\begin{equation}
 \left[\left(\begin{array}{c}
@@ -487,7 +488,7 @@ Dg(x,y) \cdot (\Delta x, \Delta y) &= \left[ \partial_0 g(x,y) + \partial_1 g(x,
    In general, partial derivatives are just the components of the derivative of
    a function that takes multiple arguments (or structured arguments or both;
    see below). So a partial derivative of a function is a composition of a
-   component selector and the derivative of that function.#FootnoteRef(3) Indeed:
+   component selector and the derivative of that function.#Footnote(3) Indeed:
 
 $$\begin{equation}
 \partial_0 g = I_0 \circ Dg,

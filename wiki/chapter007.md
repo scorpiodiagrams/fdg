@@ -1,5 +1,7 @@
-#+title: Chapter 7: Directional Derivatives
-#+STARTUP: noindent
+!!Polyglot
+#page(0)
+
+# Chapter 7: Directional Derivatives
 
 The vector field was a generalization of the directional derivative to functions on a manifold. When we want to generalize the directional derivative idea to operate on other manifold objects, such as directional derivatives of vector fields or of form fields, there are several useful choices. In the same way that a vector field applies to a function to produce a function, we will build directional derivatives so that when applied to any object it will produce another object of the same kind. All directional derivatives require a vector field to give the direction and scale factor.
 
@@ -35,7 +37,7 @@ $$\begin{equation}
 
 The result $\mathcal{D}_{\mathsf{v}}\mathsf{u}$ is of type vector field.
 
-The general pattern of constructing a directional derivative operator from a transport operator is given by the following schema:[fn:1]
+The general pattern of constructing a directional derivative operator from a transport operator is given by the following schema:#Footnote(1)
 
 (define (((((F->directional-derivative F) v) u) f) m)
 (define (g delta)
@@ -63,7 +65,7 @@ $$\begin{equation}
 \mathcal{D}_{\alpha\mathsf{v}} = \alpha\mathcal{D}_{\mathsf{v}},
 \end{equation}$$
 
-for any real α.#FootnoteRef(2) This follows from the fact that for evolution along integral curves: when α is a real number,
+for any real α.#Footnote(2) This follows from the fact that for evolution along integral curves: when α is a real number,
 
 $$\begin{equation}
 \phi^{\alpha\mathsf{v}}_{t}(\mathsf{m}) = \phi^{\mathsf{v}}_{\alpha t}(\mathsf{m}).
@@ -81,7 +83,7 @@ $$\begin{equation}
 \mathcal{D}_{\mathsf{v}}(\omega(\mathsf{y}))= \omega(\mathcal{D}_{\mathsf{v}}\mathsf{y})+(\mathcal{D}_{\mathsf{v}}\omega)(\mathsf{y}).
 \end{equation}$$
 
-The extension of the Leibniz rule, combined with the choice of transport of a vector field, determines the action of the directional derivative on form fields.[fn:3]
+The extension of the Leibniz rule, combined with the choice of transport of a vector field, determines the action of the directional derivative on form fields.#Footnote(3)
 
 ### Lie Derivative
 
@@ -353,7 +355,7 @@ $$\begin{equation}
    the volume or compute the volume and then deform it.
 
    We can verify this in 3-dimensional rectangular space for a general
-   one-form field:[fn:4]
+   one-form field:#Footnote(4)
 
 (((- ((Lie-derivative V) (d theta))
 (d ((Lie-derivative V) theta)))
@@ -525,7 +527,7 @@ $$\begin{equation}
    longitude, keeping the stick pointing south all the time. At the
    pole the stick will not point in the same direction as it did at
    the beginning of the trip, and the discrepancy will depend on the
-   amount of eastward motion.[fn:5]
+   amount of eastward motion.#Footnote(5)
 
    So if we try to carry a stick parallel to itself and tangent to the
    sphere, around a closed path, the stick generally does not end up
@@ -676,7 +678,7 @@ $$\begin{equation}
    one-forms/, or the /connection one-forms/. They are defined with
    respect to the basis $\mathsf{e}$.
 
-   As a program, the covariant derivative is:[fn:6]
+   As a program, the covariant derivative is:#Footnote(6)
 
 (define ((((covariant-derivative-vector Cartan) V) U) f)
 (let ((basis (Cartan->basis Cartan))
@@ -757,7 +759,7 @@ $$\begin{equation}
 
    The connection coefficient functions $\Gamma^{i}_{jk}$ are called
    the /Christoffel coefficients/ (traditionally called /Christoffel
-   symbols/).#FootnoteRef(7) Making use of the structures,[fn:8], the Cartan
+   symbols/).#Footnote(7) Making use of the structures,#Footnote(8), the Cartan
    forms are
 
 $$\begin{equation}
@@ -905,8 +907,8 @@ $$\begin{equation}
 
    We can illustrate that the covariant derivative is independent of
    the coordinate system in a simple case, using rectangular and polar
-   coordinates in the plane.#FootnoteRef(9) We can choose Christoffel
-   coefficients for rectangular coordinates that are all zero:[fn:10]
+   coordinates in the plane.#Footnote(9) We can choose Christoffel
+   coefficients for rectangular coordinates that are all zero:#Footnote(10)
 
 (define R2-rect-Christoffel
 (make-Christoffel
@@ -921,7 +923,7 @@ R2-rect-basis))
    the components relative to the rectangular basis. This corresponds
    to our usual notion of parallel in the plane. We will see later in
    Chapter 9 that these Christoffel coefficients are a natural choice
-   for the plane. From these we obtain the Cartan form:[fn:11]
+   for the plane. From these we obtain the Cartan form:#Footnote(11)
 
 (define R2-rect-Cartan
 (Christoffel->Cartan R2-rect-Christoffel))
@@ -1016,7 +1018,7 @@ R2-rect-point)
    Our goal is to determine the equations satisfied by the vector
    field over the map $\mathsf{u}_{\gamma}$. Consider the
    parallel-transport
-   $F^{\mathsf{w}_{\gamma}}_{\delta}\mathsf{u}_{\gamma}$.#FootnoteRef(12) So a
+   $F^{\mathsf{w}_{\gamma}}_{\delta}\mathsf{u}_{\gamma}$.#Footnote(12) So a
    vector field $\mathsf{u}_{\gamma}$ is parallel-transported to
    itself if and only if $\mathsf{u}_{\gamma} =
    F^{\mathsf{w}_{\gamma}}_{\delta}\mathsf{u}_{\gamma}$. Restricted to
@@ -1028,7 +1030,7 @@ g(\delta)=\sum_{i}\left(u^{i}(t)-\sum_{j}A^{i}_{j}(\delta)u^{j}(t-\delta)\right)
 
    where the coefficient function $u^{i}$ is now a function on the
    real-line parameter manifold and where we have rewritten the basis
-   as a basis over the map γ.#FootnoteRef(13) Here $g(\delta)=0$ if
+   as a basis over the map γ.#Footnote(13) Here $g(\delta)=0$ if
    $\mathsf{u}_{\gamma}$ is parallel-transported into itself.
 
    Taking the derivative and setting $\delta=0$ we find
@@ -1137,7 +1139,7 @@ Du^{i}(t)+\sum_{j,k}\Gamma^{i}_{jk}(\gamma(\mathsf{t}))D\sigma^{k}(t)u^{j}(t)=0
 (basis->vector-basis basis-over-gamma)))
 
    We specify a connection by giving the Christoffel
-   coefficients.[fn:14]
+   coefficients.#Footnote(14)
 
 (define S2-Christoffel
 (make-Christoffel
@@ -1151,7 +1153,7 @@ S2-basis))
 (define sphere-Cartan (Christoffel->Cartan S2-Christoffel))
 
    Finally, we compute the residual of the equation (7.71) that
-   governs parallel transport for this situation:[fn:15]
+   governs parallel transport for this situation:#Footnote(15)
 
 (define-coordinates t R1-rect)
 
@@ -1275,7 +1277,7 @@ pi/2)
 
    But the transported vector can be obtained by tilting the original
    southward-pointing vector after parallel-transporting along the
-   equator:[fn:16]
+   equator:#Footnote(16)
 
 (* ((D (transform 1)) (up :pi/2 1)) (up 1 0))
 /(up .7651502649370375 .9117920272004736)/
@@ -1285,7 +1287,7 @@ pi/2)
    In geodesic motion the velocity vector is parallel-transported by
    itself. Recall (equation 6.9) that the velocity is the differential
    of the vector ${\partial}/{\partial\mathsf{t}}$ over the map γ. The
-   equation of geodesic motion is[fn:17]
+   equation of geodesic motion is#Footnote(17)
 
 $$\begin{equation}
 \nabla^{\gamma}_{{\partial}/{\partial\mathsf{t}}}d\gamma({\partial}/{\partial\mathsf{t}})=0.
@@ -1323,7 +1325,7 @@ $$\begin{equation}
    motion constrained to the surface of the unit sphere. The
    Lagrangian for motion on the sphere is the composition of the
    free-particle Lagrangian and the state transformation induced by
-   the coordinate constraint:[fn:18]
+   the coordinate constraint:#Footnote(18)
 
 (define (Lfree s)
 (* 1/2 (square (velocity s))))
@@ -1357,7 +1359,7 @@ $$\begin{equation}
    equations. The second Lagrange equation is the second geodesic
    equation multiplied by $(\sin(\alpha(t)))^{2}$, and the Lagrange
    equations are arranged in a down tuple, whereas the geodesic
-   equations are arranged in an up tuple.#FootnoteRef(19) The two systems are
+   equations are arranged in an up tuple.#Footnote(19) The two systems are
    equivalent unless $\alpha(t)=0$, where the coordinate system is
    singular.
 

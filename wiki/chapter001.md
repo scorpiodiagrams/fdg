@@ -1,23 +1,10 @@
-#+STARTUP: indent
-#+PROPERTY: header-args :eval no-export
+!!Polyglot
+#page(0)
 
 ## Chapter 1: Introduction
 
-```Scheme
-(load "utils.scm")
-(define-coordinates t R1-rect)
-```
-
-#+RESULTS:
-: ;Loading "utils.scm"...
-: ;  Loading "exdisplay.scm"... done
-: ;... done
-: #| ->tex-equation |#
-:
-:
-
 #Quote( Philosophy is written in that great book which ever lies before our eyes---I mean the Universe---but we cannot understand it if we do not learn the language and grasp the symbols in which it is written. This book is written in the mathematical language, and the symbols are triangles, circles, and other geometrical figures without whose help it is impossible to comprehend a single word of it, without which one wanders in vain through a dark labyrinth.)
-#Caption( Galileo Galilei [8])
+#Caption Galileo Galilei [8]
 
 Differential geometry is a mathematical language that can be used to express physical concepts. In this introduction we show a typical use of this language.
 Do not panic! At this point we do not expect you to understand the details of what we are showing. All will be explained as needed in the text. The purpose is to get the flavor of this material.
@@ -30,7 +17,7 @@ But as a denizen of a 2-dimensional surface, it seemed to you that you kept the 
 
 If you walked a smaller loop, the angle between the starting orientation and the ending orientation of the stick would be smaller. For small loops it would be proportional to the area of the loop you walked. This constant of proportionality is a measure of the curvature. The result does not depend on how fast you walked, so this is not a dynamical phenomenon.
 
-Denizens of the surface may play ball games. The balls are constrained to the surface; otherwise they are free particles. The paths of the balls are governed by dynamical laws. This motion is a solution of the Euler-Lagrange equations#FootnoteRef(1) for the free-particle Lagrangian with coordinates that incorporate the constraint of living in the surface. There are coefficients of terms in the EulerLagrange equations that arise naturally in the description of the behavior of the stick when walking loops on the surface, connecting the static shape of the surface with the dynamical behavior of the balls. It turns out that the dynamical evolution of the balls may be viewed as parallel transport of the ball's velocity vector in the direction of the velocity vector.
+Denizens of the surface may play ball games. The balls are constrained to the surface; otherwise they are free particles. The paths of the balls are governed by dynamical laws. This motion is a solution of the Euler-Lagrange equations#Footnote(1) for the free-particle Lagrangian with coordinates that incorporate the constraint of living in the surface. There are coefficients of terms in the EulerLagrange equations that arise naturally in the description of the behavior of the stick when walking loops on the surface, connecting the static shape of the surface with the dynamical behavior of the balls. It turns out that the dynamical evolution of the balls may be viewed as parallel transport of the ball's velocity vector in the direction of the velocity vector.
 This motion by parallel transport of the velocity is called /geodesic motion/.
 
 So there are deep connections between the dynamics of particles and the geometry of the space that the particles move in. If we understand this connection we can learn about dynamics by studying geometry and we can learn about geometry by studying dynamics. We enter dynamics with a Lagrangian and the associated Lagrange equations. Although this formulation exposes many important features of the system, such as how symmetries relate to conserved quantities, the geometry is not apparent. But when we express the Lagrangian and the Lagrange equations in differential geometry language, geometric properties become apparent. In the case of systems with no potential energy the Euler-Lagrange equations are equivalent to the geodesic equations on the configuration manifold. In fact, the coefficients of terms in the Lagrange equations are Christoffel coefficients,
@@ -38,15 +25,15 @@ which define parallel transport on the manifold. Let's look into this a bit.
 
 ### Lagrange Equations
 
-We write the Lagrange equations in functional notation#FootnoteRef(2) as follows:
+We write the Lagrange equations in functional notation#Footnote(2) as follows:
 
-$$
+$$\begin{equation}
 D\left(\partial_{2} L \circ \Gamma[q]\right) - \partial_{1} L \circ \Gamma[q]=0.
-$$
+\end{equation}$$
 
 In SICM [19], Section 1.6.3, we showed that a Lagrangian describing the free motion of a particle subject to a coordinate-dependent constraint can be obtained by composing a free-particle Lagrangian with a function that describes how dynamical states transform given the coordinate transformation that describes the constraints.
 
-A Lagrangian for a free particle of mass m and velocity v is just its kinetic energy, $mv^2/2$. The procedure =Lfree= implements the free Lagrangian:[fn:3]
+A Lagrangian for a free particle of mass m and velocity v is just its kinetic energy, $mv^2/2$. The procedure =Lfree= implements the free Lagrangian:#Footnote(3)
 
 ```Scheme
 (define ((Lfree mass) state)
@@ -190,7 +177,7 @@ This program gives the Lagrangian in a coordinate-independent, geometric way. It
 The manifold point $\mathsf{m}$ represented by the coordinates $x$ is given by
 =(define m ((point coordsys) x))=. The coordinates of $\mathsf{m}$ in a different coordinate system are given by =((chart coordsys2) m)=. The manifold point $\mathsf{m}$ is a geometric object that is the same point independent of how it is specified. Similarly, the velocity vector $\mathsf{e}v$ is a geometric object, even though it is specified using components $v$ with respect to the basis $\mathsf{e}$. Both $v$ and $\mathsf{e}$ have as many components as the dimension of the space so their product is interpreted as a contraction.
 
-Let's make a general metric on a 2-dimensional real manifold:[fn:4]
+Let's make a general metric on a 2-dimensional real manifold:#Footnote(4)
 
 ```Scheme
 (define the-metric (literal-metric 'g R2-rect))
@@ -200,7 +187,7 @@ Let's make a general metric on a 2-dimensional real manifold:[fn:4]
 : #| the-metric |#
 
 The metric is expressed in rectangular coordinates, so the coordinate system is
-=R2-rect=.#FootnoteRef(5) The component functions will be labeled as subscripted ~g~s.
+=R2-rect=.#Footnote(5) The component functions will be labeled as subscripted ~g~s.
 
 We can now make the Lagrangian for the system:
 
@@ -229,7 +216,7 @@ Compare this result with equation (1.3).
 ### Euler-Lagrange Residuals
 
 The Euler-Lagrange equations are satisfied on realizable paths. Let $\gamma$ be a path on the manifold of configurations. (A path is a map from the
-1-dimensional real line to the configuration manifold. We introduce maps between manifolds in Chapter 6.) Consider an arbitrary path:[fn:6]
+1-dimensional real line to the configuration manifold. We introduce maps between manifolds in Chapter 6.) Consider an arbitrary path:#Footnote(6)
 
 ```Scheme
 (define gamma (literal-manifold-map 'q R1-rect R2-rect))
@@ -266,7 +253,7 @@ The values of $\gamma$ are points on the manifold, not a coordinate representati
 : (up (q^0 t) (q^1 t))
 : |#
 
-Now we can compute the residuals of the Euler-Lagrange equations, but we get a large messy expression that we will not show.#FootnoteRef(7) However, we will save it to compare with the residuals of the geodesic equations.
+Now we can compute the residuals of the Euler-Lagrange equations, but we get a large messy expression that we will not show.#Footnote(7) However, we will save it to compare with the residuals of the geodesic equations.
 
 ```Scheme
 (define Lagrange-residuals
@@ -328,7 +315,7 @@ We can get and save the geodesic equation residuals by:
 #+RESULTS:
 : #| geodesic-equation-residuals |#
 
-where =d/dt= is a vector field on the real line#FootnoteRef(8) and =Cartan= is a way of encapsulating the geometry, as specified by the Christoffel coefficients. The Christoffel coefficients are computed from the metric:
+where =d/dt= is a vector field on the real line#Footnote(8) and =Cartan= is a way of encapsulating the geometry, as specified by the Christoffel coefficients. The Christoffel coefficients are computed from the metric:
 
 ```Scheme
 <<Cartan>>
@@ -368,11 +355,9 @@ This establishes that for a 2-dimensional space the Euler-Lagrange equations are
 
 The metric for a unit sphere, expressed in colatitude $\theta$ and longitude
 $\phi$, is
-
-$$
+$$\begin{equation}
 \mathsf{g}(\mathsf{u}, \mathsf{v})= \mathsf{d}\theta(\mathsf{u})\mathsf{d}\theta(\mathsf{v}) + (\sin \theta)^{2} \mathsf{d}\phi(\mathsf{u}) \mathsf{d} \phi(\mathsf{v}).
-$$
-
+\end{equation}$$
 Compute the Lagrange equations for motion of a free particle on the sphere and convince yourself that they describe great circles. For example, consider motion on the equator ($\theta = \pi/2$) and motion on a line of longitude ($\phi$ is constant).
 
 ----

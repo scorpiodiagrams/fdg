@@ -1,22 +1,11 @@
-#+STARTUP: indent
-#+PROPERTY: header-args :eval no-export
+!!Polyglot
+#page(0)
 
 ## Prologue
-
-```Scheme
-(load "utils.scm")
-```
-
-#+RESULTS:
-: ;    Loading "utils.scm"...
-: ;      Loading "exdisplay.scm"... done
-: ;    ... done
-: #| ->tex-equation |#
-
 ### Programming and Understanding
 
 One way to become aware of the precision required to unambiguously communicate a mathematical idea is to program it for a computer. Rather than using canned programs purely as an aid to visualization or numerical computation, we use computer programming in a functional style to encourage clear thinking.
-Programming forces us to be precise and unambiguous, without forcing us to be excessively rigorous. The computer does not tolerate vague descriptions or incomplete constructions. Thus the act of programming makes us keenly aware of our errors of reasoning or unsupported conclusions.[fn:1]
+Programming forces us to be precise and unambiguous, without forcing us to be excessively rigorous. The computer does not tolerate vague descriptions or incomplete constructions. Thus the act of programming makes us keenly aware of our errors of reasoning or unsupported conclusions.#Footnote(1)
 
 Although this book is about differential geometry, we can show how thinking about programming can help in understanding in a more elementary context. The traditional use of Leibniz’s notation and Newton’s notation is convenient in simple situations, but in more complicated situations it can be a serious handicap to clear reasoning.
 
@@ -41,17 +30,17 @@ In this equation we see that the partial derivatives of the Lagrangian function 
 
 This equation is complete. It has meaning independent of the context and there is nothing left to the imagination. The earlier equations require the reader to fill in lots of detail that is implicit in the context. They do not have a clear meaning independent of the context.
 
-By thinking computationally we have reformulated the Lagrange equations into a form that is explicit enough to specify a computation. We could convert it into a program for any symbolic manipulation program because it tells us /how/ to manipulate expressions to compute the residuals of Lagrange’s equations for a purported solution path.[fn:2]
+By thinking computationally we have reformulated the Lagrange equations into a form that is explicit enough to specify a computation. We could convert it into a program for any symbolic manipulation program because it tells us /how/ to manipulate expressions to compute the residuals of Lagrange’s equations for a purported solution path.#Footnote(2)
 
 ### Functional Abstraction
 
-But this corrected use of Leibniz notation is ugly. We had to introduce extraneous symbols ($q$ and $\dot{q}$) in order to indicate the argument position specifying the partial derivative. Nothing would change here if we replaced $q$ and $\dot{q}$ by $a$ and $b$.#FootnoteRef(3) We can simplify the notation by admitting that the partial derivatives of the Lagrangian are themselves new functions, and by specifying the particular partial derivative by the position of the argument that is varied
+But this corrected use of Leibniz notation is ugly. We had to introduce extraneous symbols ($q$ and $\dot{q}$) in order to indicate the argument position specifying the partial derivative. Nothing would change here if we replaced $q$ and $\dot{q}$ by $a$ and $b$.#Footnote(3) We can simplify the notation by admitting that the partial derivatives of the Lagrangian are themselves new functions, and by specifying the particular partial derivative by the position of the argument that is varied
 
 $$\frac{d}{d t}\left(\left(\partial_{2} L\right)\left(t, w(t), \frac{d}{d t}
 w(t)\right)\right)-\left(\partial_{1} L\right)\left(t, w(t), \frac{d}{d t}
 w(t)\right)=0,$$
 
-where $\partial_{i}L$ is the function which is the partial derivative of the function L with respect to the ith argument.[fn:4]
+where $\partial_{i}L$ is the function which is the partial derivative of the function L with respect to the ith argument.#Footnote(4)
 
 Two different notions of derivative appear in this expression. The functions
 $\partial_2 L$ $\partial_1 L$, constructed from the Lagrangian $L$, have the same arguments as $L$.
@@ -64,7 +53,7 @@ $r_2$. The first expression fails if $r_1 = 0$ but the second one gives the righ
 r_2)$, we can ignore the details of how it is computed. The ideas become clearer because they do not depend on the detailed shape of the expressions.
 
 So let’s get rid of the expression derivative $d/dt$ and replace it with an appropriate functional derivative. If $f$ is a function then we will write $Df$
-as the new function that is the derivative of $f$:[fn:5]
+as the new function that is the derivative of $f$:#Footnote(5)
 
 $$(D f)(t)=\left.\frac{d}{d x} f(x)\right|_{x=t}.$$
 
@@ -87,7 +76,7 @@ $$D\left(\left(\partial_{2} L\right) \circ \left(\Gamma[w]\right)\right)
 
 The functions $\partial_1 L$ and $\partial_2 L$ are partial derivatives of the function $L$. Composition with $\Gamma[w]$ evaluates these partials with coordinates and velocites appropriate for the path $w$, making functions of time. Applying $D$ takes the time derivative. The Lagrange equation states that the difference of the resulting functions of time must be zero. This statement of the Lagrange equation is complete, unambiguous, and functional. It is not encumbered with the particular choices made in expressing the Lagrangian. For example, it doesn’t matter if the time is named $t$ or $\tau$, and it has an explicit place for the path to be tested.
 
-This expression is equivalent to a computer program:[fn:6]
+This expression is equivalent to a computer program:#Footnote(6)
 
 ```Scheme
 (define ((Lagrange-equations Lagrangian) w)

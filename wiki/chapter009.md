@@ -1,5 +1,7 @@
-#+title: Chapter 9: Metrics
-#+STARTUP: noindent
+!!Polyglot
+#page(0)
+
+# Chapter 9: Metrics
 
 We often want to impose further structure on a manifold to allow us to define lengths and angles. This is done by generalizing the idea of the Euclidean dot product, which allows us to compute lengths of vectors and angles between vectors in traditional vector algebra.
 
@@ -102,7 +104,7 @@ $$\begin{equation}
    ```
 
    where =contract= is the trace over a basis of a two-argument function that
-   takes a vector field and a one-form field as its arguments.[fn:1]
+   takes a vector field and a one-form field as its arguments.#Footnote(1)
 
    ```Scheme (define (contract proc basis)
   (let ((vector-basis (basis->vector-basis basis))
@@ -252,7 +254,7 @@ D^2 q^i + \sum_{jk} \left(\Gamma_{jk}^i \circ \chi^{-1} \circ q \right) Dq^j Dq^
    The following code compares the Christoffel symbols with the coefficients of
    the terms of second order in velocity appearing in the accelerations,
    determined by solving the Lagrange equations for the highest-order
-   derivative.#FootnoteRef(2) We extract these terms by taking two partials with respect to
+   derivative.#Footnote(2) We extract these terms by taking two partials with respect to
    the structure of velocities. Because the elementary partials commute we get
    two copies of each coefficient, requiring a factor of 1/2.
 
@@ -306,12 +308,10 @@ $$\begin{equation}
 L_2(t, x, v) = \frac{1}{2}(L_1(t, x, v))^2,
 \end{equation}$$
 
-   and the Lagrange operator for $L_2$ is[fn:3]
-
-$$
+   and the Lagrange operator for $L_2$ is#Footnote(3)
+$$\begin{equation}
 \boldsymbol{E}[L_2] = D_t \partial_2 L_2 - \partial_1 L_2,
-$$
-
+\end{equation}$$
    we find
 
 $$\begin{equation}
@@ -390,7 +390,7 @@ $$\begin{equation}
 
     ```
 
-    These residuals must be zero; so the numerators must be zero.#FootnoteRef(4) They
+    These residuals must be zero; so the numerators must be zero.#Footnote(4) They
     are:
 
 \begin{align*}
@@ -404,23 +404,17 @@ D^2x\,Dx\,Dy &= (Dx)^2\,D^2y
     This is enough to determine that the result is a straight line, without
     specifying the rate along the line. Suppose $y = f(x)$, for path $(x(t),
     y(t))$. Then
-
-$$
+$$\begin{equation}
 Dy = Df(x)\,Dx\text{ and } D^2y = D^2f(x)\,Dx + Df(x)\,D^2(x).
-$$
-
+\end{equation}$$
     Substituting, we get
-
-$$
+$$\begin{equation}
 Df(x)\,Dx\,D^2x = Dx\left(D^2f(x)\,Dx + Df(x)\,D^2x\right)
-$$
-
+\end{equation}$$
     or
-
-$$
+$$\begin{equation}
 Df(x)\,D^2x = D^2f(x)\,Dx + Df(x)\,D^2x,
-$$
-
+\end{equation}$$
 
     so $D^2f(x) = 0$. Thus $f$ is a straight line, as required.
 
@@ -603,7 +597,7 @@ $$\begin{equation}
 \end{equation}$$
 
     where $R_{\mu \nu}$ are the components of the Ricci tensor (equation 8.20),
-    $R$ is the Ricci scalar (equation 9.23),#FootnoteRef(5) and $\Lambda$ is the
+    $R$ is the Ricci scalar (equation 9.23),#Footnote(5) and $\Lambda$ is the
     cosmological constant.
 
     $T_{\mu \nu}$ are the components of the stress-energy tensor describing the
@@ -613,7 +607,7 @@ $$\begin{equation}
 R_{\mu \nu} = \frac{8 \pi G}{c^4} \left(T_{\mu \nu} - \frac{1}{2} T g_{\mu \nu} \right) - \Lambda g_{\mu \nu}
 \end{equation}$$
 
-    where $T =T_{\mu \nu} g^{\mu \nu}$.[fn:6]
+    where $T =T_{\mu \nu} g^{\mu \nu}$.#Footnote(6)
 
     Einstein's field equations arise from a heuristic derivation by analogy to
     the Poisson equation for a Newtonian gravitational field:
@@ -678,7 +672,7 @@ $$\begin{equation}
   T)
     ```
 
-    If we evaluate the right-hand side expression we obtain[fn:7]
+    If we evaluate the right-hand side expression we obtain#Footnote(7)
 
     ```Scheme (let ((g (Newton-metric 'M 'G ':c V)))
   (let ((T ij ((drop2 g spacetime-rect-basis) (Tdust 'rho))))
@@ -699,7 +693,7 @@ R_{\mu \nu} = \frac{8 \pi G}{c^4} \left(T_{\mu \nu} - \frac{1}{2} T g_{\mu \nu} 
 *** Exercise 9.6: Curvature of Schwarzschild Spacetime
 
     In spherical coordinates around a nonrotating gravitating body the metric of
-    Schwarzschild spacetime is given as:[fn:8]
+    Schwarzschild spacetime is given as:#Footnote(8)
 
     ```Scheme (define-coordinates (up t r theta phi) spacetime-sphere)
 

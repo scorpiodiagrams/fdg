@@ -1,5 +1,7 @@
-#+title: Chapter 8: Curvature
-#+STARTUP: noindent
+!!Polyglot
+#page(0)
+
+# Chapter 8: Curvature
 
 If the intrinsic curvature of a manifold is not zero, a vector parallel-transported around a small loop will end up different from the vector that started. We saw the consequence of this before, on page 1 and on page 93.
 The Riemann tensor encapsulates this idea.
@@ -10,7 +12,7 @@ $$\begin{equation}
 \mathcal{R}(\mathsf{w}, \mathsf{v}) \= [\nabla_\mathsf{w}, \nabla_\mathsf{v}] - \nabla_{[\mathsf{w}, \mathsf{v}]}.
 \end{equation}$$
 
-The traditional Riemann tensor is[fn:1]
+The traditional Riemann tensor is#Footnote(1)
 
 $$\begin{equation}
 \mathcal{R}(\boldsymbol{\omega}, \mathsf{u}, \mathsf{v}, \mathsf{w}) \
@@ -36,7 +38,7 @@ the result of =((Riemann-curvature nabla) w v)= is a procedure that takes a vect
   (omega (((Riemann-curvature nabla) w v) u)))
 ```
 
-So, for example,[fn:2]
+So, for example,#Footnote(2)
 
 ```Scheme
 (((Riemann (covariant-derivative sphere-Cartan))
@@ -78,7 +80,7 @@ D u^i(t)=-\sum_j \varpi_j^i(\mathsf{v})\left(\chi^{-1}(\sigma(t))\right) u^j(t)
 
    and the coordinates as a function of time, $\sigma = \chi \circ \gamma \circ
    \chi_\mathsf{R}^{-1}$, of the path $\gamma$, are governed by the differential
-   equations[fn:3]
+   equations#Footnote(3)
 
 $$\begin{equation}
 D\sigma(t) = \mathsf{v}(\chi)\left(\chi^{-1}(\sigma(t))\right).
@@ -106,7 +108,7 @@ D(h \circ s) = (Dh \circ s)(g \circ s) = L_g h \circ s,
 
    defining the operator $L_g$.
 
-   Exponentiation gives a finite evolution:[fn:4]
+   Exponentiation gives a finite evolution:#Footnote(4)
 
 $$\begin{equation}
 h(s(t+\epsilon)) = \left(e^{\epsilon L_g} h\right)\left(s(t)\right).
@@ -132,7 +134,7 @@ u(t+\epsilon) = \left(e^{\epsilon L_g} U\right)\left(s(t)\right),
    interval $\epsilon$, then reversing $\mathsf{w}$, and reversing $\mathsf{v}$,
    brings $\sigma$ back to where it started to second order in $\epsilon$.
 
-   The state $s = (σ, u)$ after transporting $s_0$ around the loop is[fn:5]
+   The state $s = (σ, u)$ after transporting $s_0$ around the loop is#Footnote(5)
 
 $$\begin{equation}
 \begin{aligned}
@@ -176,7 +178,7 @@ $$\begin{equation}
 
     And now we get to the meat of the matter: First we find the rate of change
     of the components of the vector $\mathsf{u}$ as we carry it along the vector
-    field $\mathsf{v}$.[fn:6]
+    field $\mathsf{v}$.#Footnote(6)
 
     ```Scheme (define ((Du v) state)
   (let ((CF (Cartan->forms general-Cartan-2)))
@@ -286,7 +288,7 @@ $$\begin{equation}
 \mathcal{R}(\mathsf{w}, \mathsf{v}) = [\nabla_\mathsf{w}, \nabla_\mathsf{v}] - \nabla_{[\mathsf{w}, \mathsf{v}]},
 \end{equation}$$
 
-    it is natural#FootnoteRef(7) to identify these terms with the corresponding terms in
+    it is natural#Footnote(7) to identify these terms with the corresponding terms in
 
 $$\begin{equation}
 \left(\left(\left[L_{g_w}, L_{g_v}\right] - L_{g_{[w,v]}}\right)U\right)(s_0).
@@ -581,7 +583,7 @@ $$\begin{equation}
 
 *** Longitude Lines on a Sphere
 
-    Consider longitude lines on the unit sphere.#FootnoteRef(8) Let =theta= be colatitude
+    Consider longitude lines on the unit sphere.#Footnote(8) Let =theta= be colatitude
     and =phi= be longitude. These are the parameters $s$ and $t$, respectively.
     Then let =T= be the vector field =d/dtheta= that is tangent to the longitude
     lines.
@@ -700,7 +702,7 @@ $$\begin{equation}
    occur.
 
    A system with a symmetric connection, $\Gamma_{jk}^i = \Gamma_{jk}^i$, is
-   torsion free.[fn:9]
+   torsion free.#Footnote(9)
 
    ```Scheme (define nabla
   (covariant-derivative
@@ -775,7 +777,7 @@ $$\begin{equation}
   (omega (T x y)))
    ```
 
-   The first Bianchi identity is now:[fn:10]
+   The first Bianchi identity is now:#Footnote(10)
 
    ```Scheme (((cyclic-sum
    (lambda (x y z)

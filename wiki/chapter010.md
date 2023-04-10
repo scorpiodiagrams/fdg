@@ -1,10 +1,12 @@
-#+title: Chapter 10: Hodge Star and Electrodynamics
-#+STARTUP: noindent
+!!Polyglot
+#page(0)
+
+# Chapter 10: Hodge Star and Electrodynamics
 
 The vector space of $p$-form fields on an $n$-dimensional manifold has dimension
 $n!/((n−p)!p!)$. This is the same dimension as the space of $(n − p)$-form fields. So these vector spaces are isomorphic. If we have a metric there is a natural isomorphism: for each $p$-form field $\boldsymbol{\omega}$ on an
 $n$-dimensional manifold there is an $(n − p)$-form field
-$\mathsf{g}^*\boldsymbol{\omega}$, called its /Hodge dual/.#FootnoteRef(1) The Hodge dual should not be confused with the duality of vector bases and one-form bases,
+$\mathsf{g}^*\boldsymbol{\omega}$, called its /Hodge dual/.#Footnote(1) The Hodge dual should not be confused with the duality of vector bases and one-form bases,
 which is defined without reference to a metric. The Hodge dual is useful for the elegant formalization of electrodynamics.
 
 In Euclidean 3-space, if we think of a one-form as a foliation of the space,
@@ -14,7 +16,7 @@ whose axes are perpendicular to the leaves of the foliation. The original one-fo
 there is an added complication with the signs.
 
 The Hodge dual is a linear operator, so it can be defined by its action on the basis elements. Let $\left\{\partial / \partial \mathsf{x}^0, \ldots, \partial /
-\partial x^{n−1} \right\}$ be an orthonormal basis of vector fields#FootnoteRef(2) and let $\left\{\mathsf{d}x^0, \ldots, \mathsf{d}x^{n−1} \right\}$ be the ordinary dual basis for the one-forms. Then the $(n − p)$-form
+\partial x^{n−1} \right\}$ be an orthonormal basis of vector fields#Footnote(2) and let $\left\{\mathsf{d}x^0, \ldots, \mathsf{d}x^{n−1} \right\}$ be the ordinary dual basis for the one-forms. Then the $(n − p)$-form
 $\mathsf{g}^{∗}\boldsymbol{\omega}$ that is the Hodge dual of the $p$-form
 $\boldsymbol{\omega}$ can be defined by its coefficients with respect to the basis, using indices, as
 
@@ -313,7 +315,7 @@ $$\begin{equation}
      (* (literal-manifold-function 'v^z SR) d/dz)))
    ```
 
-   The Minkowski metric is[fn:3]
+   The Minkowski metric is#Footnote(3)
 
 $$\begin{equation}
 \begin{aligned}
@@ -391,7 +393,7 @@ $$\begin{equation}
    In this formulation of electrodynamics the electric and magnetic fields are
    represented together as a two-form field, the /Faraday tensor/. Under Lorentz
    transformations the individual components are mixed. The Faraday tensor
-   is:[fn:4]
+   is:#Footnote(4)
 
    ```Scheme (define (Faraday Ex Ey Ez Bx By Bz)
   (+ (* Ex (wedge dx dct))
