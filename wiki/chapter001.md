@@ -365,7 +365,9 @@ Compute the Lagrange equations for motion of a free particle on the sphere and c
 
 #FootnoteRef(8) We established =t= as a coordinate function on the rectangular coordinates of the real line by
 
-~(define-coordinates t R1-rect)~
+```Scheme
+(define-coordinates t R1-rect)
+```
 
 This had the effect of also defining =d/dt= as a coordinate vector field and
 =dt= as a one-form field on the real line.

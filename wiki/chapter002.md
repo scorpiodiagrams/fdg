@@ -107,15 +107,19 @@ $$\begin{equation}
 (x,y) = \chi(\mathsf{m}),
 \end{equation}$$
 and the manifold function $\mathsf{f}$ is represented in coordinates by a function $f$ that takes a pair of real numbers and produces a real number
+$$\begin{equation}
 \begin{align}
 f \colon& \mathsf{R}^{2} \rightarrow \mathsf{R} \\
 f \colon& (x,y) \rightarrow f(x,y).
 \end{align}
+\end{equation}$$
 We define our manifold function
+$$\begin{equation}
 \begin{align}
 \mathsf{f} \colon& \mathsf{M} \rightarrow \mathsf{R} \\
 \mathsf{f} \colon& \mathsf{m} \rightarrow (f \circ \chi)(\mathsf{m}).
 \end{align}
+\end{equation}$$
 
 ### /Manifold Functions Are Coordinate Indepenedent/
 
@@ -267,7 +271,6 @@ Perform an analogous computation to get the polar coordinates of the point on th
 ```Scheme
 (define f (literal-manifold-function 'f-rect R2-rect))
 ```
-
 
 #FootnoteRef(7) See Appendix B for an introduction to tuple arithmetic and a discussion of derivatives of functions with structured input or output.
 

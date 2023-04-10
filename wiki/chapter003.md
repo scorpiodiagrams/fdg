@@ -54,12 +54,14 @@ Note that we have chosen the coordinate components to be functions of the coordi
 
 A vector with coordinate components $b_{\chi,\mathsf{v}}$ applies to a manifold
 function $\mathsf{f}$ via
+$$\begin{equation}
 \begin{align}
 \mathsf{v}(\mathsf{f})(\mathsf{m})
 &= ((D(\mathsf{f} \circ \chi^{-1}) b_{\chi, \mathsf{v}}) \circ \chi)(\mathsf{m}) \\
 &= D(\mathsf{f} \circ \chi^{-1})(\chi(\mathsf{m})) b_{\chi, \mathsf{v}}(\chi(\mathsf{m})) \\
 &= \sum_i \partial_i (\mathsf{f} \circ \chi^{-1}) (\chi(\mathsf{m})) b^i_{\chi, \mathsf{v}}(\chi (\mathsf{m})).
 \end{align}
+\end{equation}$$
 In equation (3.4), the quantity $\mathsf{f} \circ$ is the coordinate representation
 of the manifold function $\mathsf{f}$. We take its derivative, and weight
 the components of the derivative with the coordinate components
@@ -75,12 +77,14 @@ by the vector components. This computes the rate of change of $\mathsf{f}$
 in the direction specified by the vector.
 
 Equations (3.3) and (3.5) are consistent:
+$$\begin{equation}
 \begin{align}
 \mathsf{v}(x) (\chi^{-1}(x)) \nonumber
 &= D (\chi \circ \chi^{-1})(x) b_{\chi,\mathsf{v}}(x) \nonumber \\
 &= D(I)(x) b_{\chi, \mathsf{v}}(x) \nonumber \\
 &= b_{\chi,\mathsf{v}}(x).
 \end{align}
+\end{equation}$$
 
 The coefficient tuple $b_{\chi,\mathsf{v}}(x)$ is an up structure compatible for
 addition to the coordinates. Note that for any vector field v the coefficients
@@ -132,12 +136,14 @@ by applying the vector field to the coordinate chart:
 #####  Coordinate Representation
 
 The vector field $\mathsf{v}$ has a coordinate representation $v$:
+$$\begin{equation}
 \begin{align}
 \mathsf(\mathsf{f})(\mathsf{m}) \nonumber
 &= D(f \circ \chi^{-1})(\chi(\mathsf{m})) b(\chi(\mathsf{m})) \nonumber \\
 &= Df(x) b(x) \\
 &= v(f)(x),
 \end{align}
+\end{equation}$$
 with the definitions $f = \mathsf{f} \circ \chi^{-1}$ and $x = \chi(\mathsf{m})$. The function $b$ is
 the coefficient function for the vector field $\mathsf{v}$. It provides a scale
 factor for the component in each coordinate direction. However, $v$
@@ -174,20 +180,24 @@ must be a module over the ring of manifold functions rather than
 a vector space.
 
 Vector fields have the following properties. Let $\mathsf{u}$ and $\mathsf{v}$ be vector fields and let $\alpha$ be a real-valued manifold function. Then
+$$\begin{equation}
 \begin{align}
 &(\mathsf{u} + \mathsf{v})(f) = \mathsf{u}(\mathsf{f}) + \mathsf{v}(\mathsf{f}) \\
 &(\alpha \mathsf{f})(\mathsf{f}) = \alpha(\mathsf{u}(\mathsf{f})).
 \end{align}
+\end{equation}$$
 
 Vector fields are linear operators. Assume $\mathsf{f}$ and $\mathsf{g}$ are functions
 on the manifold, $a$ and $b$ are real constants.#Footnote(4) The constants $a$ and
 $b$ are not manifold functions, because vector fields take derivatives. See equation (3.13).
+$$\begin{equation}
 \begin{align}
 &\mathsf{v}(a \mathsf{f} + b \mathsf{g}) (\mathsf{m})
 = a \mathsf{v}(\mathsf{f})(\mathsf{m}) + b \mathsf{v}(\mathsf{g})(\mathsf{m}) \\
 &\mathsf{v}(a \mathsf{f})(\mathsf{m})
 = a \mathsf{v}(\mathsf{f})(\mathsf{m})
 \end{align}
+\end{equation}$$
 Vector fields satisfy the product rule (Leibniz rule).
 $$\begin{equation}
 \mathsf(\mathsf{fg})(\mathsf{m})
@@ -213,11 +223,13 @@ in the $i$th position and zeros in all other positions---selecting the
 partial derivative in that direction. Here $u_i$ is a constant function.
 Like $b$, it formally takes coordinates of a point as an argument,
 but it ignores them. We then define the basis vector field $\mathsf{X}_i$ by
+$$\begin{equation}
 \begin{align}
 \mathsf{X}_i(\mathsf{f})(\mathsf{m})
 &= D(\mathsf{f} \circ \chi^{-1})(\chi(\mathsf{m})) u_i(\chi(\mathsf{m})) \\
 &= \partial_i(\mathsf{f} \circ \chi^{-1})(\chi(\mathsf{m})).
 \end{align}
+\end{equation}$$
 
 In terms of $\mathsf{X}_i$ the vector field of equation (3.6) is
 $$\begin{equation}
@@ -257,6 +269,7 @@ of these simple pieces:
 #####  Coordinate Transformations
 
 Consider a coordinate change from the chart $\chi$ to the chart $\chi'$.
+$$\begin{equation}
 \begin{align}
 \mathsf{\mathsf{X}}(\mathsf{f})(m)
 &= D(\mathsf{f} \circ \chi^{-1})(\chi(\mathsf{m})) \nonumber \\
@@ -264,6 +277,7 @@ Consider a coordinate change from the chart $\chi$ to the chart $\chi'$.
 &= D(\mathsf{f} ? (\chi')^{^1})(\chi'(\mathsf{m}))(D(\chi' \circ \chi^{-1}))(\chi(\mathsf{m})) \nonumber \\
 &= \mathsf{X}'(\mathsf{f})(\mathsf{m})(D(\chi' \circ \chi^{-1}))(\chi(\mathsf{m})).
 \end{align}
+\end{equation}$$
 This is the rule for the transformation of basis vector fields. The
 second factor can be recognized as ``∂x'/∂x,'' the Jacobian.#Footnote(6)
 
@@ -303,6 +317,7 @@ This curve is an /integral curve/ of the vector field.
 
 More formally, let $\mathsf{v}$ be a vector field on the manifold $\mathsf{M}$. An
 integral curve $\gamma^{\mathsf{v}}_{\mathsf{m}} \colon \mathsf{R} \to \mathsf{M}$ of $\mathsf{v}$ is a parametric path on $\mathsf{M}$ satisfying
+$$\begin{equation}
 \begin{align}
 D(\mathsf{f} \circ \gamma^{\mathsf{v}}_{\mathsf{m}}) (t)
 &= \mathsf{v}(\mathsf{f}) (\gamma^{\mathsf{v}}_{\mathsf{m}}(t))
@@ -310,6 +325,7 @@ D(\mathsf{f} \circ \gamma^{\mathsf{v}}_{\mathsf{m}}) (t)
 \gamma^{\mathsf{v}}_{\mathsf{m}}(0)
 &= \mathsf{m},
 \end{align}
+\end{equation}$$
 for arbitrary functions $\mathsf{f}$ on the manifold, with real values or structured
 real values. The rate of change of a function along an integral
 curve is the vector field applied to the function evaluated at
@@ -321,6 +337,7 @@ representation of the integral curve by letting $\mathsf{f} = \chi$, the
 coordinate function, and letting $\sigma = \chi \circ \gamma$ be the coordinate path
 corresponding to the curve $\gamma$. Then the derivative of the coordinate
 path $\sigma$ is
+$$\begin{equation}
 \begin{align}
 D \sigma(t)
 &=  D(\chi \circ \gamma$)(t) \nonumber \\
@@ -328,6 +345,7 @@ D \sigma(t)
 &= (\mathsf{v}(\chi) \circ \chi^{-1} \circ \chi \circ \gamma)(t) \\
 &= (b \circ \sigma)(t)
 \end{align}
+\end{equation}$$
 where $b = \mathsf{v}(\chi) \circ \chi^{-1}$ is the coefficient function for the vector field
 $\mathsf{v}$ for coordinates $\chi$ (see equation 3.7). So the coordinate path $\sigma$
 satisfies the differential equations
@@ -344,6 +362,7 @@ manifold.
 
 Iterating the process described by equation (3.24) we can compute
 higher-order derivatives of functions along the integral curve:
+$$\begin{equation}
 \begin{align}
 D(\mathsf{f} \circ \gamma)
 &= \mathsf{v}(\mathsf{f}) \circ \gamma \nonumber \\
@@ -354,15 +373,18 @@ D^2(\mathsf{f} \circ \gamma)
 D^n(\mathsf{f} \circ \gamma)
 &= \mathsf{v}^n(\mathsf{f}) \circ \gamma
 \end{align}
+\end{equation}$$
 
 Thus, the evolution of $\mathsf{f} \circ \gamma$ can be written formally as a Taylor
 series in the parameter:
+$$\begin{equation}
 \begin{align}
 &(f \circ \gamma)(t) \nonumber \\
 &= (f \circ \gamma)(0) + t D(\mathsf{f} \circ \gamma)(0) + \frac{1}{2}t^2 D^2(\mathsf{f} \circ \gamma)(0) + \cdots \nonumber \\
 &= (e^{tD} (\mathsf{f} \circ \gamma))(0) \nonumber \\
 &= e^{t \mathsf{v} \mathsf{f}} (\gamma(0)).
 \end{align}
+\end{equation}$$
 Using $\phi$ rather than $\gamma$
 $$\begin{equation}
 (\mathsf{f} \circ \gamma^{\mathsf{v}}_{\mathsf{m}})(t)
@@ -453,6 +475,7 @@ where $A$ is the acceleration of the particle.
 These are equivalent to a system of first-order equations for the coordinate
 path $\sigma = \chi \circ \gamma$, where $\chi = (\mathsf{t}, \mathsf{x}, \mathsf{y}, \mathsf{v}_x, \mathsf{v}_y)$ is a coordinate system
 on the manifold Rh $\mathbb{R}^5$. Then our equations are:
+$$\begin{equation}
 \begin{align}
 D(\mathsf{t}   \circ \gamma) &= 1 \nonumber \\
 D(\mathsf{x}   \circ \gamma) &= \mathsf{v}_x \circ \gamma \nonumber \\
@@ -461,6 +484,7 @@ D(\mathsf{v}_x \circ \gamma) &= A_x(\mathsf{x} \circ \gamma, \mathsf{y} \circ \g
 D(\mathsf{v}_y \circ \gamma) &= A_y(\mathsf{x} \circ \gamma, \mathsf{y} \circ \gamma) \nonumber
 D(\mathsf{t} \circ \gamma) &= 1 \\
 \end{align}
+\end{equation}$$
 Construct a vector field on $\mathbb{R}^5$ corresponding to this system of differential
 equations. Derive the first few terms in the series solution of this
 problem by exponentiation.
@@ -541,9 +565,11 @@ $$\begin{equation}
 \tilde{\mathsf{X}}^i (\mathsf{v}) (\mathsf{m}) = \mathsf{v}(\chi^i)(\mathsf{m})
 \end{equation}$$
 or collectively
+$$\begin{equation}
 \begin{align}
 \tilde{\mathsf{X}}(\mathsf{v})(\mathsf{m}) = \mathsf{v}(\chi) (\mathsf{m}).
 \end{align}
+\end{equation}$$
 With this definition the coordinate-basis one-form fields are dual
 to the coordinate-basis vector fields in the following sense (see
 equation 3.15):#Footnote(10)
@@ -556,13 +582,11 @@ $$\begin{equation}
 The tuple of basis one-form fields $\tilde{X}(\mathsf{v})(\mathsf{m})$ is an up structure like
 that of $\chi$.
 
-The general one-form field $\omega$ is a linear combination of coordinate-basis
-one-form fields:
+The general one-form field $\omega$ is a linear combination of coordinate-basis one-form fields:
 $$\begin{equation}
 \omega(\mathsf{v}) = (a \circ \chi) \tilde{\mathsf{X}}(\mathsf{v})
 \end{equation}$$
-with coefficient-function tuple $a(x)$, for $x = \chi(\mathsf{m})$. We can write
-this more simply as
+with coefficient-function tuple $a(x)$, for $x = \chi(\mathsf{m})$. We can write this more simply as
 $$\begin{equation}
 \omega(\mathsf{v}) = (a \circ \chi) \tilde{\mathsf{X}}(\mathsf{v}),
 \end{equation}$$
@@ -602,9 +626,7 @@ R2-rect-point)
 ;;(down (((partial 0) f-rect) (up x0 y0))
 ;;      (((partial 1) f-rect) (up x0 y0)))
 ```
-However, if the coordinate system of the basis differs from the
-coordinates of the representation of the function, the result is
-complicated by the chain rule:
+However, if the coordinate system of the basis differs from the coordinates of the representation of the function, the result is complicated by the chain rule:
 
 ```Scheme (((d (literal-manifold-function 'f-polar R2-polar))
  (coordinate-system->vector-basis R2-rect))
@@ -618,9 +640,7 @@ complicated by the chain rule:
 ;;               (cos theta))
 ;;            r))
 ```)
-The coordinate-basis one-form fields can be used to find the
-coefficients of vector fields in the corresponding coordinate vector-field
-basis:
+The coordinate-basis one-form fields can be used to find the coefficients of vector fields in the corresponding coordinate vector-field basis:
 $$\begin{equation}
 \tilde{\mathsf{X}}^i(\mathsf{v}) = \mathsf{v}(\chi^i) = b^i \circ χ
 \end{equation}$$
@@ -629,17 +649,13 @@ $$\begin{equation}
 \tilde{\mathsf{X}}(\mathsf{v}) = \mathsf{v}(\chi) = b \circ χ.
 \end{equation}$$
 
-A coordinate-basis one-form field is often written $\mathsf{dx}^i$. This
-traditional notation for the coordinate-basis one-form fields is justified
-by the relation:
+A coordinate-basis one-form field is often written $\mathsf{dx}^i$. This traditional notation for the coordinate-basis one-form fields is justified by the relation:
 $$\begin{equation}
 \mathsf{dx}^i = \tilde{\mathsf{X}}^i = \mathsf{d} (\chi^i).
 \end{equation}$$
-The ~define-coordinates~ procedure also makes the basis one-form
-fields with these traditional names inherited from the coordinates.
+The ~define-coordinates~ procedure also makes the basis one-form fields with these traditional names inherited from the coordinates.
 
-We can illlustrate the duality of the coordinate-basis vector
-fields and the coordinate-basis one-form fields:
+We can illlustrate the duality of the coordinate-basis vector fields and the coordinate-basis one-form fields:
 ```Scheme (define-coordinates (up x y) R2-rect)
 ```
 ```Scheme ((dx d/dy) R2-rect-point)
@@ -648,9 +664,7 @@ fields and the coordinate-basis one-form fields:
 ```Scheme ((dx d/dx) R2-rect-point)
 ;; 0
 ```
-
-We can use the coordinate-basis one-form fields to extract the
-coefficients of ~circular~ on the rectangular vector basis:
+We can use the coordinate-basis one-form fields to extract the coefficients of ~circular~ on the rectangular vector basis:
 
 ```Scheme ((dx circular) R2-rect-point)
 ;; (* -1 y0)
@@ -673,9 +687,7 @@ them both to the general function ~f~:
 ```
 #####  Not All One-Form Fields Are Differentials
 
-Although all one-form fields can be constructed as linear combinations
-of basis one-form fields, not all one-form fields are differentials
-of functions.
+Although all one-form fields can be constructed as linear combinations of basis one-form fields, not all one-form fields are differentials of functions.
 
 The coefficients of a differential are (see equation 3.45):
 $$\begin{equation}
@@ -689,18 +701,16 @@ As a consequence, the coefficients of a differential are constrained
 $$\begin{equation}
 \mathsf{X}_i(\mathsf{c}_j) = \mathsf{X}_j(\mathsf{c}_i),
 \end{equation}$$
-but a one-form field can be constructed with arbitrary coefficient
-functions. For example:
+but a one-form field can be constructed with arbitrary coefficient functions. For example:
 $$\begin{equation}
 \mathsf{xdx} + \mathsf{xdy}
 \end{equation}$$
-is not a differential of any function. This is why we started with
-the basis one-form fields and built the general one-form fields in
-terms of them.
+is not a differential of any function. This is why we started with the basis one-form fields and built the general one-form fields in terms of them.
 
 #####  Coordinate Transformations
 
 Consider a coordinate change from the chart $\chi$ to the chart $\chi'$.
+$$\begin{equation}
 \begin{align}
 \tilde{\mathsf{X}}(\mathsf{v})
 &= \mathsf{v}(\chi) \nonumber \\
@@ -708,14 +718,14 @@ Consider a coordinate change from the chart $\chi$ to the chart $\chi'$.
 &= (D(\chi \circ (\chi')^{-1}) \circ \chi') \mathsf{v}(\chi') \\
 &= (D(\chi \circ (\chi')^{-1}) \circ \chi') \circ \tilde{\mathsf{X}}'(v),
 \end{align}
+\end{equation}$$
 where the third line follows from the chain rule for vector fields.
 
 One-form fields are independent of coordinates. So,
 $$\begin{equation}
 \omega(v) = (a \circ \chi) \tilde{\mathsf{X}}(v) = (a' \circ \chi') \tilde{\mathsf{X}}'(v).
 \end{equation}$$
-Eqs. (3.54) and (3.53) require that the coefficients transform under
-coordinate transformations as follows:
+Eqs. (3.54) and (3.53) require that the coefficients transform under coordinate transformations as follows:
 $$\begin{equation}
 a(\chi(\mathsf{m})) D(\chi \circ (\chi')^{-1})(\chi'(\mathsf{m})) = a'(\chi'(\mathsf{m})),
 \end{equation}$$
@@ -724,8 +734,7 @@ $$\begin{equation}
 a(\chi(\mathsf{m})) = a'(\chi'(\mathsf{m})) (D(\chi \circ (\chi')^{-1})(\chi'(\mathsf{m}gt)))^{-1}.
 \end{equation}$$
 
-The coefficient tuple $a(x)$ is a down structure compatible for
-contraction with $b(x)$. Let $\mathsf{v}$ be the vector with coefficient tuple
+The coefficient tuple $a(x)$ is a down structure compatible for contraction with $b(x)$. Let $\mathsf{v}$ be the vector with  coefficient tuple
 $b(x)$, and $\omega$ be the one-form with coefficient tuple $a(x)$. Then, by
 equation (3.43),
 $$\begin{equation}
@@ -741,8 +750,7 @@ As a program:
 ;;    (* (b^1 (up x y)) (a_1 (up x0 y0))))
 ```
 
-Comparing equation (3.56) with equation (3.23) we see that
-one-form components and vector components transform oppositely,
+Comparing equation (3.56) with equation (3.23) we see that one-form components and vector components transform oppositely,
 so that
 $$\begin{equation}
 a(x) b(x) = a'(x') b'(x'),
@@ -751,18 +759,13 @@ as expected because $\omega(\mathsf{v})(\mathsf{m})$ is independent of coordinat
 
 **Exercise 3.2: Verification**
 
-Verify that the coefficients of a one-form field transform as described in
-equation (3.56). You should use equation (3.44) in your derivation.
+Verify that the coefficients of a one-form field transform as described in equation (3.56). You should use equation (3.44) in your derivation.
 
 **Exercise 3.3: Hill Climbing**
 
-The topography of a region on the Earth can be specified by a manifold
-function $\mathsf{h}$ that gives the altitude at each point on the
-manifold. Let $\mathsf{v}$ be a vector field on the manifold, perhaps
-specifying a direction and rate of walking at every point on the manifold.
+The topography of a region on the Earth can be specified by a manifold function $\mathsf{h}$ that gives the altitude at each point on the manifold. Let $\mathsf{v}$ be a vector field on the manifold, perhaps specifying a direction and rate of walking at every point on the manifold.
 
-**a.** Form an expression that gives the power that must be expended to
-follow the vector field at each point.
+**a.** Form an expression that gives the power that must be expended to follow the vector field at each point.
 
 **b.** Write this as a computational expression.
 
@@ -783,7 +786,6 @@ $$\begin{equation}
 \sum_i \mathsf{a}_i \mathsf{v}_i(\mathsf{f}) = \mathsf{0} (\mathsf{f}),
 \end{equation}$$
 where $\mathsf{0}$ is the vector field such that $\mathsf{0}(\mathsf{f})(\mathsf{m}) = 0$ for all $\mathsf{f}$ and $\mathsf{m}$.
-
 
 #FootnoteRef(6) This notation helps one remember the transformation rule:
 
