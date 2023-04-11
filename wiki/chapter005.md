@@ -92,23 +92,20 @@ If we let $M = (D(g^{-1})) \circ \chi$ then
 
 $$\begin{equation}
 \begin{aligned}
-(\omega (\mathsf{X}_{0}, \mathsf{X}_{1}, \dots) \circ \chi^{\prime-1}) \det(Dg) \\
+(\omega (\mathsf{X}_{0}, &\mathsf{X}_{1}, \dots) \circ \chi^{\prime-1}) \det(Dg) \\
 &= (\omega (\mathsf{X}^{\prime} M_{0}, \mathsf{X}^{\prime}M_{1}, \dots) \circ \chi^{\prime-1}) \det(Dg) \\
 &= (\omega(\mathsf{X}^{\prime}_{0}, \mathsf{X}^{\prime}_{1}, \dots) \circ \chi^{\prime-1}) \alpha (M_{0}, M_{1}, \dots) \det(Dg),
 \end{aligned}
 \end{equation}$$
 
-
-using the multilinearity of $\boldsymbol{\omega}$, where $M_{i}}$ is the
-${i}^{\text{th}}$ column of $M$. The function $\alpha$ is multilinear in the columns of $M$. To make a coordinate-independent integration we want the expression (5.10) to be the same as the integrand in
+using the multilinearity of $\boldsymbol{\omega}$, where $M_{i}$ is the ${i}^{\text{th}}$ column of $M$. The function $\alpha$ is multilinear in the columns of $M$. To make a coordinate-independent integration we want the expression (5.10) to be the same as the integrand in
 
 $$\begin{equation}
 I^{\prime} = \int_{\chi^{\prime}(\mathsf{U})} \omega(\mathsf{X}^{\prime}_{0}, \mathsf{X}^{\prime}_{1}, \dots) \circ \chi^{\prime-1}.
 \end{equation}$$
 
 For this to be the case, $\alpha (M_{0}, M_{1}, \dots)$ must be
-$(\det(D(g))^{-1} = \det(M)$. So α is an antisymmetric function, and thus so is
-ω.
+$(\det(D(g))^{-1} = \det(M)$. So α is an antisymmetric function, and thus so is $ω$.
 
 Thus higher-rank form fields must be antisymmetric multilinear functions from vector fields to manifold functions. So we have a coordinate-independent definition of integration of form fields on a manifold and we can write
 
@@ -131,7 +128,7 @@ $$\begin{equation}
 \omega \wedge \tau = \frac{(k+l)!}{k!l!} \text{Alt}(\omega \otimes \tau)
 \end{equation}$$
 
-where, if η is a function on $m$ vectors,
+where, if $η$ is a function on $m$ vectors,
 
 $$\begin{equation}
 \begin{aligned}
@@ -144,7 +141,7 @@ and where
 
 $$\begin{equation}
 \begin{aligned}
-\omega \otimes \tau (\mathsf{v}_{0}, \dots, \mathsf{v}_{k-1}, \mathsf{v}_{k}, \dots, \mathsf{v}_{k+l-1}) \\
+\omega \otimes \tau &(\mathsf{v}_{0}, \dots, \mathsf{v}_{k-1}, \mathsf{v}_{k}, \dots, \mathsf{v}_{k+l-1}) \\
 &= \omega (\mathsf{v}_{0}, \dots, \mathsf{v}_{k-1}) \tau (\mathsf{v}_{k}, \dots, \mathsf{v}_{k+l-1}).
 \end{aligned}
 \end{equation}$$
@@ -165,8 +162,7 @@ $$\begin{equation}
 
 where $\text{Volume}(\mathsf{U})$ is the ordinary volume of the region corresponding to $\mathsf{U}$ in the Euclidean space of $\mathsf{R}^{n}$ with the orthonormal coordinate system $(x, y, \ldots)$.#Footnote(3)
 
-An example two-form (see figure 5.1) is the oriented area of a parallelogram in the $(x,y)$ coordinate plane at the point $\mathsf{m}$ spanned by two vectors
-$\mathsf{u} = \mathsf{u}^{0}{\partial}/{\partial\mathsf{x}} +
+An example two-form (see figure 5.1) is the oriented area of a parallelogram in the $(x,y)$ coordinate plane at the point $\mathsf{m}$ spanned by two vectors $\mathsf{u} = \mathsf{u}^{0}{\partial}/{\partial\mathsf{x}} +
 \mathsf{u}^{1}{\partial}/{\partial\mathsf{y}}$ and $\mathsf{v} =
 {\mathsf{v}^{0}{\partial}/{\partial\mathsf{x}} +
 \mathsf{v}^{1}}{\partial}/{\partial\mathsf{y}},$ which is given by
@@ -259,8 +255,7 @@ $$\begin{equation}
 \omega_{{i}_{\sigma(0)}, \ldots, {i}_{\sigma (k-1)}} = \text{Parity}(\sigma)\omega_{i_{0}, \ldots, {i}_{k-1}},
 \end{equation}$$
 
-from which we see that there are only $\binom{n}{k}$ independent components of
-ω.
+from which we see that there are only $\binom{n}{k}$ independent components of $ω$.
 
 ### Exercise 5.1: Wedge Product
 
@@ -289,9 +284,9 @@ More generally, the exterior derivative of a $k$-form field is a $k+1$-form fiel
 
 $$\begin{equation}
 \begin{aligned}
-\mathsf{d} \omega (\mathsf{v}_{0}, \ldots, \mathsf{v}_{k}) \\
-&= \sum_{i=0}^{k} \left\{ ((-1)^{i} \mathsf{v}_{i}(\omega (\mathsf{v}_{0}, \ldots, \mathsf{v}_{i-1}, \mathsf{v}_{i+1}, \ldots, \mathsf{v}_{k}))+ \\
-\sum_{j=i+1}^{k} (-1)^{i+j} \omega (\mathsf{v}_{i}, \mathsf{v}_{j}], \mathsf{v}_{0}, \ldots, \mathsf{v}_{i-1}, \mathsf{v}_{i+1}, \ldots, \mathsf{v}_{j-1}, \mathsf{v}_{j+1}, \ldots, \mathsf{v}_{k})) \right\}.
+\mathsf{d} \omega & (\mathsf{v}_{0}, \ldots, \mathsf{v}_{k}) = \\
+& \sum_{i=0}^{k} \bigg\{  ((-1)^{i} \mathsf{v}_{i}(\omega (\mathsf{v}_{0}, \ldots, \mathsf{v}_{i-1}, \mathsf{v}_{i+1}, \ldots, \mathsf{v}_{k}))+ \\
+& \left. \sum_{j=i+1}^{k} (-1)^{i+j} \omega (\mathsf{v}_{i}, \mathsf{v}_{j}], \mathsf{v}_{0}, \ldots, \mathsf{v}_{i-1}, \mathsf{v}_{i+1}, \ldots, \mathsf{v}_{j-1}, \mathsf{v}_{j+1}, \ldots, \mathsf{v}_{k})) \right\}.
 \end{aligned}
 \end{equation}$$
 
@@ -435,7 +430,7 @@ The area integral on the right can be written as an ordinary multidimensional in
 
 $$\begin{equation}
 \begin{aligned}
-\int_{\chi(\mathsf{P})} \mathsf{d} \omega ({\partial}/{\partial\mathsf{x}}, {\partial}/{\partial\mathsf{y}}) \circ \chi^{-1} \\
+\int_{\chi(\mathsf{P})} &\mathsf{d} \omega ({\partial}/{\partial\mathsf{x}}, {\partial}/{\partial\mathsf{y}}) \circ \chi^{-1} \\
 &= \int_{x_{min}}^{x_{max}} \int_{y_{min}}^{y_{max}} ({\partial}/{\partial\mathsf{x}} (\omega ({\partial}/{\partial\mathsf{y}})) - {\partial}/{\partial\mathsf{y}}(\omega ({\partial}/{\partial\mathsf{x}}))) \circ \chi^{-1}.
 \end{aligned}
 \end{equation}$$
@@ -446,23 +441,22 @@ Consider just the first term of the right-hand side of equation (5.32). Then usi
 
 $$\begin{equation}
 \begin{aligned}
-\int_{{x}_{min}}^{{x}_{max}} \int_{{y}_{min}}^{{y}_{max}} ({\partial}/{\partial\mathsf{x}} (\omega ({\partial}/{\partial\mathsf{y}})) \circ \chi^{-1}) \\
+\int_{{x}_{min}}^{{x}_{max}} &\int_{{y}_{min}}^{{y}_{max}} ({\partial}/{\partial\mathsf{x}} (\omega ({\partial}/{\partial\mathsf{y}})) \circ \chi^{-1}) \\
 &= \int_{{x}_{min}}^{{x}_{max}} \int_{{y}_{min}}^{{y}_{max}} (X_{0}(\omega ({\partial}/{\partial\mathsf{y}})) \circ \chi^{-1}) \\
 &= \int_{{x}_{min}}^{{x}_{max}} \int_{{y}_{min}}^{{y}_{max}} \partial_{0} ((\omega ({\partial}/{\partial\mathsf{y}})) \circ \chi^{-1}).
 \end{aligned}
 \end{equation}$$
 
-This integral can now be evaluated using the Fundamental Theorem of Calculus.
-Accumulating the results for both integrals
+This integral can now be evaluated using the Fundamental Theorem of Calculus. Accumulating the results for both integrals
 
 $$\begin{equation}
 \begin{aligned}
-\int_{\chi (\mathsf{P})} \mathsf{d}\omega ({\partial}/{\partial\mathsf{x}}, {\partial}/ {\partial\mathsf{y}}) \circ \chi^{-1} \\
-&= \int_{{x}_{min}}^{{x}_{max}} ((\omega ({\partial}/{\partial\mathsf{x}})) \circ \chi^{-1}) (x, y_{min})dx \\
-\int_{{y}_{min}}^{{y}_{max}} ((\omega({\partial}/{\partial\mathsf{y}}) \circ \chi^{-1}) (x_{max}, y)dy \\
-- \int_{x_{min}}^{x_{max}} ((\omega (\partial / \partial\mathsf{x})) \circ \chi^{-1}) (x, y_{max})dx \\
-- \int_{{y}_{min}}^{{y}_{max}} ((\omega({\partial}/{\partial\mathsf{y}})) \circ \chi^{-1}) (x_{min}, y)dy \\
-&= \int_{\partial\mathsf{P}} \omega,
+\int_{\chi (\mathsf{P})} \mathsf{d}\omega &({\partial}/{\partial\mathsf{x}}, {\partial}/ {\partial\mathsf{y}}) \circ \chi^{-1} \\
+= &\int_{{x}_{min}}^{{x}_{max}} ((\omega ({\partial}/{\partial\mathsf{x}})) \circ \chi^{-1}) (x, y_{min})dx \\
+&\int_{{y}_{min}}^{{y}_{max}} ((\omega({\partial}/{\partial\mathsf{y}}) \circ \chi^{-1}) (x_{max}, y)dy \\
+- &\int_{x_{min}}^{x_{max}} ((\omega (\partial / \partial\mathsf{x})) \circ \chi^{-1}) (x, y_{max})dx \\
+- &\int_{{y}_{min}}^{{y}_{max}} ((\omega({\partial}/{\partial\mathsf{y}})) \circ \chi^{-1}) (x_{min}, y)dy \\
+= &\int_{\partial\mathsf{P}} \omega,
 \end{aligned}
 \end{equation}$$
 
@@ -470,8 +464,7 @@ as was to be shown.
 
 ### Vector Integral Theorems
 
-Green's Theorem states that for an arbitrary compact set $M \subset
-\mathrm{R}^{2}$, a 2-dimensional Euclidean space:
+Green's Theorem states that for an arbitrary compact set $M \subset \mathrm{R}^{2}$, a 2-dimensional Euclidean space:
 
 $$\begin{equation}
 \int_{\partial M} ((\alpha \circ \chi) \mathsf{d}\mathsf{x} + (\beta \circ \chi) \mathsf{d}\mathsf{y}) = \int_{M} ((\partial_{0} \beta - \partial_{1}\alpha) \circ \chi) \mathsf{d}\mathsf{x} \wedge \mathsf{d}\mathsf{y}.
@@ -511,13 +504,9 @@ $$\begin{equation}
 \int_{M} \text{div}(\mathsf{w})dV = \int_{\partial M} \mathsf{w} \cdot \mathsf{n}dA
 \end{equation}$$
 
-where $\mathsf{n}$ is the outward-pointing normal to the surface $\partial M$.
-Again, the integrands should be related by an exterior derivative, if this is an instance of Stokes's Theorem.
+where $\mathsf{n}$ is the outward-pointing normal to the surface $\partial M$. Again, the integrands should be related by an exterior derivative, if this is an instance of Stokes's Theorem.
 
-Note that even the statement of this theorem cannot be made with the machinery we have developed at this point. The concepts "outward-pointing normal," area
-$A$, and volume $V$ on the manifold are not definable without using a metric
-(see Chapter 9). However, for orthonormal rectangular coordinates in
-$\mathrm{R}^{3}$ we can interpret the integrands in terms of forms.
+Note that even the statement of this theorem cannot be made with the machinery we have developed at this point. The concepts "outward-pointing normal," area $A$, and volume $V$ on the manifold are not definable without using a metric (see Chapter 9). However, for orthonormal rectangular coordinates in $\mathrm{R}^{3}$ we can interpret the integrands in terms of forms.
 
 Let the vector field describing the flow of stuff be
 
@@ -525,15 +514,13 @@ $$\begin{equation}
 \mathsf{w} = \mathsf{a} \frac{\partial}{\partial\mathsf{x}} + \mathsf{b} \frac{\partial}{\partial\mathsf{y}} + \mathsf{c} \frac{\partial}{\partial\mathsf{z}}.
 \end{equation}$$
 
-The rate of leakage of stuff through each element of the boundary is
-${\mathsf{w}} \cdot {\mathsf{n}dA}$. We interpret this as the two-form
+The rate of leakage of stuff through each element of the boundary is ${\mathsf{w}} \cdot {\mathsf{n}dA}$. We interpret this as the two-form
 
 $$\begin{equation}
 \mathsf{a} \, \mathsf{d}\mathsf{y} \wedge \mathsf{d}\mathsf{z} + \mathsf{b} \, \mathsf{d}\mathsf{z} \wedge \mathsf{d}\mathsf{x} + \mathsf{c} \, \mathsf{d}\mathsf{x} \wedge \mathsf{d}\mathsf{y},
 \end{equation}$$
 
-because any part of the boundary will have $y\mbox{-}z$, $z\mbox{-}x$, and
-$x\mbox{-}y$ components, and each such component will pick up contributions from the normal component of the flux $w$. Formalizing this as code we have
+because any part of the boundary will have $y - z$, $z - x$, and $x - y$ components, and each such component will pick up contributions from the normal component of the flux $w$. Formalizing this as code we have
 
 ```Scheme
 (define a (literal-manifold-function 'a-rect R3-rect))
@@ -550,7 +537,7 @@ The rate of production of stuff in each element of volume is
 $\text{div}(\mathsf{w})dV$. We interpret this as the three-form
 
 $$\begin{equation}
-(\frac{\partial}{\partial\mathsf{x}}\mathsf{a} + \frac{\partial}{\partial\mathsf{y}}\mathsf{b} + \frac{\partial}{\partial\mathsf{z}}\mathsf{c})\: \mathsf{d}\mathsf{x} \wedge \mathsf{d}\mathsf{y} \wedge \mathsf{d}\mathsf{z}.
+\left(\frac{\partial}{\partial\mathsf{x}}\mathsf{a} + \frac{\partial}{\partial\mathsf{y}}\mathsf{b} + \frac{\partial}{\partial\mathsf{z}}\mathsf{c}\right)\: \mathsf{d}\mathsf{x} \wedge \mathsf{d}\mathsf{y} \wedge \mathsf{d}\mathsf{z}.
 \end{equation}$$
 
 or:
@@ -590,31 +577,22 @@ We have shown that the equation (5.29) is true for manifold functions. Show that
 ----
 ### Footnotes
 
-#FootnoteRef(10) Using =(define R2-rect-basis (coordinate-system->basis R2-rect))=.
-
-Here we extract $\mathsf{d}\mathsf{x}$ and $\mathsf{d}\mathsf{y}$ from R2-rect-basis to avoid globally installing coordinates.
-
-#FootnoteRef(9) We do not develop the machinery for integration on chains that is usually needed for a full proof of Stokes's Theorem. This is adequately done in other books. A beautiful treatment can be found in Spivak, Calculus on Manifolds [17].
-
-#FootnoteRef(8) See Spivak, Calculus on Manifolds, p.92
-
-#FootnoteRef(7) See Spivak, Differential Geometry, Volume 1, p.289.
-
-#FootnoteRef(6) The definition is chosen to make Stokes's Theorem pretty.
-
-#FootnoteRef(5) A manifold function $\mathsf{f}$ induces a form field $\hat{\mathsf{f}}$
-of rank 0 as follows:
-
-$$\begin{equation}
-\hat{\mathsf{f}}()(\mathsf{m}) = \mathsf{f}(\mathsf{m}).
-\end{equation}$$
-
-#FootnoteRef(4) This is a generalization of the Fundamental Theorem of Calculus.
-
-#FootnoteRef(3) By using the word "orthonormal" here we are assuming that the range of the coordinate chart is an ordinary Euclidean space with the usual Euclidean metric. The coordinate basis in that chart is orthonormal. Under these conditions we can usefully use words like "length," "area," and "volume" in the coordinate space.
-
-#FootnoteRef(2) The determinant is the unique function of the rows of its argument that i) is linear in each row, ii) changes sign under any interchange of rows, and iii) is one when applied to the identity multiplier.
-
 #FootnoteRef(1) Note $(D(\chi \circ \chi^{\prime-1}) \circ (\chi^{\prime} \circ
 \chi^{-1})) D (\chi^{\prime} \circ \chi^{-1}) = 1$. With $g = \chi^{\prime}
 \circ \chi^{-1}$ this is $(D(g^{-1} \circ g)(Dg) = 1$.
+#FootnoteRef(2) The determinant is the unique function of the rows of its argument that i) is linear in each row, ii) changes sign under any interchange of rows, and iii) is one when applied to the identity multiplier.
+#FootnoteRef(3) By using the word "orthonormal" here we are assuming that the range of the coordinate chart is an ordinary Euclidean space with the usual Euclidean metric. The coordinate basis in that chart is orthonormal. Under these conditions we can usefully use words like "length," "area," and "volume" in the coordinate space.
+#FootnoteRef(4) This is a generalization of the Fundamental Theorem of Calculus.
+#FootnoteRef(5) A manifold function $\mathsf{f}$ induces a form field $\hat{\mathsf{f}}$
+of rank 0 as follows:
+$$\begin{equation}
+\hat{\mathsf{f}}()(\mathsf{m}) = \mathsf{f}(\mathsf{m}).
+\end{equation}$$
+#FootnoteRef(6) The definition is chosen to make Stokes's Theorem pretty.
+#FootnoteRef(7) See Spivak, Differential Geometry, Volume 1, p.289.
+#FootnoteRef(8) See Spivak, Calculus on Manifolds, p.92
+#FootnoteRef(9) We do not develop the machinery for integration on chains that is usually needed for a full proof of Stokes's Theorem. This is adequately done in other books. A beautiful treatment can be found in Spivak, Calculus on Manifolds [17].
+#FootnoteRef(10) Using =(define R2-rect-basis (coordinate-system->basis R2-rect))=.
+
+Here we extract $\mathsf{d}\mathsf{x}$ and $\mathsf{d}\mathsf{y}$ from R2-rect-basis to avoid globally installing coordinates.
+#FootnoteEnd

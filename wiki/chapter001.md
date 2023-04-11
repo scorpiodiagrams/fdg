@@ -90,8 +90,6 @@ A Lagrangian governing free motion on a sphere of radius $R$ is then the composi
 
 So the value of the Lagrangian at an arbitrary dynamical state is:
 
-# NOTE that we can name a block and then use it in the next section with
-# ~:nobweb yes~.
 #+name: Lsphere
 ```Scheme
 ((Lsphere 'm 'R)
@@ -351,10 +349,9 @@ If we change the representation of the geodesic equations by "lowering" them usi
 This establishes that for a 2-dimensional space the Euler-Lagrange equations are equivalent to the geodesic equations. The Christoffel coefficients that appear in the geodesic equation correspond to coefficients of terms in the Euler-Lagrange equations. This analysis will work for any number of dimensions
 (but will take your computer longer in higher dimensions, because the complexity increases).
 
-*** Exercise 1.1: Motion on a Sphere
+#### Exercise 1.1: Motion on a Sphere
 
-The metric for a unit sphere, expressed in colatitude $\theta$ and longitude
-$\phi$, is
+The metric for a unit sphere, expressed in colatitude $\theta$ and longitude $\phi$, is
 $$\begin{equation}
 \mathsf{g}(\mathsf{u}, \mathsf{v})= \mathsf{d}\theta(\mathsf{u})\mathsf{d}\theta(\mathsf{v}) + (\sin \theta)^{2} \mathsf{d}\phi(\mathsf{u}) \mathsf{d} \phi(\mathsf{v}).
 \end{equation}$$
@@ -363,26 +360,25 @@ Compute the Lagrange equations for motion of a free particle on the sphere and c
 ----
 ### Footnotes
 
-#FootnoteRef(8) We established =t= as a coordinate function on the rectangular coordinates of the real line by
+#FootnoteRef(1) It is customary to shorten "Euler-Lagrange equations" to "Lagrange equations." We hope Leonhard Euler is not disturbed.
 
-```Scheme
-(define-coordinates t R1-rect)
-```
+#FootnoteRef(2) A short introduction to our functional notation, and why we have chosen it, is given in the prologue: Programming and Understanding. More details can be found in Appendix B
 
-This had the effect of also defining =d/dt= as a coordinate vector field and
-=dt= as a one-form field on the real line.
+#FootnoteRef(3) An informal description of the Scheme programming language can be found in Appendix A.
 
-#FootnoteRef(7) For an explanation of equation residuals see page xvi.
+#FootnoteRef(4) The procedure =literal-metric= provides a metric. It is a general symmetric function of two vector fields, with literal functions of the coordinates of the manifold points for its coefficients in the given coordinate system. The quoted symbol ='g= is used to make the names of the literal coefficient functions. Literal functions are discussed in Appendix B.
+
+#FootnoteRef(5) =R2-rect= is the usual rectangular coordinate system on the 2-dimensional real manifold. (See Section 2.1, page 13.) We supply common coordinate systems for n-dimensional real manifolds. For example, =R2-polar= is a polar coordinate system on the same manifold.
 
 #FootnoteRef(6) The procedure =literal-manifold-map= makes a map from the manifold implied by its second argument to the manifold implied by the third argument.
 These arguments must be coordinate systems. The quoted symbol that is the first argument is used to name the literal coordinate functions that define the map.
 
-#FootnoteRef(5) =R2-rect= is the usual rectangular coordinate system on the 2-dimensional real manifold. (See Section 2.1, page 13.) We supply common coordinate systems for n-dimensional real manifolds. For example, =R2-polar= is a polar coordinate system on the same manifold.
+#FootnoteRef(7) For an explanation of equation residuals see page xvi.
 
-#FootnoteRef(4) The procedure =literal-metric= provides a metric. It is a general symmetric function of two vector fields, with literal functions of the coordinates of the manifold points for its coefficients in the given coordinate system. The quoted symbol ='g= is used to make the names of the literal coefficient functions. Literal functions are discussed in Appendix B.
+#FootnoteRef(8) We established =t= as a coordinate function on the rectangular coordinates of the real line by
+```Scheme
+(define-coordinates t R1-rect)
+```
+This had the effect of also defining =d/dt= as a coordinate vector field and =dt= as a one-form field on the real line.
+#FootnoteEnd
 
-#FootnoteRef(3) An informal description of the Scheme programming language can be found in Appendix A.
-
-#FootnoteRef(2) A short introduction to our functional notation, and why we have chosen it, is given in the prologue: Programming and Understanding. More details can be found in Appendix B
-
-#FootnoteRef(1) It is customary to shorten "Euler-Lagrange equations" to "Lagrange equations." We hope Leonhard Euler is not disturbed.

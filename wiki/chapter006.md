@@ -7,15 +7,11 @@ To deal with motion on manifolds we need to think about paths on manifolds and v
 
 ###  Vector Fields Over a Map
 
-Let μ be a map from points $\mathsf{n}$ in the manifold $\mathsf{N}$ to points $\mathsf{m}$ in the manifold $\mathsf{M}$. A vector over the map μ
-takes directional derivatives of functions on $\mathsf{M}$ at points
-$\mathsf{m} = \mu(\mathsf{n}). The vector over the map applied to the function on $\mathsf{M}$ is a function on $\mathsf{N}$.
+Let μ be a map from points $\mathsf{n}$ in the manifold $\mathsf{N}$ to points $\mathsf{m}$ in the manifold $\mathsf{M}$. A vector over the map μ takes directional derivatives of functions on $\mathsf{M}$ at points $\mathsf{m} = \mu(\mathsf{n})$. The vector over the map applied to the function on $\mathsf{M}$ is a function on $\mathsf{N}$.
 
 ### Restricted Vector Fields
 
-One way to make a vector field over a map is to restrict a vector field on
-$\mathsf{M}$ to the image of $\mathsf{N}$ over μ, as illustrated in figure
-6.1.
+One way to make a vector field over a map is to restrict a vector field on $\mathsf{M}$ to the image of $\mathsf{N}$ over μ, as illustrated in figure 6.1.
 
 Let $\mathsf{v}$ be a vector field on $\mathsf{M}$, and $\mathsf{f}$ a function on $\mathsf{M}$. Then
 
@@ -40,8 +36,7 @@ We can implement this definition as:
 
 ### Differential of a Map
 
-Another way to construct a vector field over a map μ is to transport a vector field from the source manifold $\mathsf{N}$ to the target manifold
-$\mathsf{M}$ with the /differential/ of the map
+Another way to construct a vector field over a map μ is to transport a vector field from the source manifold $\mathsf{N}$ to the target manifold $\mathsf{M}$ with the /differential/ of the map
 
 $$\begin{equation}
 d\mu(\mathsf{v})(\mathsf{f})(\mathsf{n}) = \mathsf{v}(\mathsf{f}\circ\mu)(\mathsf{n}),
@@ -50,8 +45,10 @@ d\mu(\mathsf{v})(\mathsf{f})(\mathsf{n}) = \mathsf{v}(\mathsf{f}\circ\mu)(\maths
 which takes its argument in the source manifold $\mathsf{N}$. The differential of a map μ applied to a vector field $\mathsf{v}$ on
 $\mathsf{N}$ is a vector field over the map. A procedure to compute the differential is:
 
+```Scheme
 (define (((differential mu) v) f)
 (v (compose f mu)))
+```
 
 The nomenclature of this subject is confused. The "differential of a map between manifolds," $d\mu$, takes one more argument than the "differential of a real-valued function on a manifold," $\mathsf{d}\mathsf{f}$, but when the target manifold of μ is the reals and $I$ is the identity function on the reals,
 
@@ -59,30 +56,21 @@ $$\begin{equation}
 d\mu(\mathsf{v})(I)(\mathsf{n}) = (\mathsf{v}(I\circ\mu))(\mathsf{n}) = (\mathsf{v}(\mu))(\mathsf{n}) =  \mathsf{d}\mu(\mathsf{v})(\mathsf{n}).
 \end{equation}$$
 
-We avoid this problem in our notation by distinguishing $d$ and $\mathsf{d}$.
-In our programs we encode $d$ as differential and $\mathsf{d}$ as d.
+We avoid this problem in our notation by distinguishing $d$ and $\mathsf{d}$. In our programs we encode $d$ as differential and $\mathsf{d}$ as d.
 
 ### Velocity at a Time
 
-Let μ be the map from the time line to the manifold $\mathsf{M}$, and
-${\partial}/{\partial\mathsf{t}}$ be a basis vector on the time line. Then
-$d\mu({\partial}/{\partial\mathsf{t}})$ is the vector over the map μ that computes the rate of change of functions on $\mathsf{M}$ along the path that is the image of μ. This is the velocity vector. We can use the differential to assign a velocity vector to each moment, solving the problem of multiple vectors at a point if the path crosses itself.
+Let μ be the map from the time line to the manifold $\mathsf{M}$, and ${\partial}/{\partial\mathsf{t}}$ be a basis vector on the time line. Then $d\mu({\partial}/{\partial\mathsf{t}})$ is the vector over the map μ that computes the rate of change of functions on $\mathsf{M}$ along the path that is the image of μ. This is the velocity vector. We can use the differential to assign a velocity vector to each moment, solving the problem of multiple vectors at a point if the path crosses itself.
 
 ### One-Form Fields Over a Map
 
-Given a one-form ω on the manifold $\mathsf{M}$, the one-form over the map
-$\mu:\mathsf{N} \to \mathsf{M}$ is constructed as follows:
+Given a one-form ω on the manifold $\mathsf{M}$, the one-form over the map $\mu:\mathsf{N} \to \mathsf{M}$ is constructed as follows:
 
 $$\begin{equation}
 \omega^{\mu}(\mathsf{v}_{\mu})(\mathsf{n}) = \omega(\mathsf{u})(\mu(\mathsf{n})) \text{, where } \mathsf{u}(\mathsf{f})(\mathsf{m}) = \mathsf{v}_{\mu}(\mathsf{f})(\mathsf{n}).
 \end{equation}$$
 
-The object $\mathsf{u}$ is not really a vector field on $\mathsf{M}$ even though we have given it that shape so that the dual vector can apply to it;
-$\mathsf{u}(\mathsf{f})$ is evaluated only at images $\mathsf{m} =
-\mu(\mathsf{n})$ of points $\mathsf{n}$ in $\mathsf{N}$. If we were defining
-$\mathsf{u}$ as a vector field we would need the inverse of μ to find the point $\mathsf{n} = \mu^{-1}(\mathsf{m})$, but this is not required to define the object $\mathsf{u}$ in a context where there is already an $\mathsf{m}$
-associated with the $\mathsf{n}$ of interest. To extend this idea to
-$k$-forms, we carry each vector argument over the map.
+The object $\mathsf{u}$ is not really a vector field on $\mathsf{M}$ even though we have given it that shape so that the dual vector can apply to it; $\mathsf{u}(\mathsf{f})$ is evaluated only at images $\mathsf{m} = \mu(\mathsf{n})$ of points $\mathsf{n}$ in $\mathsf{N}$. If we were defining $\mathsf{u}$ as a vector field we would need the inverse of μ to find the point $\mathsf{n} = \mu^{-1}(\mathsf{m})$, but this is not required to define the object $\mathsf{u}$ in a context where there is already an $\mathsf{m}$ associated with the $\mathsf{n}$ of interest. To extend this idea to $k$-forms, we carry each vector argument over the map.
 
 The procedure that constructs a $k$-form over the map from a $k$-form is:
 
@@ -103,14 +91,11 @@ The procedure that constructs a $k$-form over the map from a $k$-form is:
 (get-rank w-on-M)))
 ```
 
-The internal procedure make-fake-vector-field counterfeits a vector field
-$\mathsf{u}$ on $\mathsf{M}$ from the vector field over the map
-$\mu:\mathsf{N} \to \mathsf{M}$. This works here because the only value that is ever passed as m is (mu:N->M n).
+The internal procedure make-fake-vector-field counterfeits a vector field $\mathsf{u}$ on $\mathsf{M}$ from the vector field over the map $\mu:\mathsf{N} \to \mathsf{M}$. This works here because the only value that is ever passed as m is (mu:N->M n).
 
 ### Basis Fields Over a Map
 
-Let $\mathsf{e}$ be a tuple of basis vector fields, and $\tilde{\mathsf{e}}$
-be the tuple of basis one-forms that is dual to $\mathsf{e}$:
+Let $\mathsf{e}$ be a tuple of basis vector fields, and $\tilde{\mathsf{e}}$ be the tuple of basis one-forms that is dual to $\mathsf{e}$:
 
 $$\begin{equation}
 \tilde{\mathsf{e}}^{i}(\mathsf{e}_{j})(\mathsf{m}) = \delta^{i}_{j}.
@@ -170,8 +155,7 @@ The basis over the map is constructed from the basis on the sphere:
 ;;  (((partial 1) h-spherical) (up (theta t0) (phi t0))))
 ```
 
-The basis vectors over the map compute derivatives of the function $h$
-evaluated on the path at the given time.
+The basis vectors over the map compute derivatives of the function $h$ evaluated on the path at the given time.
 
 We can check that the dual basis over the map does the correct thing:
 
@@ -184,9 +168,7 @@ We can check that the dual basis over the map does the correct thing:
 
 ### Components of the Velocity
 
-Let χ be a tuple of coordinates on $\mathsf{M}$, with associated basis vectors $\mathsf{X}_{i}$, and dual basis elements $\mathsf{d}\mathsf{x}^{i}$.
-The vector basis and dual basis over the map μ are $\mathsf{X}^{\mu}_{i}$ and
-$\mathsf{d}\mathsf{x}^{i}_{\mu}$. The components of the velocity (rates of change of coordinates along the path μ) are obtained by applying the dual basis over the map to the velocity
+Let χ be a tuple of coordinates on $\mathsf{M}$, with associated basis vectors $\mathsf{X}_{i}$, and dual basis elements $\mathsf{d}\mathsf{x}^{i}$. The vector basis and dual basis over the map μ are $\mathsf{X}^{\mu}_{i}$ and $\mathsf{d}\mathsf{x}^{i}_{\mu}$. The components of the velocity (rates of change of coordinates along the path μ) are obtained by applying the dual basis over the map to the velocity
 
 $$\begin{equation}
 v^{i}(t) = \mathsf{d}\mathsf{x}^{i}_{\mu}(d\mu({\partial}/{\partial\mathsf{t}}))(\mathsf{t}),
@@ -219,10 +201,7 @@ $$\begin{equation}
 
 This allows us to take a function defined on $\mathsf{M}$ and use it to define a new function on $mathsf{N}$.
 
-For example, the integral curve of $\mathsf{v}$ evolved for time $t$ as a function of the initial manifold point $\mathsf{m}$ generates a map
-$\phi^{\mathsf{v}}_{t}$ of the manifold onto itself. This is a simple currying#Footnote(4) of the integral curve of $\mathsf{v}$ from $\mathsf{m}$ as a a function of time: $\phi^{\mathsf{v}}_{t}(\mathsf{m}) =
-\gamma^{\mathsf{v}}_{\mathsf{m}}(t)$. The evolution of the function
-$\mathsf{f}$ along an integral curve, equation (3.33), can be written in terms of the pullback over $\phi^{\mathsf{v}}_{t}$:
+For example, the integral curve of $\mathsf{v}$ evolved for time $t$ as a function of the initial manifold point $\mathsf{m}$ generates a map $\phi^{\mathsf{v}}_{t}$ of the manifold onto itself. This is a simple currying#Footnote(4) of the integral curve of $\mathsf{v}$ from $\mathsf{m}$ as a a function of time: $\phi^{\mathsf{v}}_{t}(\mathsf{m}) = \gamma^{\mathsf{v}}_{\mathsf{m}}(t)$. The evolution of the function $\mathsf{f}$ along an integral curve, equation (3.33), can be written in terms of the pullback over $\phi^{\mathsf{v}}_{t}$:
 
 $$\begin{equation}
 (\mathsf{E}_{t,\mathsf{v}}\mathsf{f})(\mathsf{m}) = \mathsf{f}(\phi^{\mathsf{v}}_{t}(\mathsf{m})) = ((\phi^{\mathsf{v}}_{t})^{*}\mathsf{f})(\mathsf{m}).
@@ -230,18 +209,18 @@ $$\begin{equation}
 
 This is implemented as:
 
+```Scheme
 (define ((pullback-function mu:N->M) f-on-m)
 (compose f-on-M mu:N->M))
+```
 
-A vector field over the map that was constructed by restriction (equation
-6.1) can be seen as the pullback of the function constructed by application of the vector field to a function:
+A vector field over the map that was constructed by restriction (equation 6.1) can be seen as the pullback of the function constructed by application of the vector field to a function:
 
 $$\begin{equation}
 \mathsf{v}_{\mu}(\mathsf{f}) = \mathsf{v}(\mathsf{f}) \circ \mu = \mu^{*} (\mathsf{v}(\mathsf{f})).
 \end{equation}$$
 
-A vector field over the map that was constructed by a differential (equation
-6.3) can be seen as the vector field applied to the pullback of the function:
+A vector field over the map that was constructed by a differential (equation 6.3) can be seen as the vector field applied to the pullback of the function:
 
 $$\begin{equation}
 d\mu(\mathsf{v})(\mathsf{f})(\mathsf{n}) = \mathsf{v}(\mathsf{f}\circ\mu)(\mathsf{n}) = \mathsf{v}(\mu^{*} \mathsf{f})(\mathsf{n}).
@@ -321,9 +300,7 @@ $$\begin{equation}
 \mu^{*}\omega(\mathsf{v}) = \omega(\mu_{*}\mathsf{v}),
 \end{equation}$$
 
-but this is wrong, because the two sides are not functions of points in the same manifold. The one-form field ω applies to a vector field on the manifold
-$\mathsf{M}$, which takes a directional derivative of a function defined on
-$\mathsf{M}$ and is evaluated at a point on $\mathsf{M}$, but the left-hand side is evaluated at a point on the manifold $\mathsf{N}$.
+but this is wrong, because the two sides are not functions of points in the same manifold. The one-form field ω applies to a vector field on the manifold $\mathsf{M}$, which takes a directional derivative of a function defined on $\mathsf{M}$ and is evaluated at a point on $\mathsf{M}$, but the left-hand side is evaluated at a point on the manifold $\mathsf{N}$.
 
 A more precise description would be
 
@@ -428,7 +405,7 @@ $$\begin{equation}
 
 but this is rarely useful.
 
-*** Exercise 6.1: Velocities on a Globe
+#### Exercise 6.1: Velocities on a Globe
 
 We can use manifold functions, vector fields, and one-forms over a map to understand how paths behave.
 
@@ -439,15 +416,9 @@ b. Stereographic projection is useful for navigation because it is conformal (it
 ----
 ### Footnotes
 
-#FootnoteRef(7) There is a generic pullback procedure that operates on any kind of manifold object. However, to pull a vector field back requires providing the inverse map.
+#FootnoteRef(1) See Bishop and Goldberg, /Tensor Analysis on Manifolds/ [3].
 
-#FootnoteRef(6) The map $\phi^{\mathsf{w}}_{t}$ is always invertible:
-$(\phi^{\mathsf{w}}_{t})^{-1} = \phi^{\mathsf{w}}_{-t}$ because of the uniqueness of the solutions of the initial-value problem for ordinary differential equations.
-
-#FootnoteRef(5) Notation note: superscript asterisk indicates pullback, subscript asterisk indicates pushforward. Pullbacks and pushforwards are tightly binding operators, so, for example $\mu^{*}f(\mathsf{n})=(\mu^{*}f)(\mathsf{n})$.
-
-#FootnoteRef(4) A function of two arguments may be seen as a function of one argument whose value is a function of the other argument. This can be done in two different ways, depending on which argument is supplied first. The general process of specifying a subset of the arguments to produce a new function of the others is called /currying/ the function, in honor of the logician Haskell Curry
-(1900-1982) who, with Moses Schönfinkel (1889-1942), developed combinatory logic.
+#FootnoteRef(2) We execute =(define-coordinates t R1-rect)= to make =t= the coordinate function of the real line.
 
 #FootnoteRef(3) We provide a shortcut to make literal manifold maps:
 
@@ -457,6 +428,10 @@ $(\phi^{\mathsf{w}}_{t})^{-1} = \phi^{\mathsf{w}}_{-t}$ because of the uniquenes
 
 But if we used this shortcut, the component functions would be named mu^0 and mu^1. Here we wanted to use more mnemonic names for the component functions.
 
-#FootnoteRef(2) We execute =(define-coordinates t R1-rect)= to make =t= the coordinate function of the real line.
+#FootnoteRef(4) A function of two arguments may be seen as a function of one argument whose value is a function of the other argument. This can be done in two different ways, depending on which argument is supplied first. The general process of specifying a subset of the arguments to produce a new function of the others is called /currying/ the function, in honor of the logician Haskell Curry (1900-1982) who, with Moses Schönfinkel (1889-1942), developed combinatory logic.
 
-#FootnoteRef(1) See Bishop and Goldberg, /Tensor Analysis on Manifolds/ [3].
+#FootnoteRef(5) Notation note: superscript asterisk indicates pullback, subscript asterisk indicates pushforward. Pullbacks and pushforwards are tightly binding operators, so, for example $\mu^{*}f(\mathsf{n})=(\mu^{*}f)(\mathsf{n})$.
+
+#FootnoteRef(6) The map $\phi^{\mathsf{w}}_{t}$ is always invertible: $(\phi^{\mathsf{w}}_{t})^{-1} = \phi^{\mathsf{w}}_{-t}$ because of the uniqueness of the solutions of the initial-value problem for ordinary differential equations.
+
+#FootnoteRef(7) There is a generic pullback procedure that operates on any kind of manifold object. However, to pull a vector field back requires providing the inverse map.

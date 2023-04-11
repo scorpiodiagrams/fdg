@@ -138,13 +138,15 @@ $$\begin{equation}
 \mathsf{e}(\mathsf{f}) = \mathsf{e^\prime}(\mathsf{f})\mathsf{J}.
 \end{equation}$$
 We can write
-```Scheme (define (Jacobian to-basis from-basis)
+```Scheme
+(define (Jacobian to-basis from-basis)
 (s:map/r (basis->1form-basis to-basis)
         (basis->vector-basis from-basis)))
 ```
 The polar components are:
 
-```Scheme (define b-polar
+```Scheme
+(define b-polar
 (* (Jacobian (coordinate-system->basis R2-polar)
             (coordinate-system->basis R2-rect))
   b-rect))
@@ -159,7 +161,8 @@ The polar components are:
 
 We can also get the polar components directly:
 
-```Scheme (((coordinate-system->1form-basis R2-polar)
+```Scheme
+(((coordinate-system->1form-basis R2-polar)
 (literal-vector-field 'b R2-rect))
 ((point R2-rect) (up 'x0 'y0)))
 
@@ -184,8 +187,7 @@ where $\mathsf{I}$ is a manifold function that returns the multiplicative identi
 
 The dual basis transforms oppositely. Let
 $$\begin{equation}
-\label{eq:op-transform}
-\boldsymbol{\omega} = \sum_i{\mathsf{a}_i \tilde{\mathsf{e}}^{\prime i}}.
+\boldsymbol{\omega} = \sum_i{\mathsf{a}_i \tilde{\mathsf{e}}^{i}} = \sum_i{\mathsf{a}^{\prime}_i \tilde{\mathsf{e}}^{\prime i}}.
 \end{equation}$$
 The coefficients are#Footnote(4)
 
@@ -310,7 +312,8 @@ We used the fact, shown above, that the commutator of two coordinate basis field
 
 We can check this formula for the commutator for the general vector fields =e0= and =e1= in polar coordinates:
 
-```Scheme (let* ((polar-basis (coordinate-system->basis R2-polar))
+```Scheme
+(let* ((polar-basis (coordinate-system->basis R2-polar))
  (polar-vector-basis (basis->vector-basis polar-basis))
  (polar-dual-basis (basis->1form-basis polar-basis))
  (f (literal-manifold-function 'f-rect R2-rect)))
@@ -344,20 +347,24 @@ $$\begin{equation}
 
 Define the vector fields =Jx=, =Jy=, and =Jz= that generate rotations about the three rectangular axes in three dimensions:#Footnote(5)
 
-```Scheme (define Jz (- (* x d/dy) (* y d/dx)))
+```Scheme
+(define Jz (- (* x d/dy) (* y d/dx)))
 (define Jx (- (* y d/dz) (* z d/dy)))
 (define Jy (- (* z d/dx) (* x d/dz)))
 ```
 
-```Scheme (((+ (commutator Jx Jy) Jz) g) R3-rect-point)
+```Scheme
+(((+ (commutator Jx Jy) Jz) g) R3-rect-point)
 ;; 0
 ```
 
-```Scheme (((+ (commutator Jy Jz) Jx) g) R3-rect-point)
+```Scheme
+(((+ (commutator Jy Jz) Jx) g) R3-rect-point)
 ;; 0
 ```
 
-```Scheme (((+ (commutator Jz Jx) Jy) g) R3-rect-point)
+```Scheme
+(((+ (commutator Jz Jx) Jy) g) R3-rect-point)
 ;; 0
 ```
 
@@ -372,18 +379,20 @@ $$\begin{equation}
 \end{equation}$$
 
 We can also compute the commutators for the basis vector fields
-$\mathsf{e}_x$, $\mathsf{e}_y$, and $\mathsf{e}_z$ in the SO(3) manifold (see equations 4.29–4.31) that correspond to rotations about the $x$, $y$, and $z$
-axes, respectively:#Footnote(6)
+$\mathsf{e}_x$, $\mathsf{e}_y$, and $\mathsf{e}_z$ in the SO(3) manifold (see equations 4.29–4.31) that correspond to rotations about the $x$, $y$, and $z$ axes, respectively:#Footnote(6)
 
-```Scheme (((+ (commutator e x e y) e z) f) SO3-point)
+```Scheme
+(((+ (commutator e x e y) e z) f) SO3-point)
 ;; 0
 ```
 
-```Scheme (((+ (commutator e y e z) e x) f) SO3-point)
+```Scheme
+(((+ (commutator e y e z) e x) f) SO3-point)
 ;; 0
 ```
 
-```Scheme (((+ (commutator e z e x) e y) f) SO3-point)
+```Scheme
+(((+ (commutator e z e x) e y) f) SO3-point)
 ;; 0
 ```
 
@@ -420,10 +429,7 @@ $$\begin{equation}
 
 This result is illustrated in figure 4.2.
 
-
-Take a point $\mathsf{0}$ in $\mathsf{M}$ as the origin. Then, presuming
-$[\mathsf{e}_i, \mathsf{e}_j] = 0$, the coordinates $x$ of the point
-$\mathsf{m}$ in the coordinate system corresponding to the $\mathsf{e}$ basis satisfy#Footnote(8)
+Take a point $\mathsf{0}$ in $\mathsf{M}$ as the origin. Then, presuming $[\mathsf{e}_i, \mathsf{e}_j] = 0$, the coordinates $x$ of the point $\mathsf{m}$ in the coordinate system corresponding to the $\mathsf{e}$ basis satisfy#Footnote(8)
 
 $$\begin{equation}
 \mathsf{m} = \phi_1^{x \mathsf{e}}(\mathsf{0}) = \chi^{-1}(x),
@@ -435,8 +441,7 @@ where $\chi$ is the coordinate function being defined. Because the elements of $
 
 Note that the Euler angles are singular at $\theta = 0$ (where $\phi$ and
 $\psi$ become degenerate), so the representations of $\mathsf{e}_x$,
-$\mathsf{e}_y$, and $\mathsf{e}_z$ (defined in equations 4.29–4.31) have problems there. An alternate coordinate system avoids this problem, while introducing a similar problem elsewhere in the manifold. Consider the
-"alternate angles" $(\theta_a, \phi_a, \psi_a)$ which define a rotation matrix via $M(\theta_a, \phi_a, \psi_a) = R_z(\phi_a) R_x(\theta_a)
+$\mathsf{e}_y$, and $\mathsf{e}_z$ (defined in equations 4.29–4.31) have problems there. An alternate coordinate system avoids this problem, while introducing a similar problem elsewhere in the manifold. Consider the "alternate angles" $(\theta_a, \phi_a, \psi_a)$ which define a rotation matrix via $M(\theta_a, \phi_a, \psi_a) = R_z(\phi_a) R_x(\theta_a)
 R_y(\psi_a)$.
 
 *a.* Where does the singularity appear in these alternate coordinates? Do you think you could define a coordinate system for rotations that has no singularities?
@@ -449,13 +454,39 @@ Verify equation (4.38).
 
 ### Exercise 4.3: SO(3) Basis and Angular Momentum Basis
 
-How are $\mathsf{J}_x$, $\mathsf{J}_y$, and $\mathsf{J}_z$ related to
-$\mathsf{e}_x$, $\mathsf{e}_y$, and $\mathsf{e}_z$ in equations (4.29–4.31)?
+How are $\mathsf{J}_x$, $\mathsf{J}_y$, and $\mathsf{J}_z$ related to $\mathsf{e}_x$, $\mathsf{e}_y$, and $\mathsf{e}_z$ in equations (4.29–4.31)?
 
 ----
 ### Footnotes
 
-#FootnoteRef(8) Here $x$ is an up-tuple structure of components, and $\mathsf{e}$ is down-tuple structure of basis vectors. The product of the two contracts to make a scaled vector, along which we translate by one unit.
+#FootnoteRef(1) We cannot say if the basis vectors are orthogonal or normalized until we introduce a metric.
+
+#FootnoteRef(2) We write the vector components on the right and the tuple of basis vectors on the left because if we think of the basis vectors as organized as a row and the components as organized as a column then the formula is just a matrix multiplication.
+
+#FootnoteRef(3) This is why the set of vector fields and the set of one-form fields are modules rather than vector spaces.
+
+#FootnoteRef(4) We see from equations (4.15) and (4.16) that $\mathsf{J}$ and
+$\mathsf{K}$ are inverses. We can obtain their coefficients by: $\mathsf{J}_i^j
+= \tilde{\mathsf{e}}^{\prime j}(\mathsf{e}_i)$ and $\mathsf{K}_i^j =
+\tilde{\mathsf{e}}^j(\mathsf{e}_i^\prime)$.
+
+#FootnoteRef(5) Using
+
+```Scheme
+(define R3-rect (coordinate-system-at 'rectangular 'origin R3))
+(define-coordinates (up x y z) R3-rect)
+(define R3-rect-point ((point R3-rect) (up 'x0 'y0 'z0)))
+(define g (literal-manifold-function 'g-rect R3-rect))
+```
+
+#FootnoteRef(6) Using
+```Scheme
+(define Euler-angles (coordinate-system-at 'Euler 'Euler-patch SO3))
+(define Euler-angles-chi-inverse (point Euler-angles))
+(define-coordinates (up theta phi psi) Euler-angles)
+(define SO3-point ((point Euler-angles) (up 'theta 'phi 'psi)))
+(define f (literal-manifold-function 'f-Euler Euler-angles))
+```
 
 #FootnoteRef(7) For non-commuting operators $A$ and $B$,
 $$\begin{equation}
@@ -469,31 +500,5 @@ e^{A} e^{B} e^{-A} e^{-B} & \\
 \end{equation}$$
 to second order in $A$ and $B$. All higher-order terms can be written in terms of higher-order commutators of $A$ and $B$. An example of a higher-order commutator is $[A, [A, B]]$.
 
-#FootnoteRef(6) Using
-```Scheme
-(define Euler-angles (coordinate-system-at 'Euler 'Euler-patch SO3))
-(define Euler-angles-chi-inverse (point Euler-angles))
-(define-coordinates (up theta phi psi) Euler-angles)
-(define SO3-point ((point Euler-angles) (up 'theta 'phi 'psi)))
-(define f (literal-manifold-function 'f-Euler Euler-angles))
-```
-
-#FootnoteRef(5) Using
-
-```Scheme
-(define R3-rect (coordinate-system-at 'rectangular 'origin R3))
-(define-coordinates (up x y z) R3-rect)
-(define R3-rect-point ((point R3-rect) (up 'x0 'y0 'z0)))
-(define g (literal-manifold-function 'g-rect R3-rect))
-```
-
-#FootnoteRef(4) We see from equations (4.15) and (4.16) that $\mathsf{J}$ and
-$\mathsf{K}$ are inverses. We can obtain their coefficients by: $\mathsf{J}_i^j
-= \tilde{\mathsf{e}}^{\prime j}(\mathsf{e}_i)$ and $\mathsf{K}_i^j =
-\tilde{\mathsf{e}}^j(\mathsf{e}_i^\prime)$.
-
-#FootnoteRef(3) This is why the set of vector fields and the set of one-form fields are modules rather than vector spaces.
-
-#FootnoteRef(2) We write the vector components on the right and the tuple of basis vectors on the left because if we think of the basis vectors as organized as a row and the components as organized as a column then the formula is just a matrix multiplication.
-
-#FootnoteRef(1) We cannot say if the basis vectors are orthogonal or normalized until we introduce a metric.
+#FootnoteRef(8) Here $x$ is an up-tuple structure of components, and $\mathsf{e}$ is down-tuple structure of basis vectors. The product of the two contracts to make a scaled vector, along which we translate by one unit.
+#FootnoteEnd

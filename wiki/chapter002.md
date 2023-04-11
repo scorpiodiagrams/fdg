@@ -4,13 +4,11 @@
 ## Manifolds
 
 A /manifold/ is a generalization of our idea of a smooth surface embedded in Euclidean space. For an /n/-dimensional manifold, around every point there is a simply-connected open set, the /coordinate patch/, and a one-to-one continuous function, the /coordinate function/ or /chart/, mapping every point in that open set to a tuple of /n/ real numbers, the /coordinates/. In general, several charts are needed to label all points on a manifold. It is required that if a region is in more than one coordinate patch then the coordinates are consistent in that the function mapping one set of coordinates to another is continuous
-(and perhaps differentiable to some degree). A consistent system of coordinate patches and coordinate functions that covers the entire manifold is called an
-/atlas/.
+(and perhaps differentiable to some degree). A consistent system of coordinate patches and coordinate functions that covers the entire manifold is called an /atlas/.
 
 An example of a 2-dimensional manifold is the surface of a sphere or of a coffee cup. The space of all configurations of a planar double pendulum is a more abstract example of a 2-dimensional manifold. A manifold that looks locally Euclidean may not look like Euclidean space globally: for example, it may not be simply connected. The surface of the coffee cup is not simply connected, because there is a hole in the handle for your fingers.
 
-An example of a coordinate function is the function that maps points in a simply-connected open neighborhood of the surface of a sphere to the tuple of latitude and longitude#Footnote(1). If we want to talk about motion on the Earth, we can identify the space of configurations to a 2-sphere (the surface of a
-3-dimensional ball). The map from the 2-sphere to the 3-dimensional coordinates of a point on the surface of the Earth captures the shape of the Earth.
+An example of a coordinate function is the function that maps points in a simply-connected open neighborhood of the surface of a sphere to the tuple of latitude and longitude#Footnote(1). If we want to talk about motion on the Earth, we can identify the space of configurations to a 2-sphere (the surface of a 3-dimensional ball). The map from the 2-sphere to the 3-dimensional coordinates of a point on the surface of the Earth captures the shape of the Earth.
 
 Two angles specify the configuration of the planar double pendulum. The manifold of configurations is a torus, where each point on the torus corresponds to a configuration of the double pendulum. The constraints, such as the lengths of the pendulum rods, are built into the map between the generalized coordinates of points on the torus and the arrangements of masses in 3-dimensional space.
 
@@ -261,34 +259,31 @@ Perform an analogous computation to get the polar coordinates of the point on th
 ----
 ### Footnotes
 
-#FootnoteRef(10) The plane with the addition of a point at infinity is conformally equivalent to the sphere by this correspondence. This correspondence is called the Riemann sphere, in honor of the great mathematician Bernard Riemann
-(1826–1866), who made major contributions to geometry.
+#FootnoteRef(1) The open set for a latitude-longitude coordinate system cannot include either pole (because longitude is not defined at the poles) or the $180^{\circ}$
+meridian (where the longitude is discontinuous). Other coordinate systems are needed to cover these places.
 
-#FootnoteRef(9) This is actually a nasty, but traditional, abuse of notation. An expression like $\cos(r)$ can either mean the cosine of the angle $r$ (if $r$ is a number), or the composition $\cos \circ r$ (if $r$ is a function). In our system ~(cos r)~ behaves in this way---either computing the cosine of ~r~ or being treated as ~(compose cos r)~ depending on what ~r~ is.
+#FootnoteRef(2) The expression ~R^n~ gives only one kind of manifold. We also have spheres ~S^n~ and ~SO3~.
 
-#FootnoteRef(8) Alternatively, we can define the same function in a shorthand
+#FootnoteRef(3) The word ~origin~ is an arbitrary symbol here. It labels a predefined patch in ~R^n~ manifolds.
 
-```Scheme
-(define f (literal-manifold-function 'f-rect R2-rect))
-```
-
-#FootnoteRef(7) See Appendix B for an introduction to tuple arithmetic and a discussion of derivatives of functions with structured input or output.
-
-#FootnoteRef(6) We can avoid explicitly naming the patch:
-
-```Scheme
-(define R2-rect (coordinate-system-at 'rectangular 'origin R2))
-```
+#FootnoteRef(4) In the text that follows we will use sans-serif names, such as $\mathsf{f}$, $\mathsf{v}$, $\mathsf{m}$, to refer to objects defined on the manifold. Objects that are defined on coordinates (tuples of real numbers) will be named with symbols like $f$, $v$, $x$.
 
 #FootnoteRef(5) The rectangular coordinates are good for the entire plane, but the polar coordinates are singular at the origin because the angle is not defined. Also,
 the patch for polar coordinates must exclude one ray from the origin, because of the angle variable.
 
-#FootnoteRef(4) In the text that follows we will use sans-serif names, such as
-$\mathsf{f}$, $\mathsf{v}$, $\mathsf{m}$, to refer to objects defined on the manifold. Objects that are defined on coordinates (tuples of real numbers) will be named with symbols like $f$, $v$, $x$.
+#FootnoteRef(6) We can avoid explicitly naming the patch:
+```Scheme
+(define R2-rect (coordinate-system-at 'rectangular 'origin R2))
+```
 
-#FootnoteRef(3) The word ~origin~ is an arbitrary symbol here. It labels a predefined patch in ~R^n~ manifolds.
+#FootnoteRef(7) See Appendix B for an introduction to tuple arithmetic and a discussion of derivatives of functions with structured input or output.
 
-#FootnoteRef(2) The expression ~R^n~ gives only one kind of manifold. We also have spheres ~S^n~ and ~SO3~.
+#FootnoteRef(8) Alternatively, we can define the same function in a shorthand
+```Scheme
+(define f (literal-manifold-function 'f-rect R2-rect))
+```
+#FootnoteRef(9) This is actually a nasty, but traditional, abuse of notation. An expression like $\cos(r)$ can either mean the cosine of the angle $r$ (if $r$ is a number), or the composition $\cos \circ r$ (if $r$ is a function). In our system ~(cos r)~ behaves in this way---either computing the cosine of ~r~ or being treated as ~(compose cos r)~ depending on what ~r~ is.
 
-#FootnoteRef(1) The open set for a latitude-longitude coordinate system cannot include either pole (because longitude is not defined at the poles) or the $180^{\circ}$
-meridian (where the longitude is discontinuous). Other coordinate systems are needed to cover these places.
+#FootnoteRef(10) The plane with the addition of a point at infinity is conformally equivalent to the sphere by this correspondence. This correspondence is called the Riemann sphere, in honor of the great mathematician Bernard Riemann
+(1826–1866), who made major contributions to geometry.
+#FootnoteEnd

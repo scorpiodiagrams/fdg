@@ -65,7 +65,8 @@ $$\begin{equation}
 The coefficient tuple $b_{\chi,\mathsf{v}}(x)$ is an up structure compatible for addition to the coordinates. Note that for any vector field v the coefficients $b_{\chi, \mathsf{v}}(x)$ are different for different coordinate functions $\chi$. In the text that follows we will usually drop the subscripts on $b$, understanding that it is dependent on the coordinate system and the vector field.
 
 We implement the definition of a vector field (3.4) as:
-```Scheme (define (components->vector-field components coordsys)
+```Scheme
+(define (components->vector-field components coordsys)
 (define (v f)
  (compose (* (D (compose f (point coordsys)))
              components)
@@ -76,7 +77,8 @@ We implement the definition of a vector field (3.4) as:
 The vector field is an operator, like derivative.#Footnote(2)
 
 Given a coordinate system and coefficient functions that map coordinates to real values, we can make a vector field. For example, a general vector field can be defined by giving components relative to the coordinate system ~R2-rect~ by
-```Scheme (define v
+```Scheme
+(define v
 (components->vector-field
 (up (literal-function ’b^0 R2->R)
     (literal-function ’b^1 R2->R))
@@ -85,14 +87,16 @@ R2-rect))
 To make it convenient to define literal vector fields we provide a shorthand: ~(define v (literal-vector-field ’b R2-rect))~
 This makes a vector field with component functions named ~b^0~
 and ~b^1~ and names the result ~v~. When this vector field is applied to an arbitrary manifold function it gives the directional derivative of that manifold function in the direction specified by the components ~b^0~ and ~b^1~:
-```Scheme ((v (literal-manifold-function ’f-rect R2-rect)) R2-rect-point)
+```Scheme
+((v (literal-manifold-function ’f-rect R2-rect)) R2-rect-point)
 ;; (+ (* (((partial 0) f-rect) (up x0 y0)) (b?0 (up x0 y0)))
 ;;    (* (((partial 1) f-rect) (up x0 y0)) (b?1 (up x0 y0))))
 ```
 This result is what we expect from equation (3.6).
 
 We can recover the coordinate components of the vector field by applying the vector field to the coordinate chart:
-```Scheme ((v (chart R2-rect)) R2-rect-point)
+```Scheme
+((v (chart R2-rect)) R2-rect-point)
 ;; (up (b?0 (up x y)) (b?1 (up x y)))
 ```
 
@@ -111,7 +115,8 @@ with the definitions $f = \mathsf{f} \circ \chi^{-1}$ and $x = \chi(\mathsf{m})$
 is the coordinate representation of the vector field $\mathsf{v}$ in that it takes directional derivatives of coordinate representations of manifold functions.
 
 Given a vector field ~v~ and a coordinate system coordsys we can construct the coordinate representation of the vector field.#Footnote(3)
-```Scheme (define (coordinatize v coordsys)
+```Scheme
+(define (coordinatize v coordsys)
  (define ((coordinatized-v f) x)
    (let ((b (compose (v (chart coordsys))
                      (point coordsys))))
@@ -119,7 +124,8 @@ Given a vector field ~v~ and a coordinate system coordsys we can construct the c
 (make-operator coordinatized-v))
 ```
 We can apply a coordinatized vector field to a function of coordinates to get the same answer as before.
-```Scheme (((coordinatize v R2-rect) (literal-function ’f-rect R2->R))
+```Scheme
+(((coordinatize v R2-rect) (literal-function ’f-rect R2->R))
 (up ’x0 ’y0))
 ;; (+ (* (((partial 0) f-rect) (up x0 y0)) (b?0 (up x0 y0)))
 ;;    (* (((partial 1) f-rect) (up x0 y0)) (b?1 (up x0 y0))))
@@ -195,14 +201,17 @@ to call to mind that it is an operator that computes the directional derivative 
 In addition to making the coordinate functions, the procedure
 ~define-coordinates~ also makes the traditional named basis vectors.
 Using these we can examine the application of a rectangular basis vector to a polar coordinate function:
-```Scheme (define-coordinates (up x y) R2-rect)
+```Scheme
+(define-coordinates (up x y) R2-rect)
 (define-coordinates (up r theta) R2-polar)
 ```
-```Scheme ((d/dx (square r)) R2-rect-point)
+```Scheme
+((d/dx (square r)) R2-rect-point)
 ;; (* 2 x0)
 ```
 More general functions and vectors can be made as combinations of these simple pieces:
-```Scheme (((+ d/dx (* 2 d/dy)) (+ (square r) (* 3 x))) R2-rect-point)
+```Scheme
+(((+ d/dx (* 2 d/dy)) (+ (square r) (* 3 x))) R2-rect-point)
 ;; (+ 3 (* 2 x0) (* 4 y0))
 ```
 
@@ -244,10 +253,7 @@ It is traditional to express this rule by saying that the basis elements transfo
 
 ### Integral Curves
 
-A vector field gives a direction and rate for every point on a manifold.
-
-We can start at any point and go in the direction specified by the vector field, tracing out a parametric curve on the manifold.
-This curve is an /integral curve/ of the vector field.
+A vector field gives a direction and rate for every point on a manifold. We can start at any point and go in the direction specified by the vector field, tracing out a parametric curve on the manifold. This curve is an /integral curve/ of the vector field.
 
 More formally, let $\mathsf{v}$ be a vector field on the manifold $\mathsf{M}$. An integral curve $\gamma^{\mathsf{v}}_{\mathsf{m}} \colon \mathsf{R} \to \mathsf{M}$ of $\mathsf{v}$ is a parametric path on $\mathsf{M}$ satisfying
 $$\begin{equation}
@@ -329,10 +335,12 @@ $$\begin{equation}
 a Taylor series representation of the solution to the differential equation (3.27).
 
 For example, a vector field \textsf{circular} that generates a rotation about the origin is:#Footnote(8)
-```Scheme (define circular (- (* x d/dy) (* y d/dx)))
+```Scheme
+(define circular (- (* x d/dy) (* y d/dx)))
 ```
 We can exponentiate the circular vector field, to generate an evolution in a circle around the origin starting at ~(1, 0)~:
-```Scheme (series:for-each print-expression
+```Scheme
+(series:for-each print-expression
               (((exp (* ’t circular)) (chart R2-rect))
                ((point R2-rect) (up 1 0)))
               6)
@@ -352,14 +360,16 @@ $$\begin{equation}
 = (\mathsf{f} \circ \phi^{\mathsf{v}}_{\Delta t}(\mathsf{m}).
 \end{equation}$$
 We can approximate the evolution operator by summing the series up to a given order:
-```Scheme (define ((((evolution order) delta-t v) f) m)
+```Scheme
+(define ((((evolution order) delta-t v) f) m)
 (series:sum
 (((exp (* delta-t v)) f) m)
 order))
 ```
 We can evolve circular from the initial point up to the parameter
 ~t~, and accumulate the first six terms as follows:
-```Scheme ((((evolution 6) ’delta-t circular) (chart R2-rect))
+```Scheme
+((((evolution 6) ’delta-t circular) (chart R2-rect))
 ((point R2-rect) (up 1 0)))
 ;; (up (+ (* -1/720 (expt delta-t 6))
 ;;        (* 1/24 (expt delta-t 4))
@@ -374,7 +384,7 @@ Note that these are just the series for $\cos \Delta t$ and $\sin \Delta t$, so 
 For functions whose series expansions have finite radius of convergence,
 evolution can progress beyond the point at which the Taylor series converges because evolution is well defined whenever the integral curve is defined.
 
-**Exercise 3.1: State Derivatives**
+#### Exercise 3.1: State Derivatives
 
 Newton's equations for the motion of a particle in a plane, subject to a force that depends only on the position in the plane, are a system of second-order differential equations for the rectangular coordinates
 $(X, Y)$ of the particle:
@@ -486,7 +496,8 @@ $$\begin{equation}
 a_i(x) = \omega(\tilde{X}_i)(\chi^{-1}(x)).
 \end{equation}$$
 This follows from the dual relationship (3.41). We can see this as a program:#Footnote(12)
-```Scheme (define omega
+```Scheme
+(define omega
  (components->1form-field
   (down (literal-function ’a
                             0 R2->R)
@@ -494,11 +505,13 @@ This follows from the dual relationship (3.41). We can see this as a program:#Fo
                             1 R2->R))
   R2-rect))
 ```
-```Scheme ((omega (down d/dx d/dy)) R2-rect-point)
+```Scheme
+((omega (down d/dx d/dy)) R2-rect-point)
 ;;       (down (a_0 (up x0 y0)) (a_1 (up x0 y0)))
 ```
 We provide a shortcut for this construction:
-```Scheme (define omega (literal-1form-field 'a R2-rect))
+```Scheme
+(define omega (literal-1form-field 'a R2-rect))
 ```
 
 A differential can be expanded in a coordinate basis:
@@ -506,7 +519,8 @@ $$\begin{equation}
 \mathsf{df}(\mathsf{v}) = \sum_i \mathsf{c}_i \tilde{\mathsf{X}}^i (\mathsf{v}).
 \end{equation}$$
 The coefficients $\mathsf{c}_i = \mathsf{df}(\mathsf{X}_i) = \mathsf{X}_i(\mathsf{f}) = \partial_i(\mathsf{f} \circ \chi^{-1}) \circ \chi$ are the partial derivatives of the coordinate representation of $\mathsf{f}$ in the coordinate system of the basis:
-```Scheme (((d (literal-manifold-function 'f-rect R2-rect))
+```Scheme
+(((d (literal-manifold-function 'f-rect R2-rect))
  (coordinate-system->vector-basis R2-rect))
 R2-rect-point)
 ;;(down (((partial 0) f-rect) (up x0 y0))
@@ -514,7 +528,8 @@ R2-rect-point)
 ```
 However, if the coordinate system of the basis differs from the coordinates of the representation of the function, the result is complicated by the chain rule:
 
-```Scheme (((d (literal-manifold-function 'f-polar R2-polar))
+```Scheme
+(((d (literal-manifold-function 'f-polar R2-polar))
  (coordinate-system->vector-basis R2-rect))
 ((point R2-polar) (up 'r 'theta)))
 ;;(down (- (* (((partial 0) f-polar) (up r theta)) (cos theta))
@@ -542,31 +557,39 @@ $$\begin{equation}
 The ~define-coordinates~ procedure also makes the basis one-form fields with these traditional names inherited from the coordinates.
 
 We can illlustrate the duality of the coordinate-basis vector fields and the coordinate-basis one-form fields:
-```Scheme (define-coordinates (up x y) R2-rect)
+```Scheme
+(define-coordinates (up x y) R2-rect)
 ```
-```Scheme ((dx d/dy) R2-rect-point)
+```Scheme
+((dx d/dy) R2-rect-point)
 ;; 0
 ```
-```Scheme ((dx d/dx) R2-rect-point)
+```Scheme
+((dx d/dx) R2-rect-point)
 ;; 0
 ```
 We can use the coordinate-basis one-form fields to extract the coefficients of ~circular~ on the rectangular vector basis:
 
-```Scheme ((dx circular) R2-rect-point)
+```Scheme
+((dx circular) R2-rect-point)
 ;; (* -1 y0)
 ```
-```Scheme ((dy circular) R2-rect-point)
+```Scheme
+((dy circular) R2-rect-point)
 ;; x0
 ```
 But we can also find the coefficients on the polar vector basis:
-```Scheme ((dr circular) R2-rect-point)
+```Scheme
+((dr circular) R2-rect-point)
 ;; 0
 ```
-```Scheme ((dtheta circular) R2-rect-point)
+```Scheme
+((dtheta circular) R2-rect-point)
 ;; 1
 ```
 So ~circular~ is the same as ~d/dtheta~, as we can see by applying them both to the general function ~f~:
-```Scheme (define f (literal-manifold-function ’f-rect R2-rect))
+```Scheme
+(define f (literal-manifold-function ’f-rect R2-rect))
 (((- circular d/dtheta) f) R2-rect-point)
 0
 ```
@@ -625,11 +648,14 @@ $$\begin{equation}
 \omega(\mathsf{v}) = (a \circ \chi) (b \circ \chi).
 \end{equation}$$
 As a program:
-```Scheme (define omega (literal-1form-field 'a R2-rect))
+```Scheme
+(define omega (literal-1form-field 'a R2-rect))
 ```
-```Scheme (define v (literal-vector-field 'b R2-rect))
+```Scheme
+(define v (literal-vector-field 'b R2-rect))
 ```
-```Scheme ((omega v) R2-rect-point)
+```Scheme
+((omega v) R2-rect-point)
 ;; (+ (* (b^0 (up x y)) (a_0 (up x0 y0)))
 ;;    (* (b^1 (up x y)) (a_1 (up x0 y0))))
 ```
@@ -658,8 +684,7 @@ The topography of a region on the Earth can be specified by a manifold function 
 
 #FootnoteRef(1) In multiple dimensions the derivative $Df(x)$ is a down tuple structure of the partial derivatives and the increment $\Delta x$ is an up tuple structure, so the indicated product is to be interpreted as a contraction. (See equation B.8.)
 
-#FootnoteRef(2) An operator is just like a procedure except that multiplication is interpreted as composition. For example, the derivative procedure is made into an operator
-~D~ so that we can say ~(expt D 2)~ and expect it to compute the second derivative. The procedure ~procedure->vector-field~ makes a vector-field operator.
+#FootnoteRef(2) An operator is just like a procedure except that multiplication is interpreted as composition. For example, the derivative procedure is made into an operator ~D~ so that we can say ~(expt D 2)~ and expect it to compute the second derivative. The procedure ~procedure->vector-field~ makes a vector-field operator.
 
 #FootnoteRef(3) The ~make-operator~ procedure takes a procedure and returns an operator.
 
@@ -678,15 +703,13 @@ $$\begin{equation}
 = \sum_j \frac{\partial f}{\partial x^{'j}} \frac{\partial x^{'j}}{\partial x^i},
 \end{equation}$$
 
-which is the relation in the usual Leibniz notation. As Spivak pointed out in
-/Calculus on Manifolds/, p.45, $f$ means something different on each side of the equation.
+which is the relation in the usual Leibniz notation. As Spivak pointed out in /Calculus on Manifolds/, p.45, $f$ means something different on each side of the equation.
 
 #FootnoteRef(7) For coordinate paths $q$ and $q'$ related by $q(t) = (\chi \circ (\chi')^{-1})(q'(t))$ the velocities are related by $Dq(t) = D(\chi \circ (\chi')^{-1})(q'(t))Dq'(t)$. Abstracting off paths, we get $v = D(\chi \circ (\chi')^{-1})(x')v'$.
 
 #FootnoteRef(8) In this expression ~d/dx~ and ~d/dy~ are vector fields that take directional derivatives of manifold functions and evaluate them at manifold points; ~x~ and ~y~ are manifold functions. ~define-coordinates~ was used to create these operators and functions, see page 27.
 
-Note that \textsf{circular} is an operator---a property inherited from ~d/dx~ and
-~d/dy~.
+Note that \textsf{circular} is an operator---a property inherited from ~d/dx~ and ~d/dy~.
 
 #FootnoteRef(9) The differential of a manifold function will turn out to be a special case of the exterior derivative, which will be introduced later.
 
@@ -695,5 +718,5 @@ Note that \textsf{circular} is an operator---a property inherited from ~d/dx~ an
 #FootnoteRef(11) The analogous recovery of coefficient tuples from vector fields is equation
 (3.3): $b^i_{\chi, \mathsf{v}} = \mathsf{v}(\chi^i) \circ \chi^{-1}$.
 
-#FootnoteRef(12) The procedure ~components->1form-field~ is analogous to the procedure
-~components->vector-field~ introduced earlier.
+#FootnoteRef(12) The procedure ~components->1form-field~ is analogous to the procedure ~components->vector-field~ introduced earlier.
+#FootnoteEnd

@@ -5,14 +5,11 @@
 
 Although the usual treatments of special relativity begin with the Michelson-Morley experiment, this is not how Einstein began. In fact, Einstein was impressed with Maxwell's work and he was emulating Maxwell's breakthrough.
 
-Maxwell was preceded by Faraday, Ampere, Oersted, Coulomb, Gauss, and Franklin.
-These giants discovered electromagnetism and worked out empirical equations that described the phenomena. They understood the existence of conserved charges and fields. Faraday invented the idea of lines of force by which fields can be visualized.
+Maxwell was preceded by Faraday, Ampere, Oersted, Coulomb, Gauss, and Franklin. These giants discovered electromagnetism and worked out empirical equations that described the phenomena. They understood the existence of conserved charges and fields. Faraday invented the idea of lines of force by which fields can be visualized.
 
 Maxwell's great insight was noticing and resolving the contradiction between the empirically-derived laws of electromagnetism and conservation of charge. He did this by introducing the then experimentally undetectable displacement-current term into one of the empirical equations. The modified equations implied a wave equation and the propagation speed of the wave predicted by the new equation turned out to be the speed of light, as measured by the eclipses of the Galilean satellites of Jupiter. The experimental confirmation by Hertz of the existence of electromagnetic radiation that obeyed Maxwell's equations capped the discovery.
 
-By analogy, Einsten noticed that Maxwell's equations were inconsistent with Galilean relativity. In free space, where electromagnetic waves propagate,
-Maxwell's equations say that the vector source of electric fields is the time rate of change of the magnetic field and the vector source of magnetic field is the time rate of change of the electric field. The combination of these ideas yields the wave equation. The wave equation itself is not invariant under the Galilean transformation: As Einstein noted, if you run with the propagation speed of the wave there is no time variation in the field you observe, so there is no space variation either, contradicting the wave equation. But the Maxwell theory is beautiful, and it can be verified to a high degree of accuracy, so there must be something wrong with Galilean relativity. Einstein resolved the contradiction by generalizing the meaning of the Lorentz transformation, which was invented to explain the failure of the Michelson-Morley experiment. Lorentz and his colleagues decided that the problem with the Michelson-Morley experiment was that matter interacting with the luminiferous ether contracts in the direction of motion. To make this consistent he had to invent a "local time"
-which had no clear interpretation. Einstein took the Lorentz transformation to be a fundamental replacement for the Galilean transformation in all of mechanics.
+By analogy, Einsten noticed that Maxwell's equations were inconsistent with Galilean relativity. In free space, where electromagnetic waves propagate, Maxwell's equations say that the vector source of electric fields is the time rate of change of the magnetic field and the vector source of magnetic field is the time rate of change of the electric field. The combination of these ideas yields the wave equation. The wave equation itself is not invariant under the Galilean transformation: As Einstein noted, if you run with the propagation speed of the wave there is no time variation in the field you observe, so there is no space variation either, contradicting the wave equation. But the Maxwell theory is beautiful, and it can be verified to a high degree of accuracy, so there must be something wrong with Galilean relativity. Einstein resolved the contradiction by generalizing the meaning of the Lorentz transformation, which was invented to explain the failure of the Michelson-Morley experiment. Lorentz and his colleagues decided that the problem with the Michelson-Morley experiment was that matter interacting with the luminiferous ether contracts in the direction of motion. To make this consistent he had to invent a "local time" which had no clear interpretation. Einstein took the Lorentz transformation to be a fundamental replacement for the Galilean transformation in all of mechanics.
 
 Now to the details. Before Maxwell the empirical laws of electromagnetism were as follows. Electric fields arise from charges, with the inverse square law of Coulomb. This is Carl Friedrich Gauss's law for electrostatics:
 
@@ -70,18 +67,14 @@ $$\begin{equation}
 
 We see that in free space (in the absence of any charges or currents) we have the familiar homogeneous linear wave equation. A similar equation can be derived for the magnetic field.
 
-Lorentz, whom Einstein also greatly respected, developed a general formula to describe the force on a particle with charge $q$ moving with velocity $\vec{v}$
-in an electromagnetic field:
+Lorentz, whom Einstein also greatly respected, developed a general formula to describe the force on a particle with charge $q$ moving with velocity $\vec{v}$ in an electromagnetic field:
 
 $$\begin{equation}
 \end{equation}$$
 
-A crucial point in Einstein's inspiration for relativity is, quoting Einstein
-(in English translation), "During that year [1895–1896] in Aarau the question came to me: If one runs after a light wave with light velocity, then one would encounter a time-independent wavefield. However, something like that does not seem to exist!"#Footnote(1) This was the observation of the inconsistency.
+A crucial point in Einstein's inspiration for relativity is, quoting Einstein (in English translation), "During that year [1895–1896] in Aarau the question came to me: If one runs after a light wave with light velocity, then one would encounter a time-independent wavefield. However, something like that does not seem to exist!"#Footnote(1) This was the observation of the inconsistency.
 
-Let's be more precise about this. Consider a plane sinusoidal wave moving in the
-$\hat{x}$ direction with velocity $c$ in free space ($\rho = 0$ and $\vec{I} =
-0$). This is a perfectly good solution of the wave equation. Now suppose that an observer is moving with the wave in the $\hat{x}$ direction with velocity $c$.
+Let's be more precise about this. Consider a plane sinusoidal wave moving in the $\hat{x}$ direction with velocity $c$ in free space ($\rho = 0$ and $\vec{I} = 0$). This is a perfectly good solution of the wave equation. Now suppose that an observer is moving with the wave in the $\hat{x}$ direction with velocity $c$.
 Such an observer will see no time variation of the field. So the wave equation reduces to Laplace's equation. But a sinusoidal variation in space is not a solution of Laplace's equation.
 
 Einstein believed that the Maxwell-Lorentz electromagnetic theory was fundamentally correct, though he was unhappy with an apparent asymmetry in the formulation. Consider a system consisting of a conductor and a magnet. If the conductor is moved and the magnet is held stationary (a stationary magnetic field) then the charge carriers in the conductor are subject to the Lorentz force (11.11), causing them to move. However, if the magnet is moved past a stationary conductor then the changing magnetic field induces an electric field in the conductor by equation (11.4), which causes the charge carriers in the conductor to move. The actual current which results is identical for both explanations if the relative velocity of the magnet and the conductor are the same. To Einstein, there should not have been two explanations for the same phenomenon.
@@ -93,8 +86,7 @@ Let $u = (t, x, y, z)$ be a tuple of time and space coordinates that specify a p
 $$\begin{equation}
 \end{equation}$$
 
-The characteristics for this equation are the "light cones." If we define a function of spacetime points and increments, length, such that for an incremental tuple in position and time $\xi = (\Delta t, \Delta x, \Delta y,
-\Delta z)$ we have#Footnote(3)
+The characteristics for this equation are the "light cones." If we define a function of spacetime points and increments, length, such that for an incremental tuple in position and time $\xi = (\Delta t, \Delta x, \Delta y, \Delta z)$ we have#Footnote(3)
 
 $$\begin{equation}
 \end{equation}$$
@@ -106,7 +98,7 @@ $$\begin{equation}
 
 This "length" is called the /interval/.
 
-What is the class of transformations of time and space coordinates that leave the Maxwell-Lorentz theory invariant? The transformations that preserve the wave equation are exactly those that leave its characteristics invariant. We consider a transformation $u = A(u^p\rime)$ of time and space coordinates:
+What is the class of transformations of time and space coordinates that leave the Maxwell-Lorentz theory invariant? The transformations that preserve the wave equation are exactly those that leave its characteristics invariant. We consider a transformation $u = A(u^\prime)$ of time and space coordinates:
 
 $$\begin{equation}
 t = A^0(t^\prime, x^\prime, y^\prime, z^\prime),
@@ -124,8 +116,7 @@ $$\begin{equation}
 z = A^3(t^\prime, x^\prime, y^\prime, z^\prime).
 \end{equation}$$
 
-If we define a new field $\psi(t, x, y, z)$ such that $\psi = \phi \circ A$,
-or
+If we define a new field $\psi(t, x, y, z)$ such that $\psi = \phi \circ A$, or
 
 $$\begin{equation}
 \psi(t^\prime, x^\prime, y^\prime, z^\prime) = \phi(A(t^\prime, x^\prime, y^\prime, z^\prime)),
@@ -145,22 +136,19 @@ But this is just a statement that the velocity of light is invariant under chang
 
 ### Lorentz Transformations
 
-Special relativity is usually presented in terms of global Lorentz frames,
-with rectangular spatial coordinates. In this context the Lorentz transformations (and, more generally, the Poincaré transformations) can be characterized as the set of affine transformations (linear transformations plus shift) of the coordinate tuple (time and spatial rectangular coordinates) that preserve the length of incremental spacetime intervals as measured by
+Special relativity is usually presented in terms of global Lorentz frames, with rectangular spatial coordinates. In this context the Lorentz transformations (and, more generally, the Poincaré transformations) can be characterized as the set of affine transformations (linear transformations plus shift) of the coordinate tuple (time and spatial rectangular coordinates) that preserve the length of incremental spacetime intervals as measured by
 
 $$\begin{equation}
 f(\xi) = -(\xi^0)^2 + (\xi^2)^2 + (\xi^2)^2 + (\xi^3)^2,
 \end{equation}$$
 
-where $\xi$ is an incremental 4-tuple that could be added to the coordinate
-4-tuple $(ct, x, y, z)$.#Footnote(4) The Poincaré-Lorentz transformations are of the form
+where $\xi$ is an incremental 4-tuple that could be added to the coordinate 4-tuple $(ct, x, y, z)$.#Footnote(4) The Poincaré-Lorentz transformations are of the form
 
 $$\begin{equation}
 x = \Lambda x^\prime + a,
 \end{equation}$$
 
-Where $\Lambda$ is the tuple representation of a linear transformation and
-$a$ is a 4-tuple shift. Because the 4-tuple includes the time, these transformations include transformations to a uniformly moving frame. A transformation that does not rotate or shift, but just introduces relative velocity, is sometimes called a /boost/.
+Where $\Lambda$ is the tuple representation of a linear transformation and $a$ is a 4-tuple shift. Because the 4-tuple includes the time, these transformations include transformations to a uniformly moving frame. A transformation that does not rotate or shift, but just introduces relative velocity, is sometimes called a /boost/.
 
 In general relativity, global Lorentz frames do not exist, and so global affine transformations are irrelevant. In general relativity Lorentz invariance is a local property of incremental 4-tuples at a point.
 
@@ -201,15 +189,13 @@ q^2 - s^2 &= -1.
 \end{aligned}
 \end{equation}$$
 
-There are four parameters to determine, and only three equations, so the solutions have a free parameter. It turns out that a good choice is $\beta =
-q/p$. Solve to find
+There are four parameters to determine, and only three equations, so the solutions have a free parameter. It turns out that a good choice is $\beta = q/p$. Solve to find
 
 $$\begin{equation}
 p = \frac{1}{\sqrt{1 - \beta^2}} = \gamma(\beta),
 \end{equation}$$
 
-and also $p = s$ and $q = r = \beta p$. This defines $\gamma$. Written out,
-the transformation is
+and also $p = s$ and $q = r = \beta p$. This defines $\gamma$. Written out, the transformation is
 
 $$\begin{equation}
 \begin{aligned}
@@ -220,8 +206,7 @@ $$\begin{equation}
 
 Simple physical arguments#Footnote(5) show that this mathematical result relates the time and space coordinates for two systems in uniform relative motion. The parameter $\beta$ is related to the relative velocity.
 
-Consider incremental vectors as spacetime vectors relative to an origin in a global inertial frame. So, for example, $\xi = (ct, x)$, ignoring $y$ and $z$
-for a moment. The unprimed coordinate origin $x = 0$ corresponds, in primed coordinates, to (using equations 11.29)
+Consider incremental vectors as spacetime vectors relative to an origin in a global inertial frame. So, for example, $\xi = (ct, x)$, ignoring $y$ and $z$ for a moment. The unprimed coordinate origin $x = 0$ corresponds, in primed coordinates, to (using equations 11.29)
 
 $$\begin{equation}
 x = 0 = \gamma(\beta)(x^\prime + \beta c t'),
@@ -241,8 +226,7 @@ $$\begin{equation}
 
 So $v^\prime = -v$.
 
-A consistent interpretation is that the origin of the primed system moves with velocity v = βc along the ˆx-axis of the unprimed system. And the unprimed system moves with the same velocity in the other direction, when viewed in terms of the primed system. What happened to the other coordinates:
-y and z? We did not need them to find this one-parameter family of Lorentz transformations. They are left alone. This mathematical result has a physical interpretation: Lengths are not affected by perpendicular boosts. Think about two observers on a collision course, each carrying a meter stick perpendicular to their relative velocity. At the moment of impact, the meter sticks must coincide. The symmetry of the situation does not permit one observer to conclude that one meter stick is shorter than the other, because the other observer must come to the same conclusion. Both observers can put their conclusions to the test upon impact.
+A consistent interpretation is that the origin of the primed system moves with velocity v = βc along the ˆx-axis of the unprimed system. And the unprimed system moves with the same velocity in the other direction, when viewed in terms of the primed system. What happened to the other coordinates: y and z? We did not need them to find this one-parameter family of Lorentz transformations. They are left alone. This mathematical result has a physical interpretation: Lengths are not affected by perpendicular boosts. Think about two observers on a collision course, each carrying a meter stick perpendicular to their relative velocity. At the moment of impact, the meter sticks must coincide. The symmetry of the situation does not permit one observer to conclude that one meter stick is shorter than the other, because the other observer must come to the same conclusion. Both observers can put their conclusions to the test upon impact.
 
 We can fill in the components of this simple boost:
 
@@ -301,8 +285,7 @@ $$\begin{equation}
 \end{aligned}
 \end{equation}$$
 
-which gives the components of the general boost $B$ along velocity $c
-\boldsymbol{\beta}$:
+which gives the components of the general boost $B$ along velocity $c \boldsymbol{\beta}$:
 
 $$\begin{equation}
 \xi = B(\boldsymbol{\beta})(\xi^\prime).
@@ -312,7 +295,8 @@ $$\begin{equation}
 
 We represent a 4-tuple as a flat up-tuple of components.
 
-```Scheme (define (make-4tuple ct space)
+```Scheme
+(define (make-4tuple ct space)
 (up ct (ref space 0) (ref space 1) (ref space 2)))
 
 (define (4tuple->ct v) (ref v 0))
@@ -322,24 +306,26 @@ We represent a 4-tuple as a flat up-tuple of components.
 
 The invariant interval is then
 
-```Scheme (define (proper-space-interval 4tuple)
+```Scheme
+(define (proper-space-interval 4tuple)
 (sqrt (- (square (4tuple->space 4tuple))
 (square (4tuple->ct 4tuple)))))
 ```
 
 This is a real number for space-like intervals. A space-like interval is one where spatial distance is larger than can be traversed by light in the time interval.
 
-It is often convenient for the interval to be real for time-like intervals,
-where light can traverse the spatial distance in less than the time interval.
+It is often convenient for the interval to be real for time-like intervals, where light can traverse the spatial distance in less than the time interval.
 
-```Scheme (define (proper-time-interval 4tuple)
+```Scheme
+(define (proper-time-interval 4tuple)
 (sqrt (- (square (4tuple->ct 4tuple))
 (square (4tuple->space 4tuple)))))
 ```
 
 The general boost $B$ is
 
-```Scheme (define ((general-boost beta) xi-p)
+```Scheme
+(define ((general-boost beta) xi-p)
 (let ((gamma (expt (- 1 (square beta)) -1/2)))
 (let ((factor (/ (- gamma 1) (square beta))))
 (let ((xi-p-time (4tuple->ct xi-p))
@@ -354,7 +340,8 @@ The general boost $B$ is
 
 We can check that the interval is invariant:
 
-```Scheme (- (proper-space-interval
+```Scheme
+(- (proper-space-interval
 ((general-boost (up 'vx 'vy 'vz))
 (make-4tuple 'ct (up 'x 'y 'z))))
 (proper-space-interval
@@ -362,10 +349,10 @@ We can check that the interval is invariant:
 ;; 0
 ```
 
-It is inconvenient that the general boost as just defined does not work if
-$\boldsymbol{\beta}$ is zero. An alternate way to specify a boost is through the magnitude of $v/c$ and a direction:
+It is inconvenient that the general boost as just defined does not work if $\boldsymbol{\beta}$ is zero. An alternate way to specify a boost is through the magnitude of $v/c$ and a direction:
 
-```Scheme (define ((general-boost2 direction v/c) 4tuple-prime)
+```Scheme
+(define ((general-boost2 direction v/c) 4tuple-prime)
 (let ((delta-ct-prime (4tuple->ct 4tuple-prime))
 (delta-x-prime (4tuple->space 4tuple-prime)))
 (let ((betasq (square v/c)))
@@ -385,8 +372,7 @@ This is well behaved as $v/c$ goes to zero.
 
 ### Rotations
 
-A linear transformation that does not change the magnitude of the spatial and time components, individually, leaves the interval invariant. So a transformation that rotates the spatial coordinates and leaves the time component unchanged is also a Lorentz transformation. Let $R$ be a
-3-dimensional rotation. Then the extension to a Lorentz transformation
+A linear transformation that does not change the magnitude of the spatial and time components, individually, leaves the interval invariant. So a transformation that rotates the spatial coordinates and leaves the time component unchanged is also a Lorentz transformation. Let $R$ be a 3-dimensional rotation. Then the extension to a Lorentz transformation
 $\mathcal{R}$ is defined by
 
 $$\begin{equation}
@@ -405,7 +391,8 @@ Note that $\left(\mathcal{R}(R) \right)^{-1} = \mathcal{R}(R^{=1})$. The functio
 
 The extended rotation can be implemented:
 
-```Scheme (define ((extended-rotation R) xi)
+```Scheme
+(define ((extended-rotation R) xi)
 (make-4tuple
 (4tuple->ct xi)
 (R (4tuple->space xi))))
@@ -413,7 +400,8 @@ The extended rotation can be implemented:
 
 In terms of this we can check the relation between boosts and rotations:
 
-```Scheme (let ((beta (up 'bx 'by 'bz))
+```Scheme
+(let ((beta (up 'bx 'by 'bz))
 (xi (make-4tuple 'ct (up 'x 'y 'z)))
 (R (compose
 (rotate-x 'theta)
@@ -447,7 +435,7 @@ $$\begin{equation}
 \mathcal{R}(R) \circ B(\boldsymbol{\beta}) = B\left(R(\boldsymbol{\beta})\right) \circ \mathcal{R}(R).
 \end{equation}$$
 
-*** Exercise 11.1: Lorentz Decomposition
+#### Exercise 11.1: Lorentz Decomposition
 
 The counting of free parameters supports the conclusion that the general Lorentz transformation can be constructed by combining generalized rotations and boosts. Then the decomposition (11.42) follows from property (11.41).
 Find a more convincing proof.
@@ -460,7 +448,8 @@ Points in spacetime are called events. It must be possible to compare two events
 
 When one frame is built upon another, to determine the event from frame-specific coordinates or to determine the frame-specific coordinates for an event requires composition of the boosts that relate the frames to each other. The two procedures that are required to implement this strategy are#Footnote(6)
 
-```Scheme (define ((coordinates->event ancestor-frame this-frame
+```Scheme
+(define ((coordinates->event ancestor-frame this-frame
                  boost-direction v/c origin)
 coords)
 ((point ancestor-frame)
@@ -478,17 +467,18 @@ event)
 
 With these two procedures, the procedure =make-SR-frame= constructs a new relativistic frame by a Poincaré transformation from a given frame.
 
-```Scheme (define make-SR-frame
+```Scheme
+(define make-SR-frame
 (frame-maker coordinates->event event->coordinates))
 ```
 
-*** Velocity Addition Formula
+#### Velocity Addition Formula
 
 
-For example, we can derive the traditional velocity addition formula. Assume that we have a base frame called =home=. We can make a frame =A= by a boost from home in the $\hat{x}$ direction, with components $(1, 0, 0)$, and with a dimensionless measure of the speed $v_a / c$. We also specify that the
-4-tuple origin of this new frame coincides with the origin of =home=.
+For example, we can derive the traditional velocity addition formula. Assume that we have a base frame called =home=. We can make a frame =A= by a boost from home in the $\hat{x}$ direction, with components $(1, 0, 0)$, and with a dimensionless measure of the speed $v_a / c$. We also specify that the 4-tuple origin of this new frame coincides with the origin of =home=.
 
-```Scheme (define A
+```Scheme
+(define A
 (make-SR-frame 'A home
      (up 1 0 0)
      'va/c
@@ -497,7 +487,8 @@ For example, we can derive the traditional velocity addition formula. Assume tha
 
 Frame =B= is built on frame =A= similarly, boosted by $v_b/c$.
 
-```Scheme (define B
+```Scheme
+(define B
 (make-SR-frame 'B A
      (up 1 0 0)
      'vb/c
@@ -506,7 +497,8 @@ Frame =B= is built on frame =A= similarly, boosted by $v_b/c$.
 
 So any point at rest in frame =B= will have a speed relative to home. For the spatial origin of frame =B=, with =B= coordinates =(up 'ct 0 0 0)=, we have
 
-```Scheme (let ((B-origin-home-coords
+```Scheme
+(let ((B-origin-home-coords
 ((chart home)
 ((point B)
 (make-SR-coordinates B (up 'ct 0 0 0))))))
@@ -517,7 +509,8 @@ So any point at rest in frame =B= will have a speed relative to home. For the sp
 
 obtaining the traditional velocity-addition formula. (Note that the resulting velocity is represented as a fraction of the speed of light.) This is a useful result, so:
 
-```Scheme (define (add-v/cs va/c vb/c)
+```Scheme
+(define (add-v/cs va/c vb/c)
 (/ (+ va/c vb/c)
 (+ 1 (* va/c vb/c))))
 ```
@@ -529,7 +522,8 @@ How is this possible?
 
 The experiment begins at the start event, which we arbitrarily place at the origin of the home frame.
 
-```Scheme (define start-event
+```Scheme
+(define start-event
 ((point home)
 (make-SR-coordinates home (up 0 0 0 0))))
 ```
@@ -537,7 +531,8 @@ The experiment begins at the start event, which we arbitrarily place at the orig
 There is a homebody and a traveller. The traveller leaves home at the start event and proceeds at 24/25 of the speed of light in the $\hat{x}$ direction.
 We define a frame for the traveller, by boosting from the home frame.
 
-```Scheme (define outgoing
+```Scheme
+(define outgoing
 (make-SR-frame 'outgoing       ; for debugging
      home            ; base frame
      (up 1 0 0)      ; x direction
@@ -546,31 +541,29 @@ We define a frame for the traveller, by boosting from the home frame.
       start-event)))
 ```
 
-After 25 years of home time the traveller is 24 light-years out. We define that event using the coordinates in the home frame. Here we scale the time coordinate by the speed of light so that the units of $ct$ slot in the
-4-vector are the same as the units in the spatial slots. Since $v/c$ = 24/25
-we must multiply that by the speed of light to get the velocity. This is multiplied by 25 years to get the $\hat{x}$ coordinate of the traveller in the home frame at the turning point.
+After 25 years of home time the traveller is 24 light-years out. We define that event using the coordinates in the home frame. Here we scale the time coordinate by the speed of light so that the units of $ct$ slot in the 4-vector are the same as the units in the spatial slots. Since $v/c$ = 24/25 we must multiply that by the speed of light to get the velocity. This is multiplied by 25 years to get the $\hat{x}$ coordinate of the traveller in the home frame at the turning point.
 
-```Scheme (define traveller-at-turning-point-event
+```Scheme
+(define traveller-at-turning-point-event
 ((point home)
 (make-SR-coordinates home
             (up (* :c 25) (* 25 24/25 :c) 0 0))))
 ```
 
-Note that the first component of the coordinates of an event is the speed of light multiplied by time. The other components are distances. For example,
-the second component (the $\hat{x}$ component) is the distance travelled in
-25 years at 24/25 the speed of light. This is 24 light-years.
+Note that the first component of the coordinates of an event is the speed of light multiplied by time. The other components are distances. For example, the second component (the $\hat{x}$ component) is the distance travelled in 25 years at 24/25 the speed of light. This is 24 light-years.
 
 If we examine the displacement of the traveller in his own frame we see that the traveller has aged 7 years and he has not moved from his spatial origin.
 
-```Scheme (- ((chart outgoing) traveller-at-turning-point-event)
+```Scheme
+(- ((chart outgoing) traveller-at-turning-point-event)
 ((chart outgoing) start-event))
 ;; (up (* 7 :c) 0 0 0)
 ```
 
-But in the frame of the homebody we see that the time has advanced by 25
-years.
+But in the frame of the homebody we see that the time has advanced by 25 years.
 
-```Scheme (- ((chart home) traveller-at-turning-point-event)
+```Scheme
+(- ((chart home) traveller-at-turning-point-event)
 ((chart home) start-event))
 ;; (up (* 25 :c) (* 24 :c) 0 0)
 ```
@@ -601,13 +594,15 @@ When the traveller is at the turning point, the event of the homebody is:
 
 and the homebody has aged
 
-```Scheme (proper-time-interval
+```Scheme
+(proper-time-interval
 (- ((chart home) halfway-at-home-event)
 ((chart home) start-event)))
 ;; (* 25 :c)
 ```
 
-```Scheme (proper-time-interval
+```Scheme
+(proper-time-interval
 (- ((chart outgoing) halfway-at-home-event)
 ((chart outgoing) start-event)))
 ;; (* 25 :c)
@@ -615,10 +610,10 @@ and the homebody has aged
 
 as seen from either frame.
 
-As seen by the traveller, home is moving in the $−\hat{x}$ direction at 24/25
-of the velocity of light. At the turning point (7 years by his time) home is at:
+As seen by the traveller, home is moving in the $−\hat{x}$ direction at 24/25 of the velocity of light. At the turning point (7 years by his time) home is at:
 
-```Scheme (define home-at-outgoing-turning-point-event
+```Scheme
+(define home-at-outgoing-turning-point-event
 ((point outgoing)
 (make-SR-coordinates outgoing
             (up (* 7 :c) (* 7 -24/25 :c) 0 0))))
@@ -626,7 +621,8 @@ of the velocity of light. At the turning point (7 years by his time) home is at:
 
 Since home is speeding away from the traveller, the twin at home has aged less than the traveller. This may seem weird, but it is OK because this event is different from the halfway event in the home frame.
 
-```Scheme (proper-time-interval
+```Scheme
+(proper-time-interval
 (- ((chart home) home-at-outgoing-turning-point-event)
 ((chart home) start-event)))
 ;; (* 49/25 :c)
@@ -634,7 +630,8 @@ Since home is speeding away from the traveller, the twin at home has aged less t
 
 The traveller turns around abruptly at this point (painful!) and begins the return trip. The incoming trip is the reverse of the outgoing trip, with origin at the turning-point event:
 
-```Scheme (define incoming
+```Scheme
+(define incoming
 (make-SR-frame 'incoming home
      (up -1 0 0) 24/25
      ((chart home)
@@ -643,20 +640,23 @@ The traveller turns around abruptly at this point (painful!) and begins the retu
 
 After 50 years of home time the traveller reunites with the homebody:
 
-```Scheme (define end-event
+```Scheme
+(define end-event
 ((point home)
 (make-SR-coordinates home (up (* :c 50) 0 0 0))))
 ```
 
 Indeed, the traveller comes home after 7 more years in the incoming frame:
 
-```Scheme (- ((chart incoming) end-event)
+```Scheme
+(- ((chart incoming) end-event)
 (make-SR-coordinates incoming
             (up (* :c 7) 0 0 0)))
 ;; (up 0 0 0 0)
 ```
 
-```Scheme (- ((chart home) end-event)
+```Scheme
+(- ((chart home) end-event)
 ((chart home)
 ((point incoming)
 (make-SR-coordinates incoming
@@ -667,7 +667,8 @@ Indeed, the traveller comes home after 7 more years in the incoming frame:
 The traveller ages only 7 years on the return segment, so his total aging is
 14 years:
 
-```Scheme (+ (proper-time-interval
+```Scheme
+(+ (proper-time-interval
 (- ((chart outgoing) traveller-at-turning-point-event)
 ((chart outgoing) start-event)))
 (proper-time-interval
@@ -678,7 +679,8 @@ The traveller ages only 7 years on the return segment, so his total aging is
 
 But the homebody ages 50 years:
 
-```Scheme (proper-time-interval
+```Scheme
+(proper-time-interval
 (- ((chart home) end-event)
 ((chart home) start-event)))
 ;; (* 50 :c)
@@ -686,7 +688,8 @@ But the homebody ages 50 years:
 
 At the turning point of the traveller the homebody is at
 
-```Scheme (define home-at-incoming-turning-point-event
+```Scheme
+(define home-at-incoming-turning-point-event
 ((point incoming)
 (make-SR-coordinates incoming
             (up 0 (* 7 -24/25 :c) 0 0))))
@@ -694,7 +697,8 @@ At the turning point of the traveller the homebody is at
 
 The time elapsed for the homebody between the reunion and the turning point of the homebody, as viewed by the incoming traveller, is about 2 years.
 
-```Scheme (proper-time-interval
+```Scheme
+(proper-time-interval
 (- ((chart home) end-event)
 ((chart home) home-at-incoming-turning-point-event)))
 ;; (* 49/25 :c)
@@ -704,17 +708,12 @@ Thus the aging of the homebody occurs at the turnaround, from the point of view 
 
 ----
 ### Footnotes
-#FootnoteRef(6) The procedure =make-SR-coordinates= labels the given coordinates with the given frame. The procedures that manipulate coordinates, such as =(point ancestor-frame)=, check that the coordinates they are given are in the appropriate frame. This error checking makes it easier to debug relativity procedures.
-
-#FootnoteRef(5) See, for instance, Mermin, "Space and Time in Special Relativity."
-
-#FootnoteRef(4) Incrementally, $\xi = \xi^0 \partial / {\partial ct} + \xi^1 \partial /
-{\partial x} + \xi^2 \partial / {\partial y} + \xi^3 \partial / {\partial z}$.
-The length of this vector, using the Minkowski metric (see equation 10.11), is the Lorentz interval, the right-hand side of equation (11.22).
-
-#FootnoteRef(3) Here the length is independent of the spacetime point specified by $u$.
-In General Relativity we find that the metric, and thus the length function needs to vary with the point in spacetime.
-
-#FootnoteRef(2) Points in spacetime are often called /events/.
 
 #FootnoteRef(1) The quote is from Pais [12], p. 131.
+#FootnoteRef(2) Points in spacetime are often called /events/.
+#FootnoteRef(3) Here the length is independent of the spacetime point specified by $u$. In General Relativity we find that the metric, and thus the length function needs to vary with the point in spacetime.
+#FootnoteRef(4) Incrementally, $\xi = \xi^0 \partial / {\partial ct} + \xi^1 \partial /{\partial x} + \xi^2 \partial / {\partial y} + \xi^3 \partial / {\partial z}$.
+The length of this vector, using the Minkowski metric (see equation 10.11), is the Lorentz interval, the right-hand side of equation (11.22).
+#FootnoteRef(5) See, for instance, Mermin, "Space and Time in Special Relativity."
+#FootnoteRef(6) The procedure =make-SR-coordinates= labels the given coordinates with the given frame. The procedures that manipulate coordinates, such as =(point ancestor-frame)=, check that the coordinates they are given are in the appropriate frame. This error checking makes it easier to debug relativity procedures.
+#FootnoteEnd

@@ -11,17 +11,13 @@ $$\begin{equation}
 \mathcal{D}_{\mathsf{v}}(\mathsf{f}) = \mathsf{v}(\mathsf{f}).
 \end{equation}$$
 
-Next we specify the directional derivative of a vector field
-$\mathsf{u]$ with respect to a vector field $\mathsf{v}$. Let an integral curve of the vector field $\mathsf{v}$ be γ, parameterized by
-$t$, and let $\mathsf{m} = \gamma(t)$. Let $\mathsf{u}^{\prime}$ be a vector field that results from transporting the vector field
-$\mathsf{u}$ along γ for a parameter increment δ. How $\mathsf{u}$ is transported to make $\mathsf{u}^{\prime}$ determines the type of derivative. We formulate the method of transport by:
+Next we specify the directional derivative of a vector field $\mathsf{u}$ with respect to a vector field $\mathsf{v}$. Let an integral curve of the vector field $\mathsf{v}$ be γ, parameterized by $t$, and let $\mathsf{m} = \gamma(t)$. Let $\mathsf{u}^{\prime}$ be a vector field that results from transporting the vector field $\mathsf{u}$ along γ for a parameter increment δ. How $\mathsf{u}$ is transported to make $\mathsf{u}^{\prime}$ determines the type of derivative. We formulate the method of transport by:
 
 $$\begin{equation}
 \mathsf{u}^{\prime} = F^{\mathsf{v}}_{\delta}\mathsf{u}.
 \end{equation}$$
 
-We can asume without loss of generality that
-$F^{\mathsf{v}}_{\delta}\mathsf{u}$ is a linear transformation over the reals on $\mathsf{u}$, because we care about its behavior only in an incremental region around $\delta = 0$.
+We can asume without loss of generality that $F^{\mathsf{v}}_{\delta}\mathsf{u}$ is a linear transformation over the reals on $\mathsf{u}$, because we care about its behavior only in an incremental region around $\delta = 0$.
 
 Let $g$ be the comparison of the original vector field at a point with the transported vector field at that point:
 
@@ -39,10 +35,12 @@ The result $\mathcal{D}_{\mathsf{v}}\mathsf{u}$ is of type vector field.
 
 The general pattern of constructing a directional derivative operator from a transport operator is given by the following schema:#Footnote(1)
 
+```Scheme
 (define (((((F->directional-derivative F) v) u) f) m)
 (define (g delta)
 (- ((u f) m) (((((F v) delta) u) f) m)))
 ((D g) 0))
+```
 
 The linearity of transport implies that
 
@@ -102,9 +100,7 @@ $\mathsf{f}$ along integral curves.
 
 ### Vector Fields
 
-For the Lie derivative of a vector field $\mathsf{y}$ with respect to a vector field $\mathsf{v}$ we choose the transport operator
-$F^{\mathsf{v}}_{\delta}\mathsf{y}$ to be the pushforward of
-$\mathsf{y}$ along the integral curves of $\mathsf{v}$. Recall equation (6.15). So the Lie derivative of $\mathsf{y}$ with respect to $\mathsf{v}$ at the point $\mathsf{m}$ is
+For the Lie derivative of a vector field $\mathsf{y}$ with respect to a vector field $\mathsf{v}$ we choose the transport operator $F^{\mathsf{v}}_{\delta}\mathsf{y}$ to be the pushforward of $\mathsf{y}$ along the integral curves of $\mathsf{v}$. Recall equation (6.15). So the Lie derivative of $\mathsf{y}$ with respect to $\mathsf{v}$ at the point $\mathsf{m}$ is
 
 $$\begin{equation}
 (\mathcal{L}_{\mathsf{v}}\mathsf{y})(\mathsf{f})(\mathsf{m}) = Dg(0),
@@ -118,6 +114,7 @@ g(\delta) = \mathsf{y}(\mathsf{f})(\mathsf{m}) - ((\phi^{\mathsf{v}}_{\delta})_{
 
 We can construct a procedure that computes the Lie derivative of a vector field by supplying an appropriate transport operator (F-Lie phi) for F in our schema F->directional-derivative. In this first stab at the Lie derivative, we introduce a coordinate system and we expand the integral curve to a given order. Because in the schema we evaluate the derivative of $g$ at 0, the dependence on the order and the coordinate system disappears. They will not be needed in the final version.
 
+```Scheme
 (define (Lie-directional coordsys order)
 (let ((Phi (phi coordsys order)))
 (F->directional-derivative (F-Lie Phi))))
@@ -129,21 +126,22 @@ We can construct a procedure that computes the Lie derivative of a vector field 
 ((point coordsys)
 (series:sum (((exp (* delta v)) (chart coordsys)) m)
 order)))
+```
 
 Expand the quantities in equation (7.13) to first order in δ:
 
 $$\begin{equation}
 \begin{aligned}
-g(\delta) = \mathsf{y}(\mathsf{f})(\mathsf{m})-(\phi^{\mathsf{v}}_{\delta *}\mathsf{y})(\mathsf{f})(\mathsf{m}) \\
+g(\delta) &= \mathsf{y}(\mathsf{f})(\mathsf{m})-(\phi^{\mathsf{v}}_{\delta *}\mathsf{y})(\mathsf{f})(\mathsf{m}) \\
 &=\mathsf{y}(\mathsf{f})(\mathsf{m})-\mathsf{y}(\mathsf{f}\circ\phi^{\mathsf{v}}_{\delta})(\phi^{\mathsf{v}}_{-\delta}(\mathsf{m})) \\
-&=(\mathsf{y}(\mathsf{f})-\mathsf{y}(\mathsf{f}+\delta\mathsf{v}(\mathsf{f})+\cdots)+\delta\mathsf{v}(\mathsf{y}(\mathsf{f}+\delta\mathsf{v}(\mathsf{f})+\cdots)))(\mathsf{m})+\cdots \\
+&=(\mathsf{y}(\mathsf{f})-\mathsf{y}(\mathsf{f}+\delta\mathsf{v}(\mathsf{f})+\cdots)\\
+&+\delta\mathsf{v}(\mathsf{y}(\mathsf{f}+\delta\mathsf{v}(\mathsf{f})+\cdots)))(\mathsf{m})+\cdots \\
 &=(-\delta\mathsf{y}(\mathsf{v}(\mathsf{f}))+\delta\mathsf{v}(\mathsf{y}(\mathsf{f})))(\mathsf{m})+\cdots \\
 &=\delta[\mathsf{v},\mathsf{y}](\mathsf{f})(\mathsf{m})+\mathcal{O}(\delta^{2}).
 \end{aligned}
 \end{equation}$$
 
-So the Lie derivative of a vector field $\mathsf{y}$ with respect to a vector field $\mathsf{v}$ is a vector field that is defined by its behavior when applied to an arbitrary manifold function
-$\mathsf{f}$:
+So the Lie derivative of a vector field $\mathsf{y}$ with respect to a vector field $\mathsf{v}$ is a vector field that is defined by its behavior when applied to an arbitrary manifold function $\mathsf{f}$:
 
 $$\begin{equation}
 (\mathcal{L}_{\mathsf{v}}\mathsf{y})(\mathsf{f}) = [\mathsf{v},\mathsf{y}](\mathsf{f})
@@ -151,6 +149,7 @@ $$\begin{equation}
 
 Verifying this computation
 
+```Scheme
 (let ((v (literal-vector-field 'v-rect R3-rect))
 (w (literal-vector-field 'w-rect R3-rect))
 (f (literal-manifold-function 'f-rect R3-rect)))
@@ -158,14 +157,14 @@ Verifying this computation
 ((commutator v w) f))
 ((point R3-rect) (up 'x0 'y0 'z0))))
 0
-
+```
 Although this is tested to second order, evaluating the derivative at zero ensures that first order is enough. So we can safely define:
 
+```Scheme
 (define ((Lie-derivative-vector V) Y)
 (commutator V Y))
-
-We can think of the Lie derivative as the rate of change of the manifold function $\mathsf{y}(\mathsf{f})$ as we move in the
-$\mathsf{v}$ direction, adjusted to take into account that some of the variation is due to the variation of $\mathsf{f}$:
+```
+We can think of the Lie derivative as the rate of change of the manifold function $\mathsf{y}(\mathsf{f})$ as we move in the $\mathsf{v}$ direction, adjusted to take into account that some of the variation is due to the variation of $\mathsf{f}$:
 
 $$\begin{equation}
 \begin{aligned}
@@ -175,9 +174,7 @@ $$\begin{equation}
 \end{aligned}
 \end{equation}$$
 
-The first term in the commutator,
-$\mathsf{v}(\mathsf{y}(\mathsf{f}))$, measures the rate of change of the combination $\mathsf{y}(\mathsf{f})$ along the integral curves of $\mathsf{v}$. The change in $\mathsf{y}(\mathsf{f})$ is due to both the intrinsic change in $\mathsf{y}$ along the curve and the change in $\mathsf{f}$ along the curve; the second term in the commutator subtracts this latter quantity. The result is the intrinsic change in $\mathsf{y}$ along the integral curves of
-$\mathsf{v}$.
+The first term in the commutator, $\mathsf{v}(\mathsf{y}(\mathsf{f}))$, measures the rate of change of the combination $\mathsf{y}(\mathsf{f})$ along the integral curves of $\mathsf{v}$. The change in $\mathsf{y}(\mathsf{f})$ is due to both the intrinsic change in $\mathsf{y}$ along the curve and the change in $\mathsf{f}$ along the curve; the second term in the commutator subtracts this latter quantity. The result is the intrinsic change in $\mathsf{y}$ along the integral curves of $\mathsf{v}$.
 
 Additionally, we can extend the product rule, for any manifold function $\mathsf{g}$ and any vector field $\mathsf{u}$:
 
@@ -255,13 +252,11 @@ $\omega(\mathsf{y})$ along the integral curve of $\mathsf{v}$,
 while the second subtracts ω applied to the change in
 $\mathsf{y}$. The result is the change in ω along the curve.
 
-The Lie derivative of a $k$-form field ω with respect to a vector field $\mathsf{v}$ is a $k$-form field that is defined by its behavior when applied to $k$ arbitrary vector fields
-$\mathsf{w}_{0},\ldots,\mathsf{w}_{k-1}$. We generalize equation
-(7.25):
+The Lie derivative of a $k$-form field ω with respect to a vector field $\mathsf{v}$ is a $k$-form field that is defined by its behavior when applied to $k$ arbitrary vector fields $\mathsf{w}_{0},\ldots,\mathsf{w}_{k-1}$. We generalize equation (7.25):
 
 $$\begin{equation}
 \begin{aligned}
-\mathcal{L}_{\mathsf{v}}\omega(\mathsf{w}_{0},\ldots,\mathsf{w}_{k-1}) \\
+\mathcal{L}_{\mathsf{v}}&\omega(\mathsf{w}_{0},\ldots,\mathsf{w}_{k-1}) \\
 &= \mathsf{v}(\omega(\mathsf{w}_{0},\ldots,\mathsf{w}_{k-1}))-\sum_{i=0}^{k-1}\omega(\mathsf{w}_{0},\ldots,\mathcal{L}_{\mathsf{v}}\mathsf{w}_{i},\ldots,\mathsf{w}_{k-1}).
 \end{aligned}
 \end{equation}$$
@@ -275,10 +270,7 @@ $$\begin{equation}
 (\mathcal{L}_{\mathsf{v}}\mathsf{a})(\mathsf{b}) = \mathsf{v}(\mathsf{a}(\mathsf{b}))-\mathsf{a}(\mathcal{L}_{\mathsf{v}}\mathsf{b}).
 \end{equation}$$
 
-The first term in this expression computes the rate of change of the compound object $\mathsf{a}(\mathsf{b})$ along integral curves of $\mathsf{v}$, while the second subtracts the change in
-$\mathsf{a}$ due to the change in $\mathsf{b}$ along the curves. The result is a measure of the "intrinsic" change in
-$\mathsf{a}$ along integral curves of $\mathsf{v}$, with
-$\mathsf{b}$ held "fixed."
+The first term in this expression computes the rate of change of the compound object $\mathsf{a}(\mathsf{b})$ along integral curves of $\mathsf{v}$, while the second subtracts the change in $\mathsf{a}$ due to the change in $\mathsf{b}$ along the curves. The result is a measure of the "intrinsic" change in $\mathsf{a}$ along integral curves of $\mathsf{v}$, with $\mathsf{b}$ held "fixed."
 
 ### Properties of the Lie Derivative
 
@@ -305,22 +297,22 @@ $$\begin{equation}
 If ω is an element of surface then $\mathsf{d}\omega$ is an element of volume. The Lie derivative computes the rate of change of its argument under a deformation described by the vector field. The answer is the same whether we deform the surface before computing the volume or compute the volume and then deform it.
 
 We can verify this in 3-dimensional rectangular space for a general one-form field:#Footnote(4)
-
+```Scheme
 (((- ((Lie-derivative V) (d theta))
 (d ((Lie-derivative V) theta)))
 X Y)
 R3-rect-point)
 0
-
+```
 and for the general two-form field:
-
+```Scheme
 (((- ((Lie-derivative V) (d omega))
 (d ((Lie-derivative V) omega)))
 X Y Z)
 R3-rect-point)
 0
-
-The Lie derivative satisfies another nice elementary relationship. If $\mathsf{v}$ and $\mathsf{w]$ are two vector fields, then
+```
+The Lie derivative satisfies another nice elementary relationship. If $\mathsf{v}$ and $\mathsf{w}$ are two vector fields, then
 
 $$\begin{equation}
 [\mathcal{L}_{\mathsf{v}},\mathcal{L}_{\mathsf{w}}] = \mathcal{L}_{[\mathsf{v},\mathsf{w}]}.
@@ -328,29 +320,29 @@ $$\begin{equation}
 
 Again, for our general one-form field θ:
 
+```Scheme
 ((((- (commutator (Lie-derivative X) (Lie-derivative Y))
 (Lie-derivative (commutator X Y)))
 theta)
 Z)
 R3-rect-point)
 0
-
+```
 and for the two-form field ω:
 
+```Scheme
 ((((- (commutator (Lie-derivative X) (Lie-derivative Y))
 (Lie-derivative (commutator X Y)))
 omega)
 Z V)
 R3-rect-point)
 0
-
+```
 ### Exponentiating Lie Derivatives
 
 The Lie derivative computes the rate of change of objects as they are advanced along integral curves. The Lie derivative of an object produces another object of the same type, so we can iterate Lie derivatives. This gives us Taylor series for objects along the curve.
 
-The operator $e^{t\mathcal{L}_{\mathsf{v}}} =
-1+t\mathcal{L}_{v}+\tfrac{t^{2}}{2!}\mathcal{L}^{2}_{\mathsf{v}}+\ldots$
-evolves objects along the curve by parameter $t$. For example, the exponential of a Lie derivative applied to a vector field is
+The operator $e^{t\mathcal{L}_{\mathsf{v}}} = 1+t\mathcal{L}_{v}+\tfrac{t^{2}}{2!}\mathcal{L}^{2}_{\mathsf{v}}+\ldots$ evolves objects along the curve by parameter $t$. For example, the exponential of a Lie derivative applied to a vector field is
 
 $$\begin{equation}
 \begin{aligned}
@@ -359,14 +351,12 @@ e^{t\mathcal{L}_{\mathsf{v}}}\mathsf{y} = \mathsf{y}+t\mathcal{L}_{\mathsf{v}}\m
 \end{aligned}
 \end{equation}$$
 
-Consider a simple case. We advanced the coordinate-basis vector field ${\partial}/{\partial\mathsf{y}}$ by an angle $a$ around the circle. Let $\mathsf{J}_{z} = {x\partial}/{\partial\mathsf{y}} -
-{y\partial}/{\partial\mathsf{x}}$, the circular vector field. We recall
-
+Consider a simple case. We advanced the coordinate-basis vector field ${\partial}/{\partial\mathsf{y}}$ by an angle $a$ around the circle. Let $\mathsf{J}_{z} = {x\partial}/{\partial\mathsf{y}} - {y\partial}/{\partial\mathsf{x}}$, the circular vector field. We recall
+```Scheme
 (define Jz (- (* x d/dy) (* y d/dx)))
-
-We can apply the exponential of the Lie derivative with respect to
-$\mathsf{J}_{z}$ to ${\partial}/{\partial\mathsf{y}}$. We examine how the result affects a general function on the manifold:
-
+```
+We can apply the exponential of the Lie derivative with respect to $\mathsf{J}_{z}$ to ${\partial}/{\partial\mathsf{y}}$. We examine how the result affects a general function on the manifold:
+```Scheme
 (series:for-each print-expression
 ((((exp (* 'a (Lie-derivative Jz))) d/dy)
 (literal-manifold-function 'f-rect R3-rect))
@@ -378,14 +368,14 @@ $\mathsf{J}_{z}$ to ${\partial}/{\partial\mathsf{y}}$. We examine how the result
 /(* 1/6 (expt a 3) (((partial 1) f-rect) (up 1 0)))/
 /(* 1/24 (expt a 4) (((partial 0) f-rect) (up 1 0)))/
 /;Value: .../
-
+```
 Apparently the result is
-
+```Scheme
 $$\begin{equation}
 \text{exp}(\alpha\mathcal{L}_{(\mathsf{x}\,{\partial}/{\partial\mathsf{y}}-\mathsf{y}\,{\partial}/{\partial\mathsf{x}})})\frac{\partial}{\partial\mathsf{y}}
 =-\sin(a)\frac{\partial}{\partial\mathsf{x}}+\cos(a)\frac{\partial}{\partial\mathsf{y}}.
 \end{equation}$$
-
+```
 ### Interior Product
 
 There is a simple but useful operation available between vector fields and form fields called /interior product/. This is the substitution of a vector field $\mathsf{v}$ into the first argument of a $p$-form field ω to produce a $p-1$-form field:
@@ -400,15 +390,14 @@ $$\begin{equation}
 \mathcal{L}_{\mathsf{v}}(i_{\mathsf{y}}\omega)=i_{\mathcal{L}_{\mathsf{v}}\mathsf{y}}\omega+{i}_{\mathsf{y}}(\mathcal{L}_{\mathsf{v}}\omega).
 \end{equation}$$
 
-And there is a rather nice identity for the Lie derivative in terms of the interior product and the exterior derivative, called
-/Cartan's formula/:
+And there is a rather nice identity for the Lie derivative in terms of the interior product and the exterior derivative, called /Cartan's formula/:
 
 $$\begin{equation}
 \mathcal{L}_{\mathsf{v}}\omega=i_{\mathsf{v}}(\mathsf{d}\omega)+\mathsf{d}(i_{\mathsf{v}}\omega).
 \end{equation}$$
 
 We can verify Cartan's formula in a simple case with a program:
-
+```Scheme
 (define X (literal-vector-field 'X-rect R3-rect))
 (define Y (literal-vector-field 'Y-rect R3-rect))
 (define Z (literal-vector-field 'Z-rect R3-rect))
@@ -430,14 +419,12 @@ We can verify Cartan's formula in a simple case with a program:
 (((L1 X) omega) Y Z))
 ((point R3-rect) (up 'x0 'y0 'z0)))
 0
-
-Note that $i_{\mathsf{v}}\circ{i}_{\mathsf{u}} +
-{i}_{\mathsf{u}}\circ{i}_{\mathsf{v}} = 0$. One consequence of this is that ${i}_{\mathsf{v}}\circ{i}_{\mathsf{v}}=0$.
+```
+Note that $i_{\mathsf{v}}\circ{i}_{\mathsf{u}} + {i}_{\mathsf{u}}\circ{i}_{\mathsf{v}} = 0$. One consequence of this is that ${i}_{\mathsf{v}}\circ{i}_{\mathsf{v}}=0$.
 
 ### Covariant Derivative
 
-The covariant derivative is another kind of directional derivative operator. We write the covariant derivative operator with respect to a vector field $\mathsf{v}$ as $\nabla_{\mathsf{v}}$. This is pronounced "covariant derivative with respect to $\mathsf{v}$" or
-"nabla $\mathsf{v}$."
+The covariant derivative is another kind of directional derivative operator. We write the covariant derivative operator with respect to a vector field $\mathsf{v}$ as $\nabla_{\mathsf{v}}$. This is pronounced "covariant derivative with respect to $\mathsf{v}$" or "nabla $\mathsf{v}$."
 
 ### Covariant Derivative of Vector Fields
 
@@ -458,9 +445,7 @@ F^{\mathsf{v}}_{\delta}\mathsf{u}(\mathsf{f})(\mathsf{m})=\sum_{i,j}(A^{i}_{j}(\
 \end{equation}$$
 
 for some functions $A^{i}_{j}$ that depend on the particular path
-(hence its tangent vector $\mathsf{v}$) and the initial point. We reach back along the integral curve to pick up the components of
-$\mathsf{u}$ and then parallel-transport them forward by the matrix
-$A^{i}_{j}(\delta)$ to form the components of the parallel-transported vector at the advanced point.
+(hence its tangent vector $\mathsf{v}$) and the initial point. We reach back along the integral curve to pick up the components of $\mathsf{u}$ and then parallel-transport them forward by the matrix $A^{i}_{j}(\delta)$ to form the components of the parallel-transported vector at the advanced point.
 
 As before, we compute
 
@@ -506,8 +491,7 @@ $$\begin{equation}
 A^{i}_{j}(\delta) = B^{i}_{j}(\mathsf{v})(\delta).
 \end{equation}$$
 
-Parallel transport depends on the path but not on the rate along the path. Incrementally, if we scale the vector field $\mathsf{v}$
-by ξ,
+Parallel transport depends on the path but not on the rate along the path. Incrementally, if we scale the vector field $\mathsf{v}$ by $ξ$,
 
 $$\begin{equation}
 \frac{d}{d\delta}(B(\mathsf{v})(\delta)) = \frac{d}{d\delta}(B(\xi\mathsf{v})({\delta}/{\xi})).
@@ -525,8 +509,7 @@ $$\begin{equation}
 \xi{D}(B(\mathsf{v}))(0) = D(B(\xi\mathsf{v}))(0).
 \end{equation}$$
 
-The scale factor ξ can vary from place to place. So $DA^{i}_{j}(0)$
-is homogeneous in $\mathsf{v}$ over manifold functions. This is stronger than the homogeneity required by equation (7.7).
+The scale factor ξ can vary from place to place. So $DA^{i}_{j}(0)$ is homogeneous in $\mathsf{v}$ over manifold functions. This is stronger than the homogeneity required by equation (7.7).
 
 The superposition property (equation (7.6)) is true of the ordinary directional derivative of manifold functions. By analogy we require it to be true of directional derivatives of vector fields.
 
@@ -539,7 +522,7 @@ DA^{i}_{j}(0) = -\varpi^{i}_{j}(\mathsf{v}),
 where the minus sign is a matter of convention.
 
 As before, we can take a stab at computing the covariant derivative of a vector field by supplying an appropriate transport operator for F in F->directional-derivative. Again, this is expanded to a given order with a given coordinate system. These will be unnecessary in the final version.
-
+```Scheme
 (define (covariant-derivative-vector omega coordsys order)
 (let ((Phi (phi coordsys order)))
 (F->directional-derivative
@@ -554,7 +537,7 @@ As before, we can take a stab at computing the covariant derivative of a vector 
 (* delta (- ((omega v) m0)))))
 (ui ((etilde u) m0)))
 (* ((e f) m) (* Aij ui)))))))
-
+```
 So
 
 $$\begin{equation}
@@ -570,7 +553,7 @@ $$\begin{equation}
 The one-form fields $\varpi^{i}_{j}$ are called the /Cartan one-forms/, or the /connection one-forms/. They are defined with respect to the basis $\mathsf{e}$.
 
 As a program, the covariant derivative is:#Footnote(6)
-
+```Scheme
 (define ((((covariant-derivative-vector Cartan) V) U) f)
 (let ((basis (Cartan->basis Cartan))
 (Cartan-forms (Cartan->forms Cartan)))
@@ -580,7 +563,7 @@ As a program, the covariant derivative is:#Footnote(6)
 (* (vector-basis f)
 (+ (V u-components)
 (* (Cartan-forms V) u-components)))))))
-
+```
 An important property of $\nabla_{\mathsf{v}}\mathsf{u}$ is that it is linear over manifold functions $\mathsf{g}$ in the first argument
 
 $$\begin{equation}
@@ -614,8 +597,7 @@ $$\begin{equation}
 \nabla_{\mathsf{v}}\mathsf{u}(\mathsf{f}) = \sum_{i}(\mathsf{v}(\mathsf{u}^{i})\mathsf{e}_{i}(\mathsf{f})+\mathsf{u}^{i}\nabla_{\mathsf{v}}\mathsf{e}_{i}(\mathsf{f})).
 \end{equation}$$
 
-Because the covariant derivative of a vector field is a vector field we can extract the components of
-$\nabla_{\mathsf{v}}\mathsf{e}_{i}$ using the dual basis:
+Because the covariant derivative of a vector field is a vector field we can extract the components of $\nabla_{\mathsf{v}}\mathsf{e}_{i}$ using the dual basis:
 
 $$\begin{equation}
 \varpi^{i}_{j}(\mathsf{v}) = \tilde{\mathsf{e}}^{i}(\nabla_{\mathsf{v}}\mathsf{e}_{j}).
@@ -653,8 +635,7 @@ $$\begin{equation}
 
 ### Covariant Derivative of One-Form Fields
 
-The covariant derivative of a vector field induces a compatible covariant derivative for a one-form field. Because the application of a one-form field to a vector field yields a manifold function,
-we can evaluate the covariant derivative of such an application. Let τ be a one-form field and $\mathsf{w}$ be a vector field. Then
+The covariant derivative of a vector field induces a compatible covariant derivative for a one-form field. Because the application of a one-form field to a vector field yields a manifold function, we can evaluate the covariant derivative of such an application. Let τ be a one-form field and $\mathsf{w}$ be a vector field. Then
 
 $$\begin{equation}
 \begin{aligned}
@@ -682,12 +663,14 @@ Alternatively, assuming the generalized product rule forces the definition of co
 
 As a program this is
 
+```Scheme
 (define ((((covariant-derivative-1form Cartan) V) tau) U)
 (let ((nabla_V ((covariant-derivative-vector Cartan) V)))
 (- (V (tau U)) (tau (nabla_V U)))))
-
+```
 This program extends naturally to higher-rank form fields:
 
+```Scheme
 (define ((((covariant-derivative-form Cartan) V) tau) vs)
 (let ((k (get-rank tau))
 (nabla_V ((covariant-derivative-vector Cartan) V)))
@@ -697,12 +680,10 @@ This program extends naturally to higher-rank form fields:
 (list-with-substituted-coord vs i
 (nabla_V (list-ref vs i)))))
 0 (- k 1)))))
-
+```
 ### Change of Basis
 
-The basis-independence of the covariant derivative implies a relationship between the Cartan forms in one basis and the equivalent Cartan forms in another basis. Recall (equation 4.13)
-that the basis vector fields of two bases are always related by a linear transformation. Let $\mathsf{J}$ be the matrix of coefficient functions and let $\mathsf{e}$ and
-$\mathsf{e}^{\prime}$ be down tuples of basis vector fields. then
+The basis-independence of the covariant derivative implies a relationship between the Cartan forms in one basis and the equivalent Cartan forms in another basis. Recall (equation 4.13) that the basis vector fields of two bases are always related by a linear transformation. Let $\mathsf{J}$ be the matrix of coefficient functions and let $\mathsf{e}$ and $\mathsf{e}^{\prime}$ be down tuples of basis vector fields. then
 
 $$\begin{equation}
 \mathsf{e}(\mathsf{f}) = \mathsf{e}^{\prime}(\mathsf{f})\mathsf{J}.
@@ -714,8 +695,8 @@ $$\begin{equation}
 \begin{aligned}
 \nabla_{\mathsf{v}}\mathsf{u}(\mathsf{f}) &= \sum_{i}\mathsf{e}_{i}(\mathsf{f})\left(\mathsf{v}(\mathsf{u}^{i})+\sum_{j}\varpi^{i}_{j}(\mathsf{v})\mathrm{u}^{j}\right) \\
 &= \sum_{ijk}\mathsf{e}^{\prime}_{i}(\mathsf{f})\mathsf{J}^{i}_{j}\left(\mathsf{v}\left((\mathsf{J}^{-1})^{j}_{k}(\mathsf{u}^{\prime})^{k}\right)+\sum_{l}\varpi^{j}_{k}(\mathsf{v})(\mathsf{J}^{-1})^{k}_{l}(\mathsf{u}^{\prime})^{l}\right) \\
-&= \sum_{i}\mathsf{e}^{\prime}_{i}(\mathsf{f})\left(\mathsf{v}((\mathsf{u}^{\prime})^{i})+\sum_{jk}\mathsf{J}^{i}_{j}\mathsf{v}\left((\mathsf{J}^{-1})^{j}_{k}\right)(\mathsf{u}^{\prime})^{k} \\
-+ \sum_{jkl}\mathsf{J}^{i}_{j}\varpi^{j}_{k}(\mathsf{v})(\mathsf{J}^{-1})^{k}_{l}(\mathsf{u}^{\prime})^{l}\right) \\
+&= \sum_{i}\mathsf{e}^{\prime}_{i}(\mathsf{f})\left(\mathsf{v}((\mathsf{u}^{\prime})^{i})+\sum_{jk}\mathsf{J}^{i}_{j}\mathsf{v}\left((\mathsf{J}^{-1})^{j}_{k}\right)(\mathsf{u}^{\prime})^{k}\right. \\
+&+ \left( \sum_{jkl}\mathsf{J}^{i}_{j}\varpi^{j}_{k}(\mathsf{v})(\mathsf{J}^{-1})^{k}_{l}(\mathsf{u}^{\prime})^{l}\right) \\
 &= \sum_{i}\mathsf{e}^{\prime}_{i}(\mathsf{f})\left(\mathsf{v}((\mathsf{u}^{\prime})^{i})+\sum_{j}(\varpi^{\prime})^{i}_{j}(\mathsf{v})(\mathsf{u}^{\prime})^{j}\right).
 \end{aligned}
 \end{equation}$$
@@ -735,16 +716,14 @@ $$\begin{equation}
 \mathsf{e}_{i}(\mathsf{f}) = \sum_{j}\mathsf{e}^{\prime}_{j}(\mathsf{f})\mathsf{J}^{j}_{i}.
 \end{equation}$$
 
-Let $\mathsf{K}=\mathsf{J}^{-1}$, so
-$\sum_{j}\mathsf{K}^{i}_{j}(\mathsf{m})\mathsf{J}^{j}_{k}(\mathsf{m})
-= \delta^{i}_{k}$. Then
+Let $\mathsf{K}=\mathsf{J}^{-1}$, so $\sum_{j}\mathsf{K}^{i}_{j}(\mathsf{m})\mathsf{J}^{j}_{k}(\mathsf{m}) = \delta^{i}_{k}$. Then
 
 $$\begin{equation}
 {\varpi^{\prime}}^{i}_{l}(\mathsf{v}) = \sum_{j}\mathsf{J}^{i}_{j}\mathsf{v}(\mathsf{K}^{j}_{l})+\sum_{jk}\mathsf{J}^{i}_{j}\varpi^{j}_{k}(\mathsf{v})\mathsf{K}^{k}_{l}.
 \end{equation}$$
 
 The transformation rule for $\varpi$ is implemented in the following program:
-
+```Scheme
 (define (Cartan-transform Cartan basis-prime)
 (let ((basis (Cartan->basis Cartan))
 (forms (Cartan->forms Cartan))
@@ -760,11 +739,12 @@ The transformation rule for $\varpi$ is implemented in the following program:
 (+ (* J (v J-inv))
 (* J (* (forms v) J-inv)))))))
 (make-Cartan omega-prime-forms basis-prime))))))
-
+```
 The s:map/r procedure constructs a tuple of the same shape as its second argument whose elements are the result of applying the first argument to the corresponding elements of the second argument.
 
 We can illustrate that the covariant derivative is independent of the coordinate system in a simple case, using rectangular and polar coordinates in the plane.#Footnote(9) We can choose Christoffel coefficients for rectangular coordinates that are all zero:#Footnote(10)
 
+```Scheme
 (define R2-rect-Christoffel
 (make-Christoffel
 (let ((zero (lambda (m) 0)))
@@ -773,20 +753,21 @@ We can illustrate that the covariant derivative is independent of the coordinate
 (down (up zero zero)
 (up zero zero))))
 R2-rect-basis))
-
+```
 With these Christoffel coefficients, parallel transport preserves the components relative to the rectangular basis. This corresponds to our usual notion of parallel in the plane. We will see later in Chapter 9 that these Christoffel coefficients are a natural choice for the plane. From these we obtain the Cartan form:#Footnote(11)
 
+```Scheme
 (define R2-rect-Cartan
 (Christoffel->Cartan R2-rect-Christoffel))
-
+```
 And from equation (7.63) we can get the corresponding Cartan form for polar coordinates:
 
+```Scheme
 (define R2-polar-Cartan
 (Cartan-transform R2-rect-Cartan R2-polar-basis))
-
-The vector field ${\partial}/{\partial\theta}$ generates a rotation in the plane (the same as circular). The covariant derivative with respect to ${\partial}/{\partial\mathsf{x}}$ of
-${\partial}/{\partial\theta}$ applied to an arbitrary manifold function is:
-
+```
+The vector field ${\partial}/{\partial\theta}$ generates a rotation in the plane (the same as circular). The covariant derivative with respect to ${\partial}/{\partial\mathsf{x}}$ of ${\partial}/{\partial\theta}$ applied to an arbitrary manifold function is:
+```Scheme
 (define circular (- (* x d/dy) (* y d/x)))
 
 (define f (literal-manifold-function 'f-rect R2-rect))
@@ -797,31 +778,24 @@ circular)
 f)
 R2-rect-point)
 /(((partial 1) f-rect) (up x0 y0))/
-
-Note that this is the same thing as
-${\partial}/{\partial\mathsf{y}}$ applied to the function:
-
+```
+Note that this is the same thing as ${\partial}/{\partial\mathsf{y}}$ applied to the function:
+```Scheme
 ((d/dy f) R2-rect-point)
 /(((partial 1) f-rect) (up x0 y0))/
-
-In rectangular coordinates, where the Christoffel coefficients are zero, the covariant derivative $\nabla_{\mathsf{u}}\mathsf{v}$ is the vector whose coefficients are obtained by applying $\mathsf{u}$
-to the coefficients of $\mathsf{v}$. Here, only one coefficient of
-${\partial}/{\partial\theta}$ depends on $x$, the coefficient of
-${\partial}/{\partial\mathsf{y}}$, and it depends linearly on
-$x$. So $\nabla_{{\partial}/{\partial\mathsf{x}}}
-{\partial}/{\partial\theta} =
-{\partial}/{\partial\mathsf{y}}$. (See figure 7.1.)
+```
+In rectangular coordinates, where the Christoffel coefficients are zero, the covariant derivative $\nabla_{\mathsf{u}}\mathsf{v}$ is the vector whose coefficients are obtained by applying $\mathsf{u}$ to the coefficients of $\mathsf{v}$. Here, only one coefficient of ${\partial}/{\partial\theta}$ depends on $x$, the coefficient of ${\partial}/{\partial\mathsf{y}}$, and it depends linearly on $x$. So $\nabla_{{\partial}/{\partial\mathsf{x}}} {\partial}/{\partial\theta} = {\partial}/{\partial\mathsf{y}}$. (See figure 7.1.)
 
 Note that we get the same answer if we use polar coordinates to compute the covariant derivative:
-
+```Scheme
 (((((covariant-derivative R2-polar-Cartan) d/dx) J) f)
 R2-rect-point)
 /(((partial 1) f-rect) (up x0 y0))/
-
+```
 In rectangular coordinates the Christoffel coefficients are all zero; in polar coordinates there are nonzero coefficients, but the value of the covariant derivative is the same. In polar coordinates the basis elements vary with position, and the Christoffel coefficients compensate for this.
 
 Of course, this is a pretty special situation. Let's try something more general:
-
+```Scheme
 (define V (literal-vector-field 'V-rect R2-rect))
 (define W (literal-vector-field 'W-rect R2-rect))
 
@@ -832,28 +806,22 @@ W)
 f)
 R2-rect-point)
 0
-
+```
 ### Parallel Transport
 
 We have defined parallel transport of a vector field along integral curves of another vector field. But not all paths are integral curves of a vector field. For example, paths that cross themselves are not integral curves of any vector field.
 
-Here we extend the idea of a parallel transport of a stick to make sense for arbitrary paths on the manifold. Any path can be written as a map γ from the real-line manifold to the manifold
-$\mathsf{M}$. We construct a vector field over the map
-$\mathsf{u}_{\gamma}$ by parallel-transporting the stick to all points on the path γ.
+Here we extend the idea of a parallel transport of a stick to make sense for arbitrary paths on the manifold. Any path can be written as a map γ from the real-line manifold to the manifold $\mathsf{M}$. We construct a vector field over the map $\mathsf{u}_{\gamma}$ by parallel-transporting the stick to all points on the path γ.
 
-For any path γ there are locally directional derivatives of functions on $\mathsf{M}$ defined by tangent vectors to the curve. The vector over the map
-$\mathsf{w}_{\gamma}=d\gamma({\partial}/{\partial\mathsf{t}})$ is a directional derivative of functions on the manifold $M$ along the path γ.
+For any path γ there are locally directional derivatives of functions on $\mathsf{M}$ defined by tangent vectors to the curve. The vector over the map $\mathsf{w}_{\gamma}=d\gamma({\partial}/{\partial\mathsf{t}})$ is a directional derivative of functions on the manifold $M$ along the path γ.
 
-Our goal is to determine the equations satisfied by the vector field over the map $\mathsf{u}_{\gamma}$. Consider the parallel-transport
-$F^{\mathsf{w}_{\gamma}}_{\delta}\mathsf{u}_{\gamma}$.#Footnote(12) So a vector field $\mathsf{u}_{\gamma}$ is parallel-transported to itself if and only if $\mathsf{u}_{\gamma} =
-F^{\mathsf{w}_{\gamma}}_{\delta}\mathsf{u}_{\gamma}$. Restricted to a path, the equation analogous to equation (7.40) is
+Our goal is to determine the equations satisfied by the vector field over the map $\mathsf{u}_{\gamma}$. Consider the parallel-transport $F^{\mathsf{w}_{\gamma}}_{\delta}\mathsf{u}_{\gamma}$.#Footnote(12) So a vector field $\mathsf{u}_{\gamma}$ is parallel-transported to itself if and only if $\mathsf{u}_{\gamma} = F^{\mathsf{w}_{\gamma}}_{\delta}\mathsf{u}_{\gamma}$. Restricted to a path, the equation analogous to equation (7.40) is
 
 $$\begin{equation}
 g(\delta)=\sum_{i}\left(u^{i}(t)-\sum_{j}A^{i}_{j}(\delta)u^{j}(t-\delta)\right)\mathsf{e}^{\gamma}_{i}(\mathsf{f})(\mathsf{t}),
 \end{equation}$$
 
-where the coefficient function $u^{i}$ is now a function on the real-line parameter manifold and where we have rewritten the basis as a basis over the map γ.#Footnote(13) Here $g(\delta)=0$ if
-$\mathsf{u}_{\gamma}$ is parallel-transported into itself.
+where the coefficient function $u^{i}$ is now a function on the real-line parameter manifold and where we have rewritten the basis as a basis over the map γ.#Footnote(13) Here $g(\delta)=0$ if $\mathsf{u}_{\gamma}$ is parallel-transported into itself.
 
 Taking the derivative and setting $\delta=0$ we find
 
@@ -876,19 +844,15 @@ $$\begin{equation}
 \nabla^{\gamma}_{\mathsf{v}}\mathsf{u}_{\gamma}(\mathsf{f})(\mathsf{n})=\sum_{i}\left(\mathsf{v}(u^{i})(\mathsf{n})+{\sum_{j}}^{\gamma}\varpi^{i}_{j}(d\gamma(\mathsf{v}))(\mathsf{n})u^{j}(\mathsf{n})\right)\mathsf{e}^{\gamma}_{i}(\mathsf{f})(\mathsf{n}),
 \end{equation}$$
 
-where the map $\gamma:\mathsf{N}\to\mathsf{M},\mathsf{v}$ is a vector on $\mathsf{N}$, $\mathsf{u}_{\gamma}$ is a vector over the map γ, $\mathsf{f}$ is a function on $\mathsf{M}$, and $\mathsf{n}$
-is a point in $\mathsf{N}$. Indeed, if $\mathsf{w}$ is a vector field on $\mathsf{M}$, $\mathsf{f}$ is a manifold function on
-$\mathsf{M}$, and if $d\gamma(\mathsf{v})=\mathsf{w}_{\gamma}$ then
+where the map $\gamma:\mathsf{N}\to\mathsf{M},\mathsf{v}$ is a vector on $\mathsf{N}$, $\mathsf{u}_{\gamma}$ is a vector over the map γ, $\mathsf{f}$ is a function on $\mathsf{M}$, and $\mathsf{n}$ is a point in $\mathsf{N}$. Indeed, if $\mathsf{w}$ is a vector field on $\mathsf{M}$, $\mathsf{f}$ is a manifold function on $\mathsf{M}$, and if $d\gamma(\mathsf{v})=\mathsf{w}_{\gamma}$ then
 
 $$\begin{equation}
 \nabla^{\gamma}_{\mathsf{v}}\mathsf{u}_{\gamma}(\mathsf{f})(\mathsf{n})=\nabla_{\mathsf{w}}\mathsf{u}(\mathsf{f})(\gamma(\mathsf{n})).
 \end{equation}$$
 
-This is why we are justified in calling
-$\nabla^{\gamma}_{\mathsf{v}}$ a covariant derivative.
+This is why we are justified in calling $\nabla^{\gamma}_{\mathsf{v}}$ a covariant derivative.
 
-Respecializing the source manifold to the real line, we can write the equations governing the parallel transport of
-$\mathsf{u}_{\gamma}$ as
+Respecializing the source manifold to the real line, we can write the equations governing the parallel transport of $\mathsf{u}_{\gamma}$ as
 
 $$\begin{equation}
 \nabla^{\gamma}_{{\partial}/{\partial\mathsf{t}}}\mathsf{u}_{\gamma}=0.
@@ -907,35 +871,32 @@ $$\begin{equation}
 Du^{i}(t)+\sum_{j,k}\Gamma^{i}_{jk}(\gamma(\mathsf{t}))D\sigma^{k}(t)u^{j}(t)=0
 \end{equation}$$
 
-where
-$\sigma=\chi_{\mathsf{M}}\circ\gamma\circ\chi^{-1}_{\mathsf{R}}$
-are the coordinates of the path ($\chi_{\mathsf{M}}$ and
-$\chi_{\mathsf{R}}$ are the coordinate functions for $\mathsf{M}$
-and the real line).
+where $\sigma=\chi_{\mathsf{M}}\circ\gamma\circ\chi^{-1}_{\mathsf{R}}$ are the coordinates of the path ($\chi_{\mathsf{M}}$ and $\chi_{\mathsf{R}}$ are the coordinate functions for $\mathsf{M}$ and the real line).
 
 ### On a Sphere
 
-Let's figure out what the equations of parallel transport of
-$\mathsf{u}_{\gamma}$, an arbitrary vector over the map γ, along an arbitrary path γ on a sphere are. We start by constructing the necessary manifold.
-
+Let's figure out what the equations of parallel transport of $\mathsf{u}_{\gamma}$, an arbitrary vector over the map γ, along an arbitrary path γ on a sphere are. We start by constructing the necessary manifold.
+```Scheme
 (define sphere (make-manifold S^2 2 3))
 (define S2-spherical
 (coordinate-system-at 'spherical 'north-pole sphere))
 (define S2-basis
 (coordinate-system->basis S2-spherical))
-
+```
 We need the path γ, which we represent as a map from the real line to $\mathsf{M}$, and $\mathsf{w}$, the parallel-transported vector over the map:
 
+```Scheme
 (define gamma
 (compose (point S2-spherical)
 (up (literal-function 'alpha)
 (literal-function 'beta))
 (chart R1-rect)))
-
+```
 where alpha is the colatitude and beta is the longitude.
 
 We also need an arbitrary vector field u_gamma over the map gamma. To make this we multiply the structure of literal component functions by the vector basis structure.
 
+```Scheme
 (define basis-over-gamma
 (basis->basis-over-map gamma S2-basis))
 
@@ -945,9 +906,9 @@ We also need an arbitrary vector field u_gamma over the map gamma. To make this 
 (compose (literal-function 'u^1)
 (chart R1-rect)))
 (basis->vector-basis basis-over-gamma)))
-
+```
 We specify a connection by giving the Christoffel coefficients.#Footnote(14)
-
+```Scheme
 (define S2-Christoffel
 (make-Christoffel
 (let ((zero (lambda (point) 0)))
@@ -958,9 +919,10 @@ We specify a connection by giving the Christoffel coefficients.#Footnote(14)
 S2-basis))
 
 (define sphere-Cartan (Christoffel->Cartan S2-Christoffel))
+```
 
 Finally, we compute the residual of the equation (7.71) that governs parallel transport for this situation:#Footnote(15)
-
+```Scheme
 (define-coordinates t R1-rect)
 
 (s:map/r
@@ -981,7 +943,7 @@ u_gamma))
 /(* ((D alpha) tau) (cos (alpha tau)) (u^1 tau))/
 /(* ((D u^1) tau) (sin (alpha tau))))/
 /(sign (alpha tau))))/
-
+```
 Thus the equations governing the evolution of the components of the transported vector are:
 
 $$\begin{equation}
@@ -1000,9 +962,7 @@ Du(\tau)=f(\sigma(\tau),D\sigma(\tau))u(\tau),
 
 where σ is the tuple of the coordinates of the path on the manifold and $u$ is the tuple of the components of the vector. The equation is linear in $u$ and is driven by the path σ, as in a variational equation.
 
-We now set this up for numerical integration. Let $s(t)=(t,u(t))$
-be a state tuple, combining the time and the coordinates of
-$\mathsf{u}_{\gamma}$ at that time. Then we define $g$:
+We now set this up for numerical integration. Let $s(t)=(t,u(t))$ be a state tuple, combining the time and the coordinates of $\mathsf{u}_{\gamma}$ at that time. Then we define $g$:
 
 $$\begin{equation}
 g(s(t))=Ds(t)=(1,Du(t)),
@@ -1013,7 +973,7 @@ where $Du(t)$ is the tuple of right-hand sides of equation (7.72).
 ### On a Great Circle
 
 We illustrate parallel transport in a case where we should know the answer: we carry a vector along a great circle of a sphere. Given a path and Cartan forms for the manifold we can produce a state derivative suitable for numerical integration. Such a state derivative takes a state and produces the derivative of the state.
-
+```Scheme
 (define (g gamma Cartan)
 (let ((omega
 ((Cartan->forms
@@ -1024,9 +984,9 @@ We illustrate parallel transport in a case where we should know the answer: we c
 (u (ref state 1)))
 (up 1 (* -1 (omega t) u))))
 the-state-derivative))
-
+```
 The path on the sphere will be the target of a map from the real line. We choose one that starts at the origin of longitudes on the equator and follows the great circle that makes a given tilt angle with the equator.
-
+```Scheme
 (define ((transform tilt) coords)
 (let ((colat (red coords 0))
 (long (ref coord 1)))
@@ -1044,27 +1004,27 @@ The path on the sphere will be the target of a map from the real line. We choose
 (compose (point S2-spherical)
 coords
 (chart R1-rect)))
-
+```
 A southward pointing vector, with components (up 1 0), is transformed to an initial vector for the tilted path by multiplying by the derivative of the tilt transform at the initial point. We then parallel transport this vector by numerically integrating the differential equations. In this example we tilt by 1 radian, and we advance for $\pi/2$ radians. In this case we know the answer: by advancing by $\pi/2$ we walk around the circle a quarter of the way and at that point the transported vector points south:
-
+```Scheme
 ((state-advancer (g (tilted-path 1) sphere-Cartan))
 (up 0 (* ((D (transform 1)) (up :pi/2 0)) (up 1 0)))
 pi/2)
 /up 1.5707963267948957/
 /(up .9999999999997626 7.376378522558262e-13))/
-
+```
 However, if we transport by 1 radian rather than $\pi/2$, the numbers are not so pleasant, and the transported vector no longer points south:
-
+```Scheme
 ((state-advancer (g (tilted-path 1) (sphere-Cartan))
 (up 0 (* ((D (transform 1)) (up :pi/2 0)) (up 1 0)))
 1)
 /(up 1. (up .7651502649360408 .9117920272006472))/
-
+```
 But the transported vector can be obtained by tilting the original southward-pointing vector after parallel-transporting along the equator:#Footnote(16)
-
+```Scheme
 (* ((D (transform 1)) (up :pi/2 1)) (up 1 0))
 /(up .7651502649370375 .9117920272004736)/
-
+```
 ### Geodesic Motion
 
 In geodesic motion the velocity vector is parallel-transported by itself. Recall (equation 6.9) that the velocity is the differential of the vector ${\partial}/{\partial\mathsf{t}}$ over the map γ. The equation of geodesic motion is#Footnote(17)
@@ -1082,14 +1042,14 @@ D^{2}\sigma^{i}(t)+\sum_{jk}\Gamma^{i}_{jk}(\gamma(t))D\sigma^{j}(t)D\sigma^{k}(
 where $\sigma(t)$ is the coordinate path corresponding to the manifold path γ.
 
 For example, let's consider geodesic motion on the surface of a unit sphere. We let gamma be a map from the real line to the sphere, with colatitude alpha and longitude beta, as before. The geodesic equation is:
-
+```Scheme
 (show-expression
 (((((covariant-derivative sphere-Cartan gamma)
 d/dt)
 ((differential gamma) d/dt))
 (chart S2-spherical))
 ((point R1-rect) 't0)))
-
+```
 $$\begin{equation}
 \left(\begin{array}{c}
 -\cos(\alpha(t0))\sin(\alpha(t0))(D\beta(t0))^{2}+D^{2}\alpha(t0)\\
@@ -1098,7 +1058,7 @@ $$\begin{equation}
 \end{equation}$$
 
 The geodesic equation is the same as the Lagrange equation for free motion constrained to the surface of the unit sphere. The Lagrangian for motion on the sphere is the composition of the free-particle Lagrangian and the state transformation induced by the coordinate constraint:#Footnote(18)
-
+```Scheme
 (define (Lfree s)
 (* 1/2 (square (velocity s))))
 
@@ -1111,15 +1071,15 @@ The geodesic equation is the same as the Lagrange equation for free motion const
 
 (define Lsphere
 (compose Lfree (F->C sphere->R3)))
-
+```
 Then the Lagrange equations are:
-
+```Scheme
 (show-expression
 (((Lagrange-equations Lsphere)
 (up (literal-function 'alpha)
 (literal-function 'beta)))
 't))
-
+```
 $$\begin{equation}
 \left[\begin{array}{c}
 -(D\beta(t))^{2}\sin(\alpha(t))\cos(\alpha(t))+D^{2}\alpha(t)\\
@@ -1129,15 +1089,15 @@ $$\begin{equation}
 
 The Lagrange equations are true of the same paths as the geodesic equations. The second Lagrange equation is the second geodesic equation multiplied by $(\sin(\alpha(t)))^{2}$, and the Lagrange equations are arranged in a down tuple, whereas the geodesic equations are arranged in an up tuple.#Footnote(19) The two systems are equivalent unless $\alpha(t)=0$, where the coordinate system is singular.
 
-*** Exercise 7.1: Hamiltonian Evolution
+#### Exercise 7.1: Hamiltonian Evolution
 
 We have just seen that the Lagrange equations for the motion of a free particle constrained to the surface of a sphere determine the geodesics on the sphere. We can investigate the phenomenon in the Hamiltonian formulation. The Hamiltonian is obtained from the Lagrangian by a Legendre transformation:
-
+```Scheme
 (define Hsphere
 (Lagrangian->Hamiltonian Lsphere))
-
+```
 We can get the coordinate representation of the Hamiltonian vector field as follows:
-
+```Scheme
 ((phase-space-derivative Hsphere)
 (up 't (up 'theta 'phi) (down 'p_theta 'p_phi)))
 /(up 1/
@@ -1146,10 +1106,10 @@ We can get the coordinate representation of the Hamiltonian vector field as foll
 /(down (/ (* (expt p_phi 2) (cos theta))/
 /(expt (sin theta) 3))/
 /0))/
-
+```
 The state space for Hamiltonian evolution has five dimensions:
 time, two dimensions of position on the sphere, and two dimensions of momentum:
-
+```Scheme
 (define state-space
 (make-manifold R^n 5))
 (define states
@@ -1157,14 +1117,14 @@ time, two dimensions of position on the sphere, and two dimensions of momentum:
 (define-coordinates
 (up t (up theta phi) (down p_theta p_phi))
 states)
-
+```
 So now we have coordinate functions and the coordinate-basis vector fields and coordinate-basis one-form fields.
 
 a. Define the Hamiltonian vector field as a linear combination of these fields.
 
 b. Obtain the first few terms of the Taylor series for the evolution of the coordinates $(\theta,\phi)$ by exponentiating the Lie derivative of the Hamiltonian vector field.
 
-*** Exercise 7.2: Lie Derivative and Covariant Derivative
+### Exercise 7.2: Lie Derivative and Covariant Derivative
 
 How are the Lie derivative and the covariant derivative related?
 
@@ -1175,66 +1135,11 @@ b. Show that there is no connection that for every vector field makes the Lie de
 ----
 ### Footnotes
 
-#FootnoteRef(19) The geodesic equations and the Lagrange equations are related by a contraction with the metric.
-
-#FootnoteRef(18) The method of formulating a system with constraints by composing a free system with the state-space coordinate transformation that represents the constraints can be found in [19], section
-1.6.3. The procedure F->C takes a coordinate transformation and produces a corresponding transformation of Lagrangian state.
-
-#FootnoteRef(17) The equation of a geodesic path is often said to be
-
-$$\begin{equation}
-\nabla_{\mathsf{v}}\mathsf{v}=0,
-\end{equation}$$
-
-but this is nonsense. The geodesic equation is a constraint on the path, but the path does not appear in this equation. Further, the velocity along a path is not a vector field, so it cannot appear in either argument to the covariant derivative.
-
-What is true is that a vector field $\mathsf{v}$ all of whose integral curves are geodesics satisfies equation (7.77).
-
-#FootnoteRef(16) A southward-pointing vector remains southward-pointing when it is parallel-transported along the equator. To do this we do not have to integrate the differential equations, because we know the answer.
-
-#FootnoteRef(15) If we give covariant-derivative an extra argument, in addition to the Cartan form, the covariant derivative treats the extra argument as a map and transforms the Cartan form to work over the map.
-
-#FootnoteRef(14) We will show later that these Christoffel coefficients are a natural choice for the sphere.
-
-#FootnoteRef(13) You may have noticed that $t$ and $\mathsf{t}$ appear here. The real-line manifold point $\mathsf{t}$ has coordinate $t$.
-
-#FootnoteRef(12) The argument $\mathsf{w}_{\gamma}$ makes sense because our parallel-transport operator never depended on the vector field tangent to the integral curve existing off of the curve. Because the connection is a form field (see equation 7.47), it does not depend on the value of its vector argument anywhere except at the point where it is being evaluated.
-
-The argument $\mathsf{u}_{\gamma}$ is more difficult. We must modify equation (7.37):
-
-$$\begin{equation}
-F^{\mathsf{w}_{\gamma}}_{\delta}\mathsf{u}_{\gamma}(\mathsf{f})(t)=\sum_{i,j}A^{i}_{j}(\delta)u^{j}(t-\delta)\mathsf{e}^{\gamma}_{i}(\mathsf{f})(t).
-\end{equation}$$
-
-#FootnoteRef(11) The code for making the Cartan forms is as follows:
-
-(define (Christoffel->Cartan Christoffel)
-(let ((basis (Christoffel->basis Christoffel))
-(Christoffel-symbols (Christoffel->symbols Christoffel)))
-(make-Cartan
-(* Christoffel-symbols (basis->1-form-basis basis))
-basis)))
-
-#FootnoteRef(10) Since the Christoffel coefficients are basis-dependent they are packaged with the basis.
-
-#FootnoteRef(9) We will need a few definitions:
-
-(define R2-rect-basis (coordinate-system->basis R2-rect))
-(define R2-polar-basis (coordinate-system->basis R2-polar))
-(define-coordinates (up x y) R2-rect)
-(define-coordinates (up r theta) R2-polar)
-
-#FootnoteRef(8) The structure of the Cartan forms $\varpi$ together with this equation forces the shape of the Christoffel coefficient structure.
-
-#FootnoteRef(7) This terminology may be restricted to the case in which the basis is a coordinate basis.
-
-#FootnoteRef(6) This program is incomplete. It must construct a vector field;
-it must make a differential operator; and it does not apply to functions or forms.
-
-#FootnoteRef(5) In the introduction the stick was always kept east-west rather than pointing south, but the phenomenon is the same!
-
+#FootnoteRef(1) The directional derivative of a vector field must itself be a vector field. Thus the real program for this must make the function of $\mathsf{f}$ into a vector field. However, we leave out this detail here to make the structure clear.
+#FootnoteRef(2) For some derivative operators α can be a real-valued manifold function.
+#FootnoteRef(3) The action on functions, vector fields, and one-form fields suffices to define the action on all tensor fields. See Appendix C.
 #FootnoteRef(4) In these experiments we need some setup.
-
+```Scheme
 (define a (literal-manifold-function 'alpha R3-rect))
 (define b (literal-manifold-function 'beta R3-rect))
 (define c (literal-manifold-function 'gamma R3-rect))
@@ -1254,10 +1159,46 @@ it must make a differential operator; and it does not apply to functions or form
 (define V (literal-vector-field 'V-rect R3-rect))
 (define R3-rect-point
 ((point R3-rect) (up 'x0 'y0 'z0)))
+```
+#FootnoteRef(5) In the introduction the stick was always kept east-west rather than pointing south, but the phenomenon is the same!
+#FootnoteRef(6) This program is incomplete. It must construct a vector field; it must make a differential operator; and it does not apply to functions or forms.
+#FootnoteRef(7) This terminology may be restricted to the case in which the basis is a coordinate basis.
+#FootnoteRef(8) The structure of the Cartan forms $\varpi$ together with this equation forces the shape of the Christoffel coefficient structure.
+#FootnoteRef(9) We will need a few definitions:
+```Scheme
+(define R2-rect-basis (coordinate-system->basis R2-rect))
+(define R2-polar-basis (coordinate-system->basis R2-polar))
+(define-coordinates (up x y) R2-rect)
+(define-coordinates (up r theta) R2-polar)
+```
+#FootnoteRef(10) Since the Christoffel coefficients are basis-dependent they are packaged with the basis.
+#FootnoteRef(11) The code for making the Cartan forms is as follows:
+```Scheme
+(define (Christoffel->Cartan Christoffel)
+(let ((basis (Christoffel->basis Christoffel))
+(Christoffel-symbols (Christoffel->symbols Christoffel)))
+(make-Cartan
+(* Christoffel-symbols (basis->1-form-basis basis))
+basis)))
+```
+#FootnoteRef(12) The argument $\mathsf{w}_{\gamma}$ makes sense because our parallel-transport operator never depended on the vector field tangent to the integral curve existing off of the curve. Because the connection is a form field (see equation 7.47), it does not depend on the value of its vector argument anywhere except at the point where it is being evaluated.
 
-#FootnoteRef(3) The action on functions, vector fields, and one-form fields suffices to define the action on all tensor fields. See Appendix C.
+The argument $\mathsf{u}_{\gamma}$ is more difficult. We must modify equation (7.37):
+$$\begin{equation}
+F^{\mathsf{w}_{\gamma}}_{\delta}\mathsf{u}_{\gamma}(\mathsf{f})(t)=\sum_{i,j}A^{i}_{j}(\delta)u^{j}(t-\delta)\mathsf{e}^{\gamma}_{i}(\mathsf{f})(t).
+\end{equation}$$
+#FootnoteRef(13) You may have noticed that $t$ and $\mathsf{t}$ appear here. The real-line manifold point $\mathsf{t}$ has coordinate $t$.
+#FootnoteRef(14) We will show later that these Christoffel coefficients are a natural choice for the sphere.
+#FootnoteRef(15) If we give covariant-derivative an extra argument, in addition to the Cartan form, the covariant derivative treats the extra argument as a map and transforms the Cartan form to work over the map.
+#FootnoteRef(16) A southward-pointing vector remains southward-pointing when it is parallel-transported along the equator. To do this we do not have to integrate the differential equations, because we know the answer.
+#FootnoteRef(17) The equation of a geodesic path is often said to be
+$$\begin{equation}
+\nabla_{\mathsf{v}}\mathsf{v}=0,
+\end{equation}$$
+but this is nonsense. The geodesic equation is a constraint on the path, but the path does not appear in this equation. Further, the velocity along a path is not a vector field, so it cannot appear in either argument to the covariant derivative.
 
-#FootnoteRef(2) For some derivative operators α can be a real-valued manifold function.
+What is true is that a vector field $\mathsf{v}$ all of whose integral curves are geodesics satisfies equation (7.77).
 
-#FootnoteRef(1) The directional derivative of a vector field must itself be a vector field. Thus the real program for this must make the function of
-$\mathsf{f}$ into a vector field. However, we leave out this detail here to make the structure clear.
+#FootnoteRef(18) The method of formulating a system with constraints by composing a free system with the state-space coordinate transformation that represents the constraints can be found in [19], section 1.6.3. The procedure F->C takes a coordinate transformation and produces a corresponding transformation of Lagrangian state.
+#FootnoteRef(19) The geodesic equations and the Lagrange equations are related by a contraction with the metric.
+#FootnoteEnd

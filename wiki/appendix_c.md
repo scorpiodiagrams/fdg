@@ -43,8 +43,7 @@ $$\begin{equation}
 \tilde{\mathsf{e}}^i(\mathsf{v}) = \sum_j{\mathsf{K}_j^i \tilde{\mathsf{e}}^{\prime j}(\mathsf{v})},
 \end{equation}$$
 
-where $\mathsf{K} = \mathsf{J}^{-1}$ or $\sum_j{\mathsf{K}_j^i(\mathsf{m})
-\mathsf{J}_k^j(\mathsf{m})} = \delta_k^i$.
+where $\mathsf{K} = \mathsf{J}^{-1}$ or $\sum_j{\mathsf{K}_j^i(\mathsf{m}) \mathsf{J}_k^j(\mathsf{m})} = \delta_k^i$.
 
 Because the tensor is multilinear over functions, we can deduce that the tensor components in the two bases are related by, in our example,
 
@@ -58,8 +57,7 @@ $$\begin{equation}
 \mathsf{T}_j^{\prime i} = \sum_{kl}{\mathsf{J}_k^i \mathsf{T}_l^k \mathsf{K}_j^l}.
 \end{equation}$$
 
-Tensors are a restricted set of mathematical objects that are geometric, so if we restrict our descriptions to tensor expressions they are /prima facie/
-independent of the coordinates used to represent them. So if we can represent the physical laws in terms of tensors we have built in the coordinate-system independence.
+Tensors are a restricted set of mathematical objects that are geometric, so if we restrict our descriptions to tensor expressions they are /prima facie/ independent of the coordinates used to represent them. So if we can represent the physical laws in terms of tensors we have built in the coordinate-system independence.
 
 Let's test whether the geometric function $\mathsf{R}$, which we have called the Riemann tensor (see equation 8.2), is indeed a tensor field. A real-valued geometric function is a tensor if it is linear (over the functions) in each of its arguments. We can try it for 3-dimensional rectangular coordinates:
 
@@ -127,7 +125,6 @@ and so does the torsion (see equation 8.21):
  R3-rect)
 ;; (up 0 0 0)
 ```
-
 
 But not all geometric functions are tensors. The covariant derivative is an interesting and important case. The function $\mathsf{F}$, defined by
 
