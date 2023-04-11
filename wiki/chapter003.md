@@ -48,8 +48,7 @@ $$\begin{equation}
 &= \sum_i \partial_i (\mathsf{f} \circ \chi^{-1}) (\chi(\mathsf{m})) b^i_{\chi, \mathsf{v}}(\chi (\mathsf{m})).
 \end{align}
 \end{equation}$$
-In equation (3.4), the quantity $\mathsf{f} \circ$ is the coordinate representation of the manifold function $\mathsf{f}$. We take its derivative, and weight the components of the derivative with the coordinate components $b_{\chi, \mathsf{v}}$ of the vector field that specify its direction and magnitude.
-Since this product is a function of coordinates we use $\chi$ to extract the coordinates from the manifold point m. In equation (3.5), the composition of the product with the coordinate chart $\chi$ is replaced by function evaluation. In equation (3.6) the tuple multiplication is expressed explicitly as a sum of products of corresponding components. So the application of the vector is a linear combination of the partial derivatives of $\mathsf{f}$ in the coordinate directions weighted by the vector components. This computes the rate of change of $\mathsf{f}$
+In equation (3.4), the quantity $\mathsf{f} \circ$ is the coordinate representation of the manifold function $\mathsf{f}$. We take its derivative, and weight the components of the derivative with the coordinate components $b_{\chi, \mathsf{v}}$ of the vector field that specify its direction and magnitude. Since this product is a function of coordinates we use $\chi$ to extract the coordinates from the manifold point m. In equation (3.5), the composition of the product with the coordinate chart $\chi$ is replaced by function evaluation. In equation (3.6) the tuple multiplication is expressed explicitly as a sum of products of corresponding components. So the application of the vector is a linear combination of the partial derivatives of $\mathsf{f}$ in the coordinate directions weighted by the vector components. This computes the rate of change of $\mathsf{f}$
 in the direction specified by the vector.
 
 Equations (3.3) and (3.5) are consistent:
@@ -84,9 +83,7 @@ Given a coordinate system and coefficient functions that map coordinates to real
     (literal-function ’b^1 R2->R))
 R2-rect))
 ```
-To make it convenient to define literal vector fields we provide a shorthand: ~(define v (literal-vector-field ’b R2-rect))~
-This makes a vector field with component functions named ~b^0~
-and ~b^1~ and names the result ~v~. When this vector field is applied to an arbitrary manifold function it gives the directional derivative of that manifold function in the direction specified by the components ~b^0~ and ~b^1~:
+To make it convenient to define literal vector fields we provide a shorthand: ~(define v (literal-vector-field ’b R2-rect))~ This makes a vector field with component functions named ~b^0~ and ~b^1~ and names the result ~v~. When this vector field is applied to an arbitrary manifold function it gives the directional derivative of that manifold function in the direction specified by the components ~b^0~ and ~b^1~:
 ```Scheme
 ((v (literal-manifold-function ’f-rect R2-rect)) R2-rect-point)
 ;; (+ (* (((partial 0) f-rect) (up x0 y0)) (b?0 (up x0 y0)))
@@ -111,8 +108,7 @@ $$\begin{equation}
 &= v(f)(x),
 \end{align}
 \end{equation}$$
-with the definitions $f = \mathsf{f} \circ \chi^{-1}$ and $x = \chi(\mathsf{m})$. The function $b$ is the coefficient function for the vector field $\mathsf{v}$. It provides a scale factor for the component in each coordinate direction. However, $v$
-is the coordinate representation of the vector field $\mathsf{v}$ in that it takes directional derivatives of coordinate representations of manifold functions.
+with the definitions $f = \mathsf{f} \circ \chi^{-1}$ and $x = \chi(\mathsf{m})$. The function $b$ is the coefficient function for the vector field $\mathsf{v}$. It provides a scale factor for the component in each coordinate direction. However, $v$ is the coordinate representation of the vector field $\mathsf{v}$ in that it takes directional derivatives of coordinate representations of manifold functions.
 
 Given a vector field ~v~ and a coordinate system coordsys we can construct the coordinate representation of the vector field.#Footnote(3)
 ```Scheme
@@ -133,8 +129,7 @@ We can apply a coordinatized vector field to a function of coordinates to get th
 
 #####  Vector Field Properties
 
-The vector fields on a manifold form a vector space over the field of real numbers and a module over the ring of real-valued manifold functions. A module is like a vector space except that there is no multiplicative inverse operation on the scalars of a module. Manifold functions that are not the zero function do not necessarily have multiplicative inverses, because they can have isolated zeros.
-So the manifold functions form a ring, not a field, and vector fields must be a module over the ring of manifold functions rather than a vector space.
+The vector fields on a manifold form a vector space over the field of real numbers and a module over the ring of real-valued manifold functions. A module is like a vector space except that there is no multiplicative inverse operation on the scalars of a module. Manifold functions that are not the zero function do not necessarily have multiplicative inverses, because they can have isolated zeros. So the manifold functions form a ring, not a field, and vector fields must be a module over the ring of manifold functions rather than a vector space.
 
 Vector fields have the following properties. Let $\mathsf{u}$ and $\mathsf{v}$ be vector fields and let $\alpha$ be a real-valued manifold function. Then
 $$\begin{equation}
@@ -144,8 +139,7 @@ $$\begin{equation}
 \end{align}
 \end{equation}$$
 
-Vector fields are linear operators. Assume $\mathsf{f}$ and $\mathsf{g}$ are functions on the manifold, $a$ and $b$ are real constants.#Footnote(4) The constants $a$ and
-$b$ are not manifold functions, because vector fields take derivatives. See equation (3.13).
+Vector fields are linear operators. Assume $\mathsf{f}$ and $\mathsf{g}$ are functions on the manifold, $a$ and $b$ are real constants.#Footnote(4) The constants $a$ and $b$ are not manifold functions, because vector fields take derivatives. See equation (3.13).
 $$\begin{equation}
 \begin{align}
 &\mathsf{v}(a \mathsf{f} + b \mathsf{g}) (\mathsf{m})
@@ -168,10 +162,7 @@ $$\begin{equation}
 
 ### Coordinate-Basis Vector Fields
 
-For an $n$-dimensional manifold any set of $n$ linearly independent vector fields#Footnote(5) form a /basis/ in that any vector field can be expressed as a linear combination of the basis fields with manifold-function coefficients. Given a coordinate system we can construct a basis as follows: we choose the component tuple $b_i(x)$ (see equation 3.5)
-to be the $i$th unit tuple $u_(x)$---an up tuple with one in the $i$th position and zeros in all other positions---selecting the partial derivative in that direction. Here $u_i$ is a constant function.
-Like $b$, it formally takes coordinates of a point as an argument,
-but it ignores them. We then define the basis vector field $\mathsf{X}_i$ by
+For an $n$-dimensional manifold any set of $n$ linearly independent vector fields#Footnote(5) form a /basis/ in that any vector field can be expressed as a linear combination of the basis fields with manifold-function coefficients. Given a coordinate system we can construct a basis as follows: we choose the component tuple $b_i(x)$ (see equation 3.5) to be the $i$th unit tuple $u_(x)$---an up tuple with one in the $i$th position and zeros in all other positions---selecting the partial derivative in that direction. Here $u_i$ is a constant function. Like $b$, it formally takes coordinates of a point as an argument, but it ignores them. We then define the basis vector field $\mathsf{X}_i$ by
 $$\begin{equation}
 \begin{align}
 \mathsf{X}_i(\mathsf{f})(\mathsf{m})
@@ -198,9 +189,7 @@ $$\begin{equation}
 \end{equation}$$
 to call to mind that it is an operator that computes the directional derivative in the ith coordinate direction.
 
-In addition to making the coordinate functions, the procedure
-~define-coordinates~ also makes the traditional named basis vectors.
-Using these we can examine the application of a rectangular basis vector to a polar coordinate function:
+In addition to making the coordinate functions, the procedure ~define-coordinates~ also makes the traditional named basis vectors. Using these we can examine the application of a rectangular basis vector to a polar coordinate function:
 ```Scheme
 (define-coordinates (up x y) R2-rect)
 (define-coordinates (up r theta) R2-polar)
@@ -287,8 +276,7 @@ D \sigma = b \circ \sigma.
 \notag
 \end{equation}$$
 
-Differential equations for the integral curve can be expressed only in a coordinate representation, because we cannot go from one point on the manifold to another by addition of an increment.
-However, we can do this by adding the coordinates to an increment of coordinates and then finding the corresponding point on the manifold.
+Differential equations for the integral curve can be expressed only in a coordinate representation, because we cannot go from one point on the manifold to another by addition of an increment. However, we can do this by adding the coordinates to an increment of coordinates and then finding the corresponding point on the manifold.
 
 Iterating the process described by equation (3.24) we can compute higher-order derivatives of functions along the integral curve:
 $$\begin{equation}
@@ -381,8 +369,7 @@ We can evolve circular from the initial point up to the parameter
 ```
 Note that these are just the series for $\cos \Delta t$ and $\sin \Delta t$, so the coordinate tuple of the evolved point is $(\cos \Delta t, \sin \Delta t)$.
 
-For functions whose series expansions have finite radius of convergence,
-evolution can progress beyond the point at which the Taylor series converges because evolution is well defined whenever the integral curve is defined.
+For functions whose series expansions have finite radius of convergence, evolution can progress beyond the point at which the Taylor series converges because evolution is well defined whenever the integral curve is defined.
 
 #### Exercise 3.1: State Derivatives
 
@@ -409,14 +396,11 @@ Construct a vector field on $\mathbb{R}^5$ corresponding to this system of diffe
 
 ### One-Form Fields
 
-A vector field that gives a velocity for each point on a topographic map of the surface of the Earth can be applied to a function, such as one that gives the height for each point on the topographic map, or a map that gives the temperature for each point. The vector field then provides the rate of change of the height or temperature as one moves in the way described by the vector field.
-Alternatively, we can think of a topographic map, which gives the height at each point, as measuring a velocity field at each point.
-For example, we may be interested in the velocity of the wind or the trajectories of migrating birds. The topographic map gives the rate of change of height at each point for each velocity vector field. The rate of change of height can be thought of as the number of equally-spaced (in height) contours that are pierced by each velocity vector in the vector field.
+A vector field that gives a velocity for each point on a topographic map of the surface of the Earth can be applied to a function, such as one that gives the height for each point on the topographic map, or a map that gives the temperature for each point. The vector field then provides the rate of change of the height or temperature as one moves in the way described by the vector field. Alternatively, we can think of a topographic map, which gives the height at each point, as measuring a velocity field at each point. For example, we may be interested in the velocity of the wind or the trajectories of migrating birds. The topographic map gives the rate of change of height at each point for each velocity vector field. The rate of change of height can be thought of as the number of equally-spaced (in height) contours that are pierced by each velocity vector in the vector field.
 
 #####  Differential of a Function
 
-For example, consider the /differential/#Footnote(9) df of a manifold function
-$\mathsf{f}$, defined as follows. If $\mathsf{df}$ is applied to a vector field $\mathsf{v}$ we obtain
+For example, consider the /differential/#Footnote(9) df of a manifold function $\mathsf{f}$, defined as follows. If $\mathsf{df}$ is applied to a vector field $\mathsf{v}$ we obtain
 $$\begin{equation}
 \mathsf{df}(\mathsf{v}) = \mathsf{v}(\mathsf{f}),
 \end{equation}$$
@@ -642,8 +626,7 @@ $$\begin{equation}
 a(\chi(\mathsf{m})) = a'(\chi'(\mathsf{m})) (D(\chi \circ (\chi')^{-1})(\chi'(\mathsf{m}gt)))^{-1}.
 \end{equation}$$
 
-The coefficient tuple $a(x)$ is a down structure compatible for contraction with $b(x)$. Let $\mathsf{v}$ be the vector with  coefficient tuple
-$b(x)$, and $\omega$ be the one-form with coefficient tuple $a(x)$. Then, by equation (3.43),
+The coefficient tuple $a(x)$ is a down structure compatible for contraction with $b(x)$. Let $\mathsf{v}$ be the vector with  coefficient tuple $b(x)$, and $\omega$ be the one-form with coefficient tuple $a(x)$. Then, by equation (3.43),
 $$\begin{equation}
 \omega(\mathsf{v}) = (a \circ \chi) (b \circ \chi).
 \end{equation}$$
@@ -667,35 +650,30 @@ a(x) b(x) = a'(x') b'(x'),
 \end{equation}$$
 as expected because $\omega(\mathsf{v})(\mathsf{m})$ is independent of coordinates.
 
-**Exercise 3.2: Verification**
+### Exercise 3.2: Verification
 
 Verify that the coefficients of a one-form field transform as described in equation (3.56). You should use equation (3.44) in your derivation.
 
-**Exercise 3.3: Hill Climbing**
+### Exercise 3.3: Hill Climbing
 
 The topography of a region on the Earth can be specified by a manifold function $\mathsf{h}$ that gives the altitude at each point on the manifold. Let $\mathsf{v}$ be a vector field on the manifold, perhaps specifying a direction and rate of walking at every point on the manifold.
 
-**a.** Form an expression that gives the power that must be expended to follow the vector field at each point.
+*a. Form an expression that gives the power that must be expended to follow the vector field at each point.
 
-**b.** Write this as a computational expression.
+*b. Write this as a computational expression.
 
 ----
 ### Footnotes
 
 #FootnoteRef(1) In multiple dimensions the derivative $Df(x)$ is a down tuple structure of the partial derivatives and the increment $\Delta x$ is an up tuple structure, so the indicated product is to be interpreted as a contraction. (See equation B.8.)
-
 #FootnoteRef(2) An operator is just like a procedure except that multiplication is interpreted as composition. For example, the derivative procedure is made into an operator ~D~ so that we can say ~(expt D 2)~ and expect it to compute the second derivative. The procedure ~procedure->vector-field~ makes a vector-field operator.
-
 #FootnoteRef(3) The ~make-operator~ procedure takes a procedure and returns an operator.
-
 #FootnoteRef(4) If $\mathsf{f}$ has structured output then $\mathsf{v}(\mathsf{f})$ is the structure resulting from $\mathsf{v}$ being applied to each component of $\mathsf{f}$.
-
 #FootnoteRef(5) A set of vector fields, $\{\mathsf{v}_i\}$, is linearly independent with respect to manifold functions if we cannot find nonzero manifold functions, $\{\mathsf{a}_i\}$, such that
 $$\begin{equation}
 \sum_i \mathsf{a}_i \mathsf{v}_i(\mathsf{f}) = \mathsf{0} (\mathsf{f}),
 \end{equation}$$
 where $\mathsf{0}$ is the vector field such that $\mathsf{0}(\mathsf{f})(\mathsf{m}) = 0$ for all $\mathsf{f}$ and $\mathsf{m}$.
-
 #FootnoteRef(6) This notation helps one remember the transformation rule:
 
 $$\begin{equation}
@@ -704,19 +682,13 @@ $$\begin{equation}
 \end{equation}$$
 
 which is the relation in the usual Leibniz notation. As Spivak pointed out in /Calculus on Manifolds/, p.45, $f$ means something different on each side of the equation.
-
 #FootnoteRef(7) For coordinate paths $q$ and $q'$ related by $q(t) = (\chi \circ (\chi')^{-1})(q'(t))$ the velocities are related by $Dq(t) = D(\chi \circ (\chi')^{-1})(q'(t))Dq'(t)$. Abstracting off paths, we get $v = D(\chi \circ (\chi')^{-1})(x')v'$.
-
 #FootnoteRef(8) In this expression ~d/dx~ and ~d/dy~ are vector fields that take directional derivatives of manifold functions and evaluate them at manifold points; ~x~ and ~y~ are manifold functions. ~define-coordinates~ was used to create these operators and functions, see page 27.
 
 Note that \textsf{circular} is an operator---a property inherited from ~d/dx~ and ~d/dy~.
-
 #FootnoteRef(9) The differential of a manifold function will turn out to be a special case of the exterior derivative, which will be introduced later.
-
 #FootnoteRef(10) The Kronecker delta $\delta^i_j$ is one if $i = j$ and zero otherwise.
-
 #FootnoteRef(11) The analogous recovery of coefficient tuples from vector fields is equation
 (3.3): $b^i_{\chi, \mathsf{v}} = \mathsf{v}(\chi^i) \circ \chi^{-1}$.
-
 #FootnoteRef(12) The procedure ~components->1form-field~ is analogous to the procedure ~components->vector-field~ introduced earlier.
 #FootnoteEnd

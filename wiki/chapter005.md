@@ -22,9 +22,7 @@ $$\begin{equation}
 \end{aligned}
 \end{equation}$$
 
-We can make a coordinate-independent notion of integration in the following way.
-An interval of the real line is a 1-dimensional manifold with boundary. We can assign a coordinate chart χ to this manifold. Let $x = \chi(\mathsf{m})$. The coordinate basis is associated with a coordinate-basis vector field, here
-${\partial}/{\partial \mathsf{x}}$. Let ω be a one-form on this manifold. The application of ω to ${\partial}/{\partial \mathsf{x}}$ is a real-valued function on the manifold. If we compose this with the inverse chart, we get a real-valued function of a real variable. We can then write the usual integral of this function
+We can make a coordinate-independent notion of integration in the following way. An interval of the real line is a 1-dimensional manifold with boundary. We can assign a coordinate chart χ to this manifold. Let $x = \chi(\mathsf{m})$. The coordinate basis is associated with a coordinate-basis vector field, here ${\partial}/{\partial \mathsf{x}}$. Let ω be a one-form on this manifold. The application of ω to ${\partial}/{\partial \mathsf{x}}$ is a real-valued function on the manifold. If we compose this with the inverse chart, we get a real-valued function of a real variable. We can then write the usual integral of this function
 
 $$\begin{equation}
 I = \int_{a}^{b} \omega ({\partial}/{\partial \mathsf{x}}) \circ \chi^{-1}
@@ -43,8 +41,7 @@ $$\begin{equation}
 \end{aligned}
 \end{equation}$$
 
-where we have used the rule for coordinate transformations of basis vectors
-(equation 3.19), linearity of forms in the first two lines, and the rule for change-of-variables under an integral in the last line.#Footnote(1)
+where we have used the rule for coordinate transformations of basis vectors (equation 3.19), linearity of forms in the first two lines, and the rule for change-of-variables under an integral in the last line.#Footnote(1)
 
 Because the integral is independent of the coordinate chart, we can write simply
 
@@ -67,8 +64,7 @@ $$\begin{equation}
 \int_{\mathsf{U}} \mathsf{f} = \int_{g^{-1}(\mathsf{U})} (\mathsf{f} \circ g) \det (Dg).
 \end{equation}$$
 
-A rank $n$ form field takes $n$ vector field arguments and produces a real-valued manifold function: $\omega (\mathsf{v}, \mathsf{w}, \dots,
-\mathsf{u})(\mathsf{m})$. By analogy with the 1-dimensional case, higher-rank forms are linear in each argument. Higher-rank forms must also be antisymmetric under interchange of any two arguments in order to make a coordinate-free definition of integration analogous to equation (5.3).
+A rank $n$ form field takes $n$ vector field arguments and produces a real-valued manifold function: $\omega (\mathsf{v}, \mathsf{w}, \dots, \mathsf{u})(\mathsf{m})$. By analogy with the 1-dimensional case, higher-rank forms are linear in each argument. Higher-rank forms must also be antisymmetric under interchange of any two arguments in order to make a coordinate-free definition of integration analogous to equation (5.3).
 
 Consider an integral in the coordinate system χ:
 
@@ -121,8 +117,7 @@ $$\begin{equation}
 (\omega \wedge \tau)(\mathsf{v}, \mathsf{w}) = \omega(\mathsf{v})\tau(\mathsf{w}) - \omega(\mathsf{w})\tau(\mathsf{v}).
 \end{equation}$$
 
-More generally we can form the wedge of higher-rank forms. Let ω be a $k$-form field and τ be an $l$-form field. We can form a $(k+l)$-form field $\omega
-\wedge \tau$ as follows:
+More generally we can form the wedge of higher-rank forms. Let ω be a $k$-form field and τ be an $l$-form field. We can form a $(k+l)$-form field $\omega \wedge \tau$ as follows:
 
 $$\begin{equation}
 \omega \wedge \tau = \frac{(k+l)!}{k!l!} \text{Alt}(\omega \otimes \tau)
@@ -175,8 +170,7 @@ Note that this is the area of the parallelogram in the coordinate plane, which i
 
 ### 3-Dimensional Euclidean Space
 
-Let's specialize to 3-dimensional Euclidean space. Following equation (5.18) we can write the coordinate-area two-form in another way: $\mathsf{A} =
-\mathsf{d}\mathsf{x} \wedge \mathsf{d}\mathsf{y}.$ As code:
+Let's specialize to 3-dimensional Euclidean space. Following equation (5.18) we can write the coordinate-area two-form in another way: $\mathsf{A} = \mathsf{d}\mathsf{x} \wedge \mathsf{d}\mathsf{y}.$ As code:
 
 ```Scheme
 (define-coordinates (up x y z) R3-rect)
@@ -237,8 +231,7 @@ This last expression is the determinant of a $3 \times 3$ matrix:
 
 If we did the same operations in cylindrical coordinates we would get the analogous formula, showing that what we are computing is volume in the coordinate space, not volume on the manifold.
 
-Because of antisymmetry, if the rank of a form is greater than the dimension of the manifold then the form is identically zero. The $k$-forms on an
-$n$-dimensional manifold form a module of dimension $\binom{n}{k}$. We can write a coordinate-basis expression for a $k$-form as
+Because of antisymmetry, if the rank of a form is greater than the dimension of the manifold then the form is identically zero. The $k$-forms on an $n$-dimensional manifold form a module of dimension $\binom{n}{k}$. We can write a coordinate-basis expression for a $k$-form as
 
 $$\begin{equation}
 \omega = \sum_{{i}_{0}, \ldots, {i}_{k-1}}^{n} \omega_{{i}_{0}, \ldots, {i}_{k-1}} \mathsf{d}\mathsf{x}^{{i}_{0}} \wedge \ldots \wedge \mathsf{d}\mathsf{x}^{i_{k-1}}.
@@ -412,15 +405,12 @@ Not every closed form field is an exact form field. Whether a closed form field 
 
 The proof of the general Stokes's Theorem for n-dimensional orientable manifolds is quite complicated, but it is easy to see how it works for a 2-dimensional region $\mathsf{M}$ that can be covered with a single coordinate patch.#Footnote(9)
 
-Given a coordinate chart
-$\chi(\mathsf{m})=(\mathsf{x}(\mathsf{m}),\mathsf{y}(\mathsf{m}))$ we can obtain a pair of coordinate-basis vectors ${\partial}/{\partial\mathsf{x}} = {X}_{0}$
+Given a coordinate chart $\chi(\mathsf{m})=(\mathsf{x}(\mathsf{m}),\mathsf{y}(\mathsf{m}))$ we can obtain a pair of coordinate-basis vectors ${\partial}/{\partial\mathsf{x}} = {X}_{0}$
 and ${\partial}/{\partial\mathsf{y}} = {X}_{1}$.
 
-The coordinate image of $\mathsf{M}$ can be divided into small rectangular areas in the $(x,y)$ coordinate plane. The union of the rectangular areas gives the coordinate image of $\mathsf{M}$. The clockwise integrals around the boundaries of the rectangles cancel on neighboring rectangles, because the boundary is traversed in opposite directions. But on the boundary of the coordinate image of
-$\mathsf{M}$ the boundary integrals do not cancel, yielding an integral on the boundary of $\mathsf{M}$. Area integrals over the rectangular areas add to produce an integral over the entire coordinate image of $\mathsf{M}$.
+The coordinate image of $\mathsf{M}$ can be divided into small rectangular areas in the $(x,y)$ coordinate plane. The union of the rectangular areas gives the coordinate image of $\mathsf{M}$. The clockwise integrals around the boundaries of the rectangles cancel on neighboring rectangles, because the boundary is traversed in opposite directions. But on the boundary of the coordinate image of $\mathsf{M}$ the boundary integrals do not cancel, yielding an integral on the boundary of $\mathsf{M}$. Area integrals over the rectangular areas add to produce an integral over the entire coordinate image of $\mathsf{M}$.
 
-So, consider Stokes's Theorem on a small patch $\mathsf{P}$ of the manifold for which the coordinates form a rectangular region $(x_{min} < x < x_{max}
-\text{and} y_{min} < y < y_{max})$. Stokes's Theorem on $\mathsf{P}$ states
+So, consider Stokes's Theorem on a small patch $\mathsf{P}$ of the manifold for which the coordinates form a rectangular region $(x_{min} < x < x_{max} \text{and} y_{min} < y < y_{max})$. Stokes's Theorem on $\mathsf{P}$ states
 
 $$\begin{equation}
 \int_{\partial\mathsf{P}} \omega = \int_{\mathsf{P}} \mathsf{d} \omega .
@@ -583,8 +573,7 @@ We have shown that the equation (5.29) is true for manifold functions. Show that
 #FootnoteRef(2) The determinant is the unique function of the rows of its argument that i) is linear in each row, ii) changes sign under any interchange of rows, and iii) is one when applied to the identity multiplier.
 #FootnoteRef(3) By using the word "orthonormal" here we are assuming that the range of the coordinate chart is an ordinary Euclidean space with the usual Euclidean metric. The coordinate basis in that chart is orthonormal. Under these conditions we can usefully use words like "length," "area," and "volume" in the coordinate space.
 #FootnoteRef(4) This is a generalization of the Fundamental Theorem of Calculus.
-#FootnoteRef(5) A manifold function $\mathsf{f}$ induces a form field $\hat{\mathsf{f}}$
-of rank 0 as follows:
+#FootnoteRef(5) A manifold function $\mathsf{f}$ induces a form field $\hat{\mathsf{f}}$ of rank 0 as follows:
 $$\begin{equation}
 \hat{\mathsf{f}}()(\mathsf{m}) = \mathsf{f}(\mathsf{m}).
 \end{equation}$$

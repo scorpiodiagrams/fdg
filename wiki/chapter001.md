@@ -129,14 +129,12 @@ $$\begin{equation}
 \phi(\mathsf{u}) \mathsf{d} \phi(\mathsf{v}),
 \end{equation}$$
 
-where $\mathsf{u}$ and $\mathsf{v}$ are vector fields, and $\mathsf{d}\theta$
-and $\mathsf{d}\phi$ are one-form fields that extract the named components of the vector-field argument. (One-form fields are introduced in Chapter 3.) We can think of $\mathsf{d}\theta(\mathsf{u})$ as a function of a point that gives the size of the vector field $\mathsf{u}$ in the $\theta$ direction at the point.
-Notice that $\mathsf{g}(\mathsf{u}, \mathsf{u})$ is a weighted sum of the squares of the components of $\mathsf{u}$. In fact, if we identify
+where $\mathsf{u}$ and $\mathsf{v}$ are vector fields, and $\mathsf{d}\theta$ and $\mathsf{d}\phi$ are one-form fields that extract the named components of the vector-field argument. (One-form fields are introduced in Chapter 3.) We can think of $\mathsf{d}\theta(\mathsf{u})$ as a function of a point that gives the size of the vector field $\mathsf{u}$ in the $\theta$ direction at the point. Notice that $\mathsf{g}(\mathsf{u}, \mathsf{u})$ is a weighted sum of the squares of the components of $\mathsf{u}$. In fact, if we identify
 
-\begin{align*}
+$$\begin{align*}
 &\mathsf{d} \theta(\mathsf{v})=\dot{\theta} \\
 &\mathsf{d} \phi(\mathsf{v})=\dot{\phi},
-\end{align*}
+\end{align*}$$
 
 then the coefficients in the metric are the same as the coefficients in the value of the Lagrangian, equation (1.1), apart from a factor of $m/2$.
 
@@ -146,8 +144,7 @@ $$\begin{equation}
 L_{2}(x, v)=\sum_{i j} \frac{1}{2} m g_{i j}(x) v^{i} v^{j}
 \end{equation}$$
 
-This is written using indexed variables to indicate components of the geometric objects expressed with respect to an unspecified coordinate system. The metric coefficients $g_{ij}$ are, in general, a function of the position coordinates
-$x$, because the properties of the space may vary from place to place.
+This is written using indexed variables to indicate components of the geometric objects expressed with respect to an unspecified coordinate system. The metric coefficients $g_{ij}$ are, in general, a function of the position coordinates $x$, because the properties of the space may vary from place to place.
 
 We can capture this geometric statement as a program:
 
@@ -172,8 +169,7 @@ This program gives the Lagrangian in a coordinate-independent, geometric way. It
 #+RESULTS:
 : #| Lc |#
 
-The manifold point $\mathsf{m}$ represented by the coordinates $x$ is given by
-=(define m ((point coordsys) x))=. The coordinates of $\mathsf{m}$ in a different coordinate system are given by =((chart coordsys2) m)=. The manifold point $\mathsf{m}$ is a geometric object that is the same point independent of how it is specified. Similarly, the velocity vector $\mathsf{e}v$ is a geometric object, even though it is specified using components $v$ with respect to the basis $\mathsf{e}$. Both $v$ and $\mathsf{e}$ have as many components as the dimension of the space so their product is interpreted as a contraction.
+The manifold point $\mathsf{m}$ represented by the coordinates $x$ is given by =(define m ((point coordsys) x))=. The coordinates of $\mathsf{m}$ in a different coordinate system are given by =((chart coordsys2) m)=. The manifold point $\mathsf{m}$ is a geometric object that is the same point independent of how it is specified. Similarly, the velocity vector $\mathsf{e}v$ is a geometric object, even though it is specified using components $v$ with respect to the basis $\mathsf{e}$. Both $v$ and $\mathsf{e}$ have as many components as the dimension of the space so their product is interpreted as a contraction.
 
 Let's make a general metric on a 2-dimensional real manifold:#Footnote(4)
 
@@ -184,8 +180,7 @@ Let's make a general metric on a 2-dimensional real manifold:#Footnote(4)
 #+RESULTS:
 : #| the-metric |#
 
-The metric is expressed in rectangular coordinates, so the coordinate system is
-=R2-rect=.#Footnote(5) The component functions will be labeled as subscripted ~g~s.
+The metric is expressed in rectangular coordinates, so the coordinate system is =R2-rect=.#Footnote(5) The component functions will be labeled as subscripted ~g~s.
 
 We can now make the Lagrangian for the system:
 
@@ -213,8 +208,7 @@ Compare this result with equation (1.3).
 
 ### Euler-Lagrange Residuals
 
-The Euler-Lagrange equations are satisfied on realizable paths. Let $\gamma$ be a path on the manifold of configurations. (A path is a map from the
-1-dimensional real line to the configuration manifold. We introduce maps between manifolds in Chapter 6.) Consider an arbitrary path:#Footnote(6)
+The Euler-Lagrange equations are satisfied on realizable paths. Let $\gamma$ be a path on the manifold of configurations. (A path is a map from the 1-dimensional real line to the configuration manifold. We introduce maps between manifolds in Chapter 6.) Consider an arbitrary path:#Footnote(6)
 
 ```Scheme
 (define gamma (literal-manifold-map 'q R1-rect R2-rect))
@@ -267,11 +261,7 @@ Now we get deeper into the geometry. The traditional way to write the geodesic e
 $$\begin{equation}
 \nabla_{\mathsf{v}} \mathsf{v}=0
 \end{equation}$$
-where $\nabla$ is a covariant derivative operator. Roughly, $\nabla_{\mathsf{v}}
-\mathsf{w}$ is a directional derivative. It gives a measure of the variation of the vector field $\mathsf{w}$ as you walk along the manifold in the direction of
-$\mathsf{v}$. (We will explain this in depth in Chapter 7.) $\nabla_{\mathsf{v}}
-\mathsf{v}=0$ is intended to convey that the velocity vector is parallel-transported by itself. When you walked East on the Equator you had to hold the stick so that it was parallel to the Equator. But the stick is constrained to the surface of the Earth, so moving it along the Equator required turning it in three dimensions. The $\nabla$ thus must incorporate the
-3-dimensional shape of the Earth to provide a notion of "parallel" appropriate for the denizens of the surface of the Earth. This information will appear as the "Christoffel coefficients" in the coordinate representation of the geodesic equations.
+where $\nabla$ is a covariant derivative operator. Roughly, $\nabla_{\mathsf{v}} \mathsf{w}$ is a directional derivative. It gives a measure of the variation of the vector field $\mathsf{w}$ as you walk along the manifold in the direction of $\mathsf{v}$. (We will explain this in depth in Chapter 7.) $\nabla_{\mathsf{v}} \mathsf{v}=0$ is intended to convey that the velocity vector is parallel-transported by itself. When you walked East on the Equator you had to hold the stick so that it was parallel to the Equator. But the stick is constrained to the surface of the Earth, so moving it along the Equator required turning it in three dimensions. The $\nabla$ thus must incorporate the 3-dimensional shape of the Earth to provide a notion of "parallel" appropriate for the denizens of the surface of the Earth. This information will appear as the "Christoffel coefficients" in the coordinate representation of the geodesic equations.
 
 The trouble with the traditional way to write the geodesic equations (1.4) is that the arguments to the covariant derivative are vector fields and the velocity along the path is not a vector field. A more precise way of stating this relation is:
 $$\begin{equation}
@@ -283,9 +273,7 @@ In coordinates, the geodesic equations are expressed
 $$\begin{equation}
 D^{2} q^{i}(t)+\sum_{j k} \Gamma_{j k}^{i}(\gamma(t)) D q^{j}(t) D q^{k}(t)=0,
 \end{equation}$$
-where $q(t)$ is the coordinate path corresponding to the manifold path $\gamma$,
-and $\Gamma^i_{jk}\left(\mathsf{m}\right)$ are Christoffel coefficients. The
-$\Gamma^i_{jk}\left(\mathsf{m}\right)$ describe the "shape" of the manifold close to the manifold point $\mathsf{m}$. They can be derived from the metric
+where $q(t)$ is the coordinate path corresponding to the manifold path $\gamma$, and $\Gamma^i_{jk}\left(\mathsf{m}\right)$ are Christoffel coefficients. The $\Gamma^i_{jk}\left(\mathsf{m}\right)$ describe the "shape" of the manifold close to the manifold point $\mathsf{m}$. They can be derived from the metric
 $g$.
 
 We can get and save the geodesic equation residuals by:
@@ -322,8 +310,7 @@ where =d/dt= is a vector field on the real line#Footnote(8) and =Cartan= is a wa
 #+RESULTS:
 : #| Cartan |#
 
-The two messy residual results that we did not show are related by the metric.
-If we change the representation of the geodesic equations by "lowering" them using the mass and the metric, we see that the residuals are equal:
+The two messy residual results that we did not show are related by the metric. If we change the representation of the geodesic equations by "lowering" them using the mass and the metric, we see that the residuals are equal:
 
 ```Scheme
 (define metric-components
@@ -346,8 +333,7 @@ If we change the representation of the geodesic equations by "lowering" them usi
 (down 0 0)
 |#
 
-This establishes that for a 2-dimensional space the Euler-Lagrange equations are equivalent to the geodesic equations. The Christoffel coefficients that appear in the geodesic equation correspond to coefficients of terms in the Euler-Lagrange equations. This analysis will work for any number of dimensions
-(but will take your computer longer in higher dimensions, because the complexity increases).
+This establishes that for a 2-dimensional space the Euler-Lagrange equations are equivalent to the geodesic equations. The Christoffel coefficients that appear in the geodesic equation correspond to coefficients of terms in the Euler-Lagrange equations. This analysis will work for any number of dimensions (but will take your computer longer in higher dimensions, because the complexity increases).
 
 #### Exercise 1.1: Motion on a Sphere
 
@@ -361,24 +347,16 @@ Compute the Lagrange equations for motion of a free particle on the sphere and c
 ### Footnotes
 
 #FootnoteRef(1) It is customary to shorten "Euler-Lagrange equations" to "Lagrange equations." We hope Leonhard Euler is not disturbed.
-
 #FootnoteRef(2) A short introduction to our functional notation, and why we have chosen it, is given in the prologue: Programming and Understanding. More details can be found in Appendix B
-
 #FootnoteRef(3) An informal description of the Scheme programming language can be found in Appendix A.
-
 #FootnoteRef(4) The procedure =literal-metric= provides a metric. It is a general symmetric function of two vector fields, with literal functions of the coordinates of the manifold points for its coefficients in the given coordinate system. The quoted symbol ='g= is used to make the names of the literal coefficient functions. Literal functions are discussed in Appendix B.
-
 #FootnoteRef(5) =R2-rect= is the usual rectangular coordinate system on the 2-dimensional real manifold. (See Section 2.1, page 13.) We supply common coordinate systems for n-dimensional real manifolds. For example, =R2-polar= is a polar coordinate system on the same manifold.
-
 #FootnoteRef(6) The procedure =literal-manifold-map= makes a map from the manifold implied by its second argument to the manifold implied by the third argument.
 These arguments must be coordinate systems. The quoted symbol that is the first argument is used to name the literal coordinate functions that define the map.
-
 #FootnoteRef(7) For an explanation of equation residuals see page xvi.
-
 #FootnoteRef(8) We established =t= as a coordinate function on the rectangular coordinates of the real line by
 ```Scheme
 (define-coordinates t R1-rect)
 ```
 This had the effect of also defining =d/dt= as a coordinate vector field and =dt= as a one-form field on the real line.
 #FootnoteEnd
-

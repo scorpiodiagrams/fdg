@@ -439,8 +439,7 @@ $$\begin{equation}
 \tilde{\mathsf{e}}\left(\mathsf{T}(\mathsf{e}_i, \mathsf{e}_j)\right) = \Gamma_{ij}^k + \Gamma_{ji}^k + \Gamma_{ij}^k,
 \end{equation}$$
 
-where $\mathsf{d}_{ij}^k$ are the structure constants of the basis. See equations (4.37, 4.38). For a commuting basis the structure constants are zero, and the components of the torsion are the antisymmetric part of
-$\Gamma$ with respect to the lower indices.
+where $\mathsf{d}_{ij}^k$ are the structure constants of the basis. See equations (4.37, 4.38). For a commuting basis the structure constants are zero, and the components of the torsion are the antisymmetric part of $\Gamma$ with respect to the lower indices.
 
 Recall the geodesic equation (7.79):
 

@@ -48,8 +48,7 @@ $$\begin{equation}
 \mathcal{D}_{\mathsf{v}}(\alpha\mathsf{O}+\beta\mathsf{P}) = \alpha\mathcal{D}_{\mathsf{v}}\mathsf{O}+\beta\mathcal{D}_{\mathsf{v}}\mathsf{P},
 \end{equation}$$
 
-for any real α and β and manifold objects $\mathsf{O}$ and
-$\mathsf{P}$.
+for any real α and β and manifold objects $\mathsf{O}$ and $\mathsf{P}$.
 
 The directional derivative obeys superposition in its vector-field argument:
 
@@ -95,8 +94,7 @@ $$\begin{equation}
 \mathcal{L}_{\mathsf{v}}\mathsf{f} = \mathsf{v}(\mathsf{f}).
 \end{equation}$$
 
-The tangent vector $\mathsf{v}$ measures the rate of change of
-$\mathsf{f}$ along integral curves.
+The tangent vector $\mathsf{v}$ measures the rate of change of $\mathsf{f}$ along integral curves.
 
 ### Vector Fields
 
@@ -200,8 +198,7 @@ $$\begin{equation}
 \mathcal{L}_{\mathsf{v}}\mathsf{y}(\mathsf{f})=\sum_{i}(\mathsf{v}(\mathsf{y}^{i})\mathsf{e}_{i}(\mathsf{f})+\mathsf{y}^{i}\mathcal{L}_{\mathsf{v}}\mathcal{e}_{i}(\mathsf{f})).
 \end{equation}$$
 
-Because the Lie derivative of a vector field is a vector field, we can extract the components of
-$\mathcal{L}_{\mathsf{v}}\mathsf{e}_{i}$ using the dual basis. We define $\Delta^{i}_{j}(\mathsf{v})$ to be those components:
+Because the Lie derivative of a vector field is a vector field, we can extract the components of $\mathcal{L}_{\mathsf{v}}\mathsf{e}_{i}$ using the dual basis. We define $\Delta^{i}_{j}(\mathsf{v})$ to be those components:
 
 $$\begin{equation}
 \Delta^{i}_{j}(\mathsf{v}) = \tilde{\mathsf{e}}^{i}(\mathcal{L}_{\mathsf{v}}\mathsf{e}_{j}) = \tilde{\mathsf{e}}^{i}([\mathsf{v},\mathsf{e}_{j}]).
@@ -247,10 +244,7 @@ $$\begin{equation}
 (\mathcal{L}_{\mathsf{v}}(\omega))(\mathsf{y})\equiv\mathsf{v}(\omega(\mathsf{y}))-\omega(\mathcal{L}_{\mathsf{v}}\mathsf{y}).
 \end{equation}$$
 
-The first term computes the rate of change of the combination
-$\omega(\mathsf{y})$ along the integral curve of $\mathsf{v}$,
-while the second subtracts ω applied to the change in
-$\mathsf{y}$. The result is the change in ω along the curve.
+The first term computes the rate of change of the combination $\omega(\mathsf{y})$ along the integral curve of $\mathsf{v}$, while the second subtracts ω applied to the change in $\mathsf{y}$. The result is the change in ω along the curve.
 
 The Lie derivative of a $k$-form field ω with respect to a vector field $\mathsf{v}$ is a $k$-form field that is defined by its behavior when applied to $k$ arbitrary vector fields $\mathsf{w}_{0},\ldots,\mathsf{w}_{k-1}$. We generalize equation (7.25):
 
@@ -263,8 +257,7 @@ $$\begin{equation}
 
 ### Uniform Interpretation
 
-Consider abstracting equations (7.16), (7.25), and (7.27). The Lie derivative of an object, $\mathsf{a}$, that can apply to other objects, $\mathsf{b}$, to produce manifold functions,
-$\mathsf{a}(\mathsf{b}):\mathsf{M}\to\mathsf{R}^{n}$, is
+Consider abstracting equations (7.16), (7.25), and (7.27). The Lie derivative of an object, $\mathsf{a}$, that can apply to other objects, $\mathsf{b}$, to produce manifold functions, $\mathsf{a}(\mathsf{b}):\mathsf{M}\to\mathsf{R}^{n}$, is
 
 $$\begin{equation}
 (\mathcal{L}_{\mathsf{v}}\mathsf{a})(\mathsf{b}) = \mathsf{v}(\mathsf{a}(\mathsf{b}))-\mathsf{a}(\mathcal{L}_{\mathsf{v}}\mathsf{b}).
@@ -428,9 +421,7 @@ The covariant derivative is another kind of directional derivative operator. We 
 
 ### Covariant Derivative of Vector Fields
 
-We may also choose our $F^{\mathsf{v}}_{\delta}\mathsf{u}$ to define what we mean by "parallel" transport of the vector field
-$\mathsf{u}$ along an integral curve of the vector field
-$\mathsf{v}$. This may correspond to our usual understanding of parallel in situations where we have intuitive insight.
+We may also choose our $F^{\mathsf{v}}_{\delta}\mathsf{u}$ to define what we mean by "parallel" transport of the vector field $\mathsf{u}$ along an integral curve of the vector field $\mathsf{v}$. This may correspond to our usual understanding of parallel in situations where we have intuitive insight.
 
 The notion of parallel transport is path dependent. Remember our example from the Introduction, page 1: Start at the North Pole carrying a stick along a line of longitude to the Equator, always pointing it south, parallel to the surface of the Earth. Then proceed eastward for some distance, still pointing the stick south. Finally, return to the North Pole along this new line of longitude, keeping the stick pointing south all the time. At the pole the stick will not point in the same direction as it did at the beginning of the trip, and the discrepancy will depend on the amount of eastward motion.#Footnote(5)
 
@@ -444,8 +435,7 @@ $$\begin{equation}
 F^{\mathsf{v}}_{\delta}\mathsf{u}(\mathsf{f})(\mathsf{m})=\sum_{i,j}(A^{i}_{j}(\delta)(\mathsf{u}^{j}\circ\phi^{\mathsf{v}}_{-\delta})\mathsf{e}_{i}(\mathsf{f}))(\mathsf{m})
 \end{equation}$$
 
-for some functions $A^{i}_{j}$ that depend on the particular path
-(hence its tangent vector $\mathsf{v}$) and the initial point. We reach back along the integral curve to pick up the components of $\mathsf{u}$ and then parallel-transport them forward by the matrix $A^{i}_{j}(\delta)$ to form the components of the parallel-transported vector at the advanced point.
+for some functions $A^{i}_{j}$ that depend on the particular path (hence its tangent vector $\mathsf{v}$) and the initial point. We reach back along the integral curve to pick up the components of $\mathsf{u}$ and then parallel-transport them forward by the matrix $A^{i}_{j}(\delta)$ to form the components of the parallel-transported vector at the advanced point.
 
 As before, we compute
 
@@ -481,8 +471,7 @@ $$\begin{equation}
 Dg(0)=\sum_{i}\Bigg(\mathsf{v}(\mathsf{u}^{i})(\mathsf{m})\mathsf{e}_{i}(\mathsf{f})-\sum_{j}DA^{i}_{j}(0)\mathsf{u}^{j}(\mathsf{m})\mathsf{e}_{i}(\mathsf{f})\Bigg)\,(\mathsf{m}).
 \end{equation}$$
 
-We need $DA^{i}_{j}(0)$. Parallel transport depends on the path,
-but not on the parameterization of the path. From this we can deduce that $DA^{i}_{j}(0)$ can be written as one-form fields applied to the vector field $\mathsf{v}$, as follows.
+We need $DA^{i}_{j}(0)$. Parallel transport depends on the path, but not on the parameterization of the path. From this we can deduce that $DA^{i}_{j}(0)$ can be written as one-form fields applied to the vector field $\mathsf{v}$, as follows.
 
 Introduce $B$ to make the dependence of $A$s on $\mathsf{v}$
 explicit:
@@ -1198,7 +1187,6 @@ $$\begin{equation}
 but this is nonsense. The geodesic equation is a constraint on the path, but the path does not appear in this equation. Further, the velocity along a path is not a vector field, so it cannot appear in either argument to the covariant derivative.
 
 What is true is that a vector field $\mathsf{v}$ all of whose integral curves are geodesics satisfies equation (7.77).
-
 #FootnoteRef(18) The method of formulating a system with constraints by composing a free system with the state-space coordinate transformation that represents the constraints can be found in [19], section 1.6.3. The procedure F->C takes a coordinate transformation and produces a corresponding transformation of Lagrangian state.
 #FootnoteRef(19) The geodesic equations and the Lagrange equations are related by a contraction with the metric.
 #FootnoteEnd

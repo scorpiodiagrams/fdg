@@ -460,25 +460,19 @@ How are $\mathsf{J}_x$, $\mathsf{J}_y$, and $\mathsf{J}_z$ related to $\mathsf{e
 ### Footnotes
 
 #FootnoteRef(1) We cannot say if the basis vectors are orthogonal or normalized until we introduce a metric.
-
 #FootnoteRef(2) We write the vector components on the right and the tuple of basis vectors on the left because if we think of the basis vectors as organized as a row and the components as organized as a column then the formula is just a matrix multiplication.
-
 #FootnoteRef(3) This is why the set of vector fields and the set of one-form fields are modules rather than vector spaces.
-
 #FootnoteRef(4) We see from equations (4.15) and (4.16) that $\mathsf{J}$ and
 $\mathsf{K}$ are inverses. We can obtain their coefficients by: $\mathsf{J}_i^j
 = \tilde{\mathsf{e}}^{\prime j}(\mathsf{e}_i)$ and $\mathsf{K}_i^j =
 \tilde{\mathsf{e}}^j(\mathsf{e}_i^\prime)$.
-
 #FootnoteRef(5) Using
-
 ```Scheme
 (define R3-rect (coordinate-system-at 'rectangular 'origin R3))
 (define-coordinates (up x y z) R3-rect)
 (define R3-rect-point ((point R3-rect) (up 'x0 'y0 'z0)))
 (define g (literal-manifold-function 'g-rect R3-rect))
 ```
-
 #FootnoteRef(6) Using
 ```Scheme
 (define Euler-angles (coordinate-system-at 'Euler 'Euler-patch SO3))
@@ -487,7 +481,6 @@ $\mathsf{K}$ are inverses. We can obtain their coefficients by: $\mathsf{J}_i^j
 (define SO3-point ((point Euler-angles) (up 'theta 'phi 'psi)))
 (define f (literal-manifold-function 'f-Euler Euler-angles))
 ```
-
 #FootnoteRef(7) For non-commuting operators $A$ and $B$,
 $$\begin{equation}
 \begin{align*}
@@ -499,6 +492,5 @@ e^{A} e^{B} e^{-A} e^{-B} & \\
 \notag
 \end{equation}$$
 to second order in $A$ and $B$. All higher-order terms can be written in terms of higher-order commutators of $A$ and $B$. An example of a higher-order commutator is $[A, [A, B]]$.
-
 #FootnoteRef(8) Here $x$ is an up-tuple structure of components, and $\mathsf{e}$ is down-tuple structure of basis vectors. The product of the two contracts to make a scaled vector, along which we translate by one unit.
 #FootnoteEnd

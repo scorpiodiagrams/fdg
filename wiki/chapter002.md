@@ -42,8 +42,7 @@ The number of independent components of $x$ is the dimension of the manifold.
 
 Assume we have two coordinate functions $\chi$ and $\chi'$. The coordinate transformation from $\chi'$ coordinates to $\chi$ coordinates is just the composition $\chi \circ \chi^{'-1}$ , where $\chi^{'-1}$ is the functional inverse of $\chi'$ (see figure 2.1). We assume that the coordinate transformation is continuous and differentiable to any degree we require.
 
-Given a coordinate system ~coordsys~ for a patch on a manifold the procedure that implements the function $\chi$ that gives coordinates for a point is
-(~chart coordsys~). The procedure that implements the inverse map that gives a point for coordinates is (~point coordsys~).
+Given a coordinate system ~coordsys~ for a patch on a manifold the procedure that implements the function $\chi$ that gives coordinates for a point is (~chart coordsys~). The procedure that implements the inverse map that gives a point for coordinates is (~point coordsys~).
 
 We can have both rectangular and polar coordinates on a patch of the plane identified by the origin:#Footnote(5)#Footnote(6)
 
@@ -156,8 +155,7 @@ We can describe the /same point/ using its polar coordinates:
 
 ### Naming Coordinate Functions
 
-To make things a bit easier, we can give names to the individual coordinate functions associated with a coordinate system. Here we name the coordinate functions for the ~R2-rect~ coordinate system ~x~ and ~y~ and for the ~R2-polar~
-coordinate system ~r~ and ~theta~.
+To make things a bit easier, we can give names to the individual coordinate functions associated with a coordinate system. Here we name the coordinate functions for the ~R2-rect~ coordinate system ~x~ and ~y~ and for the ~R2-polar~ coordinate system ~r~ and ~theta~.
 ```Scheme
 (define-coordinates (up x y) R2-rect)
 (define-coordinates (up r theta) R2-polar)
@@ -205,8 +203,8 @@ We can also apply ~h~ to a point defined in terms of its polar coordinates:
 
 ### Exercise 2.1: Curves
 
-A curve may be specified in different coordinate systems. For example, a cardioid constructed by rolling a circle of radius a around another circle of the same radius is described in polar coordinates by the equation $$r = 2a(1 +
-cos(\theta)).$$
+A curve may be specified in different coordinate systems. For example, a cardioid constructed by rolling a circle of radius a around another circle of the same radius is described in polar coordinates by the equation 
+$$r = 2a(1 + cos(\theta)).$$
 
 We can convert this to rectangular coordinates by evaluating the residual in rectangular coordinates.
 
@@ -223,16 +221,13 @@ We can convert this to rectangular coordinates by evaluating the residual in rec
 The numerator of this expression is the equivalent residual in rectangular coordinates. If we rearrange terms and square it we get the traditional formula for the cardioid
 $$(x^ + y^2 − 2ax)^2 = 4a^2 (x^2 + y^2).$$
 
-*** a.
-
+* a.
 The rectangular coordinate equation for the Lemniscate of Bernoulli is
 $$(x^2 + y^2)^2 = 2a^2(x^2 − y^2).$$
 Find the expression in polar coordinates.
 
-*** b.
-
-Describe a helix space curve in both rectangular and cylindrical coordinates.
-Use the computer to show the correspondence. Note that we provide a cylindrical coordinate system on the manifold $\mathbf{R}3$ for you to use. It is called ~R3-cyl~; with coordinates ~(r, theta, z)~.
+* b.
+Describe a helix space curve in both rectangular and cylindrical coordinates. Use the computer to show the correspondence. Note that we provide a cylindrical coordinate system on the manifold $\mathbf{R}3$ for you to use. It is called ~R3-cyl~; with coordinates ~(r, theta, z)~.
 
 ### Exercise 2.2: Stereographic Projection
 
@@ -261,29 +256,21 @@ Perform an analogous computation to get the polar coordinates of the point on th
 
 #FootnoteRef(1) The open set for a latitude-longitude coordinate system cannot include either pole (because longitude is not defined at the poles) or the $180^{\circ}$
 meridian (where the longitude is discontinuous). Other coordinate systems are needed to cover these places.
-
 #FootnoteRef(2) The expression ~R^n~ gives only one kind of manifold. We also have spheres ~S^n~ and ~SO3~.
-
 #FootnoteRef(3) The word ~origin~ is an arbitrary symbol here. It labels a predefined patch in ~R^n~ manifolds.
-
 #FootnoteRef(4) In the text that follows we will use sans-serif names, such as $\mathsf{f}$, $\mathsf{v}$, $\mathsf{m}$, to refer to objects defined on the manifold. Objects that are defined on coordinates (tuples of real numbers) will be named with symbols like $f$, $v$, $x$.
-
 #FootnoteRef(5) The rectangular coordinates are good for the entire plane, but the polar coordinates are singular at the origin because the angle is not defined. Also,
 the patch for polar coordinates must exclude one ray from the origin, because of the angle variable.
-
 #FootnoteRef(6) We can avoid explicitly naming the patch:
 ```Scheme
 (define R2-rect (coordinate-system-at 'rectangular 'origin R2))
 ```
-
 #FootnoteRef(7) See Appendix B for an introduction to tuple arithmetic and a discussion of derivatives of functions with structured input or output.
-
 #FootnoteRef(8) Alternatively, we can define the same function in a shorthand
 ```Scheme
 (define f (literal-manifold-function 'f-rect R2-rect))
 ```
 #FootnoteRef(9) This is actually a nasty, but traditional, abuse of notation. An expression like $\cos(r)$ can either mean the cosine of the angle $r$ (if $r$ is a number), or the composition $\cos \circ r$ (if $r$ is a function). In our system ~(cos r)~ behaves in this way---either computing the cosine of ~r~ or being treated as ~(compose cos r)~ depending on what ~r~ is.
-
 #FootnoteRef(10) The plane with the addition of a point at infinity is conformally equivalent to the sphere by this correspondence. This correspondence is called the Riemann sphere, in honor of the great mathematician Bernard Riemann
 (1826–1866), who made major contributions to geometry.
 #FootnoteEnd
