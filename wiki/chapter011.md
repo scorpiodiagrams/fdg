@@ -153,14 +153,14 @@ $$\begin{equation}
 Then $\psi$ will satisfy the wave equation
 
 $$\begin{equation}
-∂2ψ(u\prime ) + ∂2ψ(u\prime ) + ∂2ψ(u\prime ) − 1 ∂2ψ(u\prime ) = 0, ∂x\prime 2 ∂y\prime 2 ∂z\prime 2 c2 ∂t\prime 2
+{\partial^2ψ(u^\prime ) \over \partial x^{\prime 2}}  + {\partial^2ψ(u^\prime ) \over \partial y^{\prime 2}}  + {\partial^2ψ(u^\prime ) \over \partial z^{\prime 2}}  − {1 \over c^2} {\partial^2ψ(u^\prime ) \over \partial t^{\prime 2}}  = 0
 \tag{11.20}
 \end{equation}$$
 
 if and only if
 
 $$\begin{equation}
-length_u\prime  (ξ\prime ) = lengthA(u\prime )(DA ξ\prime ) = length_u(ξ).
+length_u^\prime  (ξ^\prime ) = length_{A(u^\prime )}(DA ξ^\prime ) = length_u(ξ).
 \tag{11.21}
 \end{equation}$$
 
