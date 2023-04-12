@@ -14,33 +14,42 @@ By analogy, Einsten noticed that Maxwell's equations were inconsistent with Gali
 Now to the details. Before Maxwell the empirical laws of electromagnetism were as follows. Electric fields arise from charges, with the inverse square law of Coulomb. This is Carl Friedrich Gauss's law for electrostatics:
 
 $$\begin{equation}
+\nabla\cdot \overrightarrow{E}= 4\pi\rho.
+\tag{11.1}
 \end{equation}$$
 
 Magnetic fields do not have a scalar source. This is Gauss's law for magnetostatics:
 
 $$\begin{equation}
+\nabla\cdot \overrightarrow{B} = 0. 
+\tag{11.2}
 \end{equation}$$
 
 Magnetic fields are produced by electric currents, as discovered by Hans Christian Oersted and quantified by André-Marie Ampère:
 
 $$\begin{equation}
+\nabla\times B = 4 {\pi \over c} \overrightarrow{I} \tag{11.3}
 \end{equation}$$
 
 Michael Faraday (and Joseph Henry) discovered that electric fields are produced by moving magnetic fields:
 
 $$\begin{equation}
+ \nabla\times \overrightarrow{E}=  {−1 \over c} {\partial\overrightarrow{B} \over \partial t}. \tag{11.4}
 \end{equation}$$
 
 Benjamin Franklin was the first to understand that electrical charges are conserved:
 
 $$\begin{equation}
+\nabla\cdot \overrightarrow{I} + {\partial ρ \over \partial t} = 0 \tag{11.5} 
 \end{equation}$$
 
 Although these equations are written in terms of the speed of light $c$, these laws were originally written in terms of electrical permittivity and magnetic permeability of free space, which could be determined by measurement of the forces for given currents and charges.
 
+#page(169)
 It is easy to see that these equations are mutually contradictory. Indeed, if we take the divergence of equation (11.3) we get
 
 $$\begin{equation}
+\nabla\cdot \nabla\times \overrightarrow{B} = 0 = {4 \pi \over c} \nabla\cdot \overrightarrow{I} \tag{11.6}
 \end{equation}$$
 
 which directly contradicts conservation of charge (11.5).
@@ -48,21 +57,25 @@ which directly contradicts conservation of charge (11.5).
 Maxwell patched this bug by adding in the displacement current, changing equation (11.3) to read
 
 $$\begin{equation}
+\nabla\times \overrightarrow{B} = {-1 \over c} {\partial \over \partial t} + {4 \pi \over c} \overrightarrow{I}. \tag{11.7} 
 \end{equation}$$
 
 Maxwell proceeded by taking the curl of equation (11.4) to get
 
 $$\begin{equation}
+\nabla\times ( \nabla\times \overrightarrow{E}) = {−1 \over c} {\partial \over \partial t} \nabla\times \overrightarrow{B}. \tag{11.8}
 \end{equation}$$
 
 Expanding the left-hand side
 
 $$\begin{equation}
+\nabla(\nabla\cdot \overrightarrow{E}) − \nabla^2 \overrightarrow{E} = {−1 \over c} { \partial \over \partial t} \nabla\times \overrightarrow{B},\tag{11.9}
 \end{equation}$$
 
 substituting from equations (11.7) and (11.1), and rearranging the terms we get the inhomogeneous wave equation:
 
 $$\begin{equation}
+\nabla^2 \overrightarrow{E} - {1 \over c^2} {\partial^2 \overrightarrow{E} \over \partial t^2} =4π \left( \nabla ρ + {1 \over c^2} \overrightarrow{I} \right). \tag{11.10}
 \end{equation}$$
 
 We see that in free space (in the absence of any charges or currents) we have the familiar homogeneous linear wave equation. A similar equation can be derived for the magnetic field.
@@ -70,9 +83,13 @@ We see that in free space (in the absence of any charges or currents) we have th
 Lorentz, whom Einstein also greatly respected, developed a general formula to describe the force on a particle with charge $q$ moving with velocity $\vec{v}$ in an electromagnetic field:
 
 $$\begin{equation}
+\overrightarrow{F} = q\overrightarrow{E} + {q \over c} \overrightarrow{v} \times \overrightarrow{B} . \tag{11.11}
 \end{equation}$$
 
-A crucial point in Einstein's inspiration for relativity is, quoting Einstein (in English translation), "During that year [1895–1896] in Aarau the question came to me: If one runs after a light wave with light velocity, then one would encounter a time-independent wavefield. However, something like that does not seem to exist!"#Footnote(1) This was the observation of the inconsistency.
+A crucial point in Einstein's inspiration for relativity is, quoting Einstein (in English translation), "During that year [1895–1896] in Aarau the question came to me: If one runs after a light wave with light velocity, then one would encounter a time-independent 
+
+#page(170)
+wavefield. However, something like that does not seem to exist!"#Footnote(1) This was the observation of the inconsistency.
 
 Let's be more precise about this. Consider a plane sinusoidal wave moving in the $\hat{x}$ direction with velocity $c$ in free space ($\rho = 0$ and $\vec{I} = 0$). This is a perfectly good solution of the wave equation. Now suppose that an observer is moving with the wave in the $\hat{x}$ direction with velocity $c$.
 Such an observer will see no time variation of the field. So the wave equation reduces to Laplace's equation. But a sinusoidal variation in space is not a solution of Laplace's equation.
@@ -84,16 +101,22 @@ Einstein believed that the Maxwell-Lorentz electromagnetic theory was fundamenta
 Let $u = (t, x, y, z)$ be a tuple of time and space coordinates that specify a point in spacetime.#Footnote(2) If $\phi(t, x, y, z)$ is a scalar field over time and space, the homogeneous linear wave equation is
 
 $$\begin{equation}
+{\partial ^2 \phi(u) \over \partial x^2 } + {\partial ^2 \phi(u) \over \partial y^2 } + {\partial ^2 \phi(u) \over \partial z^2 } − {1 \over c^2} { \partial ^2 \phi(u) \over \partial t^2 }= 0 \tag{11.12}
 \end{equation}$$
 
-The characteristics for this equation are the "light cones." If we define a function of spacetime points and increments, length, such that for an incremental tuple in position and time $\xi = (\Delta t, \Delta x, \Delta y, \Delta z)$ we have#Footnote(3)
+The characteristics for this equation are the "light cones." If we define a function of spacetime points and increments, length, 
+
+#page(171)
+such that for an incremental tuple in position and time $\xi = (\Delta t, \Delta x, \Delta y, \Delta z)$ we have#Footnote(3)
 
 $$\begin{equation}
+length_u(ξ) = \sqrt{(Δx)^2 + (Δy)^2 + (Δz)^2 − (c Δt)^2}, \tag{11.13}
 \end{equation}$$
 
 then the light cones are the hypersurfaces, for which
 
 $$\begin{equation}
+length_u(Δt, Δx, Δy, Δz) = 0. \tag{11.14}
 \end{equation}$$
 
 This "length" is called the /interval/.
@@ -102,50 +125,62 @@ What is the class of transformations of time and space coordinates that leave th
 
 $$\begin{equation}
 t = A^0(t^\prime, x^\prime, y^\prime, z^\prime),
+\tag{11.15}
 \end{equation}$$
 
 $$\begin{equation}
 x = A^1(t^\prime, x^\prime, y^\prime, z^\prime),
+\tag{11.16}
 \end{equation}$$
 
 $$\begin{equation}
 y = A^2(t^\prime, x^\prime, y^\prime, z^\prime),
+\tag{11.17}
 \end{equation}$$
 
 $$\begin{equation}
 z = A^3(t^\prime, x^\prime, y^\prime, z^\prime).
+\tag{11.18}
 \end{equation}$$
 
 If we define a new field $\psi(t, x, y, z)$ such that $\psi = \phi \circ A$, or
 
 $$\begin{equation}
 \psi(t^\prime, x^\prime, y^\prime, z^\prime) = \phi(A(t^\prime, x^\prime, y^\prime, z^\prime)),
+\tag{11.19}
 \end{equation}$$
 
 Then $\psi$ will satisfy the wave equation
 
 $$\begin{equation}
+∂2ψ(u\prime ) + ∂2ψ(u\prime ) + ∂2ψ(u\prime ) − 1 ∂2ψ(u\prime ) = 0, ∂x\prime 2 ∂y\prime 2 ∂z\prime 2 c2 ∂t\prime 2
+\tag{11.20}
 \end{equation}$$
 
 if and only if
 
 $$\begin{equation}
+length_u\prime  (ξ\prime ) = lengthA(u\prime )(DA ξ\prime ) = length_u(ξ).
+\tag{11.21}
 \end{equation}$$
 
 But this is just a statement that the velocity of light is invariant under change of the coordinate system. The class of transformations that satisfy equation (11.21) are the Poincaré transformations.
 
+#page(172)
 ### Lorentz Transformations
 
 Special relativity is usually presented in terms of global Lorentz frames, with rectangular spatial coordinates. In this context the Lorentz transformations (and, more generally, the Poincaré transformations) can be characterized as the set of affine transformations (linear transformations plus shift) of the coordinate tuple (time and spatial rectangular coordinates) that preserve the length of incremental spacetime intervals as measured by
 
 $$\begin{equation}
 f(\xi) = -(\xi^0)^2 + (\xi^2)^2 + (\xi^2)^2 + (\xi^3)^2,
+\tag{11.22}
 \end{equation}$$
 
 where $\xi$ is an incremental 4-tuple that could be added to the coordinate 4-tuple $(ct, x, y, z)$.#Footnote(4) The Poincaré-Lorentz transformations are of the form
 
 $$\begin{equation}
 x = \Lambda x^\prime + a,
+\tag{11.23}
 \end{equation}$$
 
 Where $\Lambda$ is the tuple representation of a linear transformation and $a$ is a 4-tuple shift. Because the 4-tuple includes the time, these transformations include transformations to a uniformly moving frame. A transformation that does not rotate or shift, but just introduces relative velocity, is sometimes called a /boost/.
@@ -156,18 +191,21 @@ Incremental 4-tuples transform as
 
 $$\begin{equation}
 \xi = \Lambda \xi^\prime.
+\tag{11.24}
 \end{equation}$$
 
 This places a constraint on the allowed $\Lambda$
 
 $$\begin{equation}
 f(\xi^\prime) = f(\Lambda \xi^\prime),
+\tag{11.25}
 \end{equation}$$
 
 for arbitrary $\xi^\prime$.
 
 The possible $\Lambda$ that are consistent with the preservation of the interval can be completely specified and conveniently parameterized.
 
+#page(173)
 ### Simple Lorentz Transformations
 
 Consider the linear transformation, in the first two coordinates,
@@ -177,6 +215,7 @@ $$\begin{equation}
 \xi^0 &= p(\xi^\prime)^0 + q(\xi^\prime)^1 \\
 \xi^1 &= r(\xi^\prime)^0 + s(\xi^\prime)^1.
 \end{aligned}
+\tag{11.26}
 \end{equation}$$
 
 The requirement to preserve the interval gives the constraints
@@ -187,12 +226,14 @@ p^2 - r^2 &= 1, \\
 pq - rs &= 0, \\
 q^2 - s^2 &= -1.
 \end{aligned}
+\tag{11.27}
 \end{equation}$$
 
 There are four parameters to determine, and only three equations, so the solutions have a free parameter. It turns out that a good choice is $\beta = q/p$. Solve to find
 
 $$\begin{equation}
 p = \frac{1}{\sqrt{1 - \beta^2}} = \gamma(\beta),
+\tag{11.28}
 \end{equation}$$
 
 and also $p = s$ and $q = r = \beta p$. This defines $\gamma$. Written out, the transformation is
@@ -202,6 +243,7 @@ $$\begin{equation}
 \xi^0 &= \gamma(\beta)\left((\xi^\prime)^0 + \beta(\xi^\prime)^1 \right) \\
 \xi^1 &= \gamma(\beta)\left(\beta(\xi^\prime)^0 + (\xi^\prime)^1 \right).
 \end{aligned}
+\tag{11.29}
 \end{equation}$$
 
 Simple physical arguments#Footnote(5) show that this mathematical result relates the time and space coordinates for two systems in uniform relative motion. The parameter $\beta$ is related to the relative velocity.
@@ -210,18 +252,22 @@ Consider incremental vectors as spacetime vectors relative to an origin in a glo
 
 $$\begin{equation}
 x = 0 = \gamma(\beta)(x^\prime + \beta c t'),
+\tag{11.30}
 \end{equation}$$
 
 so
 
 $$\begin{equation}
 \beta = -\frac{x^\prime}{ct^\prime} = -\frac{v^\prime}{c},
+\tag{11.31}
 \end{equation}$$
 
+#page(174)
 with the definition $v^\prime = x^\prime / t^\prime$. We see that $\beta$ is minus $1/c$ times the velocity ($v^\prime$) of the unprimed system (which moves with its origin) as "seen" in the primed coordinates
 
 $$\begin{equation}
 \beta = \frac{x}{ct} = \frac{v}{c}.
+\tag{11.32}
 \end{equation}$$
 
 So $v^\prime = -v$.
@@ -237,6 +283,7 @@ $$\begin{equation}
 \xi^2 &= (\xi^\prime)^2 \\
 \xi^3 &= (\xi^\prime)^3.
 \end{aligned}
+\tag{11.33}
 \end{equation}$$
 
 ### More General Lorentz Transformations
@@ -245,10 +292,12 @@ One direction was special in our consideration of simple boosts. We can make use
 
 Let $c \boldsymbol{\beta} = (v^0, v^1, v^2)$ be the tuple of components of the relative velocity of the origin of the primed system in the unprimed system. The components are with respect to the same rectangular basis used to define the spatial components of any incremental vector.
 
+#page(175)
 An incremental vector can be decomposed into vectors parallel and perpendicular to the velocity. Let $\boldsymbol{\xi}$ be the tuple of spatial components of $\xi$, and $\xi^0$ be the time component. Then,
 
 $$\begin{equation}
 \boldsymbol{\xi} = \boldsymbol{\xi}^\perp + \boldsymbol{\xi}^\parallel,
+\tag{11.34}
 \end{equation}$$
 
 where $\boldsymbol{\beta} \cdot \boldsymbol{\xi} = 0$. (This is the ordinary dot product in three dimensions.) Explicitly,
@@ -256,6 +305,7 @@ where $\boldsymbol{\beta} \cdot \boldsymbol{\xi} = 0$. (This is the ordinary dot
 $$\begin{equation}
 \boldsymbol{\xi}^\parallel \
 = \frac{\boldsymbol{\beta}}{\beta}\left(\frac{\boldsymbol{\beta}}{\beta} \cdot \boldsymbol{\xi} \right),
+\tag{11.35}
 \end{equation}$$
 
 where $\beta = \left\Vert \boldsymbol{\beta} \right\Vert$, the magnitude of
@@ -263,6 +313,7 @@ $\boldsymbol{\beta}$, and
 
 $$\begin{equation}
 \boldsymbol{\xi}^\perp = \boldsymbol{\xi} - \boldsymbol{\xi}^\parallel.
+\tag{11.36}
 \end{equation}$$
 
 In the simple boost of equation (11.33) we can identify $\xi^1$ with the magnitude $|\xi^{\Vert}|$ of the parallel component. The perpendicular component is unchanged:
@@ -273,6 +324,7 @@ $$\begin{equation}
 |\boldsymbol{\xi}^\parallel| &= \gamma(\beta)\left( \beta(\xi^\prime)^0 + |(\boldsymbol{\xi})^\parallel| \right), \\
 \boldsymbol{\xi}^\perp &= \left(\boldsymbol{\xi}^\prime\right)^\perp.
 \end{aligned}
+\tag{11.37}
 \end{equation}$$
 
 Putting the components back together, this leads to
@@ -283,22 +335,24 @@ $$\begin{equation}
 \boldsymbol{\xi} &= \gamma(\beta)\left(\boldsymbol{\beta}(\xi^\prime)^0 + \boldsymbol{\xi}^\prime \
 + \frac{\gamma(\beta) - 1}{\beta^2} \boldsymbol{\beta} \left( \boldsymbol{\beta} \cdot \boldsymbol{\xi} \right) \right),
 \end{aligned}
+\tag{11.38}
 \end{equation}$$
 
 which gives the components of the general boost $B$ along velocity $c \boldsymbol{\beta}$:
 
 $$\begin{equation}
 \xi = B(\boldsymbol{\beta})(\xi^\prime).
+\tag{11.39}
 \end{equation}$$
 
 ### Implementation
 
 We represent a 4-tuple as a flat up-tuple of components.
 
+#page(176)
 ```Scheme
 (define (make-4tuple ct space)
 (up ct (ref space 0) (ref space 1) (ref space 2)))
-
 (define (4tuple->ct v) (ref v 0))
 (define (4tuple->space v)
 (up (ref v 1) (ref v 2) (ref v 3)))
@@ -351,6 +405,7 @@ We can check that the interval is invariant:
 
 It is inconvenient that the general boost as just defined does not work if $\boldsymbol{\beta}$ is zero. An alternate way to specify a boost is through the magnitude of $v/c$ and a direction:
 
+#page(177)
 ```Scheme
 (define ((general-boost2 direction v/c) 4tuple-prime)
 (let ((delta-ct-prime (4tuple->ct 4tuple-prime))
@@ -379,12 +434,14 @@ $$\begin{equation}
 (\xi^0, \boldsymbol{\xi}) \
 = \mathcal{R}(R)\left((\xi^\prime)^0, \boldsymbol{\xi}^\prime \right) \
 = \left((\xi^\prime)^0, R(\boldsymbol{\xi}^\prime) \right).
+\tag{11.40}
 \end{equation}$$
 
 Examining the expression for the general boost, equation (11.38), we see that the boost transforms simply as the arguments are rotated. Indeed,
 
 $$\begin{equation}
 B(\boldsymbol{\beta})=\left(\mathcal{R}(R) \right)^{-1} \circ B\left( R(\boldsymbol{\beta}) \right) \circ \mathcal{R}(R).
+\tag{11.41}
 \end{equation}$$
 
 Note that $\left(\mathcal{R}(R) \right)^{-1} = \mathcal{R}(R^{=1})$. The functional inverse of the extended rotation is the extension of the inverse rotation. We could use this property of boosts to think of the general boost as a combination of a rotation and a simple boost along some special direction.
@@ -427,14 +484,17 @@ Any Lorentz transformation has a unique decomposition as a generalized rotation 
 
 $$\begin{equation}
 \Lambda = B(\boldsymbol{\beta})\mathcal{R}.
+\tag{11.42}
 \end{equation}$$
 
 We can use property (11.41) to see this. Suppose we follow a general boost by a rotation. A new boost can be defined to absorb this rotation, but only if the boost is preceded by a suitable rotation:
 
 $$\begin{equation}
 \mathcal{R}(R) \circ B(\boldsymbol{\beta}) = B\left(R(\boldsymbol{\beta})\right) \circ \mathcal{R}(R).
+\tag{11.43}
 \end{equation}$$
 
+#page(179)
 #### Exercise 11.1: Lorentz Decomposition
 
 The counting of free parameters supports the conclusion that the general Lorentz transformation can be constructed by combining generalized rotations and boosts. Then the decomposition (11.42) follows from property (11.41).
@@ -464,7 +524,7 @@ event)
            ((general-boost2 (- boost-direction) v/c)
             (- ((chart ancestor-frame) event) origin))))
 ```
-
+#page(180)
 With these two procedures, the procedure =make-SR-frame= constructs a new relativistic frame by a Poincaré transformation from a given frame.
 
 ```Scheme
@@ -473,7 +533,6 @@ With these two procedures, the procedure =make-SR-frame= constructs a new relati
 ```
 
 #### Velocity Addition Formula
-
 
 For example, we can derive the traditional velocity addition formula. Assume that we have a base frame called =home=. We can make a frame =A= by a boost from home in the $\hat{x}$ direction, with components $(1, 0, 0)$, and with a dimensionless measure of the speed $v_a / c$. We also specify that the 4-tuple origin of this new frame coincides with the origin of =home=.
 
@@ -509,6 +568,7 @@ So any point at rest in frame =B= will have a speed relative to home. For the sp
 
 obtaining the traditional velocity-addition formula. (Note that the resulting velocity is represented as a fraction of the speed of light.) This is a useful result, so:
 
+#page(181)
 ```Scheme
 (define (add-v/cs va/c vb/c)
 (/ (+ va/c vb/c)
@@ -549,7 +609,7 @@ After 25 years of home time the traveller is 24 light-years out. We define that 
 (make-SR-coordinates home
             (up (* :c 25) (* 25 24/25 :c) 0 0))))
 ```
-
+#page(182)
 Note that the first component of the coordinates of an event is the speed of light multiplied by time. The other components are distances. For example, the second component (the $\hat{x}$ component) is the distance travelled in 25 years at 24/25 the speed of light. This is 24 light-years.
 
 If we examine the displacement of the traveller in his own frame we see that the traveller has aged 7 years and he has not moved from his spatial origin.
@@ -607,7 +667,7 @@ and the homebody has aged
 ((chart outgoing) start-event)))
 ;; (* 25 :c)
 ```
-
+#page(183)
 as seen from either frame.
 
 As seen by the traveller, home is moving in the $−\hat{x}$ direction at 24/25 of the velocity of light. At the turning point (7 years by his time) home is at:
