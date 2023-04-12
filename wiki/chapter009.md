@@ -780,7 +780,7 @@ b. Assume that in a "matter-dominated universe" radiation pressure is negligible
 ((partial 2) P))))
 ```
 #FootnoteRef(3) $\mathbf{E}$ is the Euler-Lagrange operator, which gives the residuals of the Lagrange equations for a Lagrangian. $\mathbf{\Gamma}$ extends a configuration-space path $q$ to make a state-space path, with as many terms as needed: $\mathbf{\Gamma}[q](t) = (t, q(t), Dq(t), \ldots)$. The total time derivative $D_t$ is defined by $D_t F \circ \mathbf{\Gamma}[q] = D\left(F \circ
-\mathbf{\Gamma}[q]\right)$ for any state function $F$ and path $q$. The Lagrange equations are $\mathbf{E}$[L] \circ \Gamma[q] = 0. See [19] for more details.
+\mathbf{\Gamma}[q]\right)$ for any state function $F$ and path $q$. The Lagrange equations are $\mathbf{E}$[L] \circ \Gamma[q] = 0. See [19](references!bib_19) for more details.
 #FootnoteRef(4) We cheated: We hand-simplified the denominator to make the result more obvious.
 #FootnoteRef(5) The tensor with components $G_{\mu \nu} = R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu}$ is called the Einstein tensor. In his search for an appropriate field equation for gravity, Einstein demanded /general covariance/ (independence of coordinate system) and local Lorentz invariance (at each point transformations must preserve the line element). These considerations led Einstein to look for a tensor equation (see Appendix C).
 #FootnoteRef(6) Start with equation (9.26). Raise one index of both sides, and then contract. Notice that the trace $g_\mu^\mu = 4$, the dimension of spacetime.

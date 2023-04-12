@@ -769,7 +769,7 @@ Thus the aging of the homebody occurs at the turnaround, from the point of view 
 ----
 ### Footnotes
 
-#FootnoteRef(1) The quote is from Pais [12], p. 131.
+#FootnoteRef(1) The quote is from Pais [12](references!bib_12), p. 131.
 #FootnoteRef(2) Points in spacetime are often called /events/.
 #FootnoteRef(3) Here the length is independent of the spacetime point specified by $u$. In General Relativity we find that the metric, and thus the length function needs to vary with the point in spacetime.
 #FootnoteRef(4) Incrementally, $\xi = \xi^0 \partial / {\partial ct} + \xi^1 \partial /{\partial x} + \xi^2 \partial / {\partial y} + \xi^3 \partial / {\partial z}$.

@@ -4,7 +4,7 @@
 ## Chapter 1: Introduction
 
 #Quote( Philosophy is written in that great book which ever lies before our eyes---I mean the Universe---but we cannot understand it if we do not learn the language and grasp the symbols in which it is written. This book is written in the mathematical language, and the symbols are triangles, circles, and other geometrical figures without whose help it is impossible to comprehend a single word of it, without which one wanders in vain through a dark labyrinth.)
-#Caption Galileo Galilei [8]
+#Caption Galileo Galilei [8](references!bib_8)
 
 Differential geometry is a mathematical language that can be used to express physical concepts. In this introduction we show a typical use of this language.
 Do not panic! At this point we do not expect you to understand the details of what we are showing. All will be explained as needed in the text. The purpose is to get the flavor of this material.
@@ -31,7 +31,7 @@ $$\begin{equation}
 D\left(\partial_{2} L \circ \Gamma[q]\right) - \partial_{1} L \circ \Gamma[q]=0.
 \end{equation}$$
 
-In SICM [19], Section 1.6.3, we showed that a Lagrangian describing the free motion of a particle subject to a coordinate-dependent constraint can be obtained by composing a free-particle Lagrangian with a function that describes how dynamical states transform given the coordinate transformation that describes the constraints.
+In SICM [19](references!bib_19), Section 1.6.3, we showed that a Lagrangian describing the free motion of a particle subject to a coordinate-dependent constraint can be obtained by composing a free-particle Lagrangian with a function that describes how dynamical states transform given the coordinate transformation that describes the constraints.
 
 A Lagrangian for a free particle of mass m and velocity v is just its kinetic energy, $mv^2/2$. The procedure =Lfree= implements the free Lagrangian:#Footnote(3)
 

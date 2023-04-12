@@ -4,9 +4,9 @@
 # Appendix A: Scheme
 
 #Quote( Programming languages should be designed not by piling feature on top of feature, but by removing the weaknesses and restrictions that make additional features appear necessary. Scheme demonstrates that a very small number of rules for forming expressions, with no restrictions on how they are composed, suffice to form a practical and efficient programming language that is flexible enough to support most of the major programming paradigms in use today.)
-#Caption IEEE Standard for the Scheme Programming Language [10], p. 3)
+#Caption IEEE Standard for the Scheme Programming Language [10](references!bib_10), p. 3)
 
-Here we give an elementary introduction to Scheme.#Footnote(1) For a more precise explanation of the language see the IEEE standard [10]; for a longer introduction see the textbook [1].
+Here we give an elementary introduction to Scheme.#Footnote(1) For a more precise explanation of the language see the IEEE standard [10](references!bib_10); for a longer introduction see the textbook [1](references!bib_1).
 
 Scheme is a simple programming language based on expressions. An expression names a value. For example, the numeral =3.14= names an approximation to a familiar number. There are primitive expressions, such as a numeral, that we directly recognize, and there are compound expressions of several kinds.
 
@@ -310,7 +310,7 @@ Consider what would happen if we were to leave out the quote in the expression =
 #FootnoteRef(1) Many of the statements here are valid only assuming that no assignments are used.
 #FootnoteRef(2) In examples we show the value that would be printed by the Scheme system using slanted characters following the input expression.
 #FootnoteRef(3) In Scheme every parenthesis is essential: you cannot add extra parentheses or remove any.
-#FootnoteRef(4) The logician Alonzo Church [5] invented $\lambda$-notation to allow the specification of an anonymous function of a named parameter:
+#FootnoteRef(4) The logician Alonzo Church [5](references!bib_5) invented $\lambda$-notation to allow the specification of an anonymous function of a named parameter:
 $\boldsymbol{\lambda}x[\text{expression in } x]$. This is read, "That function of one argument that is obtained by substituting the argument for x in the indicated expression."
 #FootnoteRef(5) The definition of =square= given here is not the definition of =square in the Scmutils system. In Scmutils, =square= is extended for tuples to mean the sum of the squares of the components of the tuple. However, for arguments that are not tuples the Scmutils square does multiply the argument by itself.
 #FootnoteRef(6) The examples are indented to help with readability. Scheme does not care about extra white space, so we may add as much as we please to make things easier to read.

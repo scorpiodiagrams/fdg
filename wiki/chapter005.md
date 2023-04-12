@@ -580,7 +580,7 @@ $$\begin{equation}
 #FootnoteRef(6) The definition is chosen to make Stokes's Theorem pretty.
 #FootnoteRef(7) See Spivak, Differential Geometry, Volume 1, p.289.
 #FootnoteRef(8) See Spivak, Calculus on Manifolds, p.92
-#FootnoteRef(9) We do not develop the machinery for integration on chains that is usually needed for a full proof of Stokes's Theorem. This is adequately done in other books. A beautiful treatment can be found in Spivak, Calculus on Manifolds [17].
+#FootnoteRef(9) We do not develop the machinery for integration on chains that is usually needed for a full proof of Stokes's Theorem. This is adequately done in other books. A beautiful treatment can be found in Spivak, Calculus on Manifolds [17](references!bib_17).
 #FootnoteRef(10) Using =(define R2-rect-basis (coordinate-system->basis R2-rect))=.
 
 Here we extract $\mathsf{d}\mathsf{x}$ and $\mathsf{d}\mathsf{y}$ from R2-rect-basis to avoid globally installing coordinates.

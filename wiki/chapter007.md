@@ -1187,6 +1187,6 @@ $$\begin{equation}
 but this is nonsense. The geodesic equation is a constraint on the path, but the path does not appear in this equation. Further, the velocity along a path is not a vector field, so it cannot appear in either argument to the covariant derivative.
 
 What is true is that a vector field $\mathsf{v}$ all of whose integral curves are geodesics satisfies equation (7.77).
-#FootnoteRef(18) The method of formulating a system with constraints by composing a free system with the state-space coordinate transformation that represents the constraints can be found in [19], section 1.6.3. The procedure F->C takes a coordinate transformation and produces a corresponding transformation of Lagrangian state.
+#FootnoteRef(18) The method of formulating a system with constraints by composing a free system with the state-space coordinate transformation that represents the constraints can be found in [19](references!bib_19), section 1.6.3. The procedure F->C takes a coordinate transformation and produces a corresponding transformation of Lagrangian state.
 #FootnoteRef(19) The geodesic equations and the Lagrange equations are related by a contraction with the metric.
 #FootnoteEnd

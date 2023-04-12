@@ -728,7 +728,7 @@ X Y Z)
 ----
 ### Footnotes
 
-#FootnoteRef(1) [11], [4], and [14] use our definition. [20] uses a different convention for the order of arguments and a different sign. See Appendix C for a definition of tensors.
+#FootnoteRef(1) [11](references!bib_11), [4](references!bib_4), and [14](references!bib_14) use our definition. [20](references!bib_20) uses a different convention for the order of arguments and a different sign. See Appendix C for a definition of tensors.
 #FootnoteRef(2) The connection specified by =sphere-Cartan= is defined on page 107.
 #FootnoteRef(3) The map $\gamma$ takes points on the real line to points on the target manifold. The chart $\chi$ gives coordinates of points on the target manifold while $\chi_\mathsf{R}$ gives a time coordinate on the real line.
 #FootnoteRef(4) The series may not converge for large increments in the independent variable. In this case it is appropriate to numerically integrate the differential equations directly.
