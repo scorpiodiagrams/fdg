@@ -244,7 +244,7 @@ We can use property (11.41) to see this. Suppose we follow a general boost by a 
 R(R) ◦ B(β) = B(R(β)) ◦ R(R). (11.43)
 
 #page(179)
- Exercise 11.1: Lorentz Decomposition
+### Exercise  11.1: Lorentz Decomposition
 The counting of free parameters supports the conclusion that the general Lorentz transformation can be constructed by combining generalized rotations and boosts. Then the decomposition (11.42) follows from property (11.41). Find a more convincing proof.
 11.2 Special Relativity Frames
 A new frame is defined by a Poincar ́e transformation from a given frame (see equation 11.23). The transformation is specified by a boost magnitude and a unit-vector boost direction, relative to the given frame, and the position of the origin of the frame being defined in the given frame.

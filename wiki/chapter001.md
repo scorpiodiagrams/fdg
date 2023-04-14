@@ -335,7 +335,7 @@ The two messy residual results that we did not show are related by the metric. I
 
 This establishes that for a 2-dimensional space the Euler-Lagrange equations are equivalent to the geodesic equations. The Christoffel coefficients that appear in the geodesic equation correspond to coefficients of terms in the Euler-Lagrange equations. This analysis will work for any number of dimensions (but will take your computer longer in higher dimensions, because the complexity increases).
 
-#### Exercise 1.1: Motion on a Sphere
+### Exercise 1.1: Motion on a Sphere
 
 The metric for a unit sphere, expressed in colatitude $\theta$ and longitude $\phi$, is
 $$\begin{equation}

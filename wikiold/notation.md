@@ -293,12 +293,12 @@ In Scheme:
           (+ (* 3 (expt x 2)) (* -6 x y) (* 3 (expt y 2)))
           (* (exp y) (exp x))))
 ```
-Exercise B.1: Chain Rule
+### Exercise  B.1: Chain Rule
 Let F(x,y) = x2y3, G(x,y) = (F(x,y),y), and H(x,y) = F(F(x,y),y), so that H = F ◦ G.
 a. Compute ∂0F (x, y) and ∂1F (x, y).
 b. Compute ∂0F(F(x,y),y) and ∂1F(F(x,y),y). c. Compute ∂0G(x, y) and ∂1G(x, y).
 d. Compute DF (a, b), DG(3, 5) and DH(3a2, 5b3).
-Exercise B.2: Computing Derivatives
+### Exercise  B.2: Computing Derivatives
 We can represent functions of multiple arguments as procedures in several ways, depending upon how we wish to use them. The simplest idea is to identify the procedure arguments with the function’s arguments.
 For example, we could write implementations of the functions that occur in exercise B.1 as follows:
 #page(209)

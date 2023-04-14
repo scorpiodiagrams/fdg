@@ -403,7 +403,7 @@ $$\begin{equation}
 
 but this is rarely useful.
 
-#### Exercise 6.1: Velocities on a Globe
+### Exercise 6.1: Velocities on a Globe
 
 We can use manifold functions, vector fields, and one-forms over a map to understand how paths behave.
 

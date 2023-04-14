@@ -218,7 +218,7 @@ Note that these are just the series for cos Δt and sin Δt, so the coordinate t
 
 #page(32)
 For functions whose series expansions have finite radius of convergence, evolution can progress beyond the point at which the Taylor series converges because evolution is well defined whenever the integral curve is defined.
-Exercise 3.1: State Derivatives
+### Exercise  3.1: State Derivatives
 Newton’s equations for the motion of a particle in a plane, subject to a force that depends only on the position in the plane, are a system of second-order differential equations for the rectangular coordinates (X, Y ) of the particle:
 D2X(t)=Ax(X(t),Y(t)) and D2Y(t)=Ay(X(t),Y(t)),
 where A is the acceleration of the particle.
@@ -376,7 +376,7 @@ a(x) b(x) = a′(x′) b′(x′), (3.58) as expected because ω(v)(m) is indepe
 #page(39)
  Exercise 3.2: Verification
 Verify that the coefficients of a one-form field transform as described in equation (3.56). You should use equation (3.44) in your derivation.
-Exercise 3.3: Hill Climbing
+### Exercise  3.3: Hill Climbing
 The topography of a region on the Earth can be specified by a manifold function h that gives the altitude at each point on the manifold. Let v be a vector field on the manifold, perhaps specifying a direction and rate of walking at every point on the manifold.
 a. Form an expression that gives the power that must be expended to follow the vector field at each point.
 b. Write this as a computational expression.

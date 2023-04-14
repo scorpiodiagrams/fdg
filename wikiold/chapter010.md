@@ -417,7 +417,7 @@ If we give a particle a more general timelike 4-velocity in the xˆ direction we
       (* q (Ey (up ct0 x0 y0 z0))))
    (sqrt (+ 1 (* -1 (expt v/c 2)))))
 ```
-Exercise 10.1: Relativistic Lorentz Force
+### Exercise  10.1: Relativistic Lorentz Force
 Compute all components of the 4-force for a general timelike 4-velocity.
 a. Compare these components to the components of the nonrelativistic force given above. Interpret the differences.
 b. What is the meaning of the time component? For example, consider:

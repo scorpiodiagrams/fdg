@@ -801,7 +801,7 @@ The state space for Hamiltonian evolution has five dimensions: time, two dimensi
 So now we have coordinate functions and the coordinate-basis vector fields and coordinate-basis one-form fields.
 a. Define the Hamiltonian vector field as a linear combination of these fields.
 b. Obtain the first few terms of the Taylor series for the evolution of the coordinates (θ, φ) by exponentiating the Lie derivative of the Hamiltonian vector field.
-Exercise 7.2: Lie Derivative and Covariant Derivative
+### Exercise  7.2: Lie Derivative and Covariant Derivative
 How are the Lie derivative and the covariant derivative related?
 a. Prove that for every vector field there exists a connection such that the covariant derivative for that connection and the given vector field is equivalent to the Lie derivative with respect to that vector field.
 b. Show that there is no connection that for every vector field makes the Lie derivative the same as the covariant derivative with the chosen connection.

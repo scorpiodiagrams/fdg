@@ -239,7 +239,7 @@ Pushforward of a Form Field
 By symmetry, it is possible to define the pushforward of a oneform field as
 μ∗ω(v) = μ∗(ω(μ∗v)), (6.28)
 but this is rarely useful.
-Exercise 6.1: Velocities on a Globe
+### Exercise  6.1: Velocities on a Globe
 We can use manifold functions, vector fields, and one-forms over a map to understand how paths behave.
 a. Suppose that a vehicle is traveling east on the Earth at a given rate of change of longitude. What is the actual ground speed of the vehicle?
 b. Stereographic projection is useful for navigation because it is conformal (it preserves angles). For the situation of part a, what is the speed measured on a stereographic map? Remember that the stereographic projection is implemented with S2-Riemann.

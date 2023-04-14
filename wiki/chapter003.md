@@ -371,7 +371,7 @@ Note that these are just the series for $\cos \Delta t$ and $\sin \Delta t$, so 
 
 For functions whose series expansions have finite radius of convergence, evolution can progress beyond the point at which the Taylor series converges because evolution is well defined whenever the integral curve is defined.
 
-#### Exercise 3.1: State Derivatives
+### Exercise 3.1: State Derivatives
 
 Newton's equations for the motion of a particle in a plane, subject to a force that depends only on the position in the plane, are a system of second-order differential equations for the rectangular coordinates
 $(X, Y)$ of the particle:

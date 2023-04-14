@@ -164,7 +164,7 @@ We can also apply h to a point defined in terms of its polar coordinates:
    (* (expt r0 3) (cos theta0)))
 ```
 
-Exercise 2.1: Curves
+### Exercise  2.1: Curves
 
 A curve may be specified in different coordinate systems. For example, a cardioid constructed by rolling a circle of radius a around another circle of the same radius is described in polar coordinates by the equation
 r = 2a(1 + cos(θ)).
@@ -187,7 +187,7 @@ Find the expression in polar coordinates.
 
 b. Describe a helix space curve in both rectangular and cylindrical coordinates. Use the computer to show the correspondence. Note that we provide a cylindrical coordinate system on the manifold R3 for you to use. It is called R3-cyl; with coordinates (r, theta, z).
 
-Exercise 2.2: Stereographic Projection
+### Exercise  2.2: Stereographic Projection
 
 A stereographic projection is a correspondence between points on the unit sphere and points on the plane cutting the sphere at its equator. (See figure 2.3.)
 

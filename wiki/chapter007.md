@@ -1078,7 +1078,7 @@ $$\begin{equation}
 
 The Lagrange equations are true of the same paths as the geodesic equations. The second Lagrange equation is the second geodesic equation multiplied by $(\sin(\alpha(t)))^{2}$, and the Lagrange equations are arranged in a down tuple, whereas the geodesic equations are arranged in an up tuple.#Footnote(19) The two systems are equivalent unless $\alpha(t)=0$, where the coordinate system is singular.
 
-#### Exercise 7.1: Hamiltonian Evolution
+### Exercise 7.1: Hamiltonian Evolution
 
 We have just seen that the Lagrange equations for the motion of a free particle constrained to the surface of a sphere determine the geodesics on the sphere. We can investigate the phenomenon in the Hamiltonian formulation. The Hamiltonian is obtained from the Lagrangian by a Legendre transformation:
 ```Scheme

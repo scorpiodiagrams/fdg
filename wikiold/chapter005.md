@@ -161,7 +161,7 @@ i0 ,...,ik−1 =0
 ω=
 The antisymmetry of the wedge product implies that
 ωiσ(0),...,iσ(k−1) = Parity(σ)ωi0,...,ik−1, of ω.
-Exercise 5.1: Wedge Product
+### Exercise  5.1: Wedge Product
 Pick a coordinate system and use the computer to verify that
 a. the wedge product is associative for forms in your coordinate system; b. formula (5.17) is true in your coordinate system.
 (5.21) from which we see that there are only nk independent components
@@ -370,7 +370,7 @@ Assuming Stokes’s Theorem, the exterior derivative of the leakage of stuff per
 0
 ```
 as expected.
-Exercise 5.2: Graded Formula
+### Exercise  5.2: Graded Formula
 Derive equation (5.28).
-Exercise 5.3: Iterated Exterior Derivative
+### Exercise  5.3: Iterated Exterior Derivative
 We have shown that the equation (5.29) is true for manifold functions. Show that it is true for any form field.

@@ -184,7 +184,7 @@ And the Christoffel coefficients of the second kind have the innermost index up:
 ;;             (up (* -1 (cos theta0) (sin theta0)) 0)))
 ```
 
-#### Exercise 9.1: Metric Compatibility
+### Exercise 9.1: Metric Compatibility
 
 The connections constructed from a metric by equation (9.13) are "metric compatible," as described in equation (9.9). Demonstrate that this is true for a literal metric, as described on page 6, in $\mathbf{R}^4$. Your program should produce a zero.
 
@@ -419,7 +419,7 @@ Although the Euler-Lagrange equations for $L_1$ are invariant under an arbitrary
 
 We see that if these expressions must be zero, then $D^2f = 0$. This tells us that $f$ is at most affine in $t: f(t) = at + b$.
 
-#### Exercise 9.2: SO(3) Geodesics
+### Exercise 9.2: SO(3) Geodesics
 
 We have derived a basis for SO(3) in terms of incremental rotations around the rectangular axes. See equations (4.29, 4.30, 4.31). We can use the dual basis to define a metric on SO(3).
 
@@ -432,7 +432,7 @@ We have derived a basis for SO(3) in terms of incremental rotations around the r
 
 This metric determines a connection. Show that uniform rotation about an arbitrary axis traces a geodesic on SO(3).
 
-#### Exercise 9.3: Curvature of a Spherical Surface
+### Exercise 9.3: Curvature of a Spherical Surface
 
 The 2-dimensional surface of a 3-dimensional sphere can be embedded in three dimensions with a metric that depends on the radius:
 
@@ -475,9 +475,9 @@ basis)))
 
 Evaluate the Ricci scalar for a sphere of radius $r$ to obtain a measure of its intrinsic curvature. You should obtain the answer $2/r^2$.
 
-#### Exercise 9.4: Curvature of a Pseudosphere
+### Exercise 9.4: Curvature of a Pseudosphere
 
-Compute the scalar curvature of the pseudosphere (see exercise 8.2). You should obtain the value −2.
+Compute the scalar curvature of the pseudosphere (see [exercise 8.2](#exercise_8.2)). You should obtain the value −2.
 
 ### General Relativity
 
@@ -496,7 +496,7 @@ $$\begin{equation}
 
 \end{equation}$$
 
-#### Exercise 9.5: Newton's Equations
+### Exercise 9.5: Newton's Equations
 
 Verify that Newton's equations (9.25) are indeed the lowest-order terms of the geodesic equations for the metric (9.24).
 
@@ -595,7 +595,7 @@ R_{\mu \nu} = \frac{8 \pi G}{c^4} \left(T_{\mu \nu} - \frac{1}{2} T g_{\mu \nu} 
 
 as required.
 
-#### Exercise 9.6: Curvature of Schwarzschild Spacetime
+### Exercise 9.6: Curvature of Schwarzschild Spacetime
 
 In spherical coordinates around a nonrotating gravitating body the metric of Schwarzschild spacetime is given as:#Footnote(8)
 
@@ -615,7 +615,7 @@ In spherical coordinates around a nonrotating gravitating body the metric of Sch
 
 Show that the Ricci curvature of the Schwarzschild spacetime is zero. Use the definition of the Ricci tensor in equation (8.20).
 
-#### Exercise 9.7: Circular Orbits in Schwarzschild Spacetime
+### Exercise 9.7: Circular Orbits in Schwarzschild Spacetime
 
 Test particles move along geodesics in spacetime. Now that we have a metric for Schwarzschild spacetime (page 147) we can use it to construct the geodesic equations and determine how test particles move. Consider circular orbits. For example, the circular orbit along a line of constant longitude is a geodesic, so it should satisfy the geodesic equations. Here is the equation of a circular path along the zero longitude line.
 
@@ -630,7 +630,7 @@ This equation will satisfy the geodesic equations for compatible values of the r
 
 Surprise: You should find out that $\omega^2 r^3 = GM$ --- Kepler's law!
 
-#### Exercise 9.8: Stability of Circular Orbits
+### Exercise 9.8: Stability of Circular Orbits
 
 In Schwarzschild spacetime there are stable circular orbits if the coordinate $r$ is large enough, but below that value all orbits are unstable. The critical value of $r$ is larger than the Schwarzschild horizon radius. Let's find that value.
 
@@ -673,7 +673,7 @@ The characteristic equation in the eigenvalue =lambda= can be obtained as the nu
 
 Show that the orbits are unstable if $r < 6GM / c^2$.
 
-#### Exercise 9.9: Friedmann-Lemaître-Robertson-Walker
+### Exercise 9.9: Friedmann-Lemaître-Robertson-Walker
 
 The Einstein tensor $G_{\mu \nu}$ (see footnote 5) can be expressed as a program:
 
@@ -748,7 +748,7 @@ $$\begin{equation}
 
 Use the programs supplied to derive the Robertson-Walker equations.
 
-#### Exercise 9.10: Cosmology
+### Exercise 9.10: Cosmology
 
 For energy to be conserved, the stress-energy tensor must be constrained so that its covariant divergence is zero
 

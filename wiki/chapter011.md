@@ -495,7 +495,7 @@ $$\begin{equation}
 \end{equation}$$
 
 #page(179)
-#### Exercise 11.1: Lorentz Decomposition
+### Exercise 11.1: Lorentz Decomposition
 
 The counting of free parameters supports the conclusion that the general Lorentz transformation can be constructed by combining generalized rotations and boosts. Then the decomposition (11.42) follows from property (11.41).
 Find a more convincing proof.

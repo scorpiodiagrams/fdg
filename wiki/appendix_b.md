@@ -590,7 +590,7 @@ In Scheme:
 ;;           (* (exp y) (exp x))))
 ```
 
-#### Exercise B.1: Chain Rule
+### Exercise B.1: Chain Rule
 
 Let $F(x, y) = x^2y^3$, $G(x, y)=(F(x, y), y)$, and $H(x, y) = F(F(x, y), y)$, so that $H = F \circ G$.
 
@@ -599,11 +599,11 @@ b. Compute $\partial_0 F(F(x, y), y)$ and $\partial_1 F(F(x, y), y)$.
 c. Compute $\partial_0 G(x, y)$ and $\partial_1 G(x, y)$.
 d. Compute $DF(a, b)$, $DG(3, 5)$ and $DH(3a^2, 5b^3)$.
 
-#### Exercise B.2: Computing Derivatives
+### Exercise B.2: Computing Derivatives
 
 We can represent functions of multiple arguments as procedures in several ways, depending upon how we wish to use them. The simplest idea is to identify the procedure arguments with the function's arguments.
 
-For example, we could write implementations of the functions that occur in exercise B.1 as follows:
+For example, we could write implementations of the functions that occur in [exercise B.1](#exercise_B.1) as follows:
 
 ```Scheme
 (define (f x y)
@@ -634,7 +634,7 @@ For example, we may define procedures that implement the functions above as foll
 (define h (compose f g))
 ```
 
-Repeat exercise B.1 using the computer. Explore both implementations of multiple-argument functions.
+Repeat [exercise B.1](#exercise_B.1) using the computer. Explore both implementations of multiple-argument functions.
 
 ----
 ### Footnotes

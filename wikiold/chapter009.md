@@ -109,7 +109,7 @@ And the Christoffel coefficients of the second kind have the innermost index up:
       (down (up 0 (/ (cos theta0) (sin theta0)))
             (up (* -1 (cos theta0) (sin theta0)) 0)))
 ```
-Exercise 9.1: Metric Compatibility
+### Exercise  9.1: Metric Compatibility
 The connections constructed from a metric by equation (9.13) are “metric compatible,” as described in equation (9.9). Demonstrate that this is true for a literal metric, as described on page 6, in R4. Your program should produce a zero.
 9.2 Metrics and Lagrange Equations
 In the Introduction (Chapter 1) we showed that the Lagrange equations for a free particle constrained to a 2-dimensional surface are equivalent to the geodesic equations for motion on that surface. We illustrated that in detail in Section 7.4 for motion on a sphere.
@@ -274,14 +274,14 @@ Although the Euler-Lagrange equations for L1 are invariant under an arbitrary re
 (m 01 (up (x (f t)) (y (f t))))) (m11 (up (x (f t)) (y (f t))))))
 ```
 We see that if these expressions must be zero, then D2f = 0. This tells us that f is at most affine int: f(t)=at+b.
-Exercise 9.2: SO(3) Geodesics
+### Exercise  9.2: SO(3) Geodesics
 We have derived a basis for SO(3) in terms of incremental rotations around the rectangular axes. See equations (4.29, 4.30, 4.31). We can use the dual basis to define a metric on SO(3).
 ```Scheme
 (define (SO3-metric v1 v2) (+ (* (e^x v1) (e^x v2)) (* (e^y v1) (e^y v2))
 (* (e^z v1) (e^z v2))))
 ```
 This metric determines a connection. Show that uniform rotation about an arbitrary axis traces a geodesic on SO(3).
-Exercise 9.3: Curvature of a Spherical Surface
+### Exercise  9.3: Curvature of a Spherical Surface
 The 2-dimensional surface of a 3-dimensional sphere can be embedded in three dimensions with a metric that depends on the radius:
 ```Scheme
 (define M (make-manifold S^2-type 2 3)) (define spherical
@@ -307,7 +307,7 @@ The trace2down procedure converts a tensor that takes two vector fields into a t
 basis)))
 ```
 Evaluate the Ricci scalar for a sphere of radius r to obtain a measure of its intrinsic curvature. You should obtain the answer 2/r2.
-Exercise 9.4: Curvature of a Pseudosphere
+### Exercise  9.4: Curvature of a Pseudosphere
 Compute the scalar curvature of the pseudosphere (see exercise 8.2). You should obtain the value −2.
 9.3 General Relativity
 By analogy to Newtonian mechanics, relativistic mechanics has two parts. There are equations of motion that describe how particles move under the influence of “forces” and there are field equations that describe how the forces arise. In general relativity the only force considered is gravity. However, gravity is not treated as a force. Instead, gravity arises from curvature in the spacetime, and the equations of motion are motion along geodesics of that space.
@@ -321,7 +321,7 @@ ij
 145
  dt(v1)dt(v2)
  are Newton’s equations to lowest order in V/c2: D2⃗x(t) = −gradV (⃗x(t)).
-Exercise 9.5: Newton’s Equations
+### Exercise  9.5: Newton’s Equations
 (9.24)
 (9.25)
 Verify that Newton’s equations (9.25) are indeed the lowest-order terms of the geodesic equations for the metric (9.24).
@@ -384,7 +384,7 @@ So, to make the Poisson analogy we get 8πG 1 
 Rμν= c4 Tμν−2Tgμν −Λgμν
 (9.29)
   as required.
-Exercise 9.6: Curvature of Schwarzschild Spacetime
+### Exercise  9.6: Curvature of Schwarzschild Spacetime
 In spherical coordinates around a nonrotating gravitating body the metric of Schwarzschild spacetime is given as:8
 7The procedure trace2down is defined on page 144. This expression also uses drop2, which converts a tensor field that takes two one-form fields into a tensor field that takes two vector fields. Its definition is
 ```Scheme
@@ -413,7 +413,7 @@ Metrics
 (dphi v1) (dphi v2))))))))
 ```
 Show that the Ricci curvature of the Schwarzschild spacetime is zero. Use the definition of the Ricci tensor in equation (8.20).
-Exercise 9.7: Circular Orbits in Schwarzschild Spacetime
+### Exercise  9.7: Circular Orbits in Schwarzschild Spacetime
 Test particles move along geodesics in spacetime. Now that we have a metric for Schwarzschild spacetime (page 147) we can use it to construct the geodesic equations and determine how test particles move. Consider circular orbits. For example, the circular orbit along a line of constant longitude is a geodesic, so it should satisfy the geodesic equations. Here is the equation of a circular path along the zero longitude line.
 ```Scheme
 (define (prime-meridian r omega) (compose (point spacetime-sphere)
@@ -453,7 +453,7 @@ geodesic-equation+X-residuals) 0
             0 3 0 3))
 ```
 Show that the orbits are unstable if r < 6GM/c2.
-Exercise 9.9: Friedmann-Lemaˆıtre-Robertson-Walker
+### Exercise  9.9: Friedmann-Lemaˆıtre-Robertson-Walker
 The Einstein tensor Gμν (see footnote 5) can be expressed as a program:
 ```Scheme
 (define (Einstein coordinate-system metric-tensor)
@@ -505,7 +505,7 @@ The Robertson-Walker equations are:
 D2R(t) 2  ρ(t) p(t)
 2 R(t) −3Λc2=−8πG 3 + c2 . (9.30)
 Use the programs supplied to derive the Robertson-Walker equations.
-Exercise 9.10: Cosmology
+### Exercise  9.10: Cosmology
 For energy to be conserved, the stress-energy tensor must be constrained so that its covariant divergence is zero
 ∇ e μ T (  ̃e μ , ω ) = 0 ( 9 . 3 1 ) μ
 for every one-form ω.

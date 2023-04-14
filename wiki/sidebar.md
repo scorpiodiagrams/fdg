@@ -111,7 +111,7 @@ Notation;Reasons for Scheme and SICM Utils)
 ### Extras
 #Jump( list_of_exercises \Diamond List of Exercises
 # \Diamond List of Exercises
-Exercises)
+### Exercise s)
 ----
 ### Other Content
 #Jump( scm_utils \Diamond SCM Utils

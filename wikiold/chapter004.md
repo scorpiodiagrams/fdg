@@ -266,7 +266,7 @@ Take a point 0 in M as the origin. Then, presuming [ei,ej] = 0,
 the coordinates x of the point m in the coordinate system corresponding to the e basis satisfy#Footnote(8)
 m = φxe(0) = χ−1(x), (4.44) 1
 where χ is the coordinate function being defined. Because the elements of e commute, we can translate separately along the integral curves in any order and reach the same point; the terms in the exponential can be factored into separate exponentials if needed.
-Exercise 4.1: Alternate Angles
+### Exercise  4.1: Alternate Angles
 Note that the Euler angles are singular at θ = 0 (where φ and ψ become degenerate), so the representations of ex, ey, and ez (defined in equa-
      
 4.3 Commutators
@@ -280,9 +280,9 @@ tions 4.29–4.31) have problems there. An alternate coordinate system avoids th
 Consider the “alternate angles” (θa, φa, ψa) which define a rotation matrix via M (θa, φa, ψa) = Rz (φa) Rx (θa) Ry (ψa).
 a. Where does the singularity appear in these alternate coordinates? Do you think you could define a coordinate system for rotations that has no singularities?
 b. What do the ex, ey, and ez basis vector fields look like in this coordinate system?
-Exercise 4.2: General Commutators
+### Exercise  4.2: General Commutators
 Verify equation (4.38).
-Exercise 4.3: SO(3) Basis and Angular Momentum Basis
+### Exercise  4.3: SO(3) Basis and Angular Momentum Basis
 How are Jx, Jy, and Jz related to ex, ey, and ez in equations (4.29–4.31)?
 
 ----

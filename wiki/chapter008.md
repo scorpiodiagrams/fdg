@@ -350,11 +350,11 @@ basis))
 Einstein's field equation (9.27) for gravity, which we will encounter later,
 is expressed in terms of the Ricci tensor.
 
-#### Exercise 8.1: Ricci of a Sphere
+### Exercise 8.1: Ricci of a Sphere
 
 Compute the components of the Ricci tensor of the surface of a sphere.
 
-#### Exercise 8.2: Pseudosphere
+### Exercise 8.2: Pseudosphere
 
 A pseudosphere is a surface in 3-dimensional space. It is a surface of revolution of a tractrix about its asymptote (along the $\hat{z}$-axis). We can make coordinates for the surface $(t, \theta)$ where $t$ is the coordinate along the asymptote and $\theta$ is the angle of revolution. We embed the pseudosphere in rectangular 3-dimensional space with
 

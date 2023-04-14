@@ -677,7 +677,7 @@ If we give a particle a more general timelike 4-velocity in the $\hat{x}$ direct
 ;;    (sqrt (+ 1 (* -1 (expt v/c 2)))))
 ```
 
-#### Exercise 10.1: Relativistic Lorentz Force
+### Exercise 10.1: Relativistic Lorentz Force
 
 Compute all components of the 4-force for a general timelike 4-velocity.
 
