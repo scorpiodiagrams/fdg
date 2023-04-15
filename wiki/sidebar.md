@@ -111,7 +111,7 @@ Notation;Reasons for Scheme and SICM Utils)
 ### Extras
 #Jump( list_of_exercises \Diamond List of Exercises
 # \Diamond List of Exercises
-### Exercise s)
+Exercises)
 ----
 ### Other Content
 #Jump( scm_utils \Diamond SCM Utils
@@ -119,3 +119,8 @@ Notation;Reasons for Scheme and SICM Utils)
 A collection of utilities written in Scheme for the calculations explored in this book. 
 
 Colin Smith has ported SCM Utils to modern Clojure, making Gerald Sussman's code runnable in the browser. )
+#Jump( sicm;preface \Diamond SICM Book
+# \Diamond SICM Repo
+Structure and interpreatation of Classical Mechanics, adapted from Gerald Sussman's book)
+
+
