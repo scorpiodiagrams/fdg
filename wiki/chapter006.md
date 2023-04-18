@@ -415,7 +415,7 @@ b. Stereographic projection is useful for navigation because it is conformal (it
 ### Footnotes
 
 #FootnoteRef(1) See Bishop and Goldberg, /Tensor Analysis on Manifolds/ [3](references!bib_3).
-#FootnoteRef(2) We execute =(define-coordinates t R1-rect)= to make =t= the coordinate function of the real line.
+#FootnoteRef(2) We execute #Code((define-coordinates t R1-rect#)) to make #Code(t) the coordinate function of the real line.
 #FootnoteRef(3) We provide a shortcut to make literal manifold maps:
 
 ```Scheme

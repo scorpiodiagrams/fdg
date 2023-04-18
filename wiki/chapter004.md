@@ -3,7 +3,7 @@
 
 # Chapter 4: Basis Fields
 
-A vector field may be written as a linear combination of basis vector fields. If =n= is the dimension, then any set of =n= linearly independent vector fields may be used as a basis. The coordinate basis $\mathsf{X}$ is an example of a basis.#Footnote(1)
+A vector field may be written as a linear combination of basis vector fields. If #Code(n) is the dimension, then any set of #Code(n) linearly independent vector fields may be used as a basis. The coordinate basis $\mathsf{X}$ is an example of a basis.#Footnote(1)
 
 We will see later that not every basis is a coordinate basis: in order to be a coordinate basis, there must be a coordinate system such that each basis element is the directional derivative operator in a corresponding coordinate direction.
 
@@ -84,7 +84,7 @@ We use these as a vector basis and compute the dual:
 (define e-dual-basis
   (vector-basis->dual e-vector-basis R2-polar))
 ```
-The procedure vector-basis->dual requires an auxiliary coordinate system (here =R2-polar=) to get the $\mathsf{c}_j^k$ coefficient functions from which we compute the $\mathsf{d}_i^k$ coefficient functions. However, the final result is independent of this coordinate system. Then we can verify that the bases $\mathsf{e}$ and $\tilde{\mathsf{e}}$ satisfy the dual relationship (equation 3.41) by applying the dual basis to the vector basis:
+The procedure vector-basis->dual requires an auxiliary coordinate system (here #Code(R2-polar)) to get the $\mathsf{c}_j^k$ coefficient functions from which we compute the $\mathsf{d}_i^k$ coefficient functions. However, the final result is independent of this coordinate system. Then we can verify that the bases $\mathsf{e}$ and $\tilde{\mathsf{e}}$ satisfy the dual relationship (equation 3.41) by applying the dual basis to the vector basis:
 
 ```Scheme
 ((e-dual-basis e-vector-basis) R2-rect-point)
@@ -310,7 +310,7 @@ $$\begin{equation}
 
 We used the fact, shown above, that the commutator of two coordinate basis fields is zero.
 
-We can check this formula for the commutator for the general vector fields =e0= and =e1= in polar coordinates:
+We can check this formula for the commutator for the general vector fields #Code(e0) and #Code(e1) in polar coordinates:
 
 ```Scheme
 (let* ((polar-basis (coordinate-system->basis R2-polar))
@@ -345,7 +345,7 @@ $$\begin{equation}
 \right)}
 \end{equation}$$
 
-Define the vector fields =Jx=, =Jy=, and =Jz= that generate rotations about the three rectangular axes in three dimensions:#Footnote(5)
+Define the vector fields #Code(Jx), #Code(Jy), and #Code(Jz) that generate rotations about the three rectangular axes in three dimensions:#Footnote(5)
 
 ```Scheme
 (define Jz (- (* x d/dy) (* y d/dx)))

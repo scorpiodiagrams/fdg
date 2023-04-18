@@ -104,7 +104,7 @@ p2 − r2 = 1, pq − rs = 0,
 q2 − s2 = −1. (11.27)
 There are four parameters to determine, and only three equations, so the solutions have a free parameter. It turns out that a good choice is β = q/p. Solve to find
 p = 1 = γ(β), (11.28) 1−β2
-and also p=s and q=r=βp. This defines γ. Written out, the transformation is
+and also p=s and q = r = βp. This defines γ. Written out, the transformation is
 ξ0 = γ(β)((ξ′)0 + β(ξ′)1)
 ξ1 = γ(β)(β(ξ′)0 + (ξ′)1). (11.29)
 Simple physical arguments5 show that this mathematical result relates the time and space coordinates for two systems in uniform relative motion. The parameter β is related to the relative velocity.

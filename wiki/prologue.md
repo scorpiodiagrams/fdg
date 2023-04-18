@@ -89,9 +89,9 @@ This expression is equivalent to a computer program:#Footnote(6)
 #+RESULTS:
 : #| Lagrange-equations |#
 
-In the Lagrange equations procedure the parameter =Lagrangian= is a procedure that implements the Lagrangian. The derivatives of the Lagrangian, for example
+In the Lagrange equations procedure the parameter #Code(Lagrangian) is a procedure that implements the Lagrangian. The derivatives of the Lagrangian, for example
 =((partial 2) Lagrangian)=, are also procedures. The state-space path procedure
-=(Gamma w)= is constructed from the configuration-space path procedure =w= by the procedure =Gamma=:
+=(Gamma w)= is constructed from the configuration-space path procedure #Code(w) by the procedure #Code(Gamma):
 
 ```Scheme
 (define ((Gamma w) t)
@@ -101,10 +101,10 @@ In the Lagrange equations procedure the parameter =Lagrangian= is a procedure th
 #+RESULTS:
 : #| Gamma |#
 
-where =up= is a constructor for a data structure that represents a state of the dynamical system (time, coordinates, velocities).
+where #Code(up) is a constructor for a data structure that represents a state of the dynamical system (time, coordinates, velocities).
 
-The result of applying the =Lagrange-equations= procedure to a procedure
-=Lagrangian= that implements a Lagrangian function is a procedure that takes a configuration-space path procedure =w= and returns a procedure that gives the residual of the Lagrange equations for that path at a time.
+The result of applying the #Code(Lagrange-equations) procedure to a procedure
+#Code(Lagrangian) that implements a Lagrangian function is a procedure that takes a configuration-space path procedure #Code(w) and returns a procedure that gives the residual of the Lagrange equations for that path at a time.
 
 For example, consider the harmonic oscillator, with Lagrangian
 

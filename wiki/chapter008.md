@@ -28,7 +28,7 @@ The Riemann curvature is computed by
 (nabla (commutator w v))))
 ```
 
-The =Riemann-curvature= procedure is parameterized by the relevant covariant-derivative operator =nabla=, which implements $\nabla$. The =nabla= is itself dependent on the connection, which provides the details of the local geometry. The same =Riemann-curvature= procedure works for ordinary covariant derivatives and for covariant derivatives over a map. Given two vector fields, the result of =((Riemann-curvature nabla) w v)= is a procedure that takes a vector field and produces a vector field so we can implement the Riemann tensor as
+The #Code(Riemann-curvature) procedure is parameterized by the relevant covariant-derivative operator #Code(nabla), which implements $\nabla$. The #Code(nabla) is itself dependent on the connection, which provides the details of the local geometry. The same #Code(Riemann-curvature) procedure works for ordinary covariant derivatives and for covariant derivatives over a map. Given two vector fields, the result of =((Riemann-curvature nabla) w v)= is a procedure that takes a vector field and produces a vector field so we can implement the Riemann tensor as
 
 ```Scheme
 (define ((Riemann nabla) omega u w v)
@@ -398,7 +398,7 @@ $$\begin{equation}
 
 The torsion takes two vector fields and produces a vector field. The torsion depends on the covariant derivative, which is constructed from the connection.
 
-We account for this dependency by parameterizing the program by =nabla=.
+We account for this dependency by parameterizing the program by #Code(nabla).
 
 ```Scheme
 (define ((torsion-vector nabla) u v)
@@ -409,7 +409,7 @@ We account for this dependency by parameterizing the program by =nabla=.
 (omega ((torsion-vector nabla) u v)))
 ```
 
-The torsion for the connection for the 2-sphere specified by the Christoffel coefficients =S2-Christoffel= above is zero. We demonstrate this by applying the torsion to the basis vector fields:
+The torsion for the connection for the 2-sphere specified by the Christoffel coefficients #Code(S2-Christoffel) above is zero. We demonstrate this by applying the torsion to the basis vector fields:
 
 ```Scheme
 (for-each
@@ -512,7 +512,7 @@ $$\begin{equation}
 
 #### Longitude Lines on a Sphere
 
-Consider longitude lines on the unit sphere.#Footnote(8) Let =theta= be colatitude and =phi= be longitude. These are the parameters $s$ and $t$, respectively. Then let =T= be the vector field =d/dtheta= that is tangent to the longitude lines.
+Consider longitude lines on the unit sphere.#Footnote(8) Let #Code(theta) be colatitude and #Code(phi) be longitude. These are the parameters $s$ and $t$, respectively. Then let #Code(T) be the vector field #Code(d#/dtheta) that is tangent to the longitude lines.
 
 We can verify that every longitude line is a geodesic:
 
@@ -521,9 +521,9 @@ We can verify that every longitude line is a geodesic:
 ;; 0
 ```
 
-where =omega= is an arbitrary one-form field.
+where #Code(omega) is an arbitrary one-form field.
 
-Now let =U= be =d/dphi=, then =U= commutes with =T=:
+Now let #Code(U) be #Code(d#/dphi), then #Code(U) commutes with #Code(T):
 
 ```Scheme
 (((commutator U T) f) m)
@@ -539,7 +539,7 @@ The torsion for the usual connection for the sphere is zero:
 ;; 0
 ```
 
-So we can compute the geodesic deviation using =Riemann=
+So we can compute the geodesic deviation using #Code(Riemann)
 
 ```Scheme
 ((+ (omega ((nabla T) ((nabla T) U)))
@@ -729,7 +729,7 @@ X Y Z)
 ### Footnotes
 
 #FootnoteRef(1) [11](references!bib_11), [4](references!bib_4), and [14](references!bib_14) use our definition. [20](references!bib_20) uses a different convention for the order of arguments and a different sign. See Appendix C for a definition of tensors.
-#FootnoteRef(2) The connection specified by =sphere-Cartan= is defined on page 107.
+#FootnoteRef(2) The connection specified by #Code(sphere-Cartan) is defined on page 107.
 #FootnoteRef(3) The map $\gamma$ takes points on the real line to points on the target manifold. The chart $\chi$ gives coordinates of points on the target manifold while $\chi_\mathsf{R}$ gives a time coordinate on the real line.
 #FootnoteRef(4) The series may not converge for large increments in the independent variable. In this case it is appropriate to numerically integrate the differential equations directly.
 #FootnoteRef(5) The parallel-transport operators are evolution operators, and therefore descend into composition:

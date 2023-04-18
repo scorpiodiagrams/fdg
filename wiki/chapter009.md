@@ -91,7 +91,7 @@ But raising a one-form field to make a vector field is a bit more complicated:
        basis))))
 ```
 
-where =contract= is the trace over a basis of a two-argument function that takes a vector field and a one-form field as its arguments.#Footnote(1)
+where #Code(contract) is the trace over a basis of a two-argument function that takes a vector field and a one-form field as its arguments.#Footnote(1)
 
 ```Scheme
 (define (contract proc basis)
@@ -457,7 +457,7 @@ R = \sum_{ij} \mathsf{g}\left(\tilde{\mathsf{e}}^i, \tilde{\mathsf{e}}^j\right) 
 r\left(\mathsf{e}^i, \mathsf{e}^j\right).
 \end{equation}$$
 
-The =trace2down= procedure converts a tensor that takes two vector fields into a tensor that takes a vector field and a one-form field, and then it contracts the result over a basis to make a trace. It is useful for getting the Ricci scalar from the Ricci tensor, given a metric and a basis.
+The #Code(trace2down) procedure converts a tensor that takes two vector fields into a tensor that takes a vector field and a one-form field, and then it contracts the result over a basis to make a trace. It is useful for getting the Ricci scalar from the Ricci tensor, given a metric and a basis.
 
 ```Scheme
 (define ((trace2down metric basis) tensor)
@@ -626,7 +626,7 @@ Test particles move along geodesics in spacetime. Now that we have a metric for 
   (chart R1-rect)))
 ```
 
-This equation will satisfy the geodesic equations for compatible values of the radius =r= and the angular velocity =omega. If you substitute this into the geodesic equation and set the residual to zero you will obtain a constraint relating =r and =omega=. Do it.
+This equation will satisfy the geodesic equations for compatible values of the radius #Code(r) and the angular velocity =omega. If you substitute this into the geodesic equation and set the residual to zero you will obtain a constraint relating =r and #Code(omega). Do it.
 
 Surprise: You should find out that $\omega^2 r^3 = GM$ --- Kepler's law!
 
@@ -634,7 +634,7 @@ Surprise: You should find out that $\omega^2 r^3 = GM$ --- Kepler's law!
 
 In Schwarzschild spacetime there are stable circular orbits if the coordinate $r$ is large enough, but below that value all orbits are unstable. The critical value of $r$ is larger than the Schwarzschild horizon radius. Let's find that value.
 
-For example, we can consider a perturbation of the orbit of constant longitude. Here is the result of adding an exponential variation of size =epsilon=:
+For example, we can consider a perturbation of the orbit of constant longitude. Here is the result of adding an exponential variation of size #Code(epsilon):
 
 ```Scheme
 (define (prime-meridian+X r epsilon X)
@@ -660,7 +660,7 @@ Plugging this into the geodesic equation yields a structure of residuals:
 ((point R1-rect) 't))))
 ```
 
-The characteristic equation in the eigenvalue =lambda= can be obtained as the numerator of the expression:
+The characteristic equation in the eigenvalue #Code(lambda) can be obtained as the numerator of the expression:
 
 ```Scheme
 (determinant
@@ -718,7 +718,7 @@ One exact solution to the Einstein equations was found by Alexander Friedmann in
 g))
 ```
 
-Here =c= is the speed of light, =k= is the intrinsic curvature, and =R= is a length scale that is a function of time.
+Here #Code(c) is the speed of light, #Code(k) is the intrinsic curvature, and #Code(R) is a length scale that is a function of time.
 
 The associated stress-energy tensor is
 
@@ -735,7 +735,7 @@ The associated stress-energy tensor is
 T))
 ```
 
-where =rho= is the energy density, and =p= is the pressure in an ideal fluid model.
+where #Code(rho) is the energy density, and #Code(p) is the pressure in an ideal fluid model.
 
 The Robertson-Walker equations are:
 
@@ -769,8 +769,8 @@ b. Assume that in a "matter-dominated universe" radiation pressure is negligible
 ----
 ### Footnotes
 
-#FootnoteRef(1) Notice that =raise= and =lower= are not symmetrical. This is because vector fields and form fields are not symmetrical: a vector field takes a manifold function as its argument, whereas a form field takes a vector field as its argument. This asymmetry is not apparent in traditional treatments based on index notation.
-#FootnoteRef(2) The procedure =Lagrange-explicit= produces the accelerations of the coordinates. In this code the division operator (=/=) multiplies its first argument on the left by the inverse of its second argument.
+#FootnoteRef(1) Notice that #Code(raise) and #Code(lower) are not symmetrical. This is because vector fields and form fields are not symmetrical: a vector field takes a manifold function as its argument, whereas a form field takes a vector field as its argument. This asymmetry is not apparent in traditional treatments based on index notation.
+#FootnoteRef(2) The procedure #Code(Lagrange-explicit) produces the accelerations of the coordinates. In this code the division operator (#Code(/)) multiplies its first argument on the left by the inverse of its second argument.
 
 ```Scheme
 (define (Lagrange-explicit L)
@@ -785,7 +785,7 @@ b. Assume that in a "matter-dominated universe" radiation pressure is negligible
 #FootnoteRef(5) The tensor with components $G_{\mu \nu} = R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu}$ is called the Einstein tensor. In his search for an appropriate field equation for gravity, Einstein demanded /general covariance/ (independence of coordinate system) and local Lorentz invariance (at each point transformations must preserve the line element). These considerations led Einstein to look for a tensor equation (see Appendix C).
 #FootnoteRef(6) Start with equation (9.26). Raise one index of both sides, and then contract. Notice that the trace $g_\mu^\mu = 4$, the dimension of spacetime.
 This gets $R = −\left(\frac{8 \pi G}{c^4}\right) T$ , from which we can deduce equation (9.27).
-#FootnoteRef(7) The procedure =trace2down= is defined on page 144. This expression also uses =drop2=, which converts a tensor field that takes two one-form fields into a tensor field that takes two vector fields. Its definition is
+#FootnoteRef(7) The procedure #Code(trace2down) is defined on page 144. This expression also uses #Code(drop2), which converts a tensor field that takes two one-form fields into a tensor field that takes two vector fields. Its definition is
 
 ```Scheme
 (define ((drop2 metric-tensor basis) tensor)

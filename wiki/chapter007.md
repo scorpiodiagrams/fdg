@@ -954,7 +954,7 @@ where σ is the tuple of the coordinates of the path on the manifold and $u$ is 
 We now set this up for numerical integration. Let $s(t)=(t,u(t))$ be a state tuple, combining the time and the coordinates of $\mathsf{u}_{\gamma}$ at that time. Then we define $g$:
 
 $$\begin{equation}
-g(s(t))=Ds(t)=(1,Du(t)),
+g(s(t)) = Ds(t) = (1,Du(t)),
 \end{equation}$$
 
 where $Du(t)$ is the tuple of right-hand sides of equation (7.72).

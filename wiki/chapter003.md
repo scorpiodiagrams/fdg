@@ -75,7 +75,7 @@ We implement the definition of a vector field (3.4) as:
 
 The vector field is an operator, like derivative.#Footnote(2)
 
-Given a coordinate system and coefficient functions that map coordinates to real values, we can make a vector field. For example, a general vector field can be defined by giving components relative to the coordinate system ~R2-rect~ by
+Given a coordinate system and coefficient functions that map coordinates to real values, we can make a vector field. For example, a general vector field can be defined by giving components relative to the coordinate system #Code(R2-rect) by
 ```Scheme
 (define v
 (components->vector-field
@@ -83,7 +83,7 @@ Given a coordinate system and coefficient functions that map coordinates to real
     (literal-function ’b^1 R2->R))
 R2-rect))
 ```
-To make it convenient to define literal vector fields we provide a shorthand: ~(define v (literal-vector-field ’b R2-rect))~ This makes a vector field with component functions named ~b^0~ and ~b^1~ and names the result ~v~. When this vector field is applied to an arbitrary manifold function it gives the directional derivative of that manifold function in the direction specified by the components ~b^0~ and ~b^1~:
+To make it convenient to define literal vector fields we provide a shorthand: ~(define v (literal-vector-field ’b R2-rect))~ This makes a vector field with component functions named #Code(b^0) and #Code(b^1) and names the result #Code(v). When this vector field is applied to an arbitrary manifold function it gives the directional derivative of that manifold function in the direction specified by the components #Code(b^0) and #Code(b^1):
 ```Scheme
 ((v (literal-manifold-function ’f-rect R2-rect)) R2-rect-point)
 ;; (+ (* (((partial 0) f-rect) (up x0 y0)) (b?0 (up x0 y0)))
@@ -110,7 +110,7 @@ $$\begin{equation}
 \end{equation}$$
 with the definitions $f = \mathsf{f} \circ \chi^{-1}$ and $x = \chi(\mathsf{m})$. The function $b$ is the coefficient function for the vector field $\mathsf{v}$. It provides a scale factor for the component in each coordinate direction. However, $v$ is the coordinate representation of the vector field $\mathsf{v}$ in that it takes directional derivatives of coordinate representations of manifold functions.
 
-Given a vector field ~v~ and a coordinate system coordsys we can construct the coordinate representation of the vector field.#Footnote(3)
+Given a vector field #Code(v) and a coordinate system coordsys we can construct the coordinate representation of the vector field.#Footnote(3)
 ```Scheme
 (define (coordinatize v coordsys)
  (define ((coordinatized-v f) x)
@@ -189,7 +189,7 @@ $$\begin{equation}
 \end{equation}$$
 to call to mind that it is an operator that computes the directional derivative in the ith coordinate direction.
 
-In addition to making the coordinate functions, the procedure ~define-coordinates~ also makes the traditional named basis vectors. Using these we can examine the application of a rectangular basis vector to a polar coordinate function:
+In addition to making the coordinate functions, the procedure #Code(define-coordinates) also makes the traditional named basis vectors. Using these we can examine the application of a rectangular basis vector to a polar coordinate function:
 ```Scheme
 (define-coordinates (up x y) R2-rect)
 (define-coordinates (up r theta) R2-polar)
@@ -326,7 +326,7 @@ For example, a vector field \textsf{circular} that generates a rotation about th
 ```Scheme
 (define circular (- (* x d/dy) (* y d/dx)))
 ```
-We can exponentiate the circular vector field, to generate an evolution in a circle around the origin starting at ~(1, 0)~:
+We can exponentiate the circular vector field, to generate an evolution in a circle around the origin starting at #Code((1, 0#)):
 ```Scheme
 (series:for-each print-expression
               (((exp (* ’t circular)) (chart R2-rect))
@@ -339,7 +339,7 @@ We can exponentiate the circular vector field, to generate an evolution in a cir
 ;; (up (* 1/24 (expt t 4)) 0)
 ;; (up 0 (* 1/120 (expt t 5)))
 ```
-These are the first six terms of the series expansion of the coordinates of the position for parameter ~t~.
+These are the first six terms of the series expansion of the coordinates of the position for parameter #Code(t).
 
 We can define an evolution operator $\mathsf{E}_{\Delta t, \mathsf{v}}$ using equation (3.31)
 $$\begin{equation}
@@ -355,7 +355,7 @@ We can approximate the evolution operator by summing the series up to a given or
 order))
 ```
 We can evolve circular from the initial point up to the parameter
-~t~, and accumulate the first six terms as follows:
+#Code(t), and accumulate the first six terms as follows:
 ```Scheme
 ((((evolution 6) ’delta-t circular) (chart R2-rect))
 ((point R2-rect) (up 1 0)))
@@ -538,7 +538,7 @@ A coordinate-basis one-form field is often written $\mathsf{dx}^i$. This traditi
 $$\begin{equation}
 \mathsf{dx}^i = \tilde{\mathsf{X}}^i = \mathsf{d} (\chi^i).
 \end{equation}$$
-The ~define-coordinates~ procedure also makes the basis one-form fields with these traditional names inherited from the coordinates.
+The #Code(define-coordinates) procedure also makes the basis one-form fields with these traditional names inherited from the coordinates.
 
 We can illlustrate the duality of the coordinate-basis vector fields and the coordinate-basis one-form fields:
 ```Scheme
@@ -552,7 +552,7 @@ We can illlustrate the duality of the coordinate-basis vector fields and the coo
 ((dx d/dx) R2-rect-point)
 ;; 0
 ```
-We can use the coordinate-basis one-form fields to extract the coefficients of ~circular~ on the rectangular vector basis:
+We can use the coordinate-basis one-form fields to extract the coefficients of #Code(circular) on the rectangular vector basis:
 
 ```Scheme
 ((dx circular) R2-rect-point)
@@ -571,7 +571,7 @@ But we can also find the coefficients on the polar vector basis:
 ((dtheta circular) R2-rect-point)
 ;; 1
 ```
-So ~circular~ is the same as ~d/dtheta~, as we can see by applying them both to the general function ~f~:
+So #Code(circular) is the same as #Code(d/dtheta), as we can see by applying them both to the general function #Code(f):
 ```Scheme
 (define f (literal-manifold-function ’f-rect R2-rect))
 (((- circular d/dtheta) f) R2-rect-point)
@@ -666,8 +666,8 @@ The topography of a region on the Earth can be specified by a manifold function 
 ### Footnotes
 
 #FootnoteRef(1) In multiple dimensions the derivative $Df(x)$ is a down tuple structure of the partial derivatives and the increment $\Delta x$ is an up tuple structure, so the indicated product is to be interpreted as a contraction. (See equation B.8.)
-#FootnoteRef(2) An operator is just like a procedure except that multiplication is interpreted as composition. For example, the derivative procedure is made into an operator ~D~ so that we can say ~(expt D 2)~ and expect it to compute the second derivative. The procedure ~procedure->vector-field~ makes a vector-field operator.
-#FootnoteRef(3) The ~make-operator~ procedure takes a procedure and returns an operator.
+#FootnoteRef(2) An operator is just like a procedure except that multiplication is interpreted as composition. For example, the derivative procedure is made into an operator #Code(D) so that we can say #Code((expt D 2)) and expect it to compute the second derivative. The procedure #Code(procedure->vector-field) makes a vector-field operator.
+#FootnoteRef(3) The #Code(make-operator) procedure takes a procedure and returns an operator.
 #FootnoteRef(4) If $\mathsf{f}$ has structured output then $\mathsf{v}(\mathsf{f})$ is the structure resulting from $\mathsf{v}$ being applied to each component of $\mathsf{f}$.
 #FootnoteRef(5) A set of vector fields, $\{\mathsf{v}_i\}$, is linearly independent with respect to manifold functions if we cannot find nonzero manifold functions, $\{\mathsf{a}_i\}$, such that
 $$\begin{equation}
@@ -683,12 +683,12 @@ $$\begin{equation}
 
 which is the relation in the usual Leibniz notation. As Spivak pointed out in /Calculus on Manifolds/, p.45, $f$ means something different on each side of the equation.
 #FootnoteRef(7) For coordinate paths $q$ and $q'$ related by $q(t) = (\chi \circ (\chi')^{-1})(q'(t))$ the velocities are related by $Dq(t) = D(\chi \circ (\chi')^{-1})(q'(t))Dq'(t)$. Abstracting off paths, we get $v = D(\chi \circ (\chi')^{-1})(x')v'$.
-#FootnoteRef(8) In this expression ~d/dx~ and ~d/dy~ are vector fields that take directional derivatives of manifold functions and evaluate them at manifold points; ~x~ and ~y~ are manifold functions. ~define-coordinates~ was used to create these operators and functions, see page 27.
+#FootnoteRef(8) In this expression #Code(d/dx) and #Code(d/dy) are vector fields that take directional derivatives of manifold functions and evaluate them at manifold points; #Code(x) and #Code(y) are manifold functions. #Code(define-coordinates) was used to create these operators and functions, see page 27.
 
-Note that \textsf{circular} is an operator---a property inherited from ~d/dx~ and ~d/dy~.
+Note that \textsf{circular} is an operator---a property inherited from #Code(d/dx) and #Code(d/dy).
 #FootnoteRef(9) The differential of a manifold function will turn out to be a special case of the exterior derivative, which will be introduced later.
 #FootnoteRef(10) The Kronecker delta $\delta^i_j$ is one if $i = j$ and zero otherwise.
 #FootnoteRef(11) The analogous recovery of coefficient tuples from vector fields is equation
 (3.3): $b^i_{\chi, \mathsf{v}} = \mathsf{v}(\chi^i) \circ \chi^{-1}$.
-#FootnoteRef(12) The procedure ~components->1form-field~ is analogous to the procedure ~components->vector-field~ introduced earlier.
+#FootnoteRef(12) The procedure #Code(components->1form-field) is analogous to the procedure #Code(components->vector-field) introduced earlier.
 #FootnoteEnd

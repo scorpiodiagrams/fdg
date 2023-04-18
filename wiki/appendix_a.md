@@ -8,7 +8,7 @@
 
 Here we give an elementary introduction to Scheme.#Footnote(1) For a more precise explanation of the language see the IEEE standard [10](references!bib_10); for a longer introduction see the textbook [1](references!bib_1).
 
-Scheme is a simple programming language based on expressions. An expression names a value. For example, the numeral =3.14= names an approximation to a familiar number. There are primitive expressions, such as a numeral, that we directly recognize, and there are compound expressions of several kinds.
+Scheme is a simple programming language based on expressions. An expression names a value. For example, the numeral #Code(3.14) names an approximation to a familiar number. There are primitive expressions, such as a numeral, that we directly recognize, and there are compound expressions of several kinds.
 
 ### Procedure Calls
 
@@ -24,7 +24,7 @@ A /procedure call/ is a kind of compound expression. A procedure call is a seque
 ;; 3.14
   ```
 
-are both compound expressions that name the same number as the numeral =3.14=.#Footnote(2) In these cases the symbols =+= and =*= name procedures that add and multiply, respectively. If we replace any subexpression of any expression with an expression that names the same thing as the original subexpression, the thing named by the overall expression remains unchanged. In general, a procedure call is written
+are both compound expressions that name the same number as the numeral #Code(3.14).#Footnote(2) In these cases the symbols #Code(+) and #Code(#*) name procedures that add and multiply, respectively. If we replace any subexpression of any expression with an expression that names the same thing as the original subexpression, the thing named by the overall expression remains unchanged. In general, a procedure call is written
 $$\begin{equation}
 (\quad \textit{operator} \quad \textit{operand-1} \quad \ldots \quad \textit{operand-n} \quad )
 \end{equation}$$
@@ -61,7 +61,7 @@ We can use the define construct to give a name to any object. For example, if we
 (define square (lambda (x) (* x x)))
 ```
 
-we can then use the symbols =pi= and =square wherever the numeral or the $\lambda$-expression could appear. For example, the area of the surface of a sphere of radius 5 meters is
+we can then use the symbols #Code(pi) and =square wherever the numeral or the $\lambda$-expression could appear. For example, the area of the surface of a sphere of radius 5 meters is
 
 ```Scheme
 (* 4 pi (square 5))
@@ -115,7 +115,7 @@ Conditional expressions may be used to choose among several expressions to produ
      ((> x 0) x)))
 ```
 
-The conditional =cond= takes a number of clauses. Each clause has a predicate expression, which may be either true or false, and a consequent expression. The value of the =cond= expression is the value of the consequent expression of the first clause for which the corresponding predicate expression is true. The general form of a conditional expression is
+The conditional #Code(cond) takes a number of clauses. Each clause has a predicate expression, which may be either true or false, and a consequent expression. The value of the #Code(cond) expression is the value of the consequent expression of the first clause for which the corresponding predicate expression is true. The general form of a conditional expression is
 
 $$\begin{align*}
 \texttt{(cond }&\texttt{( } \textit{predicate-1}\quad \textit{consequent-1} \texttt{)} \\
@@ -123,7 +123,7 @@ $$\begin{align*}
 &\texttt{( } \textit{predicate-n}\quad \textit{consequent-n} \texttt{))}
 \end{align*}$$
 
-For convenience there is a special predicate expression =else= that can be used as the predicate in the last clause of a =cond=. The =if= construct provides another way to make a conditional when there is only a binary choice to be made. For example, because we have to do something special only when the argument is negative, we could have defined =abs= as:
+For convenience there is a special predicate expression #Code(else) that can be used as the predicate in the last clause of a #Code(cond). The #Code(if) construct provides another way to make a conditional when there is only a binary choice to be made. For example, because we have to do something special only when the argument is negative, we could have defined #Code(abs) as:
 
 ```Scheme
 (define (abs x)
@@ -132,11 +132,11 @@ For convenience there is a special predicate expression =else= that can be used 
    x))
 ```
 
-The general form of an =if= expression is
+The general form of an #Code(if) expression is
 $$\begin{equation}
 \texttt{(if} \quad \textit{predicate} \quad \textit{consequent} \quad \textit{alternative} \texttt{)}
 \end{equation}$$
-If the /predicate/ is true the value of the =if= expression is the value of the /consequent/, otherwise it is the value of the /alternative/.
+If the /predicate/ is true the value of the #Code(if) expression is the value of the /consequent/, otherwise it is the value of the /alternative/.
 
 ### Recursive Procedures
 
@@ -159,7 +159,7 @@ Given conditionals and definitions, we can write recursive procedures. For examp
 
 ### Local Names
 
-The =let= expression is used to give names to objects in a local context. For example,
+The #Code(let) expression is used to give names to objects in a local context. For example,
 
 ```Scheme
 (define (f radius)
@@ -171,7 +171,7 @@ The =let= expression is used to give names to objects in a local context. For ex
 ;; 1
 ```
 
-The general form of a =let= expression is
+The general form of a #Code(let) expression is
 
 $$\begin{align*}
 \texttt{(let (}&\texttt{( } \textit{variable-1}\quad \textit{expression-1} \texttt{)} \\
@@ -180,9 +180,9 @@ $$\begin{align*}
 \qquad \textit{body} \texttt{)}
 \end{align*}$$
 
-The value of the =let= expression is the value of the /body/ expression in the context where the variables /variable-i/ have the values of the expressions /expression-i/. The expressions /expression-i/ may not refer to any of the variables.
+The value of the #Code(let) expression is the value of the /body/ expression in the context where the variables /variable-i/ have the values of the expressions /expression-i/. The expressions /expression-i/ may not refer to any of the variables.
 
-A slight variant of the =let= expression provides a convenient way to express looping constructs. We can write a procedure that implements an alternative algorithm for computing factorials as follows:
+A slight variant of the #Code(let) expression provides a convenient way to express looping constructs. We can write a procedure that implements an alternative algorithm for computing factorials as follows:
 
 ```Scheme
 (define (factorial n)
@@ -195,13 +195,13 @@ A slight variant of the =let= expression provides a convenient way to express lo
 ;; 720
 ```
 
-Here, the symbol =factlp= following the =let= is locally defined to be a procedure that has the variables =count= and =answer= as its formal parameters. It is called the first time with the expressions 1 and 1, initializing the loop. Whenever the procedure named =factlp= is called later, these variables get new values that are the values of the operand expressions =(+ count 1)= and =(* count answer)=.
+Here, the symbol #Code(factlp) following the #Code(let) is locally defined to be a procedure that has the variables #Code(count) and #Code(answer) as its formal parameters. It is called the first time with the expressions 1 and 1, initializing the loop. Whenever the procedure named #Code(factlp) is called later, these variables get new values that are the values of the operand expressions #Code((+ count 1#)) and #Code((#* count answer#)).
 
 ### Compound Data --- Lists and Vectors
 
 Data can be glued together to form compound data structures. A list is a data structure in which the elements are linked sequentially. A Scheme vector is a data structure in which the elements are packed in a linear array. New elements can be added to lists, but to access the $n$th element of a list takes computing time proportional to $n$. By contrast a Scheme vector is of fixed length, and its elements can be accessed in constant time. All data structures in this book are implemented as combinations of lists and Scheme vectors. Compound data objects are constructed from components by procedures called constructors and the components are accessed by selectors.
 
-The procedure =list= is the constructor for lists. The selector =list-ref= gets an element of the list. All selectors in Scheme are zero-based. For example, 
+The procedure #Code(list) is the constructor for lists. The selector #Code(list-ref) gets an element of the list. All selectors in Scheme are zero-based. For example, 
 
 ```Scheme
 (define a-list (list 6 946 8 356 12 620))
@@ -220,7 +220,7 @@ a-list
 ;; 6
 ```
 
-Lists are built from pairs. A pair is made using the constructor =cons=. The selectors for the two components of the pair are =car= and =cdr= (pronounced "could-er").#Footnote(7) A list is a chain of pairs, such that the =car= of each pair is the list element and the =cdr= of each pair is the next pair, except for the last =cdr=, which is a distinguishable value called the empty list and is written =()=. Thus,
+Lists are built from pairs. A pair is made using the constructor #Code(cons). The selectors for the two components of the pair are #Code(car) and #Code(cdr) (pronounced "could-er").#Footnote(7) A list is a chain of pairs, such that the #Code(car) of each pair is the list element and the #Code(cdr) of each pair is the next pair, except for the last #Code(cdr), which is a distinguishable value called the empty list and is written #Code((#)). Thus,
 
 ```Scheme
 (car a-list)
@@ -250,11 +250,11 @@ another-list
 ;; 946
 ```
 
-Both =a-list= and =another-list= share the same tail (their =cdr=).
+Both #Code(a-list) and #Code(another-list) share the same tail (their #Code(cdr)).
 
-There is a predicate =pair?= that is true of pairs and false on all other types of data.
+There is a predicate #Code(pair?) that is true of pairs and false on all other types of data.
 
-Vectors are simpler than lists. There is a constructor =vector= that can be used to make vectors and a selector =vector-ref for accessing the elements of a vector:
+Vectors are simpler than lists. There is a constructor #Code(vector) that can be used to make vectors and a selector =vector-ref for accessing the elements of a vector:
 
 ```Scheme
 (define a-vector
@@ -276,16 +276,16 @@ a-vector
 
 Notice that a vector is distinguished from a list on printout by the character $\#$ appearing before the initial parenthesis.
 
-There is a predicate =vector?= that is true of vectors and false for all other types of data.
+There is a predicate #Code(vector?) that is true of vectors and false for all other types of data.
 
 The elements of lists and vectors may be any kind of data, including numbers, procedures, lists, and vectors. Numerous other procedures for manipulating list-structured data and vector-structured data can be found in the Scheme
 online documentation.
 
 ### Symbols
 
-Symbols are a very important kind of primitive data type that we use to make programs and algebraic expressions. You probably have noticed that Scheme programs look just like lists. In fact, they are lists. Some of the elements of the lists that make up programs are symbols, such as =+= and =vector=.#Footnote(8) If we are to make programs that can manipulate programs, we need to be able to write an expression that names such a symbol. This is accomplished by the mechanism of /quotation/. The name of the symbol =+= is the expression ='+=, and in general the name of an expression is the expression preceded by a single quote character. Thus the name of the expression =(+ 3 a)= is ='(+ 3 a)=.
+Symbols are a very important kind of primitive data type that we use to make programs and algebraic expressions. You probably have noticed that Scheme programs look just like lists. In fact, they are lists. Some of the elements of the lists that make up programs are symbols, such as #Code(+) and #Code(vector).#Footnote(8) If we are to make programs that can manipulate programs, we need to be able to write an expression that names such a symbol. This is accomplished by the mechanism of /quotation/. The name of the symbol #Code(+) is the expression #Code('+), and in general the name of an expression is the expression preceded by a single quote character. Thus the name of the expression #Code((+ 3 a#)) is #Code('(+ 3 a#)).
 
-We can test if two symbols are identical by using the predicate =eq?=. For example, we can write a program to determine if an expression is a sum:
+We can test if two symbols are identical by using the predicate #Code(eq?). For example, we can write a program to determine if an expression is a sum:
 
 ```Scheme
 (define (sum? expression)
@@ -300,9 +300,9 @@ We can test if two symbols are identical by using the predicate =eq?=. For examp
 ;; #f
 ```
 
-Here =#t= and =#f= are the printed representations of the boolean values true and false.
+Here #Code(#t) and #Code(#f) are the printed representations of the boolean values true and false.
 
-Consider what would happen if we were to leave out the quote in the expression =(sum? '(+ 3 a))=. If the variable =a= had the value 4 we would be asking if 7 is a sum. But what we wanted to know was whether the expression =(+ 3 a)= is a sum. That is why we need the quote.
+Consider what would happen if we were to leave out the quote in the expression #Code((sum? '(+ 3 a#)#)). If the variable #Code(a) had the value 4 we would be asking if 7 is a sum. But what we wanted to know was whether the expression #Code((+ 3 a#)) is a sum. That is why we need the quote.
 
 ----
 ### Footnotes
@@ -312,7 +312,7 @@ Consider what would happen if we were to leave out the quote in the expression =
 #FootnoteRef(3) In Scheme every parenthesis is essential: you cannot add extra parentheses or remove any.
 #FootnoteRef(4) The logician Alonzo Church [5](references!bib_5) invented $\lambda$-notation to allow the specification of an anonymous function of a named parameter:
 $\boldsymbol{\lambda}x[\text{expression in } x]$. This is read, "That function of one argument that is obtained by substituting the argument for x in the indicated expression."
-#FootnoteRef(5) The definition of =square= given here is not the definition of =square in the Scmutils system. In Scmutils, =square= is extended for tuples to mean the sum of the squares of the components of the tuple. However, for arguments that are not tuples the Scmutils square does multiply the argument by itself.
+#FootnoteRef(5) The definition of #Code(square) given here is not the definition of =square in the Scmutils system. In Scmutils, #Code(square) is extended for tuples to mean the sum of the squares of the components of the tuple. However, for arguments that are not tuples the Scmutils square does multiply the argument by itself.
 #FootnoteRef(6) The examples are indented to help with readability. Scheme does not care about extra white space, so we may add as much as we please to make things easier to read.
 #FootnoteRef(7) These names are accidents of history. They stand for "Contents of the Address part of Register" and "Contents of the Decrement part of Register" of the IBM 704 computer, which was used for the first implementation of Lisp in the late 1950s. Scheme is a dialect of Lisp.
 #FootnoteRef(8)  Symbols may have any number of characters. A symbol may not contain whitespace or a delimiter character, such as parentheses, brackets, quotation marks, comma, or $\#$.

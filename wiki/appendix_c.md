@@ -106,7 +106,7 @@ $$\begin{equation}
 
 Whew!
 
-It is easy to generalize these formulas to tensors with general arguments. We have formulated the general tensor test as a program =tensor-test= that takes the procedure =T= to be tested, a list of argument types, and a coordinate system to be used. It tests each argument for linearity (over functions). If the function passed as T is a tensor, the result will be a list of zeros.
+It is easy to generalize these formulas to tensors with general arguments. We have formulated the general tensor test as a program #Code(tensor-test) that takes the procedure #Code(T) to be tested, a list of argument types, and a coordinate system to be used. It tests each argument for linearity (over functions). If the function passed as T is a tensor, the result will be a list of zeros.
 
 ```Scheme
 (tensor-test

@@ -37,7 +37,7 @@ $$\begin{equation}
 (f \circ g) : x \mapsto (f \circ g)(x) = f(g(x)).
 \end{equation}$$
 
-A procedure =h= that computes the cube of the sine of its argument may be defined by composing the procedures =cube= and =sin=:
+A procedure #Code(h) that computes the cube of the sine of its argument may be defined by composing the procedures #Code(cube) and #Code(sin):
 
 ```Scheme
 (define h (compose cube sin))
@@ -63,7 +63,7 @@ $$\begin{equation}
 \end{aligned}
 \end{equation}$$
 
-A procedure =g= that multiplies the cube of its argument by the sine of its argument is
+A procedure #Code(g) that multiplies the cube of its argument by the sine of its argument is
 
 ```Scheme
 (define g (* cube sin))
@@ -79,7 +79,7 @@ A procedure =g= that multiplies the cube of its argument by the sine of its argu
 
 ### Symbolic Values
 
-As in usual mathematical notation, arithmetic is extended to allow the use of symbols that represent unknown or incompletely specified mathematical objects. These symbols are manipulated as if they had values of a known type. By default, a Scheme symbol is assumed to represent a real number. So the expression ='a= is a literal Scheme symbol that represents an unspecified real
+As in usual mathematical notation, arithmetic is extended to allow the use of symbols that represent unknown or incompletely specified mathematical objects. These symbols are manipulated as if they had values of a known type. By default, a Scheme symbol is assumed to represent a real number. So the expression #Code('a) is a literal Scheme symbol that represents an unspecified real
 number:
 
 ```Scheme
@@ -94,7 +94,7 @@ The default printer simplifies the expression,#Footnote(1) and displays it in a 
 ;; 0
 ```
 
-Just as it is useful to be able to manipulate symbolic numbers, it is useful to be able to manipulate symbolic functions. The procedure =literal-function= makes a procedure that acts as a function having no properties other than its name. By default, a literal function is defined to take one real argument and produce one real value. For example, we may want to work with a function $f : \mathbf{R} \to \mathbf{R}$:
+Just as it is useful to be able to manipulate symbolic numbers, it is useful to be able to manipulate symbolic functions. The procedure #Code(literal-function) makes a procedure that acts as a function having no properties other than its name. By default, a literal function is defined to take one real argument and produce one real value. For example, we may want to work with a function $f : \mathbf{R} \to \mathbf{R}$:
 
 ```Scheme
 ((literal-function 'f) 'x)
@@ -106,7 +106,7 @@ Just as it is useful to be able to manipulate symbolic numbers, it is useful to 
 ;; (f (g x))
 ```
 
-We can also make literal functions of multiple, possibly structured arguments that return structured values. For example, to denote a literal function named =g= that takes two real arguments and returns a real value ($g : \mathbf{R} \times \mathbf{R} \to \mathbf{R}$) we may write:
+We can also make literal functions of multiple, possibly structured arguments that return structured values. For example, to denote a literal function named #Code(g) that takes two real arguments and returns a real value ($g : \mathbf{R} \times \mathbf{R} \to \mathbf{R}$) we may write:
 
 ```Scheme
 (define g (literal-function 'g (-> (X Real Real) Real)))
@@ -136,7 +136,7 @@ p = [p_0, p_1, p_2].
 
 A component of an up tuple is usually identified by a superscript. A component of a down tuple is usually identified by a subscript. We use zero-based indexing when referring to tuple elements. This notation follows the usual convention in tensor arithmetic.
 
-We make tuples with the constructors =up= and =down=:
+We make tuples with the constructors #Code(up) and #Code(down):
 
 
 ```Scheme
@@ -152,7 +152,7 @@ p
 
 ```
 
-Note that =v^0= and =p_2= are just symbols. The caret and underline characters are symbol constituents, so there is no meaning other than mnemonic to the structure of these symbols. However, our software can also display expressions using $\TeX$, and then these decorations turn into superscripts and subscripts.
+Note that #Code(v^0) and #Code(p_2) are just symbols. The caret and underline characters are symbol constituents, so there is no meaning other than mnemonic to the structure of these symbols. However, our software can also display expressions using $\TeX$, and then these decorations turn into superscripts and subscripts.
 
 Tuple arithmetic is different from the usual tensor arithmetic in that the components of a tuple may also be tuples and different components need not have the same structure. For example, a tuple structure $s$ of phase-space states is
 
@@ -182,21 +182,21 @@ I_{2,1}(s) &= p_y.
 
 The sequence of integer subscripts on the selector describes the access chain to the desired component.
 
-The procedure =component= is the general selector procedure that implements the selector function $I_z$:
+The procedure #Code(component) is the general selector procedure that implements the selector function $I_z$:
 
 ```Scheme
 ((component 0 1) (up (up 'a 'b) (up 'c 'd)))
 ;; b
 ```
 
-To access a component of a tuple we may also use the selector procedure =ref=, which takes a tuple and an index and returns the indicated element of the tuple:
+To access a component of a tuple we may also use the selector procedure #Code(ref), which takes a tuple and an index and returns the indicated element of the tuple:
 
 ```Scheme
 (ref (up 'a 'b 'c) 1)
 ;; b
 ```
 
-We use zero-based indexing everywhere. The procedure =ref= can be used to access any substructure of a tree of tuples:
+We use zero-based indexing everywhere. The procedure #Code(ref) can be used to access any substructure of a tree of tuples:
 
 ```Scheme
 (ref (up (up 'a 'b) (up 'c 'd)) 0 1)
@@ -215,7 +215,7 @@ $$\begin{equation}
 pv = p_0 v^0 + p_1 v^1 + p_2 v^2.
 \end{equation}$$
 
-So the product of tuples that are compatible for contraction is an inner product. Using the tuples =p= and =v= defined above gives us
+So the product of tuples that are compatible for contraction is an inner product. Using the tuples #Code(p) and #Code(v) defined above gives us
 
 ```Scheme
 (* p v)
@@ -312,7 +312,7 @@ Multiplication of tuples that represent linear transformations is associative bu
 The derivative of a function $f$ is a function, denoted by $Df$. Our notational convention is that $D$ is a high-precedence operator. Thus $D$ operates on the adjacent function before any other application occurs: $Df(x)$ is the same as $(Df)(x)$. Higher-order derivatives are described by exponentiating the derivative operator. Thus the $n$th derivative of a function
 $f$ is notated as $D^n f$.
 
-The Scheme procedure for producing the derivative of a function is named =D=. The derivative of the =sin= procedure is a procedure that computes =cos=:
+The Scheme procedure for producing the derivative of a function is named #Code(D). The derivative of the #Code(sin) procedure is a procedure that computes #Code(cos):
 
 ```Scheme
 (define derivative-of-sine (D sin))
@@ -353,7 +353,7 @@ $$\begin{equation}
 (D(f \circ g))(x) = Df(g(x)) \cdot Dg(x).
 \end{equation}$$
 
-=D= is an example of an operator. An operator is like a function except that multiplication of operators is interpreted as composition, whereas multiplication of functions is multiplication of the values (see equation B.3). If $D$ were an ordinary function, then the rule for multiplication would imply that $D^2 f$ would just be the product of $Df$ with itself, which is not what is intended. A product of a number and an operator scales the operator. So, for example
+#Code(D) is an example of an operator. An operator is like a function except that multiplication of operators is interpreted as composition, whereas multiplication of functions is multiplication of the values (see equation B.3). If $D$ were an ordinary function, then the rule for multiplication would imply that $D^2 f$ would just be the product of $Df$ with itself, which is not what is intended. A product of a number and an operator scales the operator. So, for example
 
 ```Scheme
 (((* 5 D) cos) 'x)
@@ -382,7 +382,7 @@ Dg(x,y) \cdot (\Delta x, \Delta y) &= \left[ \partial_0 g(x,y) + \partial_1 g(x,
 \end{aligned}
 \end{equation}$$
 
-Using the two-argument literal function =g= defined on page 198, we have:
+Using the two-argument literal function #Code(g) defined on page 198, we have:
 
 ```Scheme
 ((D g) 'x 'y)
@@ -639,7 +639,7 @@ Repeat [exercise B.1](#exercise_B.1) using the computer. Explore both implementa
 ----
 ### Footnotes
 
-#FootnoteRef(1) The procedure =print-expression= can be used in a program to print a simplified version of an expression. The default printer in the user interface incorporates the simplifier.
-#FootnoteRef(2) To emphasize the relationship of simple tuple structures to matrix notation we often format =up= tuples as vertical arrangements of components and =down= tuples as horizontal arrangements of components. However, we could just as well have written this tuple as $\left[\left(\cos \theta, \sin \theta\right), \left(−\sin \theta, \cos \theta\right)\right]$.
+#FootnoteRef(1) The procedure #Code(print-expression) can be used in a program to print a simplified version of an expression. The default printer in the user interface incorporates the simplifier.
+#FootnoteRef(2) To emphasize the relationship of simple tuple structures to matrix notation we often format #Code(up) tuples as vertical arrangements of components and #Code(down) tuples as horizontal arrangements of components. However, we could just as well have written this tuple as $\left[\left(\cos \theta, \sin \theta\right), \left(−\sin \theta, \cos \theta\right)\right]$.
 #FootnoteRef(3) Partial derivative operators such as =(partial 2)= are operators, so =(expt (partial 1) 2)= is a second partial derivative.
 #FootnoteEnd

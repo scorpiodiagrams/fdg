@@ -19,7 +19,7 @@ we can make an object that represents the plane#Footnote(2)
 (define R2 (make-manifold R^n 2))
 ```
 
-and give it the name ~R2~. One useful patch of the plane is the one that contains the origin and covers the entire plane#Footnote(3).
+and give it the name #Code(R2). One useful patch of the plane is the one that contains the origin and covers the entire plane#Footnote(3).
 
 ```Scheme
 (define U (patch 'origin R2))
@@ -42,7 +42,7 @@ The number of independent components of $x$ is the dimension of the manifold.
 
 Assume we have two coordinate functions $\chi$ and $\chi'$. The coordinate transformation from $\chi'$ coordinates to $\chi$ coordinates is just the composition $\chi \circ \chi^{'-1}$ , where $\chi^{'-1}$ is the functional inverse of $\chi'$ (see figure 2.1). We assume that the coordinate transformation is continuous and differentiable to any degree we require.
 
-Given a coordinate system ~coordsys~ for a patch on a manifold the procedure that implements the function $\chi$ that gives coordinates for a point is (~chart coordsys~). The procedure that implements the inverse map that gives a point for coordinates is (~point coordsys~).
+Given a coordinate system #Code(coordsys) for a patch on a manifold the procedure that implements the function $\chi$ that gives coordinates for a point is #Code((chart coordsys#)). The procedure that implements the inverse map that gives a point for coordinates is #Code((point coordsys#)).
 
 We can have both rectangular and polar coordinates on a patch of the plane identified by the origin:#Footnote(5)#Footnote(6)
 
@@ -127,7 +127,7 @@ We define a manifold function by specifying its behavior in rectangular coordina
 (define f
   (compose (literal-function 'f-rect R2->R) R2-rect-chi)
 ```
-where ~R2->R~ is a signature for functions hat map an up structure of two reals to a real:
+where #Code(R2->R) is a signature for functions hat map an up structure of two reals to a real:
 ```Scheme
 (define R2->R (-> (UP Real Real) Real))
 ```
@@ -142,7 +142,7 @@ We can describe the /same point/ using its polar coordinates:
    (up (sqrt (+ (square 'x0) (square 'y0)))
        (atan 'y0 'x0))))
 ```
-~(f R2-rect-point)~ and ~(f corresponding-polar-point)~ agree, even though the point has been specified in two different coordinate systems:
+#Code((f R2-rect-point#)) and #Code((f corresponding-polar-point#)) agree, even though the point has been specified in two different coordinate systems:
 ```Scheme
 (f R2-rect-point)
 ;;(f-rect (up x0 y0))
@@ -155,7 +155,7 @@ We can describe the /same point/ using its polar coordinates:
 
 ### Naming Coordinate Functions
 
-To make things a bit easier, we can give names to the individual coordinate functions associated with a coordinate system. Here we name the coordinate functions for the ~R2-rect~ coordinate system ~x~ and ~y~ and for the ~R2-polar~ coordinate system ~r~ and ~theta~.
+To make things a bit easier, we can give names to the individual coordinate functions associated with a coordinate system. Here we name the coordinate functions for the #Code(R2-rect) coordinate system #Code(x) and #Code(y) and for the #Code(R2-polar) coordinate system #Code(r) and #Code(theta).
 ```Scheme
 (define-coordinates (up x y) R2-rect)
 (define-coordinates (up r theta) R2-polar)
@@ -194,7 +194,7 @@ This allows us to extract the coordinates from a point, independent of the coord
 ;;(+ (expt x0 3) (* x0 (expt y0 2))
 ;;   (expt y0 3))
 ```
-We can also apply ~h~ to a point defined in terms of its polar coordinates:
+We can also apply #Code(h) to a point defined in terms of its polar coordinates:
 ```Scheme
 (h (R2-polar-chi-inverse (up 'r0 'theta0)))
 ;;(+ (* (expt r0 3) (expt (sin theta0) 3))
@@ -221,19 +221,17 @@ We can convert this to rectangular coordinates by evaluating the residual in rec
 The numerator of this expression is the equivalent residual in rectangular coordinates. If we rearrange terms and square it we get the traditional formula for the cardioid
 $$(x^ + y^2 − 2ax)^2 = 4a^2 (x^2 + y^2).$$
 
-* a.
-The rectangular coordinate equation for the Lemniscate of Bernoulli is
+* a. The rectangular coordinate equation for the Lemniscate of Bernoulli is
 $$(x^2 + y^2)^2 = 2a^2(x^2 − y^2).$$
 Find the expression in polar coordinates.
 
-* b.
-Describe a helix space curve in both rectangular and cylindrical coordinates. Use the computer to show the correspondence. Note that we provide a cylindrical coordinate system on the manifold $\mathbf{R}3$ for you to use. It is called ~R3-cyl~; with coordinates ~(r, theta, z)~.
+* b. Describe a helix space curve in both rectangular and cylindrical coordinates. Use the computer to show the correspondence. Note that we provide a cylindrical coordinate system on the manifold $\mathbf{R}3$ for you to use. It is called #Code(R3-cyl); with coordinates #Code((r, theta, z#)).
 
 ### Exercise 2.2: Stereographic Projection
 
 A stereographic projection is a correspondence between points on the unit sphere and points on the plane cutting the sphere at its equator. (See figure 2.3.)
 
-The coordinate system for points on the sphere in terms of rectangular coordinates of corresponding points on the plane is ~S2-Riemann~#Footnote(10). The procedure ~(chart S2-Riemann)~ gives the rectangular coordinates on the plane for every point on the sphere, except for the North Pole. The procedure ~(point S2-Riemann)~ gives the point on the sphere given rectangular coordinates on the plane. The usual spherical coordinate system on the sphere is ~S2-spherical~.
+The coordinate system for points on the sphere in terms of rectangular coordinates of corresponding points on the plane is #Code(S2-Riemann)#Footnote(10). The procedure #Code((chart S2-Riemann#)) gives the rectangular coordinates on the plane for every point on the sphere, except for the North Pole. The procedure #Code((point S2-Riemann#)) gives the point on the sphere given rectangular coordinates on the plane. The usual spherical coordinate system on the sphere is #Code(S2-spherical).
 
 We can compute the colatitude and longitude of a point on the sphere corresponding to a point on the plane with the following incantation:
 
@@ -256,8 +254,8 @@ Perform an analogous computation to get the polar coordinates of the point on th
 
 #FootnoteRef(1) The open set for a latitude-longitude coordinate system cannot include either pole (because longitude is not defined at the poles) or the $180^{\circ}$
 meridian (where the longitude is discontinuous). Other coordinate systems are needed to cover these places.
-#FootnoteRef(2) The expression ~R^n~ gives only one kind of manifold. We also have spheres ~S^n~ and ~SO3~.
-#FootnoteRef(3) The word ~origin~ is an arbitrary symbol here. It labels a predefined patch in ~R^n~ manifolds.
+#FootnoteRef(2) The expression #Code(R^n) gives only one kind of manifold. We also have spheres #Code(S^n) and #Code(SO3).
+#FootnoteRef(3) The word #Code(origin) is an arbitrary symbol here. It labels a predefined patch in #Code(R^n) manifolds.
 #FootnoteRef(4) In the text that follows we will use sans-serif names, such as $\mathsf{f}$, $\mathsf{v}$, $\mathsf{m}$, to refer to objects defined on the manifold. Objects that are defined on coordinates (tuples of real numbers) will be named with symbols like $f$, $v$, $x$.
 #FootnoteRef(5) The rectangular coordinates are good for the entire plane, but the polar coordinates are singular at the origin because the angle is not defined. Also,
 the patch for polar coordinates must exclude one ray from the origin, because of the angle variable.
@@ -270,7 +268,6 @@ the patch for polar coordinates must exclude one ray from the origin, because of
 ```Scheme
 (define f (literal-manifold-function 'f-rect R2-rect))
 ```
-#FootnoteRef(9) This is actually a nasty, but traditional, abuse of notation. An expression like $\cos(r)$ can either mean the cosine of the angle $r$ (if $r$ is a number), or the composition $\cos \circ r$ (if $r$ is a function). In our system ~(cos r)~ behaves in this way---either computing the cosine of ~r~ or being treated as ~(compose cos r)~ depending on what ~r~ is.
-#FootnoteRef(10) The plane with the addition of a point at infinity is conformally equivalent to the sphere by this correspondence. This correspondence is called the Riemann sphere, in honor of the great mathematician Bernard Riemann
-(1826–1866), who made major contributions to geometry.
+#FootnoteRef(9) This is actually a nasty, but traditional, abuse of notation. An expression like $\cos(r)$ can either mean the cosine of the angle $r$ (if $r$ is a number), or the composition $\cos \circ r$ (if $r$ is a function). In our system #Code((cos r#)) behaves in this way---either computing the cosine of #Code(r) or being treated as #Code((compose cos r#)) depending on what #Code(r) is.
+#FootnoteRef(10) The plane with the addition of a point at infinity is conformally equivalent to the sphere by this correspondence. This correspondence is called the Riemann sphere, in honor of the great mathematician Bernard Riemann (1826–1866), who made major contributions to geometry.
 #FootnoteEnd

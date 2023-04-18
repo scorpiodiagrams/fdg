@@ -510,22 +510,19 @@ When one frame is built upon another, to determine the event from frame-specific
 
 ```Scheme
 (define ((coordinates->event ancestor-frame this-frame
-                 boost-direction v/c origin)
-coords)
-((point ancestor-frame)
-(make-SR-coordinates ancestor-frame
+                 boost-direction v/c origin) coords)
+        ((point ancestor-frame)
+        (make-SR-coordinates ancestor-frame
             (+ ((general-boost2 boost-direction v/c) coords)
                origin))))
-
 (define ((event->coordinates ancestor-frame this-frame
-                 boost-direction v/c origin)
-event)
-(make-SR-coordinates this-frame
+                 boost-direction v/c origin) event)
+        (make-SR-coordinates this-frame
            ((general-boost2 (- boost-direction) v/c)
             (- ((chart ancestor-frame) event) origin))))
 ```
 #page(180)
-With these two procedures, the procedure =make-SR-frame= constructs a new relativistic frame by a Poincaré transformation from a given frame.
+With these two procedures, the procedure #Code(make-SR-frame) constructs a new relativistic frame by a Poincaré transformation from a given frame.
 
 ```Scheme
 (define make-SR-frame
@@ -534,27 +531,27 @@ With these two procedures, the procedure =make-SR-frame= constructs a new relati
 
 #### Velocity Addition Formula
 
-For example, we can derive the traditional velocity addition formula. Assume that we have a base frame called =home=. We can make a frame =A= by a boost from home in the $\hat{x}$ direction, with components $(1, 0, 0)$, and with a dimensionless measure of the speed $v_a / c$. We also specify that the 4-tuple origin of this new frame coincides with the origin of =home=.
+For example, we can derive the traditional velocity addition formula. Assume that we have a base frame called #Code(home). We can make a frame #Code(A) by a boost from home in the $\hat{x}$ direction, with components $(1, 0, 0)$, and with a dimensionless measure of the speed $v_a / c$. We also specify that the 4-tuple origin of this new frame coincides with the origin of #Code(home).
 
 ```Scheme
 (define A
-(make-SR-frame 'A home
+   (make-SR-frame 'A home
      (up 1 0 0)
      'va/c
      (make-SR-coordinates home (up 0 0 0 0))))
 ```
 
-Frame =B= is built on frame =A= similarly, boosted by $v_b/c$.
+Frame #Code(B) is built on frame #Code(A) similarly, boosted by $v_b/c$.
 
 ```Scheme
 (define B
-(make-SR-frame 'B A
+   (make-SR-frame 'B A
      (up 1 0 0)
      'vb/c
      (make-SR-coordinates A (up 0 0 0 0))))
 ```
 
-So any point at rest in frame =B= will have a speed relative to home. For the spatial origin of frame =B=, with =B= coordinates =(up 'ct 0 0 0)=, we have
+So any point at rest in frame #Code(B) will have a speed relative to home. For the spatial origin of frame #Code(B), with #Code(B) coordinates =(up 'ct 0 0 0)=, we have
 
 ```Scheme
 (let ((B-origin-home-coords
@@ -588,7 +585,7 @@ The experiment begins at the start event, which we arbitrarily place at the orig
 (make-SR-coordinates home (up 0 0 0 0))))
 ```
 
-There is a homebody and a traveller. The traveller leaves home at the start event and proceeds at 24/25 of the speed of light in the $\hat{x}$ direction.
+There is a homebody and a traveller. The traveller leaves home at the start event and proceeds at $24/25$ of the speed of light in the $\hat{x}$ direction.
 We define a frame for the traveller, by boosting from the home frame.
 
 ```Scheme
@@ -601,7 +598,7 @@ We define a frame for the traveller, by boosting from the home frame.
       start-event)))
 ```
 
-After 25 years of home time the traveller is 24 light-years out. We define that event using the coordinates in the home frame. Here we scale the time coordinate by the speed of light so that the units of $ct$ slot in the 4-vector are the same as the units in the spatial slots. Since $v/c$ = 24/25 we must multiply that by the speed of light to get the velocity. This is multiplied by 25 years to get the $\hat{x}$ coordinate of the traveller in the home frame at the turning point.
+After 25 years of home time the traveller is 24 light-years out. We define that event using the coordinates in the home frame. Here we scale the time coordinate by the speed of light so that the units of $ct$ slot in the 4-vector are the same as the units in the spatial slots. Since $v/c = 24/25$ we must multiply that by the speed of light to get the velocity. This is multiplied by 25 years to get the $\hat{x}$ coordinate of the traveller in the home frame at the turning point.
 
 ```Scheme
 (define traveller-at-turning-point-event
@@ -610,7 +607,7 @@ After 25 years of home time the traveller is 24 light-years out. We define that 
             (up (* :c 25) (* 25 24/25 :c) 0 0))))
 ```
 #page(182)
-Note that the first component of the coordinates of an event is the speed of light multiplied by time. The other components are distances. For example, the second component (the $\hat{x}$ component) is the distance travelled in 25 years at 24/25 the speed of light. This is 24 light-years.
+Note that the first component of the coordinates of an event is the speed of light multiplied by time. The other components are distances. For example, the second component (the $\hat{x}$ component) is the distance travelled in 25 years at $24/25$ the speed of light. This is 24 light-years.
 
 If we examine the displacement of the traveller in his own frame we see that the traveller has aged 7 years and he has not moved from his spatial origin.
 
@@ -670,7 +667,7 @@ and the homebody has aged
 #page(183)
 as seen from either frame.
 
-As seen by the traveller, home is moving in the $−\hat{x}$ direction at 24/25 of the velocity of light. At the turning point (7 years by his time) home is at:
+As seen by the traveller, home is moving in the $−\hat{x}$ direction at $24/25$ of the velocity of light. At the turning point (7 years by his time) home is at:
 
 ```Scheme
 (define home-at-outgoing-turning-point-event
@@ -775,5 +772,5 @@ Thus the aging of the homebody occurs at the turnaround, from the point of view 
 #FootnoteRef(4) Incrementally, $\xi = \xi^0 \partial / {\partial ct} + \xi^1 \partial /{\partial x} + \xi^2 \partial / {\partial y} + \xi^3 \partial / {\partial z}$.
 The length of this vector, using the Minkowski metric (see equation 10.11), is the Lorentz interval, the right-hand side of equation (11.22).
 #FootnoteRef(5) See, for instance, Mermin, "Space and Time in Special Relativity."
-#FootnoteRef(6) The procedure =make-SR-coordinates= labels the given coordinates with the given frame. The procedures that manipulate coordinates, such as =(point ancestor-frame)=, check that the coordinates they are given are in the appropriate frame. This error checking makes it easier to debug relativity procedures.
+#FootnoteRef(6) The procedure #Code(make-SR-coordinates) labels the given coordinates with the given frame. The procedures that manipulate coordinates, such as #Code((point ancestor-frame#)), check that the coordinates they are given are in the appropriate frame. This error checking makes it easier to debug relativity procedures.
 #FootnoteEnd

@@ -33,7 +33,7 @@ D\left(\partial_{2} L \circ \Gamma[q]\right) - \partial_{1} L \circ \Gamma[q]=0.
 
 In SICM [19](references!bib_19), Section 1.6.3, we showed that a Lagrangian describing the free motion of a particle subject to a coordinate-dependent constraint can be obtained by composing a free-particle Lagrangian with a function that describes how dynamical states transform given the coordinate transformation that describes the constraints.
 
-A Lagrangian for a free particle of mass m and velocity v is just its kinetic energy, $mv^2/2$. The procedure =Lfree= implements the free Lagrangian:#Footnote(3)
+A Lagrangian for a free particle of mass m and velocity v is just its kinetic energy, $mv^2/2$. The procedure #Code(Lfree) implements the free Lagrangian:#Footnote(3)
 
 ```Scheme
 (define ((Lfree mass) state)
@@ -48,7 +48,7 @@ coordinates, and velocities. The free-particle Lagrangian depends only on the ve
 
 For motion of a point constrained to move on the surface of a sphere the configuration space has two dimensions. We can describe the position of the point with the generalized coordinates colatitude and longitude. If the sphere is embedded in 3-dimensional space the position of the point in that space can be given by a coordinate transformation from colatitude and longitude to three rectangular coordinates.
 
-For a sphere of radius R the procedure =sphere->R3= implements the transformation of coordinates from colatitude $\theta$ and longitude $\phi$ on the surface of the sphere to rectangular coordinates in the embedding space.
+For a sphere of radius R the procedure #Code(sphere->R3) implements the transformation of coordinates from colatitude $\theta$ and longitude $\phi$ on the surface of the sphere to rectangular coordinates in the embedding space.
 (The $\hat{z}$ axis goes through the North Pole, and the Equator is in the plane
 $z = 0$.)
 
@@ -64,7 +64,7 @@ $z = 0$.)
 #+RESULTS:
 : #| sphere->R3 |#
 
-The coordinate transformation maps the generalized coordinates on the sphere to the 3-dimensional rectangular coordinates. Given this coordinate transformation we construct a corresponding transformation of velocities; these make up the state transformation. The procedure =F->C= implements the derivation of a transformation of states from a coordinate transformation:
+The coordinate transformation maps the generalized coordinates on the sphere to the 3-dimensional rectangular coordinates. Given this coordinate transformation we construct a corresponding transformation of velocities; these make up the state transformation. The procedure #Code(F->C) implements the derivation of a transformation of states from a coordinate transformation:
 
 ```Scheme
 (define ((F->C F) state)
@@ -119,9 +119,7 @@ $$\begin{equation}
 
 Let's now take a step into the geometry. A surface has a metric which tells us how to measure sizes and angles at every point on the surface. (Metrics are introduced in Chapter 9.)
 
-The metric is a symmetric function of two vector fields that gives a number for every point on the manifold. (Vector fields are introduced in Chapter 3).
-Metrics may be used to compute the length of a vector field at each point, or alternatively to compute the inner product of two vector fields at each point.
-For example, the metric for the sphere of radius $R$ is
+The metric is a symmetric function of two vector fields that gives a number for every point on the manifold. (Vector fields are introduced in Chapter 3). Metrics may be used to compute the length of a vector field at each point, or alternatively to compute the inner product of two vector fields at each point. For example, the metric for the sphere of radius $R$ is
 
 $$\begin{equation}
 \mathsf{g}(\mathsf{u}, \mathsf{v})=R^{2} \mathsf{d} \theta(\mathsf{u})
@@ -169,7 +167,7 @@ This program gives the Lagrangian in a coordinate-independent, geometric way. It
 #+RESULTS:
 : #| Lc |#
 
-The manifold point $\mathsf{m}$ represented by the coordinates $x$ is given by =(define m ((point coordsys) x))=. The coordinates of $\mathsf{m}$ in a different coordinate system are given by =((chart coordsys2) m)=. The manifold point $\mathsf{m}$ is a geometric object that is the same point independent of how it is specified. Similarly, the velocity vector $\mathsf{e}v$ is a geometric object, even though it is specified using components $v$ with respect to the basis $\mathsf{e}$. Both $v$ and $\mathsf{e}$ have as many components as the dimension of the space so their product is interpreted as a contraction.
+The manifold point $\mathsf{m}$ represented by the coordinates $x$ is given by #Code((define m ((point coordsys#) x#)#)). The coordinates of $\mathsf{m}$ in a different coordinate system are given by #Code(((chart coordsys2#) m#)). The manifold point $\mathsf{m}$ is a geometric object that is the same point independent of how it is specified. Similarly, the velocity vector $\mathsf{e}v$ is a geometric object, even though it is specified using components $v$ with respect to the basis $\mathsf{e}$. Both $v$ and $\mathsf{e}$ have as many components as the dimension of the space so their product is interpreted as a contraction.
 
 Let's make a general metric on a 2-dimensional real manifold:#Footnote(4)
 
@@ -180,7 +178,7 @@ Let's make a general metric on a 2-dimensional real manifold:#Footnote(4)
 #+RESULTS:
 : #| the-metric |#
 
-The metric is expressed in rectangular coordinates, so the coordinate system is =R2-rect=.#Footnote(5) The component functions will be labeled as subscripted ~g~s.
+The metric is expressed in rectangular coordinates, so the coordinate system is #Code(R2-rect).#Footnote(5) The component functions will be labeled as subscripted #Code(g)s.
 
 We can now make the Lagrangian for the system:
 
@@ -217,7 +215,7 @@ The Euler-Lagrange equations are satisfied on realizable paths. Let $\gamma$ be 
 #+RESULTS:
 : #| gamma |#
 
-The values of $\gamma$ are points on the manifold, not a coordinate representation of the points. We may evaluate =gamma= only on points of the real-line manifold; =gamma= produces points on the $\mathbb{R}^2$ manifold. So to go from the literal real-number coordinate ='t= to a point on the real line we use =((point R1-rect) 't)= and to go from a point =m= in $\mathbb{R}^2$ to its coordinate representation we use =((chart R2-rect) m)=. (The procedures point and chart are introduced in Chapter 2.) Thus
+The values of $\gamma$ are points on the manifold, not a coordinate representation of the points. We may evaluate #Code(gamma) only on points of the real-line manifold; #Code(gamma) produces points on the $\mathbb{R}^2$ manifold. So to go from the literal real-number coordinate #Code('t) to a point on the real line we use #Code(((point R1-rect#) 't#)) and to go from a point #Code(m) in $\mathbb{R}^2$ to its coordinate representation we use #Code(((chart R2-rect#) m#)). (The procedures point and chart are introduced in Chapter 2.) Thus
 
 ```Scheme
 ((chart R2-rect) (gamma ((point R1-rect) 't)))
@@ -301,7 +299,7 @@ We can get and save the geodesic equation residuals by:
 #+RESULTS:
 : #| geodesic-equation-residuals |#
 
-where =d/dt= is a vector field on the real line#Footnote(8) and =Cartan= is a way of encapsulating the geometry, as specified by the Christoffel coefficients. The Christoffel coefficients are computed from the metric:
+where #Code(d#/dt) is a vector field on the real line#Footnote(8) and #Code(Cartan) is a way of encapsulating the geometry, as specified by the Christoffel coefficients. The Christoffel coefficients are computed from the metric:
 
 ```Scheme
 <<Cartan>>
@@ -349,14 +347,14 @@ Compute the Lagrange equations for motion of a free particle on the sphere and c
 #FootnoteRef(1) It is customary to shorten "Euler-Lagrange equations" to "Lagrange equations." We hope Leonhard Euler is not disturbed.
 #FootnoteRef(2) A short introduction to our functional notation, and why we have chosen it, is given in the prologue: Programming and Understanding. More details can be found in Appendix B
 #FootnoteRef(3) An informal description of the Scheme programming language can be found in Appendix A.
-#FootnoteRef(4) The procedure =literal-metric= provides a metric. It is a general symmetric function of two vector fields, with literal functions of the coordinates of the manifold points for its coefficients in the given coordinate system. The quoted symbol ='g= is used to make the names of the literal coefficient functions. Literal functions are discussed in Appendix B.
-#FootnoteRef(5) =R2-rect= is the usual rectangular coordinate system on the 2-dimensional real manifold. (See Section 2.1, page 13.) We supply common coordinate systems for n-dimensional real manifolds. For example, =R2-polar= is a polar coordinate system on the same manifold.
-#FootnoteRef(6) The procedure =literal-manifold-map= makes a map from the manifold implied by its second argument to the manifold implied by the third argument.
+#FootnoteRef(4) The procedure #Code(literal-metric) provides a metric. It is a general symmetric function of two vector fields, with literal functions of the coordinates of the manifold points for its coefficients in the given coordinate system. The quoted symbol #Code('g) is used to make the names of the literal coefficient functions. Literal functions are discussed in Appendix B.
+#FootnoteRef(5) #Code(R2-rect) is the usual rectangular coordinate system on the 2-dimensional real manifold. (See Section 2.1, page 13.) We supply common coordinate systems for n-dimensional real manifolds. For example, #Code(R2-polar) is a polar coordinate system on the same manifold.
+#FootnoteRef(6) The procedure #Code(literal-manifold-map) makes a map from the manifold implied by its second argument to the manifold implied by the third argument.
 These arguments must be coordinate systems. The quoted symbol that is the first argument is used to name the literal coordinate functions that define the map.
 #FootnoteRef(7) For an explanation of equation residuals see page xvi.
-#FootnoteRef(8) We established =t= as a coordinate function on the rectangular coordinates of the real line by
+#FootnoteRef(8) We established #Code(t) as a coordinate function on the rectangular coordinates of the real line by
 ```Scheme
 (define-coordinates t R1-rect)
 ```
-This had the effect of also defining =d/dt= as a coordinate vector field and =dt= as a one-form field on the real line.
+This had the effect of also defining #Code(d#/dt) as a coordinate vector field and #Code(dt) as a one-form field on the real line.
 #FootnoteEnd
