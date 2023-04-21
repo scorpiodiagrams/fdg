@@ -3,8 +3,7 @@
 
 ## Manifolds
 
-A /manifold/ is a generalization of our idea of a smooth surface embedded in Euclidean space. For an /n/-dimensional manifold, around every point there is a simply-connected open set, the /coordinate patch/, and a one-to-one continuous function, the /coordinate function/ or /chart/, mapping every point in that open set to a tuple of /n/ real numbers, the /coordinates/. In general, several charts are needed to label all points on a manifold. It is required that if a region is in more than one coordinate patch then the coordinates are consistent in that the function mapping one set of coordinates to another is continuous
-(and perhaps differentiable to some degree). A consistent system of coordinate patches and coordinate functions that covers the entire manifold is called an /atlas/.
+A /manifold/ is a generalization of our idea of a smooth surface embedded in Euclidean space. For an /n/-dimensional manifold, around every point there is a simply-connected open set, the /coordinate patch/, and a one-to-one continuous function, the /coordinate function/ or /chart/, mapping every point in that open set to a tuple of /n/ real numbers, the /coordinates/. In general, several charts are needed to label all points on a manifold. It is required that if a region is in more than one coordinate patch then the coordinates are consistent in that the function mapping one set of coordinates to another is continuous (and perhaps differentiable to some degree). A consistent system of coordinate patches and coordinate functions that covers the entire manifold is called an /atlas/.
 
 An example of a 2-dimensional manifold is the surface of a sphere or of a coffee cup. The space of all configurations of a planar double pendulum is a more abstract example of a 2-dimensional manifold. A manifold that looks locally Euclidean may not look like Euclidean space globally: for example, it may not be simply connected. The surface of the coffee cup is not simply connected, because there is a hole in the handle for your fingers.
 
@@ -38,6 +37,7 @@ where $x$ may have a convenient tuple structure. Usually, the coordinates are ar
 $$\begin{equation}
 x^i = \chi^i(m).
 \end{equation}$$
+
 The number of independent components of $x$ is the dimension of the manifold.
 
 Assume we have two coordinate functions $\chi$ and $\chi'$. The coordinate transformation from $\chi'$ coordinates to $\chi$ coordinates is just the composition $\chi \circ \chi^{'-1}$ , where $\chi^{'-1}$ is the functional inverse of $\chi'$ (see figure 2.1). We assume that the coordinate transformation is continuous and differentiable to any degree we require.
@@ -90,27 +90,36 @@ And we can obtain the Jacobian of the polar-to-rectangular transformation by tak
 Let $\mathsf{f}$ be a real-valued function on a manifold $\mathsf{M}$: this function maps points $\mathsf{m}$ on the manifold to real numbers.
 
 This function has a coordinate representation $f_\chi$ with respect to the coordinate function $\chi$ (see figure 2.2):
+
 $$\begin{equation}
 f_\chi = \mathsf{f} \circ \chi^{-1}.
 \end{equation}$$
+
 Both the coordinate representation $f_{\chi}$ and the tuple $x$ depend on the coordinate system, but the value $f_\chi(x)$ is independent of coordinates:
+
 $$\begin{equation}
 f_\chi(x) = (\mathsf{f} \circ \chi{}^-1)(\chi(\mathsf{m})) = \mathsf{f}(\mathsf{m}).
 \end{equation}$$
+
 The subscript $\chi$ may be dropped when it is unambiguous.
 
 For example, in a 2-dimensional real manifold the coordinates of a manifold point $m$ are a pair of real numbers,
+
 $$\begin{equation}
 (x,y) = \chi(\mathsf{m}),
 \end{equation}$$
+
 and the manifold function $\mathsf{f}$ is represented in coordinates by a function $f$ that takes a pair of real numbers and produces a real number
+
 $$\begin{equation}
 \begin{align}
 f \colon& \mathsf{R}^{2} \rightarrow \mathsf{R} \\
 f \colon& (x,y) \rightarrow f(x,y).
 \end{align}
 \end{equation}$$
+
 We define our manifold function
+
 $$\begin{equation}
 \begin{align}
 \mathsf{f} \colon& \mathsf{M} \rightarrow \mathsf{R} \\
@@ -204,6 +213,7 @@ We can also apply #Code(h) to a point defined in terms of its polar coordinates:
 ### Exercise 2.1: Curves
 
 A curve may be specified in different coordinate systems. For example, a cardioid constructed by rolling a circle of radius a around another circle of the same radius is described in polar coordinates by the equation 
+
 $$r = 2a(1 + cos(\theta)).$$
 
 We can convert this to rectangular coordinates by evaluating the residual in rectangular coordinates.
@@ -219,10 +229,13 @@ We can convert this to rectangular coordinates by evaluating the residual in rec
 ```
 
 The numerator of this expression is the equivalent residual in rectangular coordinates. If we rearrange terms and square it we get the traditional formula for the cardioid
+
 $$(x^ + y^2 − 2ax)^2 = 4a^2 (x^2 + y^2).$$
 
 * a. The rectangular coordinate equation for the Lemniscate of Bernoulli is
+
 $$(x^2 + y^2)^2 = 2a^2(x^2 − y^2).$$
+
 Find the expression in polar coordinates.
 
 * b. Describe a helix space curve in both rectangular and cylindrical coordinates. Use the computer to show the correspondence. Note that we provide a cylindrical coordinate system on the manifold $\mathbf{R}3$ for you to use. It is called #Code(R3-cyl); with coordinates #Code((r, theta, z#)).
@@ -252,8 +265,7 @@ Perform an analogous computation to get the polar coordinates of the point on th
 ----
 ### Footnotes
 
-#FootnoteRef(1) The open set for a latitude-longitude coordinate system cannot include either pole (because longitude is not defined at the poles) or the $180^{\circ}$
-meridian (where the longitude is discontinuous). Other coordinate systems are needed to cover these places.
+#FootnoteRef(1) The open set for a latitude-longitude coordinate system cannot include either pole (because longitude is not defined at the poles) or the $180^{\circ}$ meridian (where the longitude is discontinuous). Other coordinate systems are needed to cover these places.
 #FootnoteRef(2) The expression #Code(R^n) gives only one kind of manifold. We also have spheres #Code(S^n) and #Code(SO3).
 #FootnoteRef(3) The word #Code(origin) is an arbitrary symbol here. It labels a predefined patch in #Code(R^n) manifolds.
 #FootnoteRef(4) In the text that follows we will use sans-serif names, such as $\mathsf{f}$, $\mathsf{v}$, $\mathsf{m}$, to refer to objects defined on the manifold. Objects that are defined on coordinates (tuples of real numbers) will be named with symbols like $f$, $v$, $x$.

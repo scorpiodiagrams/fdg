@@ -462,10 +462,7 @@ How are $\mathsf{J}_x$, $\mathsf{J}_y$, and $\mathsf{J}_z$ related to $\mathsf{e
 #FootnoteRef(1) We cannot say if the basis vectors are orthogonal or normalized until we introduce a metric.
 #FootnoteRef(2) We write the vector components on the right and the tuple of basis vectors on the left because if we think of the basis vectors as organized as a row and the components as organized as a column then the formula is just a matrix multiplication.
 #FootnoteRef(3) This is why the set of vector fields and the set of one-form fields are modules rather than vector spaces.
-#FootnoteRef(4) We see from equations (4.15) and (4.16) that $\mathsf{J}$ and
-$\mathsf{K}$ are inverses. We can obtain their coefficients by: $\mathsf{J}_i^j
-= \tilde{\mathsf{e}}^{\prime j}(\mathsf{e}_i)$ and $\mathsf{K}_i^j =
-\tilde{\mathsf{e}}^j(\mathsf{e}_i^\prime)$.
+#FootnoteRef(4) We see from equations (4.15) and (4.16) that $\mathsf{J}$ and $\mathsf{K}$ are inverses. We can obtain their coefficients by: $\mathsf{J}_i^j = \tilde{\mathsf{e}}^{\prime j}(\mathsf{e}_i)$ and $\mathsf{K}_i^j = \tilde{\mathsf{e}}^j(\mathsf{e}_i^\prime)$.
 #FootnoteRef(5) Using
 ```Scheme
 (define R3-rect (coordinate-system-at 'rectangular 'origin R3))

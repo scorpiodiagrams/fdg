@@ -1,4 +1,4 @@
-#Functional Differential Geometry
+# Functional Differential Geometry
 
 An unofficial markdown version of "Functional Differential Geometry" by Gerald Jay Sussman and Jack Wisdom with Will Farr
 
