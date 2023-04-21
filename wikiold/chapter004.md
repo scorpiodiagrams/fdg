@@ -286,12 +286,17 @@ Verify equation (4.38).
 How are Jx, Jy, and Jz related to ex, ey, and ez in equations (4.29–4.31)?
 
 ----
+
 #FootnoteRef(1) We cannot say if the basis vectors are orthogonal or normalized until we introduce a metric.
 v(f)(m) = e(f)(m) b(m) = i
  
+
 #FootnoteRef(2) We write the vector components on the right and the tuple of basis vectors on the left because if we think of the basis vectors as organized as a row and the components as organized as a column then the formula is just a matrix multiplication.
+
 #FootnoteRef(3) This is why the set of vector fields and the set of one-form fields are modules rather than vector spaces.
+
 #FootnoteRef(4) We see from equations (4.15) and (4.16) that J and K are inverses. We can obtain their coefficients by: Jji =  ̃e′j(ei) and Kji =  ̃ej(e′i).
+
 #FootnoteRef(5)  Using
 ```Scheme
 (define R3-rect (coordinate-system-at ’rectangular ’origin R3)) (define-coordinates (up x y z) R3-rect)
@@ -301,6 +306,7 @@ k
 dkijek(f), (4.36)
 [ei,ej](f) =
 where dkij are functions of m, called the structure constants for the
+
 #FootnoteRef(6)  Using
 (4.40)
 (4.41)
@@ -309,10 +315,13 @@ where dkij are functions of m, called the structure constants for the
 (define SO3-point ((point Euler-angles) (up ’theta ’phi ’psi))) (define f (literal-manifold-function ’f-Euler Euler-angles))
 ```
 
+
 #FootnoteRef(7)  For non-commuting operators A and B, eA eB e−A e−B
  A2  B2  = 1+A+ 2 +··· 1+B+ 2 +···
  A2  B2  × 1−A+ 2 +··· 1−B+ 2 +···
 = 1 + [A, B] + · · · ,
 to second order in A and B. All higher-order terms can be written in terms of higher-order commutators of A and B. An example of a higher-order commutator is [A, [A, B]].
+
 #FootnoteRef(8) Here x is an up-tuple structure of components, and e is down-tuple structure of basis vectors. The product of the two contracts to make a scaled vector, along which we translate by one unit.
+
 #FootnoteEnd 

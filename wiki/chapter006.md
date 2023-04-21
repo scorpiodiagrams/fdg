@@ -414,8 +414,11 @@ b. Stereographic projection is useful for navigation because it is conformal (it
 ----
 ### Footnotes
 
+
 #FootnoteRef(1) See Bishop and Goldberg, /Tensor Analysis on Manifolds/ [3](references!bib_3).
+
 #FootnoteRef(2) We execute #Code((define-coordinates t R1-rect#)) to make #Code(t) the coordinate function of the real line.
+
 #FootnoteRef(3) We provide a shortcut to make literal manifold maps:
 
 ```Scheme
@@ -423,7 +426,11 @@ b. Stereographic projection is useful for navigation because it is conformal (it
 ```
 
 But if we used this shortcut, the component functions would be named mu^0 and mu^1. Here we wanted to use more mnemonic names for the component functions.
+
 #FootnoteRef(4) A function of two arguments may be seen as a function of one argument whose value is a function of the other argument. This can be done in two different ways, depending on which argument is supplied first. The general process of specifying a subset of the arguments to produce a new function of the others is called /currying/ the function, in honor of the logician Haskell Curry (1900-1982) who, with Moses Schönfinkel (1889-1942), developed combinatory logic.
+
 #FootnoteRef(5) Notation note: superscript asterisk indicates pullback, subscript asterisk indicates pushforward. Pullbacks and pushforwards are tightly binding operators, so, for example $\mu^{*}f(\mathsf{n})=(\mu^{*}f)(\mathsf{n})$.
+
 #FootnoteRef(6) The map $\phi^{\mathsf{w}}_{t}$ is always invertible: $(\phi^{\mathsf{w}}_{t})^{-1} = \phi^{\mathsf{w}}_{-t}$ because of the uniqueness of the solutions of the initial-value problem for ordinary differential equations.
+
 #FootnoteRef(7) There is a generic pullback procedure that operates on any kind of manifold object. However, to pull a vector field back requires providing the inverse map.

@@ -696,8 +696,12 @@ c. Subtract the structure of components of the relativistic 3-space force from t
 ----
 ### Footnotes
 
+
 #FootnoteRef(1) The traditional notion is to just use an asterisk; we use $g^∗$ to emphasize that this duality depends on the choice of metric $g$.
+
 #FootnoteRef(2) We have a metric, so we can define "orthonormal" and"use it to construct an orthonormal basis given any basis. The Gram-Schmidt procedure does the job.
+
 #FootnoteRef(3) The metric in relativity is not positive definite, so nonzero vectors can have zero length.
+
 #FootnoteRef(4) This representation is from Misner, Thorne, and Wheeler, /Gravitation/,
 p.108.

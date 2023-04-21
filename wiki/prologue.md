@@ -11,8 +11,10 @@ Although this book is about differential geometry, we can show how thinking abou
 
 A mechanical system is described by a Lagrangian function of the system state
 (time, coordinates, and velocities). A motion of the system is described by a path that gives the coordinates for each moment of time. A path is allowed if and only if it satisfies the Lagrange equations. Traditionally, the Lagrange equations are written 
+
 $${\frac{d}{dt}\frac{\partial L}{\partial \dot{q}}} -
 \frac{\partial L}{\partial q}=0.$$
+
 What could this expression possibly mean?
 
 Let’s try to write a program that implements Lagrange equations. What are Lagrange equations for? Our program must take a proposed path and give a result that allows us to decide if the path is allowed. This is already a problem; the equation shown above does not have a slot for a path to be tested.
@@ -146,7 +148,9 @@ Suppose we have forgotten how the constants in the solution relate to the physic
 
 #+RESULTS[a1567b5130995a397296f8851e0036615effec20]:
 :results:
+
 $$  - a m {\omega}^{2} \cos\left( \omega t + \phi \right) + a k \cos\left( \omega t + \phi \right) $$
+
 :end:
 
 The residual here shows that for nonzero amplitude, the only solutions allowed are ones where $(k - m\omega^2) = 0$ or $\omega = \sqrt{k/m}$.
@@ -160,6 +164,7 @@ But, suppose we had no idea what the solution looks like. We could propose a lit
 ```
 
 #+RESULTS[981e02186fef8db904bcef9e336b7b44b2cc6011]:
+
 $$ k x\left( t \right) + m {D}^{2}x\left( t \right) $$
 
 If this residual is zero we have the Lagrange equation for the harmonic oscillator.
@@ -173,12 +178,18 @@ $d/dt$ is applicable only to functions of one variable.
 ----
 ### Footnotes
 
+
 #FootnoteRef(1) The idea of using computer programming to develop skills of clear thinking was originally advocated by Seymour Papert. An extensive discussion of this idea, applied to the education of young children, can be found in Papert [13](references!bib_13).
+
 #FootnoteRef(2) The /residuals/ of equations are the expressions whose value must be zero if the equations are satisfied. For example, if we know that for an unknown $x$,
 $x^3-x=0$ then the residual is $x^3 - x$. We can try $x = -1$ and find a residual of 0, indicating that our purported solution satisfies the equation. A residual may provide information. For example, if we have the differential equation $df(x)/dx - af(x) = 0$ and we plug in a test solution $f(x) = Ae^{bx}$
 we obtain the residual $(b - a)Ae^{bx}$, which can be zero only if $b = a$.
+
 #FootnoteRef(3) That the symbols $q$ and $\dot{q}$ can be replaced by other arbitrarily chosen nonconflicting symbols without changing the meaning of the expression tells us that the partial derivative symbol is a logical quantifier, like forall and exists ($\forall$ and $\exists$).
+
 #FootnoteRef(4) The argument positions of the Lagrangian are indicated by indices starting with zero for the time argument.
+
 #FootnoteRef(5) An explanation of functional derivatives is in Appendix B, page 202.
+
 #FootnoteRef(6) The programs in this book are written in Scheme, a dialect of Lisp. The details of the language are not germane to the points being made. What is important is that it is mechanically interpretable, and thus unambiguous. In this book we require that the mathematical expressions be explicit enough that they can be expressed as computer programs. Scheme is chosen because it is easy to write programs that manipulate representations of mathematical functions. An informal description of Scheme can be found in Appendix A. The use of Scheme to represent mathematical objects can be found in Appendix B. A formal description of Scheme can be obtained in [10](references!bib_10). You can get the software from [21](references!bib_21).
 

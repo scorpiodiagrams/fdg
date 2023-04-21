@@ -766,11 +766,18 @@ Thus the aging of the homebody occurs at the turnaround, from the point of view 
 ----
 ### Footnotes
 
+
 #FootnoteRef(1) The quote is from Pais [12](references!bib_12), p. 131.
+
 #FootnoteRef(2) Points in spacetime are often called /events/.
+
 #FootnoteRef(3) Here the length is independent of the spacetime point specified by $u$. In General Relativity we find that the metric, and thus the length function needs to vary with the point in spacetime.
+
 #FootnoteRef(4) Incrementally, $\xi = \xi^0 \partial / {\partial ct} + \xi^1 \partial /{\partial x} + \xi^2 \partial / {\partial y} + \xi^3 \partial / {\partial z}$.
 The length of this vector, using the Minkowski metric (see equation 10.11), is the Lorentz interval, the right-hand side of equation (11.22).
+
 #FootnoteRef(5) See, for instance, Mermin, "Space and Time in Special Relativity."
+
 #FootnoteRef(6) The procedure #Code(make-SR-coordinates) labels the given coordinates with the given frame. The procedures that manipulate coordinates, such as #Code((point ancestor-frame#)), check that the coordinates they are given are in the appropriate frame. This error checking makes it easier to debug relativity procedures.
+
 #FootnoteEnd

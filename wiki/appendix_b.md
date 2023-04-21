@@ -639,7 +639,11 @@ Repeat [exercise B.1](#exercise_B.1) using the computer. Explore both implementa
 ----
 ### Footnotes
 
+
 #FootnoteRef(1) The procedure #Code(print-expression) can be used in a program to print a simplified version of an expression. The default printer in the user interface incorporates the simplifier.
+
 #FootnoteRef(2) To emphasize the relationship of simple tuple structures to matrix notation we often format #Code(up) tuples as vertical arrangements of components and #Code(down) tuples as horizontal arrangements of components. However, we could just as well have written this tuple as $\left[\left(\cos \theta, \sin \theta\right), \left(−\sin \theta, \cos \theta\right)\right]$.
+
 #FootnoteRef(3) Partial derivative operators such as =(partial 2)= are operators, so =(expt (partial 1) 2)= is a second partial derivative.
+
 #FootnoteEnd

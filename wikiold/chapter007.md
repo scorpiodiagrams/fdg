@@ -425,10 +425,12 @@ As a program this is
 Change of Basis
 
 The basis-independence of the covariant derivative implies a relationship between the Cartan forms in one basis and the equivalent Cartan forms in another basis. Recall (equation 4.13) that the basis vector fields of two bases are always related by a linear transformation. Let $J$ be the matrix of coefficient functions and let $e$ and $e^{\prime}$ be down tuples of basis vector fields. Then
+
 $$\begin{array}{l}
 e(f) = e^{\prime}(f)J. 
 \quad (7.61)
 \end{array}$$
+
 We want the covariant derivative to be independent of basis. This will determine how the connection transforms with a change of basis:
 
 $$\begin{equation}

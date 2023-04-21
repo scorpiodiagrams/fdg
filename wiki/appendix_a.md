@@ -25,9 +25,11 @@ A /procedure call/ is a kind of compound expression. A procedure call is a seque
   ```
 
 are both compound expressions that name the same number as the numeral #Code(3.14).#Footnote(2) In these cases the symbols #Code(+) and #Code(#*) name procedures that add and multiply, respectively. If we replace any subexpression of any expression with an expression that names the same thing as the original subexpression, the thing named by the overall expression remains unchanged. In general, a procedure call is written
+
 $$\begin{equation}
 (\quad \textit{operator} \quad \textit{operand-1} \quad \ldots \quad \textit{operand-n} \quad )
 \end{equation}$$
+
 where /operator/ names a procedure and /operand-i/ names the /i/th argument.#Footnote(3)
 
 ### Lambda Expressions
@@ -46,9 +48,11 @@ This expression can be read: "The procedure of one argument, $x$, that multiplie
 ```
 
 The general form of a $\lambda$-expression is
+
 $$\begin{equation}
 \texttt{(lambda} \quad \textit{formal-parameters} \quad \textit{body} \texttt{)}
 \end{equation}$$
+
 where /formal-parameters/ is a list of symbols that will be the names of the arguments to the procedure and /body/ is an expression that may refer to the formal parameters. The value of a procedure call is the value of the body of the procedure with the arguments substituted for the formal parameters.
 
 ### Definitions
@@ -133,9 +137,11 @@ For convenience there is a special predicate expression #Code(else) that can be 
 ```
 
 The general form of an #Code(if) expression is
+
 $$\begin{equation}
 \texttt{(if} \quad \textit{predicate} \quad \textit{consequent} \quad \textit{alternative} \texttt{)}
 \end{equation}$$
+
 If the /predicate/ is true the value of the #Code(if) expression is the value of the /consequent/, otherwise it is the value of the /alternative/.
 
 ### Recursive Procedures
@@ -307,14 +313,23 @@ Consider what would happen if we were to leave out the quote in the expression #
 ----
 ### Footnotes
 
+
 #FootnoteRef(1) Many of the statements here are valid only assuming that no assignments are used.
+
 #FootnoteRef(2) In examples we show the value that would be printed by the Scheme system using slanted characters following the input expression.
+
 #FootnoteRef(3) In Scheme every parenthesis is essential: you cannot add extra parentheses or remove any.
+
 #FootnoteRef(4) The logician Alonzo Church [5](references!bib_5) invented $\lambda$-notation to allow the specification of an anonymous function of a named parameter:
 $\boldsymbol{\lambda}x[\text{expression in } x]$. This is read, "That function of one argument that is obtained by substituting the argument for x in the indicated expression."
+
 #FootnoteRef(5) The definition of #Code(square) given here is not the definition of =square in the Scmutils system. In Scmutils, #Code(square) is extended for tuples to mean the sum of the squares of the components of the tuple. However, for arguments that are not tuples the Scmutils square does multiply the argument by itself.
+
 #FootnoteRef(6) The examples are indented to help with readability. Scheme does not care about extra white space, so we may add as much as we please to make things easier to read.
+
 #FootnoteRef(7) These names are accidents of history. They stand for "Contents of the Address part of Register" and "Contents of the Decrement part of Register" of the IBM 704 computer, which was used for the first implementation of Lisp in the late 1950s. Scheme is a dialect of Lisp.
+
 #FootnoteRef(8)  Symbols may have any number of characters. A symbol may not contain whitespace or a delimiter character, such as parentheses, brackets, quotation marks, comma, or $\#$.
+
 #FootnoteEnd
 

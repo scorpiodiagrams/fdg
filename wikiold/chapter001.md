@@ -20,9 +20,11 @@ conserved quantities, the geometry is not apparent. But when we express the Lagr
 Lagrange Equations
 
 We write the Lagrange equations in functional notation#Footnote(2) as follows:
+
 $$\begin{equation}
 D\left(\partial_{2} L \circ \Gamma[q]\right) - \partial_{1} L \circ \Gamma[q]=0.\notag
 \end{equation}$$
+
 In SICM [19](references!bib_19), Section 1.6.3, we showed that a Lagrangian describing the free motion of a particle subject to a coordinate dependent constraint can be obtained by composing a free-particle Lagrangian with a function that describes how dynamical states transform given the coordinate transformation that describes the constraints.
 
 A Lagrangian for a free particle of mass m and velocity v is just its kinetic energy, $mv^2/2$. The procedure Lfree implements the free Lagrangian:#Footnote(3)
@@ -62,6 +64,7 @@ So the value of the Lagrangian at an arbitrary dynamical state is:
 ```
 #page(5)
  or, in infix notation:
+
 $$\begin{equation}
 {{1}\over {2}} {R}^{2} m {\dot{\phi}}^{2} {\left( \sin\left( \theta \right) \right)}^{2} + {{1}\over {2}} {R}^{2} m {\dot{\theta}}^{2}\notag
 \end{equation}$$
@@ -69,22 +72,28 @@ $$\begin{equation}
 22 The Metric
 Let’s now take a step into the geometry. A surface has a metric which tells us how to measure sizes and angles at every point on the surface. (Metrics are introduced in Chapter 9.)
 The metric is a symmetric function of two vector fields that gives a number for every point on the manifold. (Vector fields are introduced in Chapter 3). Metrics may be used to compute the length of a vector field at each point, or alternatively to compute the inner product of two vector fields at each point. For example, the metric for the sphere of radius R is
+
 $$\begin{equation}
 \mathsf{g}(\mathsf{u}, \mathsf{v})=R^{2} \mathsf{d} \theta(\mathsf{u})
 \mathsf{d} \theta(\mathsf{v})+R^{2}(\sin \theta)^{2} \mathsf{d}
 \phi(\mathsf{u}) \mathsf{d} \phi(\mathsf{v}),\notag\quad(1.2)
 \end{equation}$$
+
 where u and v are vector fields, and dθ and dφ are one-form fields that extract the named components of the vector-field argument. (One-form fields are introduced in Chapter 3.) We can think of dθ(u) as a function of a point that gives the size of the vector field u in the θ direction at the point. Notice that g(u, u) is a weighted sum of the squares of the components of u. In fact, if we identify
+
 $$\begin{align*}
 &\mathsf{d} \theta(\mathsf{v})=\dot{\theta} \\
 &\mathsf{d} \phi(\mathsf{v})=\dot{\phi},
 \end{align*}$$
+
 then the coefficients in the metric are the same as the coefficients in the value of the Lagrangian, equation (1.1), apart from a factor of m/2.
 We can generalize this result and write a Lagrangian for free motion of a particle of mass m on a manifold with metric g:
+
 $$\begin{equation}
 L_{2}(x, v)=\sum_{i j} \frac{1}{2} m g_{i j}(x) v^{i} v^{j}
 \notag\quad(1.3)
 \end{equation}$$
+
 This is written using indexed variables to indicate components of the geometric objects expressed with respect to an unspecified coordinate system. The metric coefficients gij are, in general, a
 #page(6)
 function of the position coordinates x, because the properties of the space may vary from place to place.
@@ -146,23 +155,29 @@ Now we can compute the residuals of the Euler-Lagrange equations, but we get a l
 ```
 Geodesic Equations
 Now we get deeper into the geometry. The traditional way to write the geodesic equations is
+
 $$\begin{equation}
 \nabla_{\mathsf{v}} \mathsf{v}=0
 \notag\quad(1.4)
 \end{equation}$$
+
 where ∇ is a covariant derivative operator. Roughly, ∇vw is a directional derivative. It gives a measure of the variation of the vector field w as you walk along the manifold in the direction of v. (We will explain this in depth in Chapter 7.) ∇vv = 0 is intended to convey that the velocity vector is parallel-transported by itself. When you walked East on the Equator you had to hold the stick so that it was parallel to the Equator. But the stick is constrained to the surface of the Earth, so moving it along the Equator required turning it in three dimensions. The ∇ thus must incorporate the 3-dimensional shape of the Earth to provide a notion of “parallel” appropriate for the denizens of the surface of the Earth. This information will appear as the “Christoffel coefficients” in the coordinate representation of the geodesic equations.
 The trouble with the traditional way to write the geodesic equations (1.4) is that the arguments to the covariant derivative are
 #page(9)
  vector fields and the velocity along the path is not a vector field. A more precise way of stating this relation is:
+
 $$\begin{equation}
 \nabla^\gamma_{\partial/\partial\mathsf{t}} d\gamma\left(\partial/\partial \mathsf{t}\right) = 0.
 \notag\quad(1.5)\end{equation}$$
+
 (We know that this may be unfamiliar notation, but we will explain it in Chapter 7.)
 In coordinates, the geodesic equations are expressed
+
 $$\begin{equation}
 D^{2} q^{i}(t)+\sum_{j k} \Gamma_{j k}^{i}(\gamma(t)) D q^{j}(t) D q^{k}(t)=0,
 \notag\quad(1.6)
 \end{equation}$$
+
 where q(t) is the coordinate path corresponding to the manifold path γ, and $\Gamma^i_{jk}\left(\mathsf{m}\right)$ are Christoffel coefficients. The $\Gamma^i_{jk}\left(\mathsf{m}\right)$ describe the “shape” of the manifold close to the manifold point m. They can be derived from the metric g.
 We can get and save the geodesic equation residuals by:
 ```Scheme
@@ -190,22 +205,33 @@ This establishes that for a 2-dimensional space the Euler-Lagrange equations are
 
 ### Exercise  1.1: Motion on a Sphere
 The metric for a unit sphere, expressed in colatitude θ and longitude φ, is
+
 $$\begin{equation}
 \mathsf{g}(\mathsf{u}, \mathsf{v})= \mathsf{d}\theta(\mathsf{u})\mathsf{d}\theta(\mathsf{v}) + (\sin \theta)^{2} \mathsf{d}\phi(\mathsf{u}) \mathsf{d} \phi(\mathsf{v}).
 \notag\end{equation}$$
+
 Compute the Lagrange equations for motion of a free particle on the sphere and convince yourself that they describe great circles. For example, consider motion on the equator ($\theta = \pi/2$) and motion on a line of longitude ($\phi$ is constant).
 
 ----
+
 #FootnoteRef(1) It is customary to shorten “Euler-Lagrange equations” to “Lagrange equations.” We hope Leonhard Euler is not disturbed.
+
 #FootnoteRef(2) A short introduction to our functional notation, and why we have chosen it, is given in the prologue: Programming and Understanding. More details can be found in Appendix B.
+
 #FootnoteRef(3) An informal description of the Scheme programming language can be found in Appendix A.
+
 #FootnoteRef(4) The procedure literal-metric provides a metric. It is a general symmetric function of two vector fields, with literal functions of the coordinates of the manifold points for its coefficients in the given coordinate system. The quoted symbol ’g is used to make the names of the literal coefficient functions. Literal functions are discussed in Appendix B.
+
 #FootnoteRef(5) R2-rect is the usual rectangular coordinate system on the 2-dimensional real manifold. (See Section 2.1, page 13.) We supply common coordinate systems for n-dimensional real manifolds. For example, R2-polar is a polar coordinate system on the same manifold.
+
 #FootnoteRef(6) The procedure literal-manifold-map makes a map from the manifold implied by its second argument to the manifold implied by the third argument. These arguments must be coordinate systems. The quoted symbol that is the first argument is used to name the literal coordinate functions that define the map.
+
 #FootnoteRef(7) For an explanation of equation residuals see page xvi.
+
 #FootnoteRef(8) We established t as a coordinate function on the rectangular coordinates of the real line by
 ```Scheme
 (define-coordinates t R1-rect)
 ```
 This had the effect of also defining $\frac{d}{dt}$ as a coordinate vector field and $dt$ as a one-form field on the real line.
+
 #FootnoteEnd

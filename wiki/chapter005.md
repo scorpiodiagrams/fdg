@@ -567,21 +567,33 @@ We have shown that the equation (5.29) is true for manifold functions. Show that
 ----
 ### Footnotes
 
+
 #FootnoteRef(1) Note $(D(\chi \circ \chi^{\prime-1}) \circ (\chi^{\prime} \circ
 \chi^{-1})) D (\chi^{\prime} \circ \chi^{-1}) = 1$. With $g = \chi^{\prime}
 \circ \chi^{-1}$ this is $(D(g^{-1} \circ g)(Dg) = 1$.
+
 #FootnoteRef(2) The determinant is the unique function of the rows of its argument that i) is linear in each row, ii) changes sign under any interchange of rows, and iii) is one when applied to the identity multiplier.
+
 #FootnoteRef(3) By using the word "orthonormal" here we are assuming that the range of the coordinate chart is an ordinary Euclidean space with the usual Euclidean metric. The coordinate basis in that chart is orthonormal. Under these conditions we can usefully use words like "length," "area," and "volume" in the coordinate space.
+
 #FootnoteRef(4) This is a generalization of the Fundamental Theorem of Calculus.
+
 #FootnoteRef(5) A manifold function $\mathsf{f}$ induces a form field $\hat{\mathsf{f}}$ of rank 0 as follows:
+
 $$\begin{equation}
 \hat{\mathsf{f}}()(\mathsf{m}) = \mathsf{f}(\mathsf{m}).
 \end{equation}$$
+
 #FootnoteRef(6) The definition is chosen to make Stokes's Theorem pretty.
+
 #FootnoteRef(7) See Spivak, Differential Geometry, Volume 1, p.289.
+
 #FootnoteRef(8) See Spivak, Calculus on Manifolds, p.92
+
 #FootnoteRef(9) We do not develop the machinery for integration on chains that is usually needed for a full proof of Stokes's Theorem. This is adequately done in other books. A beautiful treatment can be found in Spivak, Calculus on Manifolds [17](references!bib_17).
+
 #FootnoteRef(10) Using =(define R2-rect-basis (coordinate-system->basis R2-rect))=.
 
 Here we extract $\mathsf{d}\mathsf{x}$ and $\mathsf{d}\mathsf{y}$ from R2-rect-basis to avoid globally installing coordinates.
+
 #FootnoteEnd

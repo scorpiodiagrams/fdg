@@ -347,17 +347,26 @@ Compute the Lagrange equations for motion of a free particle on the sphere and c
 ----
 ### Footnotes
 
+
 #FootnoteRef(1) It is customary to shorten "Euler-Lagrange equations" to "Lagrange equations." We hope Leonhard Euler is not disturbed.
+
 #FootnoteRef(2) A short introduction to our functional notation, and why we have chosen it, is given in the prologue: Programming and Understanding. More details can be found in Appendix B
+
 #FootnoteRef(3) An informal description of the Scheme programming language can be found in Appendix A.
+
 #FootnoteRef(4) The procedure #Code(literal-metric) provides a metric. It is a general symmetric function of two vector fields, with literal functions of the coordinates of the manifold points for its coefficients in the given coordinate system. The quoted symbol #Code('g) is used to make the names of the literal coefficient functions. Literal functions are discussed in Appendix B.
+
 #FootnoteRef(5) #Code(R2-rect) is the usual rectangular coordinate system on the 2-dimensional real manifold. (See Section 2.1, page 13.) We supply common coordinate systems for n-dimensional real manifolds. For example, #Code(R2-polar) is a polar coordinate system on the same manifold.
+
 #FootnoteRef(6) The procedure #Code(literal-manifold-map) makes a map from the manifold implied by its second argument to the manifold implied by the third argument.
 These arguments must be coordinate systems. The quoted symbol that is the first argument is used to name the literal coordinate functions that define the map.
+
 #FootnoteRef(7) For an explanation of equation residuals see page xvi.
+
 #FootnoteRef(8) We established #Code(t) as a coordinate function on the rectangular coordinates of the real line by
 ```Scheme
 (define-coordinates t R1-rect)
 ```
 This had the effect of also defining #Code(d#/dt) as a coordinate vector field and #Code(dt) as a one-form field on the real line.
+
 #FootnoteEnd

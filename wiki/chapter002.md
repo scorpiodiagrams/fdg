@@ -111,21 +111,17 @@ $$\begin{equation}
 
 and the manifold function $\mathsf{f}$ is represented in coordinates by a function $f$ that takes a pair of real numbers and produces a real number
 
-$$\begin{equation}
-\begin{align}
+$$\begin{align}
 f \colon& \mathsf{R}^{2} \rightarrow \mathsf{R} \\
 f \colon& (x,y) \rightarrow f(x,y).
-\end{align}
-\end{equation}$$
+\end{align}$$
 
 We define our manifold function
 
-$$\begin{equation}
-\begin{align}
+$$\begin{align}
 \mathsf{f} \colon& \mathsf{M} \rightarrow \mathsf{R} \\
 \mathsf{f} \colon& \mathsf{m} \rightarrow (f \circ \chi)(\mathsf{m}).
-\end{align}
-\end{equation}$$
+\end{align}$$
 
 ### /Manifold Functions Are Coordinate Indepenedent/
 
@@ -142,7 +138,7 @@ where #Code(R2->R) is a signature for functions hat map an up structure of two r
 ```
 We can specify a typical manifold point using its rectangular coordinates:
 ```Scheme
-(define R2-rect-point (R2-rect-chi-inverse (up 'x0 'y0))))
+(define R2-rect-point (R2-rect-chi-inverse (up 'x0 'y0)))
 ```
 We can describe the /same point/ using its polar coordinates:
 ```Scheme
@@ -265,21 +261,42 @@ Perform an analogous computation to get the polar coordinates of the point on th
 ----
 ### Footnotes
 
+
 #FootnoteRef(1) The open set for a latitude-longitude coordinate system cannot include either pole (because longitude is not defined at the poles) or the $180^{\circ}$ meridian (where the longitude is discontinuous). Other coordinate systems are needed to cover these places.
+
+
 #FootnoteRef(2) The expression #Code(R^n) gives only one kind of manifold. We also have spheres #Code(S^n) and #Code(SO3).
+
+
 #FootnoteRef(3) The word #Code(origin) is an arbitrary symbol here. It labels a predefined patch in #Code(R^n) manifolds.
+
+
 #FootnoteRef(4) In the text that follows we will use sans-serif names, such as $\mathsf{f}$, $\mathsf{v}$, $\mathsf{m}$, to refer to objects defined on the manifold. Objects that are defined on coordinates (tuples of real numbers) will be named with symbols like $f$, $v$, $x$.
+
+
 #FootnoteRef(5) The rectangular coordinates are good for the entire plane, but the polar coordinates are singular at the origin because the angle is not defined. Also,
 the patch for polar coordinates must exclude one ray from the origin, because of the angle variable.
+
+
 #FootnoteRef(6) We can avoid explicitly naming the patch:
 ```Scheme
 (define R2-rect (coordinate-system-at 'rectangular 'origin R2))
 ```
+
+
 #FootnoteRef(7) See Appendix B for an introduction to tuple arithmetic and a discussion of derivatives of functions with structured input or output.
+
+
 #FootnoteRef(8) Alternatively, we can define the same function in a shorthand
 ```Scheme
 (define f (literal-manifold-function 'f-rect R2-rect))
 ```
+
+
 #FootnoteRef(9) This is actually a nasty, but traditional, abuse of notation. An expression like $\cos(r)$ can either mean the cosine of the angle $r$ (if $r$ is a number), or the composition $\cos \circ r$ (if $r$ is a function). In our system #Code((cos r#)) behaves in this way---either computing the cosine of #Code(r) or being treated as #Code((compose cos r#)) depending on what #Code(r) is.
+
+
 #FootnoteRef(10) The plane with the addition of a point at infinity is conformally equivalent to the sphere by this correspondence. This correspondence is called the Riemann sphere, in honor of the great mathematician Bernard Riemann (1826–1866), who made major contributions to geometry.
+
+
 #FootnoteEnd

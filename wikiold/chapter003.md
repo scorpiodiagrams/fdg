@@ -382,29 +382,43 @@ a. Form an expression that gives the power that must be expended to follow the v
 b. Write this as a computational expression.
 
 ----
+
 #FootnoteRef(1) In multiple dimensions the derivative Df(x) is a down tuple structure of the partial derivatives and the increment Δx is an up tuple structure, so the indicated product is to be interpreted as a contraction. (See equation B.8.)
+
 #FootnoteRef(2) An operator is just like a procedure except that multiplication is interpreted as composition. For example, the derivative procedure is made into an operator D so that we can say (expt D 2) and expect it to compute the second derivative. The procedure procedure->vector-field makes a vector-field operator.
+
 #FootnoteRef(3) The make-operator procedure takes a procedure and returns an operator.
+
 #FootnoteRef(4) If f has structured output then v(f) is the structure resulting from v being applied to each component of f.
+
 #FootnoteRef(5)  A set of vector fields, {vi}, is linearly independent with respect to manifold functions if we cannot find nonzero manifold functions, {ai}, such that:
 aivi(f) = 0(f), i
 where 0 is the vector field such that 0(f)(m) = 0 for all f and m.
+
 #FootnoteRef(6) This notation helps one remember the transformation rule:
  ∂f ∂f ∂x′j
 ∂x′j ∂xi ,
 which is the relation in the usual Leibniz notation. As Spivak pointed out in Calculus on Manifolds, p.45, f means something different on each side of the equation.
+
 #FootnoteRef(7) For coordinate paths q and q′ related by q(t) = (χ◦(χ′)−1)(q′(t)) the velocities are related by Dq(t) = D(χ ◦ (χ′)−1)(q′(t))Dq′(t). Abstracting off paths, we get v = D(χ ◦ (χ′)−1)(x′)v′.
 ∂xi =
 j
+
 #FootnoteRef(8) In this expression $\frac{d}{dx}$ and $\frac{d}{dy}$ are vector fields that take directional derivatives of manifold functions and evaluate them at manifold points; x and y are manifold functions. define-coordinates was used to create these operators and functions, see page 27.
 Note that circular is an operator—a property inherited from $\frac{d}{dx}$ and $\frac{d}{dy}$.
+
 #FootnoteRef(2) 
+
 #FootnoteRef(9) The differential of a manifold function will turn out to be a special case of the exterior derivative, which will be introduced later.
+
 #FootnoteRef(10) The Kronecker delta δji is one if i = j and zero otherwise.
 ω(v)(m) = a(χ(m)) X(v)(m) =
 with coefficient-function tuple a(x), for x = χ(m). We can write
 i
 ai(χ(m)) Xi(v)(m), (3.42)
+
 #FootnoteRef(11) The analogous recovery of coefficient tuples from vector fields is equation (3.3): biχ,v = v (χi) ◦ χ−1.
+
 #FootnoteRef(12) The procedure components->1form-field is analogous to the procedure components->vector-field introduced earlier.
+
 #FootnoteEnd

@@ -23,7 +23,6 @@ $\boldsymbol{\theta}$ are form fields, and $\mathsf{f}$ and $\mathsf{g}$ are man
 
 The multilinearity over functions implies that the components of the tensor transform in a particularly simple way as the basis is changed. The components of a real-valued geometric function of vector fields and form fields are obtained by evaluating the function on a set of basis vectors and their dual form basis. In our example,
 
-
 $$\begin{equation}
 \mathsf{T}_j^i = \mathsf{T}(e_j, \tilde{e}^i),
 \end{equation}$$

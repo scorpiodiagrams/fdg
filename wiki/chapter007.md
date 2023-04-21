@@ -364,10 +364,12 @@ We can apply the exponential of the Lie derivative with respect to $\mathsf{J}_{
 ```
 Apparently the result is
 ```Scheme
+
 $$\begin{equation}
 \text{exp}(\alpha\mathcal{L}_{(\mathsf{x}\,{\partial}/{\partial\mathsf{y}}-\mathsf{y}\,{\partial}/{\partial\mathsf{x}})})\frac{\partial}{\partial\mathsf{y}}
 =-\sin(a)\frac{\partial}{\partial\mathsf{x}}+\cos(a)\frac{\partial}{\partial\mathsf{y}}.
 \end{equation}$$
+
 ```
 ### Interior Product
 
@@ -1039,6 +1041,7 @@ d/dt)
 (chart S2-spherical))
 ((point R1-rect) 't0)))
 ```
+
 $$\begin{equation}
 \left(\begin{array}{c}
 -\cos(\alpha(t0))\sin(\alpha(t0))(D\beta(t0))^{2}+D^{2}\alpha(t0)\\
@@ -1069,6 +1072,7 @@ Then the Lagrange equations are:
 (literal-function 'beta)))
 't))
 ```
+
 $$\begin{equation}
 \left[\begin{array}{c}
 -(D\beta(t))^{2}\sin(\alpha(t))\cos(\alpha(t))+D^{2}\alpha(t)\\
@@ -1124,9 +1128,13 @@ b. Show that there is no connection that for every vector field makes the Lie de
 ----
 ### Footnotes
 
+
 #FootnoteRef(1) The directional derivative of a vector field must itself be a vector field. Thus the real program for this must make the function of $\mathsf{f}$ into a vector field. However, we leave out this detail here to make the structure clear.
+
 #FootnoteRef(2) For some derivative operators α can be a real-valued manifold function.
+
 #FootnoteRef(3) The action on functions, vector fields, and one-form fields suffices to define the action on all tensor fields. See Appendix C.
+
 #FootnoteRef(4) In these experiments we need some setup.
 ```Scheme
 (define a (literal-manifold-function 'alpha R3-rect))
@@ -1149,10 +1157,15 @@ b. Show that there is no connection that for every vector field makes the Lie de
 (define R3-rect-point
 ((point R3-rect) (up 'x0 'y0 'z0)))
 ```
+
 #FootnoteRef(5) In the introduction the stick was always kept east-west rather than pointing south, but the phenomenon is the same!
+
 #FootnoteRef(6) This program is incomplete. It must construct a vector field; it must make a differential operator; and it does not apply to functions or forms.
+
 #FootnoteRef(7) This terminology may be restricted to the case in which the basis is a coordinate basis.
+
 #FootnoteRef(8) The structure of the Cartan forms $\varpi$ together with this equation forces the shape of the Christoffel coefficient structure.
+
 #FootnoteRef(9) We will need a few definitions:
 ```Scheme
 (define R2-rect-basis (coordinate-system->basis R2-rect))
@@ -1160,7 +1173,9 @@ b. Show that there is no connection that for every vector field makes the Lie de
 (define-coordinates (up x y) R2-rect)
 (define-coordinates (up r theta) R2-polar)
 ```
+
 #FootnoteRef(10) Since the Christoffel coefficients are basis-dependent they are packaged with the basis.
+
 #FootnoteRef(11) The code for making the Cartan forms is as follows:
 ```Scheme
 (define (Christoffel->Cartan Christoffel)
@@ -1170,23 +1185,35 @@ b. Show that there is no connection that for every vector field makes the Lie de
 (* Christoffel-symbols (basis->1-form-basis basis))
 basis)))
 ```
+
 #FootnoteRef(12) The argument $\mathsf{w}_{\gamma}$ makes sense because our parallel-transport operator never depended on the vector field tangent to the integral curve existing off of the curve. Because the connection is a form field (see equation 7.47), it does not depend on the value of its vector argument anywhere except at the point where it is being evaluated.
 
 The argument $\mathsf{u}_{\gamma}$ is more difficult. We must modify equation (7.37):
+
 $$\begin{equation}
 F^{\mathsf{w}_{\gamma}}_{\delta}\mathsf{u}_{\gamma}(\mathsf{f})(t)=\sum_{i,j}A^{i}_{j}(\delta)u^{j}(t-\delta)\mathsf{e}^{\gamma}_{i}(\mathsf{f})(t).
 \end{equation}$$
+
 #FootnoteRef(13) You may have noticed that $t$ and $\mathsf{t}$ appear here. The real-line manifold point $\mathsf{t}$ has coordinate $t$.
+
 #FootnoteRef(14) We will show later that these Christoffel coefficients are a natural choice for the sphere.
+
 #FootnoteRef(15) If we give covariant-derivative an extra argument, in addition to the Cartan form, the covariant derivative treats the extra argument as a map and transforms the Cartan form to work over the map.
+
 #FootnoteRef(16) A southward-pointing vector remains southward-pointing when it is parallel-transported along the equator. To do this we do not have to integrate the differential equations, because we know the answer.
+
 #FootnoteRef(17) The equation of a geodesic path is often said to be
+
 $$\begin{equation}
 \nabla_{\mathsf{v}}\mathsf{v}=0,
 \end{equation}$$
+
 but this is nonsense. The geodesic equation is a constraint on the path, but the path does not appear in this equation. Further, the velocity along a path is not a vector field, so it cannot appear in either argument to the covariant derivative.
 
 What is true is that a vector field $\mathsf{v}$ all of whose integral curves are geodesics satisfies equation (7.77).
+
 #FootnoteRef(18) The method of formulating a system with constraints by composing a free system with the state-space coordinate transformation that represents the constraints can be found in [19](references!bib_19), section 1.6.3. The procedure F->C takes a coordinate transformation and produces a corresponding transformation of Lagrangian state.
+
 #FootnoteRef(19) The geodesic equations and the Lagrange equations are related by a contraction with the metric.
+
 #FootnoteEnd

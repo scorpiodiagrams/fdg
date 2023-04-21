@@ -214,20 +214,31 @@ theta)
 Perform an analogous computation to get the polar coordinates of the point on the plane corresponding to a point on the sphere given by its colatitude and longitude.
 
 ----
+
 #FootnoteRef(1) The open set for a latitude-longitude coordinate system cannot include either pole (because longitude is not defined at the poles) or the 180◦ meridian (where the longitude is discontinuous). Other coordinate systems are needed to cover these places.
+
 #FootnoteRef(2)  The expression R^n gives only one kind of manifold. We also have spheres S^n and SO3.
+
 #FootnoteRef(3) The word origin is an arbitrary symbol here. It labels a predefined patch in R^n manifolds.
+
 #FootnoteRef(4) In the text that follows we will use sans-serif names, such as f, v, m, to refer to objects defined on the manifold. Objects that are defined on coordinates (tuples of real numbers) will be named with symbols like f, v, x.
+
 #FootnoteRef(5) The rectangular coordinates are good for the entire plane, but the polar coordinates are singular at the origin because the angle is not defined. Also, the patch for polar coordinates must exclude one ray from the origin, because of the angle variable.
+
 #FootnoteRef(6) We can avoid explicitly naming the patch:
 ```Scheme
 (define R2-rect (coordinate-system-at ’rectangular ’origin R2))
 ```
+
 #FootnoteRef(7) See Appendix B for an introduction to tuple arithmetic and a discussion of derivatives of functions with structured input or output.
+
 #FootnoteRef(8) Alternatively, we can define the same function in a shorthand 
 ```Scheme
 (define f (literal-manifold-function ’f-rect R2-rect))
 ```  
+
 #FootnoteRef(9) This is actually a nasty, but traditional, abuse of notation. An expression like cos(r) can either mean the cosine of the angle r (if r is a number), or the composition cos ◦ r (if r is a function). In our system (cos r) behaves in this way—either computing the cosine of r or being treated as (compose cos r) depending on what r is.
+
 #FootnoteRef(10) The plane with the addition of a point at infinity is conformally equivalent to the sphere by this correspondence. This correspondence is called the Riemann sphere, in honor of the great mathematician Bernard Riemann (1826–1866), who made major contributions to geometry.
+
 #FootnoteEnd

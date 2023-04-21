@@ -728,10 +728,15 @@ X Y Z)
 ----
 ### Footnotes
 
+
 #FootnoteRef(1) [11](references!bib_11), [4](references!bib_4), and [14](references!bib_14) use our definition. [20](references!bib_20) uses a different convention for the order of arguments and a different sign. See Appendix C for a definition of tensors.
+
 #FootnoteRef(2) The connection specified by #Code(sphere-Cartan) is defined on page 107.
+
 #FootnoteRef(3) The map $\gamma$ takes points on the real line to points on the target manifold. The chart $\chi$ gives coordinates of points on the target manifold while $\chi_\mathsf{R}$ gives a time coordinate on the real line.
+
 #FootnoteRef(4) The series may not converge for large increments in the independent variable. In this case it is appropriate to numerically integrate the differential equations directly.
+
 #FootnoteRef(5) The parallel-transport operators are evolution operators, and therefore descend into composition:
 
 $$\begin{equation}
@@ -747,6 +752,7 @@ e^A e^B I = e^A \left(\left(e^B I\right) \circ I\right) = \
 
 where $I$ is the identity function on states.
 
+
 #FootnoteRef(6) The setup for this experiment is a bit complicated. We need to make a manifold with a general connection.
 
 ```Scheme
@@ -761,7 +767,9 @@ We now make the Cartan forms from the most general 2-dimensional Christoffel coe
 (Christoffel->Cartan
 (literal-Christoffel-2 'Gamma R2-rect)))
 ```
+
 #FootnoteRef(7) People often say "Geodesic evolution is exponentiation of the covariant derivative." But this is wrong. The evolution is by exponentiation of $L_g$.
+
 #FootnoteRef(8) The setup for this example is:
 
 ```Scheme
@@ -772,6 +780,7 @@ We now make the Cartan forms from the most general 2-dimensional Christoffel coe
 (define Cartan (Christoffel->Cartan S2-Christoffel))
 (define nabla (covariant-derivative Cartan))
 ```
+
 #FootnoteRef(9) Setup for this section:
 
 ```Scheme
@@ -781,4 +790,5 @@ We now make the Cartan forms from the most general 2-dimensional Christoffel coe
 (define Z (literal-vector-field 'Z-rect R4-rect))
 (define V (literal-vector-field 'V-rect R4-rect))
 ```
+
 #FootnoteRef(10) The Bianchi identities are much nastier to write in traditional mathematical notation than as Scheme programs.

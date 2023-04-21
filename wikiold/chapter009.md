@@ -4,7 +4,9 @@ We often want to impose further structure on a manifold to allow us to define le
 
 For vectors ⃗u = u x xˆ + u y yˆ + u z zˆ and ⃗v = v x xˆ + v y yˆ + v z zˆ the dot product is ⃗u · ⃗v = uxvx + uyvy + uzvz. The generalization is to provide coefficients for these terms and to include cross terms, consistent with the requirement that the function of two vectors is symmetric. This symmetric, bilinear, real-valued function of two vector fields is called a metric field.
 For example, the natural metric on a sphere of radius R is
+
 $$g(u, v) = R2(dθ(u)dθ(v) + (sin θ)2dφ(u)dφ(v)), (9.1)$$
+
 and the Minkowski metric on the 4-dimensional space of special relativity is
 g(u,v) = dx(u)dx(v)+dy(u)dy(v)+dz(u)dz(v)−c2dt(u)dt(v).(9.2)
 Although these examples are expressed in terms of a coordinate basis, the value of the metric on vector fields does not depend on the coordinate system that is used to specify the metric.

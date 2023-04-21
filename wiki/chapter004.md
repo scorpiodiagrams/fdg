@@ -19,22 +19,29 @@ $$\begin{equation}
 where $\mathsf{b}$ is a tuple-valued coefficient function on the manifold. When expressed in a coordinate basis, the coefficients that specify the direction of the vector are naturally expressed as functions $b^i$ of the coordinates of the manifold point. Here, the coefficient function $\mathsf{b}$ is more naturally expressed as a tuple-valued function on the manifold. If $b$ is the coefficient function expressed as a function of coordinates, then $\mathsf{b} = b \circ \chi$ is the coefficient function as a function on the manifold.
 
 The coordinate-basis forms have a simple definition in terms of the coordinate-basis vectors and the coordinates (equation 3.40). With this choice, the dual property, equation (3.41), holds without further fuss. More generally, we can define a basis of one-forms $\tilde{\mathsf{e}}$ that is dual to $\mathsf{e}$ in that the property
+
 $$\begin{equation}
 \tilde{\mathsf{e}}^i(\mathsf{e}_j)(\mathsf{m}) = \delta^i_j
 \end{equation}$$
+
 is satisfied, analogous to property (3.41). Figure 4.1 illustrates the duality of basis fields.
 
 TODO add Figure 4.1 with this caption: Let arrows $\mathsf{e_0}$ and $\mathsf{e_q}$ depict the vectors of a basis vector field at a particular point. Then the foliations shown by the parallel lines depict the dual basis one-form fields at that point. The dotted lines represent the field $\tilde{\mathsf{e}}^0$ and the dashed lines represent the field $\tilde{\mathsf{e}}^1$. The spacings of the lines are 1/3 unit. That the vectors pierce three of the lines representing their duals and do not pierce any of the lines representing the other basis elements is one way to see the relationship $\tilde{\mathsf{e}}^i(\mathsf{e}_j) = \delta^i_j.$
 
 To solve for the dual basis $\tilde{\mathsf{e}}$ given the basis $\mathsf{e}$, we express the basis vectors $\mathsf{e}$ in terms of a coordinate basis#Footnote(2)
+
 $$\begin{equation}
 \mathsf{e}_j(\mathsf{f}) = \sum_k {\mathsf{X}(\mathsf{f}) \mathsf{c}_j^k},
 \end{equation}$$
+
 and the dual one-forms $\tilde{\mathsf{e}}$ in terms of the dual coordinate one-forms
+
 $$\begin{equation}
 \tilde{\mathsf{e}}^i(\mathsf{v}) = \sum_l {\mathsf{d}_l^i \tilde{\mathsf{X}}^l(\mathsf{v})},
 \end{equation}$$
+
 then
+
 $$\begin{equation}
 \begin{aligned}
 \tilde{\mathsf{e}}^{i}\left(\mathsf{e}_{j}\right) &=\sum_{l} \mathsf{d}_{l}^{i} \widetilde{\mathsf{X}}^{l}\left(\mathsf{e}_{j}\right) \\
@@ -44,11 +51,14 @@ $$\begin{equation}
 &=\sum_{k} \mathsf{d}_{k}^{i} \mathsf{c}_{j}^{k}.
 \end{aligned}
 \end{equation}$$
+
 Applying this at $\mathsf{m}$ we get
+
 $$\begin{equation}
 \tilde{\mathsf{e}}^i(\mathsf{e}_j)(\mathsf{m}) = \delta_j^i = \sum_k {\mathsf{d}_k^i(\mathsf{m}) \
 \mathsf{c}_j^k(\mathsf{m}).}
 \end{equation}$$
+
 So the $\mathsf{d}$ coefficients can be determined from the $\mathsf{c}$ coefficents (essentially by matrix inversion).
 
 A set of vector fields $\{\mathsf{e}_i\}$ may be linearly independent in the sense that a weighted sum of them may not be identically zero over a region, yet it may not be a basis in that region. The problem is that there may be some places in the region where the vectors are not independent. For example, two of the vectors may be parallel at a point but not parallel elsewhere in the region.
@@ -113,30 +123,43 @@ $$\begin{equation}
 \mathsf{v}(\mathsf{f}) = \sum_i{\mathsf{e}_i(\mathsf{f})\mathsf{b}^i} \
 = \sum_i{\mathsf{e^\prime}_j(\mathsf{f})\mathsf{b^\prime}^j}.
 \end{equation}$$
+
 The coefficients $\mathsf{b^\prime}$ can be obtained from $\mathsf{v}$ by applying the dual basis
+
 $$\begin{equation}
 \mathsf{b^\prime}^j = \mathsf{\tilde{e}^\prime}^j(\mathsf{v}) = \sum_i{\mathsf{\tilde{e}^\prime}^j(\mathsf{e}_i)\mathsf{b}^i}.
 \end{equation}$$
+
 Let
+
 $$\begin{equation}
 \mathsf{J}_i^j = \mathsf{\tilde{e}^\prime}^j(\mathsf{e}_i),
 \end{equation}$$
+
 then
+
 $$\begin{equation}
 \mathsf{b^\prime}^j = \sum_i{\mathsf{J}_i^j \mathsf{b}^i},
 \end{equation}$$
+
 and
+
 $$\begin{equation}
 \mathsf{e}_i(\mathsf{f}) = \sum_j{\mathsf{e^\prime}_j(\mathsf{f})\mathsf{J}_i^j}.
 \end{equation}$$
+
 he Jacobian $\mathsf{J}$ is a structure of manifold functions. Using tuple arithmetic, we can write
+
 $$\begin{equation}
 \mathsf{b^\prime} = \mathsf{J}\mathsf{b}
 \end{equation}$$
+
 and
+
 $$\begin{equation}
 \mathsf{e}(\mathsf{f}) = \mathsf{e^\prime}(\mathsf{f})\mathsf{J}.
 \end{equation}$$
+
 We can write
 ```Scheme
 (define (Jacobian to-basis from-basis)
@@ -176,30 +199,40 @@ We can also get the polar components directly:
 We see that they are the same.
 
 If $\mathsf{K}$ is the Jacobian that relates the basis vectors in the other direction
+
 $$\begin{equation}
 \mathsf{e^\prime}(\mathsf{f}) = \mathsf{e}(\mathsf{f})\mathsf{K}
 \end{equation}$$
+
 then
+
 $$\begin{equation}
 \mathsf{K}\mathsf{J} = \mathsf{I} = \mathsf{J}\mathsf{K}
 \end{equation}$$
+
 where $\mathsf{I}$ is a manifold function that returns the multiplicative identity.
 
 The dual basis transforms oppositely. Let
+
 $$\begin{equation}
 \boldsymbol{\omega} = \sum_i{\mathsf{a}_i \tilde{\mathsf{e}}^{i}} = \sum_i{\mathsf{a}^{\prime}_i \tilde{\mathsf{e}}^{\prime i}}.
 \end{equation}$$
+
 The coefficients are#Footnote(4)
 
 $$\begin{equation}
 \mathsf{a}_i = \boldsymbol{\omega}(\mathsf{e}_i) = \sum_j{\mathsf{a}^\prime_j \tilde{\mathsf{e}}^{\prime j}}(\mathsf{e}_i) \
 = \sum_j{\mathsf{a}^\prime_j \mathsf{J}^j_i}
 \end{equation}$$
+
 or, in tuple arithmetic,
+
 $$\begin{equation}
 \mathsf{a} = \mathsf{a}^\prime \mathsf{J}.
 \end{equation}$$
+
 Because of equation (4.18) we can deduce
+
 $$\begin{equation}
 \tilde{\mathsf{e}} = \mathsf{K}\tilde{\mathsf{e}}^\prime.
 \end{equation}$$
@@ -459,10 +492,15 @@ How are $\mathsf{J}_x$, $\mathsf{J}_y$, and $\mathsf{J}_z$ related to $\mathsf{e
 ----
 ### Footnotes
 
+
 #FootnoteRef(1) We cannot say if the basis vectors are orthogonal or normalized until we introduce a metric.
+
 #FootnoteRef(2) We write the vector components on the right and the tuple of basis vectors on the left because if we think of the basis vectors as organized as a row and the components as organized as a column then the formula is just a matrix multiplication.
+
 #FootnoteRef(3) This is why the set of vector fields and the set of one-form fields are modules rather than vector spaces.
+
 #FootnoteRef(4) We see from equations (4.15) and (4.16) that $\mathsf{J}$ and $\mathsf{K}$ are inverses. We can obtain their coefficients by: $\mathsf{J}_i^j = \tilde{\mathsf{e}}^{\prime j}(\mathsf{e}_i)$ and $\mathsf{K}_i^j = \tilde{\mathsf{e}}^j(\mathsf{e}_i^\prime)$.
+
 #FootnoteRef(5) Using
 ```Scheme
 (define R3-rect (coordinate-system-at 'rectangular 'origin R3))
@@ -470,6 +508,7 @@ How are $\mathsf{J}_x$, $\mathsf{J}_y$, and $\mathsf{J}_z$ related to $\mathsf{e
 (define R3-rect-point ((point R3-rect) (up 'x0 'y0 'z0)))
 (define g (literal-manifold-function 'g-rect R3-rect))
 ```
+
 #FootnoteRef(6) Using
 ```Scheme
 (define Euler-angles (coordinate-system-at 'Euler 'Euler-patch SO3))
@@ -478,7 +517,9 @@ How are $\mathsf{J}_x$, $\mathsf{J}_y$, and $\mathsf{J}_z$ related to $\mathsf{e
 (define SO3-point ((point Euler-angles) (up 'theta 'phi 'psi)))
 (define f (literal-manifold-function 'f-Euler Euler-angles))
 ```
+
 #FootnoteRef(7) For non-commuting operators $A$ and $B$,
+
 $$\begin{equation}
 \begin{align*}
 e^{A} e^{B} e^{-A} e^{-B} & \\
@@ -488,6 +529,9 @@ e^{A} e^{B} e^{-A} e^{-B} & \\
 \end{align*}
 \notag
 \end{equation}$$
+
 to second order in $A$ and $B$. All higher-order terms can be written in terms of higher-order commutators of $A$ and $B$. An example of a higher-order commutator is $[A, [A, B]]$.
+
 #FootnoteRef(8) Here $x$ is an up-tuple structure of components, and $\mathsf{e}$ is down-tuple structure of basis vectors. The product of the two contracts to make a scaled vector, along which we translate by one unit.
+
 #FootnoteEnd

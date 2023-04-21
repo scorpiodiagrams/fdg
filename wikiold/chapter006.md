@@ -11,13 +11,17 @@ Let $\mu$ be a map from points $n$ in the manifold $N$ to points $m$ in the mani
 
 ### Restricted Vector Fields
 One way to make a vector field over a map is to restrict a vector field on $M$ to the image of $N$ over $\mu$, as illustrated in figure 6.1.Let $v$ be a vector field on $M$, and $f$ a function on $M$. Then
+
 $$\begin{array}{l}
 v_{\mu}(f) = v(f) \circ \mu, \quad (6.1)
 \end{array}$$
+
 is a vector over the map $\mu$. Note that $v{\mu}(f)$ is a function on $N$, not $M$:
+
 $$\begin{array}{l}
 v_{\mu}(f)(n) = v(f)(\mu(n)). \quad (6.2)
 \end{array}$$
+
 (Reference: Bishop and Goldberg, Tensor Analysis on Manifolds)
 
 

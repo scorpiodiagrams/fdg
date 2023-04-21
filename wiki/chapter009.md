@@ -263,9 +263,11 @@ L_2(t, x, v) = \frac{1}{2}(L_1(t, x, v))^2,
 \end{equation}$$
 
 and the Lagrange operator for $L_2$ is#Footnote(3)
+
 $$\begin{equation}
 \boldsymbol{E}[L_2] = D_t \partial_2 L_2 - \partial_1 L_2,
 \end{equation}$$
+
 we find
 
 $$\begin{equation}
@@ -341,14 +343,19 @@ D^2x\,Dx\,Dy &= (Dx)^2\,D^2y
 Note that the only constraint is $D^2x\,Dy = Dx\,D^2y$, so the resulting Lagrange equations are dependent.
 
 This is enough to determine that the result is a straight line, without specifying the rate along the line. Suppose $y = f(x)$, for path $(x(t), y(t))$. Then
+
 $$\begin{equation}
 Dy = Df(x)\,Dx\text{ and } D^2y = D^2f(x)\,Dx + Df(x)\,D^2(x).
 \end{equation}$$
+
 Substituting, we get
+
 $$\begin{equation}
 Df(x)\,Dx\,D^2x = Dx\left(D^2f(x)\,Dx + Df(x)\,D^2x\right)
 \end{equation}$$
+
 or
+
 $$\begin{equation}
 Df(x)\,D^2x = D^2f(x)\,Dx + Df(x)\,D^2x,
 \end{equation}$$
@@ -769,7 +776,9 @@ b. Assume that in a "matter-dominated universe" radiation pressure is negligible
 ----
 ### Footnotes
 
+
 #FootnoteRef(1) Notice that #Code(raise) and #Code(lower) are not symmetrical. This is because vector fields and form fields are not symmetrical: a vector field takes a manifold function as its argument, whereas a form field takes a vector field as its argument. This asymmetry is not apparent in traditional treatments based on index notation.
+
 #FootnoteRef(2) The procedure #Code(Lagrange-explicit) produces the accelerations of the coordinates. In this code the division operator (#Code(/)) multiplies its first argument on the left by the inverse of its second argument.
 
 ```Scheme
@@ -779,12 +788,17 @@ b. Assume that in a "matter-dominated universe" radiation pressure is negligible
 (/ (- F (+ ((partial 0) P) (* ((partial 1) P) velocity)))
 ((partial 2) P))))
 ```
+
 #FootnoteRef(3) $\mathbf{E}$ is the Euler-Lagrange operator, which gives the residuals of the Lagrange equations for a Lagrangian. $\mathbf{\Gamma}$ extends a configuration-space path $q$ to make a state-space path, with as many terms as needed: $\mathbf{\Gamma}[q](t) = (t, q(t), Dq(t), \ldots)$. The total time derivative $D_t$ is defined by $D_t F \circ \mathbf{\Gamma}[q] = D\left(F \circ
 \mathbf{\Gamma}[q]\right)$ for any state function $F$ and path $q$. The Lagrange equations are $\mathbf{E}$[L] \circ \Gamma[q] = 0. See [19](references!bib_19) for more details.
+
 #FootnoteRef(4) We cheated: We hand-simplified the denominator to make the result more obvious.
+
 #FootnoteRef(5) The tensor with components $G_{\mu \nu} = R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu}$ is called the Einstein tensor. In his search for an appropriate field equation for gravity, Einstein demanded /general covariance/ (independence of coordinate system) and local Lorentz invariance (at each point transformations must preserve the line element). These considerations led Einstein to look for a tensor equation (see Appendix C).
+
 #FootnoteRef(6) Start with equation (9.26). Raise one index of both sides, and then contract. Notice that the trace $g_\mu^\mu = 4$, the dimension of spacetime.
 This gets $R = −\left(\frac{8 \pi G}{c^4}\right) T$ , from which we can deduce equation (9.27).
+
 #FootnoteRef(7) The procedure #Code(trace2down) is defined on page 144. This expression also uses #Code(drop2), which converts a tensor field that takes two one-form fields into a tensor field that takes two vector fields. Its definition is
 
 ```Scheme
@@ -798,6 +812,7 @@ This gets $R = −\left(\frac{8 \pi G}{c^4}\right) T$ , from which we can deduce
 basis))
 basis)))
 ```
+
 #FootnoteRef(8) The spacetime manifold is built from $\mathbf{R}^4$ with the addition of appropriate coordinate systems:
 
 ```Scheme
