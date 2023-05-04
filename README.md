@@ -5,7 +5,7 @@ An unofficial markdown version of "Functional Differential Geometry" by Gerald J
 * Ported from [CC BY-NC-SA-licensed second edition](https://mitpress.mit.edu/sites/default/files/titles/content/fdg_edition_2/book) hosted by [MIT Press](https://mitpress.mit.edu/):
 * Converted to @jamescrook's markdown port (this version)
 
-View these files converted to html and diagrams at [scorpio diagrams](http://scorpiodiagrams.com/gitwrapped.html#fdg)
+View these files converted to html and diagrams at [scorpio diagrams](http://scorpiodiagrams.com/gitwrapped.html#fdg;chapter001)
 
 ## Sub directories
 
